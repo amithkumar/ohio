@@ -1,0 +1,973 @@
+﻿@model FundExchangeRequestModel
+
+<div class="step-by-step hidden-xs hidden-sm">
+    @using (Html.BeginForm("FundExchangeRequest", "Account", FormMethod.Post))
+    {
+        <div class="nested-circle hol-x">
+            <ul class="desk-step">
+                <li class="step01 current">
+                    <div class="group-circle mix-xy clear-border">
+                        <img class="first-sym" src="~/Content/i/icon-exchange-type.jpg" alt="IMG">
+                        <img class="second-sym" src="~/Content/i/icon-exchange-type.jpg" alt="IMG">
+                        <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                        <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                        <span class="icons icon-v"></span>
+                    </div>
+                    <div class="group-name">
+                        <span class="name bold">Exchange Type</span>
+                    </div>
+                </li>
+                <li class="step02">
+                    <div class="group-circle mix-xy clear-border">
+                        <img class="first-sym" src="~/Content/i/icon-exchange-from01.png" alt="IMG">
+                        <img class="second-sym" src="~/Content/i/icon-exchange-from.png" alt="IMG">
+                        <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                        <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                        <span class="icons icon-v"></span>
+                    </div>
+                    <div class="group-name">
+                        <span class="name bold">Exchange From</span>
+                    </div>
+                </li>
+                <li class="step03">
+                    <div class="group-circle mix-xy">
+                        <img class="first-sym" src="~/Content/i/icon-exchange-to01.png" alt="IMG">
+                        <img class="second-sym" src="~/Content/i/icon-exchange-to.png" alt="IMG">
+                        <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                        <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                        <span class="icons icon-v"></span>
+                    </div>
+                    <div class="group-name">
+                        <span class="name bold">Exchange To</span>
+                    </div>
+                </li>
+                <li class="step04">
+                    <div class="group-circle mix-xy">
+                        <img class="first-sym" src="~/Content/i/seach-page01.png" alt="IMG">
+                        <img class="second-sym" src="~/Content/i/seach-page.png" alt="IMG">
+                        <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                        <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                        <span class="icons icon-v"></span>
+                    </div>
+                    <div class="group-name">
+                        <span class="name bold clear-right">Review</span>
+                    </div>
+                </li>
+                <li class="step05">
+                    <div class="group-circle mix-xy">
+                        <img class="first-sym" src="~/Content/i/icon-select01.png" alt="IMG">
+                        <img class="second-sym" src="~/Content/i/icon-select.png" alt="IMG">
+                        <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                        <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                        <span class="icons icon-v"></span>
+                    </div>
+                    <div class="group-name">
+                        <span class="name bold">Confirm</span>
+                    </div>
+                </li>
+            </ul>
+            <a href="javascript:;" class="click-intructions">
+                <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+            </a>
+        </div>
+        <!-- end /nested-circle -->
+        <div class="step-more-details">
+            <div class="step-content step-one-content">
+                <div class="top-title">
+                    <div class="title">Step 1 : Exchange Type</div>
+                </div>
+                <!-- end /top-title -->
+                <div class="middle-form">
+                    <div class="form-order01">
+                        <div class="box-radio">
+                            <input type="radio" id="boxx01" name="ivest01" checked="checked">
+                            <label for="boxx01" class="big-radio">
+                                <span>Fund Exchange</span>
+                            </label>
+                            <input type="radio" id="boxx02" name="ivest01">
+                            <label for="boxx02" class="big-radio">
+                                <span>End Result Exchange</span>
+                            </label>
+                        </div>
+                        <!-- box radio -->
+                    </div>
+                    <!-- end /form-order01 -->
+                    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopFundExchangeStep1Instructions, cssClass: "hidden-xs hidden-sm")); }
+                    <div class="clear"></div>
+                </div>
+                <!-- end /middle-form -->
+                <div class="bottom-button">
+                    <a href="@Url.Action("FundExchange", "Account")" class="btn-cancel mix-xy">Cancel</a>
+                    <a href="javascript:;" class="btn-next mix-xy btn-next-step">Next</a>
+                    <div class="clear"></div>
+                </div>
+                <!-- end /bottom-button -->
+            </div>
+            <!-- end /step-one-content -->
+            <div class="step-content step-two-content hide">
+                <div class="top-title">
+                    <div class="title">Step 2 : Exchange From</div>
+                </div>
+                <!-- end /top-title -->
+                <div class="middle-form">
+                    <div class="form-order02">
+                        <div class="form-row clearfix">
+                            <span class="title">Fund name</span>
+                            <div class="input-here drop-input ddown-here big-text">
+                                @Html.CustomSelectFor(x => x.ExchangeFrom, (IList<string>)ViewBag.FundNames, placeholder: "Select Fund", @class: "ddown-select")
+                            </div>
+                        </div>
+                        <div class="form-row clearfix">
+                            <span class="title">Exchange percentage</span>
+                            <div class="inputs">
+                                @Html.CustomTextBoxFor(x => x.ExchangePercentage, null)
+                                <span class="txt">%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end /form-order01 -->
+                    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopFundExchangeStep2Instructions, cssClass: "hidden-xs hidden-sm")); }
+                    <div class="clear"></div>
+                </div>
+                <!-- end /middle-form -->
+                <div class="bottom-button">
+                    <a href="javascript:;" class="btn-cancel mix-xy btn-previous-step">Previous</a>
+                    <a href="javascript:;" class="btn-next mix-xy btn-next-step validate-all-positive-numeric">Next</a>
+                    <div class="clear"></div>
+                </div>
+                <!-- end /bottom-button -->
+            </div>
+            <!-- end /step two content -->
+            <div class="step-content step-three-content hide">
+                <div class="top-title">
+                    <div class="title">Step 3 : Exchange To</div>
+                </div>
+                <!-- end /top-title -->
+                <div class="content-edit">
+                    <div class="cover-content edit">
+                        <div class="second-content">
+                            <div class="left-content">
+                                <div class="top-content">
+                                    <span class="title">Exchange From</span>
+                                    <span class="descr">OHIO DC LIFEPATH 2055</span><em>:</em><span class="parent">100%</span>
+                                </div>
+                                <!-- top content -->
+                                <div class="box-auto ver-y">
+                                    <span class="title">Exchange To</span>
+                                </div>
+                                <!-- box auto -->
+                                <div class="content-fund">
+                                    <div class="top-c-fund">
+                                        <span class="percent">
+                                            <span class="title ">Fund Name</span><span class="next padding-right-20">Percentage</span>
+                                        </span>
+                                    </div>
+                                    <!-- top c fund -->
+                                    <span class="topic-title">
+                                        International Stocks
+                                        <span class="icons arrow-right"></span>
+                                    </span>
+                                    <div class="box-content">
+                                        <span class="name">Templeton Foreign</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.TempletonForeign, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <span class="topic-title">
+                                        Small Cap Stocks
+                                        <span class="icons arrow-right"></span>
+                                    </span>
+                                    <div class="box-content">
+                                        <span class="name">Ohio DC Large Cap Growth</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.SmallCapOhioDCLargeCapGrowth, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <span class="topic-title">
+                                        Mid Cap Stocks
+                                        <span class="icons arrow-right"></span>
+                                    </span>
+                                    <div class="box-content">
+                                        <span class="name">Ohio DC Large Cap Growth</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.MidCapOhioDCLargeCapGrowth, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <span class="topic-title">
+                                        Large Cap Stocks
+                                        <span class="icons arrow-right"></span>
+                                    </span>
+                                    <div class="box-content">
+                                        <span class="name">Dodge &amp; Cox Stocks</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.DodgeAndCoxStocks, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <div class="box-content two">
+                                        <span class="name">Fidelity Contrafund</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.FidelityContrafund, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <div class="box-content three">
+                                        <span class="name">Fidelity Growth Company</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.FidelityGrowthCompany, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <div class="box-content two">
+                                        <span class="name">Ohio DC Large Cap Growth</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.LargeCapOhioDCLargeCapGrowth, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <span class="topic-title">
+                                        Asset allocation funds
+                                        <span class="icons arrow-right"></span>
+                                    </span>
+                                    <div class="box-content">
+                                        <span class="name">Lifepath 2020</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.Lifepath2020, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <span class="topic-title">
+                                        Bonds
+                                        <span class="icons arrow-right"></span>
+                                    </span>
+                                    <div class="box-content">
+                                        <span class="name">Ohio DC Intermediate Bond</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.OhioDCIntermediateBond, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <div class="box-content two">
+                                        <span class="name">Vanguard Total Bond Market Index</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.VanguardTotalBondMarketIndex, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <div class="box-total">
+                                        <span class="percent">
+                                            <span class="title">total</span><span class="zero">0.00%</span>
+                                        </span>
+                                        <span class="icons error-icon"></span>
+                                        <p class="text-error">
+                                            The total percentage exceeds auto rebalancing percentage by 100%. Please adjust your percentage limited to total
+                                            100%
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- content fund -->
+                            </div>
+                            @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopFundExchangeStep3Instructions, cssClass: "hidden-xs hidden-sm height825")); }
+                            <div class="clear"></div>
+                        </div>
+                        <!-- second content -->
+                    </div>
+                    <!-- top content -->
+                </div>
+                <!-- cover content -->
+                <div class="bottom-button">
+                    <a href="javascript:;" class="btn-cancel mix-xy">PREVIOUS</a>
+                    <a href="javascript:;" class="btn-next mix-xy validate-all-positive-numeric">NEXT</a>
+                    <div class="clear"></div>
+                </div>
+                <!-- end /bottom-button -->
+            </div>
+            <!-- end /step-three-content -->
+            <div class="step-content step-four-content hide">
+                <div class="top-title">
+                    <div class="title">Step 4 : Review</div>
+                </div>
+                <!-- end /top-title -->
+                <div class="content-edit">
+                    <div class="cover-content edit">
+                        <div class="second-content">
+                            <div class="left-content">
+                                <div class="left">
+                                    <div class="box-auto ver-y">
+                                        <span class="title">EXCHANGE FROM</span>
+                                    </div>
+                                    <!-- box auto -->
+                                    <div class="content-fund">
+                                        <div class="top-c-fund">
+                                            <span class="percent">
+                                                <span class="title">Fund Name</span><span class="next">Percentage</span>
+                                            </span>
+                                        </div>
+                                        <!-- top c fund -->
+                                        <div class="box-content one">
+                                            <span class="name100">Templeton Foreign</span> <span class="right">30.00%</span>
+                                        </div>
+                                    </div>
+                                    <!-- content fund -->
+                                </div>
+                                <div class="right">
+                                    <div class="box-auto ver-y">
+                                        <span class="title">EXCHANGE TO</span>
+                                    </div>
+                                    <!-- box auto -->
+                                    <div class="content-fund">
+                                        <div class="top-c-fund">
+                                            <span class="percent">
+                                                <span class="title">Fund Name</span><span class="next">Percentage</span>
+                                            </span>
+                                        </div>
+                                        <!-- top c fund -->
+                                        <div class="box-content">
+                                            <span class="name100">Templeton Foreign</span> <span class="right">30.00%</span>
+                                        </div>
+                                        <div class="box-content two">
+                                            <span class="name100">Ohio DC Large Cap Growth</span> <span class="right">40.00%</span>
+                                        </div>
+                                        <div class="box-content">
+                                            <span class="name100">Vanguard Capital Opportunity</span> <span class="right">30.00%</span>
+                                        </div>
+                                    </div>
+                                    <!-- content fund -->
+                                </div>
+                            </div>
+                            @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopFundExchangeStep4Instructions, cssClass: "hidden-xs hidden-sm height215")); }
+                            <div class="clear"></div>
+                        </div>
+                        <!-- second content -->
+                    </div>
+                    <!-- top content -->
+                </div>
+                <!-- cover content -->
+                <div class="bottom-button">
+                    <a href="javascript:;" class="btn-cancel mix-xy">PREVIOUS</a>
+                    <a href="javascript:;" class="btn-next mix-xy">NEXT</a>
+                    <div class="clear"></div>
+                </div>
+                <!-- end /bottom-button -->
+            </div>
+            <!-- end /step-four-content -->
+            <div class="step-content step-five-content hide">
+                <div class="top-title">
+                    <div class="title">Step 5 : Confirm</div>
+                </div>
+                <!-- end /top-title -->
+                <div class="middle-form">
+                    <div class="form-order03">
+                        <div class="box-content">
+                            <div class="main-content">
+                                <ul class="list-title">
+                                    <li>
+                                        <span class="title  txt-center">Exchange From</span>
+                                    </li>
+                                    <li>
+                                        <span class="title">From %</span>
+                                    </li>
+                                    <li>
+                                        <span class="title txt-center">Exchange To</span>
+                                    </li>
+                                    <li>
+                                        <span class="title txt-center">To %</span>
+                                    </li>
+                                </ul>
+                                <!-- list title -->
+                                <div class="group-list">
+                                    <ul class="list-colum">
+                                        <li>
+                                            <ul class="list-row">
+                                                <li>
+                                                    <span class="text-file">INVESTMENT OPTION AAA</span>
+                                                </li>
+                                                <li>
+                                                    <span class="text-file">5%</span>
+                                                </li>
+                                                <li>
+                                                    <div class="text-file">
+                                                        <p>INVESTMENT OPTION ZZZ</p>
+                                                        <p>INVESTMENT OPTION YYY</p>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <span class="text-file">50%</span>
+                                                </li>
+                                            </ul>
+                                            <!-- list row -->
+                                        </li>
+                                        <li>
+                                            <ul class="list-row">
+                                                <li>
+                                                    <span class="text-file">INVESTMENT OPTION AAA</span>
+                                                </li>
+                                                <li>
+                                                    <span class="text-file">5%</span>
+                                                </li>
+                                                <li>
+                                                    <div class="text-file">
+                                                        <p>INVESTMENT OPTION ZZZ</p>
+                                                        <p>INVESTMENT OPTION YYY</p>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <span class="text-file">50%</span>
+                                                </li>
+                                            </ul>
+                                            <!-- list row -->
+                                        </li>
+                                        <li>
+                                            <ul class="list-row">
+                                                <li>
+                                                    <span class="text-file">INVESTMENT OPTION CCC</span>
+                                                </li>
+                                                <li>
+                                                    <span class="text-file">5%</span>
+                                                </li>
+                                                <li>
+                                                    <div class="text-file">
+                                                        <p>INVESTMENT OPTION ZZZ</p>
+                                                        <p>INVESTMENT OPTION YYY</p>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <span class="text-file">50%</span>
+                                                </li>
+                                            </ul>
+                                            <!-- list row -->
+                                        </li>
+                                        <li>
+                                            <ul class="list-row">
+                                                <li>
+                                                    <span class="text-file">INVESTMENT OPTION DDD</span>
+                                                </li>
+                                                <li>
+                                                    <span class="text-file">5%</span>
+                                                </li>
+                                                <li>
+                                                    <div class="text-file">
+                                                        <p>INVESTMENT OPTION ZZZ</p>
+                                                        <p>INVESTMENT OPTION YYY</p>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <span class="text-file">50%</span>
+                                                </li>
+                                            </ul>
+                                            <!-- list row -->
+                                        </li>
+                                    </ul>
+                                    <!-- list colum -->
+                                </div>
+                                <!-- end /group-list -->
+                            </div>
+                            <!-- main content -->
+                        </div>
+                        <!-- content box -->
+
+                    </div>
+                    <!-- end /form-order01 -->
+                    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopFundExchangeStep5Instructions, cssClass: "hidden-xs hidden-sm")); }
+                    <div class="clear"></div>
+                </div>
+                <!-- end /middle-form -->
+                <div class="bottom-button">
+                    <a href="javascript:;" class="btn-cancel mix-xy btn-previous-step">Previous</a>
+                    <div class="right-btn">
+                        <a class="btn-cancel btn-add-another-exchange mix-xy">ADD ANOTHER EXCHANGE</a>
+                        <a href="javascript:;" class="btn-next mix-xy btn-next-step btn-submit-form-ajax">FINISH AND CONFIRM</a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!-- end /bottom-button -->
+            </div>
+            <!-- end /step three content -->
+            <div class="step-content step-completed-content hide">
+                <div class="top-title">
+                    <div class="title">Completed</div>
+                </div>
+                <!-- end /top-title -->
+                <div class="middle-form">
+                    <div class="form-order02">
+                        <div class="content-left">
+                            <span class="big-text">Successful!</span>
+                            <div class="group-notice">
+                                <img src="~/Content/i/select-box.png" alt="IMG">
+                                <p>
+                                    Your Fund Investments Reallocation has been
+                                    successfully created.
+                                </p>
+                            </div>
+                            <!-- end /group-notice -->
+                            <a href="@Url.Action("FundExchange", "Account")" class="btn-view mix-xy">VIEW FUND EXCHANGES</a>
+                        </div>
+                    </div>
+                    <!-- end /form-order01 -->
+                    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopFundExchangeStepCompletedInstructions, cssClass: "hidden-xs hidden-sm")); }
+                    <div class="clear"></div>
+                </div>
+                <!-- end /middle-form -->
+            </div>
+            <!-- end /step two content -->
+        </div>
+        <!-- end /step-more-details -->
+    }
+</div>
+<!-- end /step-by-step -->
+
+<div class="step-by-step-mobi hidden-md hidden-lg">
+    @using (Html.BeginForm("FundExchangeRequest", "Account", FormMethod.Post))
+    {
+        <div class="nested-circle mix-xy">
+            <ul>
+                <li class="mix-xy current">
+                    <span class="number">1</span>
+                    <span class="icons"></span>
+                </li>
+                <li class="mix-xy ">
+                    <span class="number">2</span>
+                    <span class="icons"></span>
+                </li>
+                <li class="mix-xy">
+                    <span class="number">3</span>
+                    <span class="icons"></span>
+                </li>
+                <li class="mix-xy">
+                    <span class="number">4</span>
+                    <span class="icons"></span>
+                </li>
+                <li class="mix-xy">
+                    <span class="number">5</span>
+                    <span class="icons"></span>
+                </li>
+            </ul>
+            <a href="javascript:;" class="click-intructions">
+                <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+            </a>
+        </div>
+        <!-- end /nested-circle -->
+        <div class="step-details">
+            <div class="step-n01-content step-mobile-content">
+                <span class="top-black-title">Step 1 : Exchange Type</span>
+                <div class="second-group">
+                    <ul class="choose-style">
+                        <li>
+                            <input type="radio" id="cbox50" name="style" checked="checked">
+                            <label for="cbox50" class="tiny-circle">
+                                <span>Fund Exchange</span>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" id="cbox51" name="style">
+                            <label for="cbox51" class="tiny-circle">
+                                <span>End Result Exchange</span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <!-- end /second-group -->
+                <div class="third-group mix-xy">
+                    <a href="javascript:;" class="btn-cancel mix-xy">Cancel</a>
+                    <a href="javascript:;" class="btn-next mix-xy btn-next-step">Next</a>
+                    <div class="clear"></div>
+                </div>
+                <!-- end /third-group -->
+            </div>
+            <!-- end /step-n01-content -->
+            <div class="step-n02-content step-mobile-content hide">
+                <span class="top-black-title">Step 2 : Exchange From</span>
+                <!-- end /top-title -->
+                <div class="second-group">
+                    <div class="form-order02">
+                        <div class="form-row clearfix">
+                            <span class="title">Fund name</span>
+                            <div class="input-here drop-input ddown-here big-text">
+                                @Html.CustomSelectFor(x => x.ExchangeFrom, (IList<string>)ViewBag.FundNames, placeholder: "Select Fund", @class: "ddown-select")
+                            </div>
+                        </div>
+                        <div class="form-row clearfix">
+                            <span class="title">Exchange percentage</span>
+                            <div class="inputs">
+                                @Html.CustomTextBoxFor(x => x.ExchangePercentage, null)
+                                <span class="txt">%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end /form-order01 -->
+                    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileFundExchangeStep2Instructions, cssClass: "hidden-xs hidden-sm")); }
+                    <div class="clear"></div>
+                </div>
+                <!-- end /middle-form -->
+                <div class="third-group mix-xy">
+                    <a href="javascript:;" class="btn-cancel mix-xy btn-previous-step">Cancel</a>
+                    <a href="javascript:;" class="btn-next mix-xy btn-next-step validate-all-positive-numeric">Next</a>
+                    <div class="clear"></div>
+                </div>
+                <!-- end /bottom-button -->
+            </div>
+            <!-- end /step two content -->
+            <div class="step-n03-content step-mobile-content hide">
+                <span class="top-black-title">Step 3 : Exchange To</span>
+                <!-- end /top-title -->
+                <div class="content-edit second-group">
+                    <div class="cover-content edit">
+                        <div class="second-content">
+                            <div class="left-content">
+                                <div class="top-content">
+                                    <span class="title">Exchange From</span>
+                                    <span class="descr">OHIO DC LIFEPATH 2055</span><em>:</em><span class="parent">100%</span>
+                                </div>
+                                <!-- top content -->
+                                <div class="content-fund">
+                                    <div class="top-c-fund">
+                                        <span class="percent">
+                                            <span class="title ">Fund Name</span><span class="next">Percentage</span>
+                                        </span>
+                                    </div>
+                                    <!-- top c fund -->
+                                    <span class="topic-title">
+                                        International Stocks
+                                        <span class="icons arrow-right"></span>
+                                    </span>
+                                    <div class="box-content">
+                                        <span class="name">Templeton Foreign</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.TempletonForeign, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <span class="topic-title">
+                                        Small Cap Stocks
+                                        <span class="icons arrow-right"></span>
+                                    </span>
+                                    <div class="box-content">
+                                        <span class="name">Ohio DC Large Cap Growth</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.SmallCapOhioDCLargeCapGrowth, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <span class="topic-title">
+                                        Mid Cap Stocks
+                                        <span class="icons arrow-right"></span>
+                                    </span>
+                                    <div class="box-content">
+                                        <span class="name">Ohio DC Large Cap Growth</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.MidCapOhioDCLargeCapGrowth, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <span class="topic-title">
+                                        Large Cap Stocks
+                                        <span class="icons arrow-right"></span>
+                                    </span>
+                                    <div class="box-content">
+                                        <span class="name">Dodge &amp; Cox Stocks</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.DodgeAndCoxStocks, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <div class="box-content two">
+                                        <span class="name">Fidelity Contrafund</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.FidelityContrafund, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <div class="box-content three">
+                                        <span class="name">Fidelity Growth Company</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.FidelityGrowthCompany, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <div class="box-content two">
+                                        <span class="name">Ohio DC Large Cap Growth</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.LargeCapOhioDCLargeCapGrowth, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <span class="topic-title">
+                                        Asset allocation funds
+                                        <span class="icons arrow-right"></span>
+                                    </span>
+                                    <div class="box-content">
+                                        <span class="name">Lifepath 2020</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.Lifepath2020, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <span class="topic-title">
+                                        Bonds
+                                        <span class="icons arrow-right"></span>
+                                    </span>
+                                    <div class="box-content">
+                                        <span class="name">Ohio DC Intermediate Bond</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.OhioDCIntermediateBond, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <div class="box-content two">
+                                        <span class="name">Vanguard Total Bond Market Index</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.VanguardTotalBondMarketIndex, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <div class="box-total">
+                                        <span class="percent">
+                                            <span class="title">total</span><span class="zero">0.00%</span>
+                                        </span>
+                                        <span class="icons error-icon"></span>
+                                        <p class="text-error">
+                                            The total percentage exceeds auto rebalancing percentage by 100%. Please adjust your percentage limited to total
+                                            100%
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- content fund -->
+                            </div>
+                            @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileFundExchangeStep3Instructions, cssClass: "hidden-xs hidden-sm")); }
+                            <div class="clear"></div>
+                        </div>
+                        <!-- second content -->
+                    </div>
+                    <!-- top content -->
+                </div>
+                <!-- cover content -->
+                <div class="third-group mix-xy">
+                    <a href="javascript:;" class="btn-cancel mix-xy">PREVIOUS</a>
+                    <a href="javascript:;" class="btn-next mix-xy validate-all-positive-numeric">NEXT</a>
+                    <div class="clear"></div>
+                </div>
+                <!-- end /bottom-button -->
+            </div>
+            <!-- end .step-n05 -->
+            <div class="step-n04-content step-mobile-content hide">
+                <span class="top-black-title">Step 4 : Review</span>
+                <!-- end /top-title -->
+                <div class="second-group content-edit">
+                    <div class="cover-content edit">
+                        <div class="second-content">
+                            <div class="left-content">
+                                <div class="left">
+                                    <div class="box-auto ver-y">
+                                        <span class="title">EXCHANGE FROM</span>
+                                    </div>
+                                    <!-- box auto -->
+                                    <div class="content-fund">
+                                        <div class="top-c-fund">
+                                            <span class="percent">
+                                                <span class="title">Fund Name</span><span class="next">Percentage</span>
+                                            </span>
+                                        </div>
+                                        <!-- top c fund -->
+                                        <div class="box-content">
+                                            <span class="name100">Templeton Foreign</span> <span class="right">30.00%</span>
+                                        </div>
+                                    </div>
+                                    <!-- content fund -->
+                                </div>
+                                <div class="right">
+                                    <div class="box-auto ver-y">
+                                        <span class="title">EXCHANGE TO</span>
+                                    </div>
+                                    <!-- box auto -->
+                                    <div class="content-fund">
+                                        <div class="top-c-fund">
+                                            <span class="percent">
+                                                <span class="title">Fund Name</span><span class="next">Percentage</span>
+                                            </span>
+                                        </div>
+                                        <!-- top c fund -->
+                                        <div class="box-content">
+                                            <span class="name100">Templeton Foreign</span> <span class="right">30.00%</span>
+                                        </div>
+                                        <div class="box-content two">
+                                            <span class="name100">Ohio DC Large Cap Growth</span> <span class="right">40.00%</span>
+                                        </div>
+                                        <div class="box-content">
+                                            <span class="name100">Vanguard Capital Opportunity</span> <span class="right">30.00%</span>
+                                        </div>
+                                    </div>
+                                    <!-- content fund -->
+                                </div>
+                            </div>
+                            @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileFundExchangeStep4Instructions, cssClass: "hidden-xs hidden-sm")); }
+                            <div class="clear"></div>
+                        </div>
+                        <!-- second content -->
+                    </div>
+                    <!-- top content -->
+                </div>
+                <!-- second content -->
+                <div class="third-group mix-xy">
+                    <a href="javascript:;" class="btn-cancel mix-xy">PREVIOUS</a>
+                    <a href="javascript:;" class="btn-next mix-xy">NEXT</a>
+                    <div class="clear"></div>
+                </div>
+                <!-- end /bottom-button -->
+            </div>
+            <!-- end /step-n04-content -->
+            <div class="step-n05-content step-mobile-content hide">
+                <span class="top-black-title">Step 5 : Confirm</span>
+                <!-- end /top-title -->
+                <div class="second-group">
+                    <div class="form-order03">
+                        <div class="mobi-table">
+                            <ul>
+                                <li>
+                                    <div class="table-row">
+                                        <div class="left-area">
+                                            <span class="label-txt">Exchange From</span>
+                                            <span class="value-txt">INVESTMENT OPTION AAA</span>
+                                        </div>
+                                        <div class="right-area">
+                                            <span class="label-txt">From %</span>
+                                            <span class="value-txt">5%</span>
+                                        </div>
+                                    </div>
+                                    <div class="table-row">
+                                        <div class="left-area">
+                                            <span class="label-txt">Exchange To</span>
+                                            <span class="value-txt">INVESTMENT OPTION ZZZ</span>
+                                            <span class="value-txt">INVESTMENT OPTION YYY</span>
+                                        </div>
+                                        <div class="right-area">
+                                            <span class="label-txt">To %</span>
+                                            <span class="value-txt">50%</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="table-row">
+                                        <div class="left-area">
+                                            <span class="label-txt">Exchange From</span>
+                                            <span class="value-txt">INVESTMENT OPTION BBB</span>
+                                        </div>
+                                        <div class="right-area">
+                                            <span class="label-txt">From %</span>
+                                            <span class="value-txt">10%</span>
+                                        </div>
+                                    </div>
+                                    <div class="table-row">
+                                        <div class="left-area">
+                                            <span class="label-txt">Exchange To</span>
+                                            <span class="value-txt">INVESTMENT OPTION XXX</span>
+                                            <span class="value-txt">INVESTMENT OPTION VVV</span>
+                                        </div>
+                                        <div class="right-area">
+                                            <span class="label-txt">To %</span>
+                                            <span class="value-txt">50%</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="table-row">
+                                        <div class="left-area">
+                                            <span class="label-txt">Exchange From</span>
+                                            <span class="value-txt">INVESTMENT OPTION CCC</span>
+                                        </div>
+                                        <div class="right-area">
+                                            <span class="label-txt">From %</span>
+                                            <span class="value-txt">10%</span>
+                                        </div>
+                                    </div>
+                                    <div class="table-row">
+                                        <div class="left-area">
+                                            <span class="label-txt">Exchange To</span>
+                                            <span class="value-txt">INVESTMENT OPTION UUU</span>
+                                        </div>
+                                        <div class="right-area">
+                                            <span class="label-txt">To %</span>
+                                            <span class="value-txt">50%</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="table-row">
+                                        <div class="left-area">
+                                            <span class="label-txt">Exchange From</span>
+                                            <span class="value-txt">INVESTMENT OPTION AAA</span>
+                                        </div>
+                                        <div class="right-area">
+                                            <span class="label-txt">From %</span>
+                                            <span class="value-txt">5%</span>
+                                        </div>
+                                    </div>
+                                    <div class="table-row">
+                                        <div class="left-area">
+                                            <span class="label-txt">Exchange To</span>
+                                            <span class="value-txt">INVESTMENT OPTION TTT</span>
+                                        </div>
+                                        <div class="right-area">
+                                            <span class="label-txt">To %</span>
+                                            <span class="value-txt">5%</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <!-- main content -->
+                        </div>
+                        <!-- content box -->
+                    </div>
+                    <!-- end /form-order01 -->
+                    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileFundExchangeStep5Instructions, cssClass: "hidden-xs hidden-sm")); }
+                    <div class="clear"></div>
+                </div>
+                <!-- end /middle-form -->
+                <div class="third-group mix-xy">
+                    <a href="javascript:;" class="btn-next mix-xy btn-next-step btn-submit-form-ajax">FINISH AND CONFIRM</a>
+                    <a class="btn-cancel mix-xy btn-add-another-exchange">ADD ANOTHER EXCHANGE</a>
+                    <a href="javascript:;" class="btn-cancel mix-xy btn-previous-step">Previous</a>
+                    <div class="clear"></div>
+                </div>
+                <!-- end /bottom-button -->
+            </div>
+            <!-- end /step-n05-content -->
+            <div class="step-n08-content step-mobile-content hide">
+                <span class="top-black-title">Completed</span>
+                <!-- end /top-title -->
+                <div class="second-group content-edit">
+                    <div class="cover-content edit">
+                        <div class="second-content">
+                            <div class="content-left">
+                                <span class="big-text">Successful!</span>
+                                <div class="group-notice">
+                                    <img src="~/Content/i/select-box.png" alt="IMG">
+                                    <p>
+                                        Your Fund Investments Reallocation has been
+                                        successfully created.
+                                    </p>
+                                </div>
+                                <!-- end /group-notice -->
+                            </div>
+                            @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileFundExchangeStepCompletedInstructions, cssClass: "hidden-xs hidden-sm")); }
+                            <div class="clear"></div>
+                        </div>
+                        <!-- second content -->
+                    </div>
+                    <!-- top content -->
+                </div>
+                <!-- second content -->
+                <div class="third-group mix-xy">
+                    <a href="@Url.Action("FundExchange", "Account")" class="btn-next mix-xy">Okay</a>
+                    <div class="clear"></div>
+                </div>
+                <!-- end /bottom-button -->
+            </div>
+            <!-- end /step-n04-content -->
+        </div>
+        <!-- end /step-details -->
+    }
+</div>
+<!-- end /step-by-step-mobi -->

@@ -1,0 +1,74 @@
+﻿@model SendEmailModel
+@{
+    ViewBag.Title = "Send Email";
+    ViewBag.AtiveTab = NavigationTab.Home;
+}
+
+@section scripts {
+    <script src="~/bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/bower_components/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<div class="sent-email all-page">
+    <h2>Send an Email to Us</h2>
+    <div class="mobi-title">
+        <a href="javascript:;" class="click-title ver-y">
+            <span class="icons left-arrow"></span>
+            <span class="title-mobi">Send an email</span>
+        </a>
+    </div>
+    <div class="box-email cen-z">
+        <div class="left-content">
+            @using (Html.BeginForm("SendEmail", "Home", FormMethod.Post))
+            {
+                <div class="cover-input">
+                    <span class="title">Name</span>
+                    <div class="input-here">
+                        @Html.CustomTextBoxFor(m => m.Name, "Enter Name")
+                    </div>
+                    <!-- input here -->
+                </div>
+                <!-- cover input -->
+                <div class="cover-input">
+                    <span class="title">Email Address</span>
+                    <div class="input-here">
+                        @Html.CustomTextBoxFor(m => m.EmailAddress, "Enter Email Address")
+                    </div>
+                    <!-- input here -->
+                </div>
+                <!-- cover input -->
+                <div class="cover-input">
+                    <span class="title">Phone Number</span>
+                    <div class="input-here">
+                        @Html.CustomTextBoxFor(m => m.PhoneNumber, "Enter Phone Number")
+                    </div>
+                    <!-- input here -->
+                </div>
+                <!-- cover input -->
+
+                <div class="cover-area">
+                    <span class="title">Message</span>
+                    <div class="area-here">
+                        @Html.CustomTextAreaFor(m => m.Message, "Enter your message here")
+                    </div>
+                </div>
+                <!-- cover area -->
+                <div class="cover-btn cen-z">
+                    <a href="@Url.Action("Index", "Home")" class="cancel-btn mix-xy">cancel</a>
+                    <a href="javascript:;" class="submit-btn mix-xy submit-form">submit</a>
+                </div>
+                <!-- cover btn -->
+            }
+        </div>
+        <!-- left content -->
+        @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopInstructions, cssClass: "hidden-xs hidden-sm")); }
+    </div>
+    <!-- box email -->
+    <a href="javascript:;" class="click-intructions">
+        <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+    </a>
+</div>
+
+@section boxInstructions {
+    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileInstructions, showCloseButton: true)); }
+}

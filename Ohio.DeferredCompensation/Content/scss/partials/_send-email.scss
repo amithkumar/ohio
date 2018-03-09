@@ -1,0 +1,386 @@
+.sent-email {
+	width: 100%;
+	height: 100vh;
+	padding: 0 82px 70px;
+	background-color: #efefef;
+	position: relative;
+	h2 {
+		padding: 26px 0 23px;
+		font-size: 20px;
+		font-weight: bold;
+		color: #282828;
+	}
+	.mobi-title {
+		display: none;
+		height: 52px;
+		padding: 18px 0 0px 20px;
+		.left-arrow {
+			display: block;
+			width: 9px;
+			height: 14px;
+			margin-right: 7px;
+			background-position: -87px -73px;
+			position: relative;
+			top: -1px;
+		}
+		.title-mobi {
+			font-size: 16px;
+			font-weight: bold;
+			color: #282828;
+		}
+	}
+	.left-content {
+		width: calc(100% - 368px);
+		padding-right: 203px;
+		&:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+	}
+	.box-email {
+		width: 100%;
+		padding: 51px 44px 42px 48px;
+		border-radius: 3px;
+		background-color: #fff;
+		.cover-input {
+			padding-left: 255px;
+			margin-bottom: 18px;
+			position: relative;
+			.title {
+				font-size: 14px;
+				font-weight: 500;
+				color: #282828;
+				position: absolute;
+				top: 15px;
+				left: 0;
+			}
+			.input-here {
+				width: 266px;
+				height: 43px;
+				padding-left: 19px;
+				border-radius: 3px;
+				border: 1px solid #aeaeae;
+				position: relative;
+				&.error-ver {
+					border-color: #df3225;
+					input {
+						color: #df3225;
+					}
+				}
+				input {
+					@include iinput(14px, #282828, #aeaeae);
+					z-index: 1;
+				}
+			}
+		} // cover input
+		.cover-area {
+			.title {
+				display: block;
+				padding: 16px 0 22px;
+				font-size: 14px;
+				font-weight: 500;
+				color: #282828;
+			}
+			.area-here {
+				width: 100%;
+				height: 174px;
+				border-radius: 3px;
+				border: 1px solid #aeaeae;
+				textarea {
+					width: 100%;
+					height: 100%;
+					padding: 10px;
+					font-size: 14px;
+					color: #282828;
+					border: none;
+					resize: none;
+					border-radius: 3px;
+				}
+			}
+		}
+		.cover-btn {
+			float: right;
+			width: 297px;
+			margin-top: 28px;
+		}
+		.cancel-btn {
+			width: 139px;
+			height: 42px;
+			font-size: 15px;
+			color: #df3225;
+			border-radius: 3px;
+			border: 1px solid #df3225;
+			text-transform: uppercase;
+			&:hover {
+				color: #fff;
+				border: none;
+				background-color: #e73e31;
+			}
+		}
+		.submit-btn {
+			width: 139px;
+			height: 42px;
+			font-size: 15px;
+			color: #fff;
+			border-radius: 3px;
+			background-color: #df3225;
+			text-transform: uppercase;
+			&:hover {
+				background-color: #e73e31;
+			}
+		}
+	}
+	.box-instructions {
+		display: block;
+		width: 368px;
+		height: 479px;
+		float: right;
+		padding-top: 22px;
+		background-color: #e3e3e3;
+		border-radius: 3px;
+		position: relative; // Group Name
+		.group-name {
+			height: 30px;
+			margin-left: 32px;
+			position: relative;
+			.icons {
+				display: block;
+				width: 18px;
+				height: 18px;
+				margin-right: 10px;
+				background-position: -79px -38px;
+			}
+			.title {
+				display: block;
+				font-size: 20px;
+				font-weight: 500;
+				color: #282828;
+				position: relative;
+				bottom: 1px;
+			}
+		} // Group Para
+		.group-para {
+			width: 100%;
+			height: 418px;
+			padding: 14px 25px 0px 25px;
+			overflow-y: auto;
+			position: relative;
+			ul {
+				li {
+					margin-bottom: 10px;
+					padding-left: 16px;
+					position: relative;
+					&:last-child {
+						margin-bottom: 0;
+					}
+					&:before {
+						content: '';
+						display: block;
+						width: 5px;
+						height: 5px;
+						border-radius: 50%;
+						background-color: #282828;
+						position: absolute;
+						top: 8px;
+						left: 0;
+					}
+					p {
+						line-height: 20px;
+						font-size: 13px;
+						font-weight: normal;
+						color: #282828;
+						padding-top: 0;
+						text-align: justify;
+					}
+				}
+			}
+		}
+	}
+	.click-intructions {
+		display: none;
+		width: 32px;
+	    height: 29px;
+	    background-color: #4e80cc;
+	    border-radius: 29px 0 0 29px;
+	    padding: 3px;
+	    position: absolute;
+	    top: 11px;
+	    right: 0;
+	    img {
+	    	display: block;
+	    	width: 22px;
+	    }
+	}
+}
+
+@media only screen 
+and (min-width : 1024px) 
+and (max-width : 1280px) {
+	.sent-email {
+		padding-left: 20px;
+		padding-right: 20px;
+		.box-email {
+			padding: 51px 20px 42px;
+			.left-content {
+				padding-right: 97px;
+				.cover-input {
+					display: -webkit-box;
+					display: -ms-flexbox;
+					display: flex;
+					-webkit-box-align: center;
+					-ms-flex-align: center;
+					align-items: center;
+					height: 43px;
+					padding-left: 0;
+					.title {
+						width: 200px;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+						position: relative;
+					}
+					.input-here {
+						width: calc(100% - 200px);
+					}
+				}
+			}
+		}
+	}
+}
+
+@media only screen 
+and (min-width : 768px) 
+and (max-width : 1023px) {
+	.sent-email  {
+		padding: 0;
+		padding-bottom: 1px;
+		h2 {
+			display: none;
+		}
+		.mobi-title {
+			display: block;
+		}
+		.box-email {
+			width: 100%;
+			padding: 22px 20px 0;
+			margin-bottom: 24px;
+		}
+		.left-content {
+			width: 100%;
+			padding-right: 0;
+			.cover-input {
+				padding-left: 0;
+				margin-bottom: 17px;
+				.title {
+					display: block;
+					padding-bottom: 8px;
+					font-size: 13px;
+					font-weight: normal;
+					position: relative;
+					top: 0;
+				}
+				.input-here {
+					width: 100%;
+					height: 39px;
+				}
+			}
+			.cover-area {
+				.title {
+					padding: 0px 0 7px;
+					font-weight: normal;
+				}
+				.area-here {
+					height: 212px;
+				}
+			}
+			.cover-btn {
+				width: 100%;
+				margin-top: 19px;
+				margin-bottom: 24px;
+				.cancel-btn  {
+					width: 165px;
+					height: 39px;
+				}
+				.submit-btn {
+					width: 165px;
+					height: 39px;
+				}
+			}
+		}
+		.right-content {
+			display: none;
+		}
+		.click-intructions {
+			display: block;
+		}
+	}
+}
+
+@media only screen 
+and (min-width : 320px) 
+and (max-width : 767px) {
+	.sent-email  {
+		padding: 0;
+		padding-bottom: 1px;
+		h2 {
+			display: none;
+		}
+		.mobi-title {
+			display: block;
+		}
+		.box-email {
+			width: 100%;
+			padding: 22px 20px 0;
+			margin-bottom: 24px;
+		}
+		.left-content {
+			width: 100%;
+			padding-right: 0;
+			.cover-input {
+				padding-left: 0;
+				margin-bottom: 17px;
+				.title {
+					display: block;
+					padding-bottom: 8px;
+					font-size: 13px;
+					font-weight: normal;
+					position: relative;
+					top: 0;
+				}
+				.input-here {
+					width: 100%;
+					height: 39px;
+				}
+			}
+			.cover-area {
+				.title {
+					padding: 0px 0 7px;
+					font-weight: normal;
+				}
+				.area-here {
+					height: 212px;
+				}
+			}
+			.cover-btn {
+				width: 100%;
+				margin-top: 19px;
+				margin-bottom: 24px;
+				.cancel-btn  {
+					width: 165px;
+					height: 39px;
+				}
+				.submit-btn {
+					width: 165px;
+					height: 39px;
+				}
+			}
+		}
+		.right-content {
+			display: none;
+		}
+		.click-intructions {
+			display: block;
+		}
+	}
+}

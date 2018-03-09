@@ -1,0 +1,33 @@
+﻿@model TopIdentityPanelModel
+
+<div class="top-identify-id @Html.ClassIf("fix-spacing", Model.FixSpacing)">
+    <div class="left-group">
+        <div class="cover-all-v02">
+            <div class="top-group @Html.ClassIf("visible-xs visible-sm", Model.ApplyXsXmClasses)">
+                <p class="ver-y">
+                    View Account No :
+                    <a href="javascript:;" class="red-id ver-y">
+                        0235875205(Ohio 457)
+                        <span class="icons"></span>
+                    </a>
+                </p>
+            </div>
+            <!-- end /top-group -->
+            <div class="top-group clone @Html.ClassIf("hidden-xs hidden-sm", Model.ApplyXsXmClasses)">
+                <p class="ver-y">
+                    View Account Number :
+                    <a href="javascript:;" class="red-id ver-y">
+                        0235875205(Ohio 457)
+                        <span class="icons"></span>
+                    </a>
+                </p>
+            </div>
+            <!-- end /top-group -->
+            @{ Html.RenderPartial("_AccountDropdown"); }
+        </div>
+        <!-- end /cover-all -->
+    </div>
+    <!-- end /left-group -->
+    @{ Html.RenderPartial("_Navigation", Model.NavigationTab ?? string.Empty); }
+    <div class="clear"></div>
+</div>

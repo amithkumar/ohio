@@ -1,0 +1,15 @@
+﻿@model IList<StatementModel>
+
+<ul class="list-file">
+    @foreach (var item in Model)
+    {
+        <li>
+            <a href="javascript:;">
+                <img class="img-desk" src="@item.BigImageUrl" alt="pdf">
+                <img class="img-mobi" src="@item.SmallImageUrl" alt="pdf">
+                <span class="day">@item.Date.ToString("MMM dd, yyyy"))</span>
+                <span class="red-text">View PDF</span>
+            </a>
+        </li>
+    }
+</ul>

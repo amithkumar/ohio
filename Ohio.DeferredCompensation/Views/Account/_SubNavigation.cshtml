@@ -1,0 +1,27 @@
+﻿@model string
+
+<div class="top-multi-tab hidden-xs hidden-sm">
+    <ul class="cen-z">
+        <li>
+            <a href="@Url.Action("Summary", "Account")" class="title mix-xy @Html.ActiveClassIf(Model == "Summary")">Summary</a>
+        </li>
+        <li>
+            <a href="@Url.Action("Statements", "Account")" class="title mix-xy @Html.ActiveClassIf(Model == "Statements")">Statements</a>
+        </li>
+        <li>
+            <a href="@Url.Action("Beneficiaries", "Account")" class="title mix-xy @Html.ActiveClassIf(Model == "Beneficiaries")">Beneficiaries</a>
+        </li>
+        <li>
+            <a href="@Url.Action("Contributions", "Account")" class="title mix-xy @Html.ActiveClassIf(Model == "Contributions")">Contributions</a>
+        </li>
+        <li>
+            <a href="@Url.Action("FundExchange", "Account")" class="title mix-xy @Html.ActiveClassIf(Model == "FundExchange")">Fund exchange</a>
+        </li>
+        <li>
+            <a href="@Url.Action("TransactionHistory", "Account")" class="title mix-xy @Html.ActiveClassIf(Model == "TransactionHistory")">Transaction History</a>
+        </li>
+        <li>
+            <a href="@Url.Action("Withdrawals", "Account")" class="title mix-xy @Html.ActiveClassIf(Model == "Withdrawals")">Withdrawals</a>
+        </li>
+    </ul>
+</div>

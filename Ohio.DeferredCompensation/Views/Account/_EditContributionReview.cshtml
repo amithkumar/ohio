@@ -1,0 +1,56 @@
+﻿@model EditContributionModel
+
+<div id="edit-review-form" class="form-order04 p-sm-0 p-md-0 col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8  mt-4 px-lg-5 p-sm-3 pt-md-0 px-sm-0 ">
+    <ul class="hidden-xs hidden-s">
+        <li>
+            <span class="name ver-y">New Deferral Amount (in dollars)</span>
+            <span class="name-sub ver-y">: &nbsp;$ @(Model.NewDeferralAmount?.ToString("N2"))</span>
+        </li>
+    </ul>
+
+    <div class="row visible-xs visible-sm">
+        <div class="col-sm-9 col-md-9 col-xs-9 py-sm-3 py-md-3 px-md-0 px-sm-0 name name-sub">
+            <span class="font-14">New Deferral Amount (in dollars) </span>
+        </div>
+        <div class="col-sm-3 col-md-3 col-xs-3 py-sm-3 py-md-3 px-md-0 px-sm-0 ">
+            <span class="data-row-bold font-14">: $@(Model.NewDeferralAmount?.ToString("N2"))</span>
+        </div>
+    </div>
+
+    <div class="second-content mb-sm-3 mb-md-3 mb-lg-3 mb-3">
+        <div class="top-title ver-y">
+            <span class="name column01">Fund Name </span>
+            <span class="name column02 ">New Contribution </span>
+            <span class="name column03 ">New Percent </span>
+        </div>
+        <div class="detail-content">
+            @foreach (var group in Model.StockGroups)
+            {
+                <div class="cover-box">
+                    <a href="javascript:;" class="click-text">
+                        @group.GroupName
+                        <span class="icons icon-row"></span>
+                    </a>
+                    <!-- click text -->
+                    <ul class="list-text">
+                        @foreach (var item in group.Stocks)
+                        {
+                            <li>
+                                <span class="text column01">@item.FundName</span>
+                                <span class="text column02 ">$@item.AllocationAmount.ToString("N2")</span>
+                                <span class="text column03 ">@item.AllocationPercentage.ToString("N2")%</span>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+            <div class="box-total">
+                <span class="text column01">total</span>
+                <span class="text column02 ">$@Model.TotalAmount.ToString("N2")</span>
+                <span class="text column03 ">@Model.TotalPercentage.ToString("N2")%</span>
+            </div>
+        </div>
+        <!-- detail content -->
+    </div>
+    <!-- second content -->
+</div>

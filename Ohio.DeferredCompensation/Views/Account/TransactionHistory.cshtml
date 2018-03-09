@@ -1,0 +1,307 @@
+﻿@model TransactionHistoryModel
+@{
+    ViewBag.Title = "Account Summary";
+    ViewBag.AtiveTab = NavigationTab.None;
+    ViewBag.IsLoggedIn = true;
+    ViewBag.StartDate = DateTime.Now;
+}
+
+<div class="account-summary-page no-charts all-page">
+    @{ Html.RenderPartial("_TopIdentifyPanel", new TopIdentityPanelModel { ApplyXsXmClasses = true }); }
+    @{ Html.RenderPartial("_SubNavigation", "TransactionHistory"); }
+
+    <!-- end /top-multi-tab -->
+    <div class="bottom-primary-content visible-xs visible-sm transaction">
+        <div class="title-n-button">
+            <div class="bold-title ver-y">
+                <img src="~/Content/i/wordking-time.png" alt="IMG">
+                <h1>Transaction History</h1>
+                <a href="javascript:;" class="btn-print mix-xy">
+                    <span class="icons-filter glyphicon glyphicon-filter"></span>
+                    <span class="name">Filter</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- end /bottom-primary-content -->
+    <div class="transaction-history-page">
+        <div class="primary-content pt-3">
+            <div class="tab-order02-content">
+                <div class="transaction-history p-sm-3 p-md-3 pt-lg-3 pt-xl-3">
+
+                    <div class="title-n-button hidden-xs hidden-sm mt-lg-3 mt-xl-3">
+                        <div class="bold-title ver-y">
+                            <img src="~/Content/i/wordking-time.png" alt="IMG">
+                            <h1>Transaction History </h1>
+                        </div>
+                        <a href="javascript:;" class="btn-print mix-xy">
+                            <span class="icons"></span>
+                            <span class="name">Print</span>
+                        </a>
+                        <a href="javascript:;" class="btn-print mix-xy" id="filter-desktop-btn">
+                            <span class="icons-filter glyphicon glyphicon-filter"></span>
+                            <span class="name">Filter</span>
+                        </a>
+                    </div>
+
+                    <div class="filter hidden-xs hidden-sm hide" id="filter-desktop-pnl">
+                        <div class="title-bar">
+                            <span class="title-name">Filter</span>
+                            <span id="filter-close-btn" class="close glyphicon glyphicon-remove"></span>
+                        </div>
+                        <div class="left-detail">
+                            <div class="cover-input">
+                                <span class="title">Date Range: </span>
+                                <div class="input-here date-birth">
+                                    @Html.CustomTextBoxFor(x => x.FilterStartDate, "dd/mm/yy", @class: "iinput datepicker-birth filter-start-date", id: "filter-start-date01")
+                                    <button class="icons carlendar02"></button>
+                                </div>
+                                <div class="input-here date-birth">
+                                    @Html.CustomTextBoxFor(x => x.FilterEndDate, "dd/mm/yy", @class: "iinput datepicker-birth filter-end-date", id: "filter-end-date01")
+                                    <button class="icons carlendar02"></button>
+                                </div>
+                                <div>
+                                    <a href="javascript:;" class="btn-print mix-xy">
+                                        Filter
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="javascript:;" class="btn-clear mix-xy">
+                                        Clear
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info">
+                        <div class="title ">
+                            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Information
+                        </div>
+                        <div class="para">
+                            The daily transactions for the displayed period reflect unaudied information. Transactions
+                            are reconciled and audited on a monthly basis. As a result transactions detailed
+                            on your quarterly statement may differ from the daily information provided on this
+                            internet site.
+                        </div>
+                    </div>
+
+
+                    <!-- end /group-quarterly -->
+                    <div class="complex-table01 hidden-xs hidden-sm">
+                        <div class="first-group">
+                            <ul>
+                                <li class="column01">
+                                    <a href="javascript:;" class="name  ver-y">
+                                        Date
+                                        <span class="icons"></span>
+                                    </a>
+                                </li>
+                                <li class="column02">
+                                    <a href="javascript:;" class="name  ver-y">
+                                        Fund Name
+                                        <span class="icons"></span>
+                                    </a>
+                                </li>
+                                <li class="column03">
+                                    <a href="javascript:;" class="name width70 ver-y">
+                                        Transaction Type
+                                        <span class="icons"></span>
+                                    </a>
+                                </li>
+                                <li class="column04">
+                                    <a href="javascript:;" class="name width70 ver-y">
+                                        Transaction Amount
+                                    </a>
+                                </li>
+                                <li class="column05">
+                                    <a href="javascript:;" class="name width72 ver-y">
+                                        Share / Unit Price
+                                    </a>
+                                </li>
+                                <li class="column06">
+                                    <a href="javascript:;" class="name width72 ver-y">
+                                        Number of shares / Units
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- end /first-group -->
+                        <div class="second-group">
+                            <ul class="lineage01">
+                                <li class="gene01">
+                                    <ul class="lineage02">
+                                        @foreach (var item in Model.Records)
+                                        {
+                                            <li class="gene02">
+                                                <div class="demo-value column01">
+                                                    <p>@item.Date.ToString("MM/dd/yyyy")</p>
+                                                </div>
+                                                <div class="demo-value column02">
+                                                    <p>@item.FundName</p>
+                                                </div>
+                                                <div class="demo-value column03">
+                                                    <p>@item.Type</p>
+                                                </div>
+                                                <div class="demo-value column04">
+                                                    <p>$@item.Amount.ToString("N2")</p>
+                                                </div>
+                                                <div class="demo-value column05">
+                                                    <p>$@item.UnitPrice.ToString("N4")</p>
+                                                </div>
+                                                <div class="demo-value column06">
+                                                    <p>@item.NumberOfUnits.ToString("N4")</p>
+                                                </div>
+                                            </li>
+                                        }
+                                    </ul>
+                                    <div class="clear"></div>
+                                </li>
+
+                            </ul>
+
+                            <div class="clear"></div>
+                        </div>
+                        <!-- end /second-group -->
+                    </div>
+
+                    <!-- mobile -->
+                    <div class="tbl-mobi visible-xs visible-sm">
+                        @{int index = 0;}
+                        @foreach (var item in Model.Records)
+                        {
+                            string className = index++ % 2 == 0 ? "even" : "odd";
+                            <div class="row @className p-sm-3 p-md-3 mb-sm-3 mb-md-3 ">
+                                <div class="row py-sm-2 py-md-2">
+                                    <div class="col-md-6 col-sm-6 col-xs-6 px-sm-0 px-md-0">
+                                        <span>Date</span>
+                                        <span class="pull-right">:</span>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6 px-sm-0 px-md-0">
+                                        <span class="value pull-right">@item.Date.ToString("MM/dd/yyyy")</span>
+                                    </div>
+                                </div>
+                                <div class="row py-sm-2 py-md-2">
+                                    <div class="col-md-6 col-sm-6 col-xs-6 px-sm-0 px-md-0">
+                                        <span>Fund Name</span>
+                                        <span class="pull-right">:</span>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6 px-sm-0 px-md-0">
+                                        <span class="value pull-right">@item.FundName</span>
+                                    </div>
+                                </div>
+                                <div class="row py-sm-2 py-md-2">
+                                    <div class="col-md-6 col-sm-6 col-xs-6 px-sm-0 px-md-0">
+                                        <span>Transaction Type</span>
+                                        <span class="pull-right">:</span>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6 px-sm-0 px-md-0">
+                                        <span class="value pull-right">@item.Type</span>
+                                    </div>
+                                </div>
+                                <div class="row py-sm-2 py-md-2">
+                                    <div class="col-md-6 col-sm-6 col-xs-6 px-sm-0 px-md-0">
+                                        <span>Transaction Amount</span>
+                                        <span class="pull-right">:</span>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6 px-sm-0 px-md-0">
+                                        <span class="value pull-right">$@item.Amount.ToString("N2")</span>
+                                    </div>
+                                </div>
+                                <div class="row py-sm-2 py-md-2">
+                                    <div class="col-md-6 col-sm-6 col-xs-6 px-sm-0 px-md-0">
+                                        <span>Share / Unit Price</span>
+                                        <span class="pull-right">:</span>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6 px-sm-0 px-md-0">
+                                        <span class="value pull-right">
+                                            $@item.UnitPrice.ToString("N4")
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row py-sm-2 py-md-2">
+                                    <div class="col-md-6 col-sm-6 col-xs-6 px-sm-0 px-md-0">
+                                        <span>Number of Shares / Unit</span>
+                                        <span class="pull-right">:</span>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6 px-sm-0 px-md-0">
+                                        <span class="value pull-right">
+                                            @item.NumberOfUnits.ToString("N4")
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="sub-content cen-z hidden-xs hidden-sm">
+                        <div class="left-sub">
+                            <div class="show-page ver-y">
+                                <span class="text">Show</span>
+                                <div class="dropdown-here ddown-here">
+                                    <select name="select" class="ddown-select" title="save the file">
+                                        <option>Select</option>
+                                        <option>5</option>
+                                        <option selected="selected">10</option>
+                                        <option>20</option>
+                                        <option>50</option>
+                                    </select>
+                                    <span class="icons-ddown"></span>
+                                </div>
+                                <!-- dropdown here -->
+                                <span class="text">per page</span>
+                            </div>
+                            <!-- show page -->
+                        </div>
+                        <!-- left sub -->
+                        <div class="right-sub">
+                            <div class="box-pagination">
+                                <ul class="list-number">
+                                    <li class="active">
+                                        <a href="javascript:;">1</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">2</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">3</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">4</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">5</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- box pagination -->
+                        </div>
+                        <!-- right sub -->
+                    </div>
+                    <!-- sub content -->
+                    <div class="box-pagination visible-xs visible-sm center">
+                        <ul class="list-number">
+                            <li class="active">
+                                <a href="javascript:;">1</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">2</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">3</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">4</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">5</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- end /complex-table -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

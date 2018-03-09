@@ -1,0 +1,24 @@
+﻿@model InstructionsBoxModel
+
+<div class="box-instructions @Model.CssClass">
+    @if (Model.ShowCloseButton)
+    {
+        <a href="javascript:;" class="close-intructions">
+            <span class="icons icons-close"></span>
+        </a>
+    }
+    <div class="group-name ver-y">
+        <span class="icons"></span>
+        <span class="title">Instructions</span>
+    </div>
+    <div class="group-para">
+        <ul>
+            @foreach (string instruction in Model.Instructions)
+            {
+                <li>
+                    <p>@instruction</p>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+﻿@model IList<StockModel>
+
+<ul class="lineage02">
+    @foreach (var stock in Model)
+    {
+        <li class="gene02">
+            <div class="demo-value column01">
+                <p class="unique">@stock.InvestmentOption</p>
+            </div>
+            <div class="demo-value column02">
+                <p>@stock.CurrentPrice</p>
+            </div>
+            <div class="demo-value column03">
+                <p>@stock.HalfYearPrice</p>
+            </div>
+            <div class="demo-value column04">
+                <p>@stock.OneYearValue</p>
+            </div>
+            <div class="demo-value column05">
+                <p>@stock.ThreeYearValue</p>
+            </div>
+            <div class="demo-value column06">
+                <p>@stock.FiveYearValue</p>
+            </div>
+            <div class="demo-value column07">
+                <p>@stock.SinceAdoption</p>
+            </div>
+            <div class="demo-value column08">
+                <p>@stock.AdoptionDate</p>
+            </div>
+            <div class="demo-value column09">
+                <p>@stock.ExpenseRatio</p>
+            </div>
+        </li>
+    }
+</ul>

@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "Beneficiaries";
+    ViewBag.AtiveTab = NavigationTab.Home;
+    ViewBag.IsLoggedIn = true;
+    IList<BeneficiaryModel> beneficiaries = ViewBag.Beneficiaries;
+    List<AccountManagerAccountModel> accounts = ViewBag.Accounts;
+}
+
+<div class="beneficiaries-copy-account-page">
+    @{ Html.RenderPartial("_TopIdentifyPanel", new TopIdentityPanelModel()); }
+    @{ Html.RenderPartial("_SubNavigation", "Beneficiaries"); }
+    <div class="bottom-primary-content">
+        <div class="title-n-button">
+            <div class="bold-title ver-y">
+                <a href="@Url.Action("Beneficiaries", "Account")" class="click-back">
+                    <span class="icons row-back"></span>
+                    <span class="title text-red">Beneficiaries</span>
+                </a>
+                <span class="text-title">Copy to other Accounts</span>
+            </div>
+        </div>
+        <!-- end /title-n-button -->
+        <div class="group-box">
+            <div class="content-box box-left">
+                <h1>Primary Beneficiaries</h1>
+                @{ Html.RenderPartial("_Beneficiaries", beneficiaries.Where(x => x.IsPrimary).ToList()); }
+            </div>
+            <div class="content-box box-right">
+                <h1>Secondary Beneficiaries</h1>
+                @{ Html.RenderPartial("_Beneficiaries", beneficiaries.Where(x => !x.IsPrimary).ToList()); }
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!-- end /group-box -->
+        <div class="table-box">
+            <h1>Copy to Accounts :</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="column01">
+                            <div class="cover-tick">
+                                <input type="checkbox" id="cxen00">
+                                <label for="cxen00" class="tick-me box-tick">
+                                    <span class="account-number hidden-xs hidden-sm">Account Number</span>
+                                    <span class="account-number visible-xs visible-sm">Account No</span>
+                                </label>
+                            </div>
+                        </th>
+                        <th class="column02">
+                            <span>Account Type</span>
+                        </th>
+                        <th class="column03">
+                            <span>Employer Name</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ int index = 0;}
+                    @foreach (var account in accounts)
+                    {
+                        index++;
+                        string id = "cxen" + index;
+                        <tr>
+                            <td class="column01">
+                                <div class="cover-tick">
+                                    <input type="checkbox" id="@id" class="select-accout" data-number="@account.AccountNumber">
+                                    <label for="@id" class="tick-me box-tick item-tick">
+                                        <span class="account-number">@account.AccountNumber</span>
+                                    </label>
+                                </div>
+                            </td>
+                            <td class="column02">
+                                <span>@account.AccountType</span>
+                            </td>
+                            <td class="column03">
+                                <span class="hidden-xs hidden-sm">@account.EmployerName</span>
+                                <span class="visible-xs visible-sm">@account.EmployerName</span>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="group-btn">
+                <a href="javascript:;" class="btn-click btn-copy mix-xy btn-copy-beneficiaries">
+                    <span class="name">Copy</span>
+                </a>
+                <a href="@Url.Action("Beneficiaries", "Account")" class="btn-click btn-cancel mix-xy">
+                    <span class="name">Cancel</span>
+                </a>
+                <div class="clear"></div>
+            </div>
+            <!-- end /group-btn -->
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!-- end /bottom-primary-content -->
+</div>

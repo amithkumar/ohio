@@ -1,0 +1,160 @@
+﻿@model BeneficiaryModel
+@{
+    ViewBag.Title = "Beneficiaries";
+    ViewBag.AtiveTab = NavigationTab.Home;
+    ViewBag.IsLoggedIn = true;
+}
+
+@section scripts {
+    <script src="~/bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/bower_components/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<div class="add-benificiary-page">
+    @{ Html.RenderPartial("_TopIdentifyPanel", new TopIdentityPanelModel()); }
+    @{ Html.RenderPartial("_SubNavigation", "Beneficiaries"); }
+    <div class="bottom-primary-content">
+        <div class="title-n-button">
+            <div class="bold-title ver-y">
+                <a href="@Url.Action("Beneficiaries", "Account")" class="click-back">
+                    <span class="icons row-back"></span>
+                    <span class="title text-red">Beneficiaries</span>
+                </a>
+                <span class="text-title">Add Benificiary</span>
+            </div>
+        </div>
+        <!-- end /title-n-button -->
+        <div class="group-box">
+            @using (Html.BeginForm("AddBeneficiary", "Account", FormMethod.Post))
+            {
+                <a href="javascript:;" class="click-intructions">
+                    <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+                </a>
+                <div class="top-content box-radio ver-y">
+                    <div class="cover-box">
+                        <input type="radio" id="callo01" name="IsPrimary" value="true" checked>
+                        <label for="callo01" class="tick-radio">
+                            <span>Primary Beneficiary</span>
+                        </label>
+                        <input type="radio" id="callo02" name="IsPrimary" value="false">
+                        <label for="callo02" class="tick-radio tick-two">
+                            <span>Secondary Beneficiary</span>
+                        </label>
+                    </div>
+                    <!-- cover box -->
+                </div>
+                <!-- end /box-radio -->
+                <div class="bottom-content">
+                    <div class="group-box-content">
+                        <div class="box-add">
+                            <div class="top-add">
+                                <span class="text">Primary Beneficiary</span>
+                                <a href="javascript:;" class="click-add">+ ADD MORE</a>
+                            </div>
+                            <!-- top add -->
+                            <div class="group-table">
+                                <div class="list-table">
+                                    <div class="second-add">
+                                        <span class="text">Beneficiary 1</span>
+                                        <button class="icons click-remove"></button>
+                                    </div>
+                                    <!-- second add -->
+                                    <div class="item-table">
+                                        <div class="add-select">
+                                            <ul class="list-add">
+                                                <li>
+                                                    <div class="first-select">
+                                                        <span class="text">Name</span>
+                                                        <div class="input-here">
+                                                            @Html.CustomTextBoxFor(m => m.Name, "Enter Name")
+                                                        </div>
+                                                    </div>
+                                                    <!-- end /first-select -->
+                                                </li>
+                                                <li>
+                                                    <div class="first-select">
+                                                        <span class="text">Relationship</span>
+                                                        <div class="input-here ddown-here big-text">
+                                                            <select name="Relation" class="ddown-select" title="save the file">
+                                                                <option selected="selected">Select</option>
+                                                                @foreach (string relation in ViewBag.RelationTypes)
+                                                                {
+                                                                    <option value="@relation">@relation</option>
+                                                                }
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end /first-select -->
+                                                </li>
+                                                <li>
+                                                    <div class="first-select text-ssn">
+                                                        <span class="text">SSN</span>
+                                                        <div class="input-here">
+                                                            @Html.CustomTextBoxFor(m => m.SSN, "Enter SSN")
+                                                        </div>
+                                                    </div>
+                                                    <!-- end /first-select -->
+                                                </li>
+                                                <li>
+                                                    <div class="first-select">
+                                                        <span class="text">Date of Birth</span>
+                                                        <div class="input-here date-birth">
+                                                            @Html.CustomTextBoxFor(m => m.DateOfBirth, "dd/mm/yy", @class: "datepicker-birth")
+                                                            <button class="icons select-calculator"></button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end /first-select -->
+                                                </li>
+                                            </ul>
+                                            <!-- left add -->
+                                        </div>
+                                        <!-- end /add-select -->
+                                        <div class="group-select-right">
+                                            <div class="number-percent ver-y">
+                                                <span class="text">Percentage (%)</span>
+                                                <div class="input-here">
+                                                    @Html.CustomTextBoxFor(m => m.Percent, null)
+                                                </div>
+                                                <div class="clear"></div>
+                                            </div>
+                                            <!-- end /number-per -->
+                                            <div class="note-text">
+                                                <p>
+                                                    <span>Note</span> : Total percentage mus be equal to 100% copy
+                                                </p>
+                                            </div>
+                                            <!-- end /note-text -->
+                                        </div>
+                                        <!-- end /group-select-right -->
+                                        <div class="clear"></div>
+                                    </div>
+                                    <!-- end /item-table -->
+                                </div>
+                                <!-- list-table -->
+                            </div>
+                            <!-- group-table -->
+                        </div>
+                        <!-- end /box-add -->
+                        <div class="group-btn">
+                            <a href="javascript:;" class="btn-click btn-add mix-xy">
+                                <span class="name">Add</span>
+                            </a>
+                            <a href="@Url.Action("Beneficiaries", "Account")" class="btn-click btn-cancel mix-xy">
+                                <span class="name">Cancel</span>
+                            </a>
+                            <div class="clear"></div>
+                        </div>
+                        <!-- end /group-btn -->
+                    </div>
+                    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.Instructions)); }
+                    <div class="clear"></div>
+                </div>
+            }
+        </div>
+    </div>
+    <!-- end /bottom-primary-content -->
+</div>
+
+@section boxInstructions {
+    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.Instructions, showCloseButton: true)); }
+}

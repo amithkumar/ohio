@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "Statements";
+    ViewBag.AtiveTab = NavigationTab.None;
+    ViewBag.IsLoggedIn = true;
+    IList<StatementModel> quarterlyStatements = ViewBag.QuarterlyStatements;
+    IList<StatementModel> annualStatements = ViewBag.AnnualStatements;
+    IList<int> validYears = ViewBag.ValidYears;
+}
+
+<div class="statements-page">
+    @{ Html.RenderPartial("_TopIdentifyPanel", new TopIdentityPanelModel(fixSpacing: true, applyXsXmClasses: true)); }
+    @{ Html.RenderPartial("_SubNavigation", "Statements"); }
+    <div class="statements-content">
+        <div class="top-m-content ver-y">
+            <img class="img-desk" src="~/Content/i/double-file.png" alt="IMG">
+            <img class="img-mobi" src="~/Content/i/mobi/files-empty.png" alt="IMG">
+            <h2>Statements</h2>
+        </div>
+        <!-- top m content -->
+        <div class="main-content">
+            <div class="select-year hidden-md hidden-lg">
+                <p>Select Statement Year:</p>
+                <div class="ddown-here text-red">
+                    <select name="select" class="ddown-select" title="save the file">
+                        <option selected="selected">Latest</option>
+                        @foreach (var year in validYears)
+                        {
+                            <option>@year</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <!-- end /select-year -->
+            <div class="tab-state cen-z">
+                <div class="cover-tab mix-xy">
+                    <span class="name">Quarterly Statements </span>
+                </div>
+                <div class="cover-tab mix-xy">
+                    <span class="name">Annual Statements </span>
+                </div>
+            </div>
+            <!-- end /tab-state -->
+            <div class="state-year ver-y">
+                <span class="title">Statement Year:</span>
+                <ul class="list-state-year">
+                    <li>
+                        <a href="javascript:;" class="year">Latest</a>
+                    </li>
+                    @foreach (var year in validYears)
+                    {
+                        string css = year == 2016 ? "active" : null;
+                        <li class="@css">
+                            <a href="javascript:;" class="year">@year</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <!-- end /state-year -->
+            <div class="state-file cen-z">
+                <div class="content-file left-group">
+                    <div class="grey-box-title hidden-md hidden-lg">
+                        <p>Quarterly Statements</p>
+                    </div>
+                    <!-- end /grey-box-title -->
+                    @{ Html.RenderPartial("_Statements", quarterlyStatements); }
+                </div>
+                <!-- left stage file -->
+                <div class="content-file right-group">
+                    <div class="grey-box-title hidden-md hidden-lg">
+                        <p>Annual Statements</p>
+                    </div>
+                    <!-- end /grey-box-title -->
+                    @{ Html.RenderPartial("_Statements", annualStatements); }
+                </div>
+                <!-- left stage file -->
+            </div>
+            <!-- end /state-file -->
+        </div>
+        <!-- main content -->
+    </div>
+    <!-- end /statements-content -->
+</div>

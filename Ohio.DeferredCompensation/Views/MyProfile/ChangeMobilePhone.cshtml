@@ -1,0 +1,177 @@
+﻿@model ChangeProfilePhoneModel
+@{
+    ViewBag.Title = "Change Mobile Phone";
+    ViewBag.AtiveTab = NavigationTab.None;
+    ViewBag.DarkOverlayClass = "account-manager-content";
+    ViewBag.IsLoggedIn = true;
+    ViewBag.HideEmailAuth = false;
+    ViewBag.HideMobileAuth = true;
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/third-party-forms-js")
+}
+
+<div class="account-manager-page all-page">
+    @{ Html.RenderPartial("_TopIdentifyManagerPanel", new TopIdentityPanelModel(applyXsXmClasses: true, navigationTab: "MyProfile")); }
+    @{ Html.RenderPartial("_MyProfileNavigation", "Personal Info"); }
+
+    <div class="visible-xs visible-sm title-n-button">
+        <div class="top-title-button  ">
+            <a href="@Url.Action("PersonalInfo", "MyProfile")" class="click-back">
+                <span class="icon glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+            </a>
+            <h1>Edit Mobile Phone</h1>
+            <a href="javascript:;" class="click-intructions">
+                <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+            </a>
+        </div>
+    </div>
+
+    <!-- Change mobile phone details -->
+    <div class="change-mobile-phone pt-lg-3 pt-xl-3">
+        <div class="step-by-step mt-lg-3 mt-xl-3">
+            <div class="nested-circle hol-x">
+                <ul>
+                    <li class="step01 current">
+                        <div class="group-circle mix-xy">
+                            <img class="first-sym" src="~/Content/i/phone.png" alt="IMG">
+                            <img class="second-sym" src="~/Content/i/phone.png" alt="IMG">
+                            <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                            <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                            <span class="icons icon-v"></span>
+                            <div class="number-cir">
+                                <span class="number">1</span>
+                                <span class="icon-ok glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <div class="group-name">
+                            <span class="name">Change Mobile Phone</span>
+                        </div>
+                    </li>
+                    <li class="step02">
+                        <div class="group-circle mix-xy">
+                            <img class="first-sym" src="~/Content/i/indentifi01.png" alt="IMG">
+                            <img class="second-sym" src="~/Content/i/indentifi.png" alt="IMG">
+                            <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                            <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                            <span class="icons icon-v"></span>
+                            <div class="number-cir">
+                                <span class="number">2</span>
+                                <span class="icon-ok glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            </div>
+
+                        </div>
+                        <div class="group-name">
+                            <span class="name">Indentification Code</span>
+                        </div>
+                    </li>
+                    <li class="step03">
+                        <div class="group-circle mix-xy">
+                            <img class="first-sym" src="~/Content/i/enter-code01.png" alt="IMG">
+                            <img class="second-sym" src="~/Content/i/enter-code.png" alt="IMG">
+                            <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                            <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                            <span class="icons icon-v"></span>
+                            <div class="number-cir">
+                                <span class="number">3</span>
+                                <span class="icon-ok glyphicon glyphicon-ok" aria-hidden="true"></span>
+
+                            </div>
+                        </div>
+                        <div class="group-name">
+                            <span class="name">Enter Code</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- end /nested-circle -->
+            <div class="step-more-details">
+                <div class="step-content step-one-content">
+                    <div class="top-title">
+                        <h1>Step 1 : Change Mobile Phone</h1>
+                    </div>
+                    <!-- end /top-title -->
+                    <div class="middle-form p-sm-3 p-md-3">
+                        <div class="left-detail col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8  mt-4 px-lg-5 p-sm-0 p-md-0 ">
+                            @using (Html.BeginForm("ChangeMobilePhone", "MyProfile", FormMethod.Post, new { id = "change-form-step1" }))
+                            {
+                                <input type="hidden" name="AccessCode" value="code" />
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="col-md-4 pl-0 py-4 col-sm-6  col-xs-6">
+                                            <span class="title ">Current Mobile Phone</span>
+                                        </div>
+                                        <div class="col-md-8 py-4 pr-sm-0 col-sm-6 col-xs-6 pr-sm-0 pr-md-0 text-lg-left text-md-right text-sm-right text-xs-right">
+                                            <label class="label-text text-bold">@ViewBag.CurrentPhoneNumber</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-12  col-xs-12 pl-0 mb-sm-1 mb-1">
+                                            <span class="title ">New Mobile Phone</span>
+                                            <p class="tiny-text">(Also used as Account Recovery Mobile)</p>
+                                        </div>
+                                        <div class="col-md-8 col-sm-12  col-xs-12 cover-input px-sm-0 px-md-0">
+                                            <div class="input-here ">
+                                                @Html.CustomTextBoxFor(x => x.PhoneNumber, "Enter New Mobile Phone")
+                                                @{ Html.RenderPartial("_ClickMe", "Lorem ipsum domet"); }
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-12  col-xs-12 pl-0 pb-md-3 py-3 pt-md-0 pt-sm-0 pt-xs-0 pb-sm-3 pb-xs-3">
+                                            <span class="title ">Confirm Mobile Phone</span>
+                                        </div>
+                                        <div class="col-md-8 col-sm-12  col-xs-12 cover-input px-sm-0 px-md-0">
+                                            <div class="input-here ">
+                                                @Html.CustomTextBoxFor(x => x.ConfirmPhoneNumber, "Confirm Mobile Phone")
+                                                @{ Html.RenderPartial("_ClickMe", "Lorem ipsum domet"); }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <!-- end /form-order01 -->
+                        <div class="hidden-xs hidden-sm col-md-4 mt-4 px-sm-0 pr-sm-3 pl-md-0 pl-sm-3 ml-md-5 ml-lg-0 pb-3">
+                            @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopStep1Instructions)); }
+                        </div>
+                        <!-- end /box-instructions -->
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /middle-form -->
+                    <div class="bottom-button px-md-3 px-sm-3">
+                        <a href="@Url.Action("PersonalInfo", "MyProfile")" class="btn-cancel mix-xy">Cancel</a>
+                        <a href="javascript:;" class="btn-next mix-xy">Next</a>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /bottom-button -->
+                </div>
+                <!-- end /step-one-content -->
+
+                @{ Html.RenderPartial("_StepIdentificationCode"); }
+
+                @{ Html.RenderPartial("_StepEnterPasscode"); }
+
+                @{
+                    Html.RenderPartial("_StepCompleted", new MyProfileCompletedStepModel
+                    {
+                        Message = "Your phone number has been successfully updated.",
+                        RedirectAction = "PersonalInfo"
+                    });
+                }
+            </div>
+            <!-- end /step-more-details -->
+        </div>
+    </div>
+</div>
+
+@section boxInstructions {
+    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileInstructions, showCloseButton: true)); }
+}

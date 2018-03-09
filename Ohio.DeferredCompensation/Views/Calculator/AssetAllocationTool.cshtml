@@ -1,0 +1,479 @@
+﻿@{
+    ViewBag.Title = "Asset Allocation Tool";
+    ViewBag.AtiveTab = NavigationTab.CalculatorsAndTools;
+    ViewBag.IsLoggedIn = true;
+}
+
+@section scripts {
+    <script src="~/bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/bower_components/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/bower_components/jquery-form/dist/jquery.form.min.js"></script>
+}
+
+<div class="asset-tool all-page">
+    <div class="breadcrumb ver-y">
+        <a href="@Url.Action("Index", "Calculator")">
+            <span class="icons back-arrow"></span>
+            <span class="label">Asset Allocation Tool</span>
+        </a>
+    </div>
+    <!-- end /breadcrumb -->
+    <div class="step-by-step">
+        <div class="nested-circle hol-x">
+            <ul>
+                <li class="step01 order01 current">
+                    <div class="group-circle mix-xy">
+                        <img class="first-sym" src="~/Content/i/inves-style01.png" alt="IMG">
+                        <img class="second-sym" src="~/Content/i/inves-style.png" alt="IMG">
+                        <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                        <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                        <span class="icons icon-v"></span>
+                        <p>1</p>
+                    </div>
+                    <div class="group-name">
+                        <span class="name">Investment Style</span>
+                    </div>
+                </li>
+                <li class="step02 order02">
+                    <div class="group-circle mix-xy">
+                        <img class="first-sym" src="~/Content/i/question01.png" alt="IMG">
+                        <img class="second-sym" src="~/Content/i/question.png" alt="IMG">
+                        <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                        <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                        <span class="icons icon-v"></span>
+                        <p>2</p>
+                    </div>
+                    <div class="group-name">
+                        <span class="name">Questionnaire 1</span>
+                    </div>
+                </li>
+                <li class="step02 order03">
+                    <div class="group-circle mix-xy">
+                        <img class="first-sym" src="~/Content/i/question01.png" alt="IMG">
+                        <img class="second-sym" src="~/Content/i/question.png" alt="IMG">
+                        <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                        <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                        <span class="icons icon-v"></span>
+                        <p>3</p>
+                    </div>
+                    <div class="group-name">
+                        <span class="name">Questionnaire 2</span>
+                    </div>
+                </li>
+                <li class="step02 order04">
+                    <div class="group-circle mix-xy">
+                        <img class="first-sym" src="~/Content/i/Portfolio01.png" alt="IMG">
+                        <img class="second-sym" src="~/Content/i/Portfolio.png" alt="IMG">
+                        <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                        <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                        <span class="icons icon-v"></span>
+                        <p>4</p>
+                    </div>
+                    <div class="group-name">
+                        <span class="name">Portfolio Model</span>
+                    </div>
+                </li>
+            </ul>
+            <a href="javascript:;" class="click-intructions">
+                <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+            </a>
+        </div>
+        <!-- end /nested-circle -->
+        <div class="step-more-details">
+            @using (Html.BeginForm("AssetAllocationTool", "Calculator", FormMethod.Post))
+            {
+                <div class="step-content step-one-content">
+                    <div class="top-title">
+                        <h1>Step 1 : Select Investment Style</h1>
+                    </div>
+                    <!-- end /top-title -->
+                    <div class="middle-form">
+                        <div class="form-order01">
+                            <span class="title">What is Your Investment Style? </span>
+                            <span class="text-quest">Your investment style is based on a number of factors including:</span>
+                            <span class="text-quest">When do you want to retire?</span>
+                            <span class="text-quest">What is your risk tolerance?</span>
+                            <span class="text-quest">What are your financial goals for retirement?</span>
+                            <p class="text-style">
+                                If you're not sure whether your investment style is conservative, moderate or aggressive, we can help you determine
+                                which portfolio model may be right for you. Just complete the following questionnaire in the Asset Allocation Tool
+                                to review your investment style, fund asset classes and investment options. Funds may be listed for reference,
+                                but the tool will not choose funds for you.
+                            </p>
+                            <div class="box-i-style">
+                                <span class="title">What is your investment style?</span>
+                                <div class="box-radio">
+                                    <input type="radio" id="boxx01" name="InvestmentStyle" value="Conservative">
+                                    <label for="boxx01" class="big-radio">
+                                        <span>Conservative</span>
+                                    </label>
+                                    <input type="radio" id="boxx02" name="InvestmentStyle" value="ModeratelyConservative">
+                                    <label for="boxx02" class="big-radio">
+                                        <span>Moderately Conservative</span>
+                                    </label>
+                                    <input type="radio" id="boxx03" name="InvestmentStyle" value="Moderate">
+                                    <label for="boxx03" class="big-radio">
+                                        <span>Moderate</span>
+                                    </label>
+                                    <input type="radio" id="boxx04" name="InvestmentStyle" value="ModeratelyConservative">
+                                    <label for="boxx04" class="big-radio">
+                                        <span>Moderately Conservative</span>
+                                    </label>
+                                    <input type="radio" id="boxx05" name="InvestmentStyle" value="Aggressive">
+                                    <label for="boxx05" class="big-radio">
+                                        <span>Aggressive</span>
+                                    </label>
+                                    <input type="radio" id="boxx06" name="InvestmentStyle" value="DontKnow" checked="checked">
+                                    <label for="boxx06" class="big-radio">
+                                        <span>I'd Like to Take the Questionnaire or I Don't Know</span>
+                                    </label>
+                                </div>
+                                <!-- box radio -->
+                            </div>
+                            <!-- box i style -->
+                        </div>
+                        <!-- end /form-order01 -->
+                        @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopStep1Instructions, cssClass: "hidden-xs hidden-sm")); }
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /middle-form -->
+                    <div class="bottom-button">
+                        <a href="@Url.Action("Index", "Calculator")" class="btn-cancel mix-xy">Cancel</a>
+                        <a href="javascript:;" class="btn-next mix-xy btn-next-step">Next</a>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /bottom-button -->
+                </div>
+                <!-- end /step-one-content -->
+                <div class="step-content step-two-content hide">
+                    <div class="top-title">
+                        <h1>Step 2 : Questionnaire 1</h1>
+                    </div>
+                    <!-- end /top-title -->
+                    <div class="middle-form">
+                        <div class="form-order02">
+                            <div class="box-i-style">
+                                <span class="title">How old are you?</span>
+                                <div class="box-radio">
+                                    <input type="radio" id="boxx11" name="AgeRange" value="GreaterThan70" checked="checked">
+                                    <label for="boxx11" class="big-radio">
+                                        <span>&#62; 70</span>
+                                    </label>
+                                    <input type="radio" id="boxx12" name="AgeRange" value="60To70">
+                                    <label for="boxx12" class="big-radio">
+                                        <span>60 - 70</span>
+                                    </label>
+                                    <input type="radio" id="boxx13" name="AgeRange" value="50To59">
+                                    <label for="boxx13" class="big-radio">
+                                        <span>50 -59</span>
+                                    </label>
+                                    <input type="radio" id="boxx14" name="AgeRange" value="35To49">
+                                    <label for="boxx14" class="big-radio">
+                                        <span>35 - 49</span>
+                                    </label>
+                                    <input type="radio" id="boxx15" name="AgeRange" value="LessThan35">
+                                    <label for="boxx15" class="big-radio">
+                                        <span>&lt; 35</span>
+                                    </label>
+                                </div>
+                                <!-- box radio -->
+                            </div>
+                            <!-- box i style -->
+
+                            <div class="box-i-style two">
+                                <span class="title">When will you begin withdrawing from your retirement savings?</span>
+                                <div class="box-radio">
+                                    <input type="radio" id="boxx16" name="WithdrawingFromRetirementBegin" value="LessThan5" checked="checked">
+                                    <label for="boxx16" class="big-radio">
+                                        <span>&#60; 5 Years</span>
+                                    </label>
+                                    <input type="radio" id="boxx17" name="WithdrawingFromRetirementBegin" value="5To9">
+                                    <label for="boxx17" class="big-radio">
+                                        <span>5 - 9 Years</span>
+                                    </label>
+                                    <input type="radio" id="boxx18" name="WithdrawingFromRetirementBegin" value="5To15">
+                                    <label for="boxx18" class="big-radio">
+                                        <span>10 - 15 Years</span>
+                                    </label>
+                                    <input type="radio" id="boxx19" name="WithdrawingFromRetirementBegin" value="MoreThan15OrNever">
+                                    <label for="boxx19" class="big-radio">
+                                        <span>&#62; 15 Years, or Never</span>
+                                    </label>
+                                </div>
+                                <!-- box radio -->
+                            </div>
+                            <!-- box i style -->
+
+                            <div class="box-i-style three">
+                                <span class="title">
+                                    Do you have other retirement savings or benefits aside from your Employer-Sponsored Defergred Compensation Plan?
+                                    (IRA, 401(k), Pension, etc)
+                                </span>
+                                <div class="box-radio">
+                                    <input type="radio" id="boxx20" name="HaveOtherRetirementSavings" value="true" checked="checked">
+                                    <label for="boxx20" class="big-radio">
+                                        <span>Yes</span>
+                                    </label>
+                                    <input type="radio" id="boxx21" name="HaveOtherRetirementSavings" value="false">
+                                    <label for="boxx21" class="big-radio">
+                                        <span>No</span>
+                                    </label>
+                                </div>
+                                <!-- box radio -->
+                            </div>
+                            <!-- box i style -->
+                        </div>
+                        <!-- end /form-order01 -->
+                        @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopStep2Instructions, cssClass: "hidden-xs hidden-sm")); }
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /middle-form -->
+                    <div class="bottom-button">
+                        <a href="javascript:;" class="btn-cancel mix-xy btn-previous-step">Previous</a>
+                        <a href="javascript:;" class="btn-next mix-xy btn-next-step">Next</a>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /bottom-button -->
+                </div>
+                <!-- end /step two content -->
+                <div class="step-content step-three-content hide">
+                    <div class="top-title">
+                        <h1>Step 3 : Questionnaire 2</h1>
+                    </div>
+                    <!-- end /top-title -->
+                    <div class="middle-form">
+                        <div class="form-order03">
+                            <div class="box-i-style special">
+                                <span class="title">Which of the following best describes your risk tolerance?</span>
+                                <div class="box-radio">
+                                    <input type="radio" id="boxvn01" name="RiskTolerance" value="PortfolioA" checked="checked">
+                                    <label for="boxvn01" class="big-radio">
+                                        <span>Portfolio A</span>
+                                    </label>
+                                    <input type="radio" id="boxvn02" name="RiskTolerance" value="PortfolioB">
+                                    <label for="boxvn02" class="big-radio">
+                                        <span>Portfolio B</span>
+                                    </label>
+                                    <input type="radio" id="boxvn03" name="RiskTolerance" value="PortfolioC">
+                                    <label for="boxvn03" class="big-radio">
+                                        <span>Portfolio C</span>
+                                    </label>
+                                    <input type="radio" id="boxvn04" name="RiskTolerance" value="PortfolioD">
+                                    <label for="boxvn04" class="big-radio">
+                                        <span>Portfolio D</span>
+                                    </label>
+                                    <input type="radio" id="boxvn05" name="RiskTolerance" value="PortfolioE">
+                                    <label for="boxvn05" class="big-radio">
+                                        <span>Portfolio E</span>
+                                    </label>
+                                </div>
+                                <!-- box radio -->
+                                <div class="chart-here bar-chart">
+                                    <div class="bg-bottom">
+                                        <ul>
+                                            <li>
+                                                <span>Porfolio A</span>
+                                            </li>
+                                            <li>
+                                                <span>Porfolio B</span>
+                                            </li>
+                                            <li>
+                                                <span>Porfolio C</span>
+                                            </li>
+                                            <li class="item-name">
+                                                <span>Porfolio D</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- end /chart-here -->
+                                <div class="box-radio clone-ver hidden-lg hidden-md">
+                                    <input type="radio" id="boxvn101" name="RiskTolerance" value="PortfolioA">
+                                    <label for="boxvn101" class="big-radio">
+                                        <span>Portfolio A</span>
+                                    </label>
+                                    <input type="radio" id="boxvn102" name="RiskTolerance" value="PortfolioB">
+                                    <label for="boxvn102" class="big-radio">
+                                        <span>Portfolio B</span>
+                                    </label>
+                                    <input type="radio" id="boxvn103" name="RiskTolerance" value="PortfolioC">
+                                    <label for="boxvn103" class="big-radio">
+                                        <span>Portfolio C</span>
+                                    </label>
+                                    <input type="radio" id="boxvn104" name="RiskTolerance" value="PortfolioD">
+                                    <label for="boxvn104" class="big-radio">
+                                        <span>Portfolio D</span>
+                                    </label>
+                                    <input type="radio" id="boxvn105" name="RiskTolerance" value="PortfolioE">
+                                    <label for="boxvn105" class="big-radio">
+                                        <span>Portfolio E</span>
+                                    </label>
+                                </div>
+                                <!-- box radio -->
+                            </div>
+                            <!-- box i style -->
+
+                            <div class="box-i-style two">
+                                <span class="title">
+                                    While riskier than bond investments, stock investments offer the potential of higher long-term investment returns.
+                                    What is your feeling about investing a portion of your money in stock investments?
+                                </span>
+                                <div class="box-radio">
+                                    <input type="radio" id="ticvn01" name="InvestmentFeeling" value="option1" checked="checked">
+                                    <label for="ticvn01" class="big-radio">
+                                        <span>I am concerned that stock investments are too risky and would prefer a higher allocation to bonds</span>
+                                    </label>
+                                    <input type="radio" id="ticvn02" name="InvestmentFeeling" value="option2">
+                                    <label for="ticvn02" class="big-radio">
+                                        <span>
+                                            Understand there is additional risk with stock investments and would consider a more balanced allocation to stocks
+                                            and bonds
+                                        </span>
+                                    </label>
+                                    <input type="radio" id="ticvn03" name="InvestmentFeeling" value="option3">
+                                    <label for="ticvn03" class="big-radio">
+                                        <span>
+                                            I understand there may be some additional risks in stock investing, but the opportunity to achieve long-term
+                                            growth with a higher allocation to equities is worth a serious consideration
+                                        </span>
+                                    </label>
+                                    <input type="radio" id="ticvn04" name="InvestmentFeeling" value="option4">
+                                    <label for="ticvn04" class="big-radio">
+                                        <span>
+                                            I understand the risks, but recognize there are growth opportunities in stock markets, and would like to maximize
+                                            those opportunities
+                                        </span>
+                                    </label>
+                                </div>
+                                <!-- box radio -->
+                            </div>
+                            <!-- box i style -->
+
+                            <div class="box-i-style three">
+                                <span class="title">
+                                    Given the volatility of the capital markets, your account value will fluctuate over time. The three following choices
+                                    show potential account value ranges after a three year investment period. If you were to invest $50,000, which
+                                    portfolio would you select?
+                                </span>
+                                <div class="box-radio">
+                                    <input type="radio" id="picvn01" name="SelectedPortfolio" value="low" checked="checked">
+                                    <label for="picvn01" class="big-radio">
+                                        <span>Account value range of $48,000 to $53,000</span>
+                                    </label>
+                                    <input type="radio" id="picvn02" name="SelectedPortfolio" value="average">
+                                    <label for="picvn02" class="big-radio">
+                                        <span>Account value range of $45,000 to $58,000</span>
+                                    </label>
+                                    <input type="radio" id="picvn03" name="SelectedPortfolio" value="high">
+                                    <label for="picvn03" class="big-radio">
+                                        <span>Account value range of $40,000 to $60,000</span>
+                                    </label>
+                                </div>
+                                <!-- box radio -->
+                            </div>
+                            <!-- box i style -->
+                        </div>
+                        <!-- end /form-order01 -->
+                        @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopStep3Instructions, cssClass: "hidden-xs hidden-sm")); }
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /middle-form -->
+                    <div class="bottom-button">
+                        <a href="javascript:;" class="btn-cancel mix-xy btn-previous-step">Previous</a>
+                        <a href="javascript:;" class="btn-next mix-xy btn-next-step">Next</a>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /bottom-button -->
+                </div>
+                <!-- end /step three content -->
+                <div class="step-content step-four-content hide">
+                    <div class="top-title">
+                        <h1>Step 4 : Portfolio Model</h1>
+                    </div>
+                    <!-- end /top-title -->
+                    <div class="middle-form">
+                        <div class="form-order04">
+                            <div class="box-aggresive">
+                                <span class="name-red">
+                                    <span class="title">
+                                        Your Recommended Portfolio Model
+                                        <span class="s-title">:</span>
+                                    </span>Aggressive
+                                </span>
+                            </div>
+                            <!-- end /box-aggresive -->
+                            <div class="table-modal">
+                                <span class="title-modal">Portfolio Models :</span>
+                                <span class="title-modal-mobi hidden-md hidden-lg">Aggressive Portfolio Model :</span>
+                                <div class="box-t-modal cen-z">
+                                    <div class="left-t-modal">
+                                        <ul class="list-title">
+                                            <li>
+                                                <span class="name">Fund Name</span>
+                                            </li>
+                                            <li>
+                                                <span class="name">Conservative</span>
+                                            </li>
+                                            <li>
+                                                <span class="name">Moderately Conservative</span>
+                                            </li>
+                                            <li>
+                                                <span class="name">Moderate</span>
+                                            </li>
+                                            <li>
+                                                <span class="name">Moderately Aggressive</span>
+                                            </li>
+                                            <li class="title-mobi order01 hidden-md hidden-lg">
+                                                <span class="black-title">Fund Name :</span>
+                                            </li>
+                                            <li class="title-mobi order02 hidden-md hidden-lg">
+                                                <span class="red-title">Aggressive%</span>
+                                            </li>
+                                        </ul>
+                                        <!-- end /list-title -->
+                                        <ul class="list-colum portfolio-models"></ul>
+                                        <!-- end /list-colum -->
+                                    </div>
+                                    <!-- left t modal -->
+                                    <div class="right-t-modal">
+                                        <ul class="list-r-modal portfolio-selected-model"></ul>
+                                    </div>
+                                    <!-- right t modal -->
+                                </div>
+                                <!-- box t modal -->
+                            </div>
+                            <!-- table modal -->
+                            <p class="text-sub">An aggressive portfolio is appropriate for investors who have both a high tolerance for risk and a long investment time horizon. The main objective of this portfolio is to provide high growth for the investor's assets without providing current income. This range may have substantial fluctuations in its value from year to year, making these portfolios unsuitable for those who do not have an extended investment horizon.</p>
+                            <div class="asset-detail">
+                                <div class="box-title ver-y">
+                                    <span class="title">Fund Name</span>
+                                </div>
+                                <div class="fund-list">
+
+                                </div>
+                            </div>
+                            <!-- asset detail -->
+                        </div>
+                        <!-- end /form-order01 -->
+                        @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopStep4Instructions, cssClass: "hidden-xs hidden-sm")); }
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /middle-form -->
+                    <div class="bottom-button">
+                        <a href="javascript:;" class="btn-cancel mix-xy btn-previous-step">Previous</a>
+                        <a href="@Url.Action("Index", "Calculator")" class="btn-done mix-xy">Done</a>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /bottom-button -->
+                </div>
+                <!-- end /step four content -->
+            }
+        </div>
+        <!-- end /step-more-details -->
+    </div>
+    <!-- end /step-by-step -->
+</div>
+
+@section boxInstructions {
+    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileInstructions, showCloseButton: true)); }
+}

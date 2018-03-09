@@ -1,0 +1,209 @@
+﻿@model CollegeFundingCalculatorModel
+@{
+    ViewBag.Title = "College Funding";
+    ViewBag.AtiveTab = NavigationTab.CalculatorsAndTools;
+}
+
+@section scripts {
+    <script src="~/bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/bower_components/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/bower_components/jquery-form/dist/jquery.form.min.js"></script>
+}
+
+<div class="college-funding all-page">
+    <div class="breadcrumb ver-y">
+        <a href="@Url.Action("Index", "Calculator")">
+            <span class="icons back-arrow"></span>
+            <span class="label">College funding Calculator</span>
+        </a>
+    </div>
+    <!-- end /hero-banner -->
+    <div class="step-by-step">
+        <div class="nested-circle hol-x">
+            <ul class="desk-step">
+                <li class="step01 current">
+                    <div class="group-circle mix-xy">
+                        <img class="first-sym" src="~/Content/i/hand-input01.png" alt="IMG">
+                        <img class="second-sym" src="~/Content/i/hand-input.png" alt="IMG">
+                        <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                        <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                        <span class="icons icon-v"></span>
+                    </div>
+                    <div class="group-name">
+                        <span class="name">Input</span>
+                    </div>
+                </li>
+                <li class="step02">
+                    <div class="group-circle mix-xy">
+                        <img class="first-sym" src="~/Content/i/icon-result01.png" alt="IMG">
+                        <img class="second-sym" src="~/Content/i/icon-result.png" alt="IMG">
+                        <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                        <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                        <span class="icons icon-v"></span>
+                    </div>
+                    <div class="group-name">
+                        <span class="name">Result</span>
+                    </div>
+                </li>
+            </ul>
+            <ul class="mobi-step">
+                <li class="step01 current">
+                    <span class="step-number">1</span>
+                    <span class="icons icons-tick"></span>
+                </li>
+                <li class="step02">
+                    <span class="step-number">2</span>
+                    <span class="icons icons-tick"></span>
+                </li>
+            </ul>
+            <a href="javascript:;" class="click-intructions">
+                <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+            </a>
+        </div>
+        <!-- end /nested-circle -->
+        <div class="step-more-details">
+            <div class="step-content step-one-content">
+                @using (Html.BeginForm("CollegeFundingCalculator", "Calculator", FormMethod.Post))
+                {
+                    <div class="top-title">
+                        <h1>Step 1 : Input Details</h1>
+                    </div>
+                    <!-- end /top-title -->
+                    <div class="middle-form">
+                        <div class="form-order01">
+                            <ul>
+                                <li>
+                                    <span class="name ver-y">Years until College</span>
+                                    <div class="typing-here">
+                                        @Html.CustomTextBoxFor(x => x.YearsUntilCollege, "Enter years", @class: "iinput")
+                                    </div>
+                                    @{ Html.RenderPartial("_TinyHint", "Lorem ipsum domet"); }
+                                </li>
+                                <li>
+                                    <span class="name ver-y">Current College Savings</span>
+                                    <div class="typing-here">
+                                        @Html.CustomTextBoxFor(x => x.CurrentCollegeSavings, "Enter savings amount", @class: "iinput")
+                                    </div>
+                                    @{ Html.RenderPartial("_TinyHint", "Lorem ipsum domet"); }
+                                </li>
+                                <li>
+                                    <span class="name ver-y">Annual College Cost</span>
+                                    <div class="typing-here">
+                                        @Html.CustomTextBoxFor(x => x.AnnualCollegeCost, "Enter Annual college cost", @class: "iinput")
+                                    </div>
+                                    @{ Html.RenderPartial("_TinyHint", "Lorem ipsum domet"); }
+                                </li>
+                                <li>
+                                    <span class="name ver-y">No. of Years Enrolled</span>
+                                    <div class="typing-here">
+                                        @Html.CustomTextBoxFor(x => x.NumberOfYearsEnrolled, "Enter No. of years", @class: "iinput")
+                                    </div>
+                                    @{ Html.RenderPartial("_TinyHint", "Lorem ipsum domet"); }
+                                </li>
+                                <li>
+                                    <span class="name ver-y">Account given by other sources</span>
+                                    <div class="typing-here">
+                                        @Html.CustomTextBoxFor(x => x.AccountGivenByOtherSources, "Enter amount", @class: "iinput")
+                                    </div>
+                                    @{ Html.RenderPartial("_TinyHint", "Lorem ipsum domet"); }
+                                </li>
+                                <li>
+                                    <span class="name ver-y">Rate of Return</span>
+                                    <div class="typing-here">
+                                        @Html.CustomTextBoxFor(x => x.RateOfReturn, "Enter Rate of Return", @class: "iinput")
+                                    </div>
+                                    @{ Html.RenderPartial("_TinyHint", "Lorem ipsum domet"); }
+                                </li>
+                                <li>
+                                    <span class="name ver-y">Current Tax Rate</span>
+                                    <div class="typing-here">
+                                        @Html.CustomTextBoxFor(x => x.CurrentTaxRate, "Enter Tax rate", @class: "iinput")
+                                    </div>
+                                    @{ Html.RenderPartial("_TinyHint", "Lorem ipsum domet"); }
+                                </li>
+                                <li>
+                                    <span class="name ver-y">College Inflation Rate</span>
+                                    <div class="typing-here">
+                                        @Html.CustomTextBoxFor(x => x.CollegeInflationRate, "Enter inflation Rate", @class: "iinput")
+                                    </div>
+                                    @{ Html.RenderPartial("_TinyHint", "Lorem ipsum domet"); }
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- end /form-order01 -->
+                        @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopStep1Instructions, cssClass: "hidden-xs hidden-sm")); }
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /middle-form -->
+                    <div class="bottom-button">
+                        <a href="@Url.Action("Index", "Calculator")" class="btn-cancel mix-xy">Cancel</a>
+                        <a href="javascript:;" class="btn-next mix-xy">Next</a>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /bottom-button -->
+                }
+            </div>
+            <!-- end /step-one-content -->
+            <div class="step-content step-two-content hide">
+                <div class="top-title">
+                    <h1>Step 2 : Results</h1>
+                </div>
+                <!-- end /top-title -->
+                <div class="middle-form">
+                    <div class="form-order02">
+                        <ul class="list-money">
+                            <li>
+                                <span class="text">Total college costs</span>
+                                <span class="money total-college-costs">$50,857</span>
+                            </li>
+                            <li>
+                                <span class="text">
+                                    Total
+                                    <span class="text-desk">college</span> savings need
+                                </span>
+                                <span class="money college-savings-need">$45,028</span>
+                            </li>
+                            <li>
+                                <span class="text">Amount provided by savings or other sources</span>
+                                <span class="money amount-provided">$5,829</span>
+                            </li>
+                        </ul>
+                        <div class="take-action">
+                            <span class="title">Take Action</span>
+                            <div class="box-action cen-z">
+                                <div class="box-detail">
+                                    <span class="num savings-per-month">$211</span>
+                                    <span class="text">Savings need per month</span>
+                                </div>
+                                <!-- box detail -->
+                                <div class="box-detail">
+                                    <span class="num blue lump-sum-savings-need">$38,628</span>
+                                    <span class="text">Lump Sum Savings Need</span>
+                                </div>
+                                <!-- box detail -->
+                            </div>
+                            <!-- box action -->
+                        </div>
+                        <!-- take action -->
+                    </div>
+                    <!-- end /form-order01 -->
+                    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopStep2Instructions, cssClass: "hidden-xs hidden-sm")); }
+                    <div class="clear"></div>
+                </div>
+                <!-- end /middle-form -->
+                <div class="bottom-button">
+                    <a href="javascript:;" class="btn-cancel mix-xy">Previous</a>
+                    <a href="@Url.Action("Index", "Home")" class="btn-next mix-xy">Done</a>
+                    <div class="clear"></div>
+                </div>
+                <!-- end /bottom-button -->
+            </div>
+            <!-- end /step-two-content -->
+        </div>
+        <!-- end /step-more-details -->
+    </div>
+</div>
+
+@section boxInstructions {
+    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileInstructions, showCloseButton: true)); }
+}

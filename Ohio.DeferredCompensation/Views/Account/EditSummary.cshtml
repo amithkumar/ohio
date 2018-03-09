@@ -1,0 +1,435 @@
+﻿@model EditSummaryModel
+@{
+    ViewBag.Title = "Account Summary Edit";
+    ViewBag.AtiveTab = NavigationTab.None;
+    ViewBag.IsLoggedIn = true;
+}
+
+@section scripts {
+    <script src="~/bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/bower_components/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/bower_components/jquery-form/dist/jquery.form.min.js"></script>
+}
+
+<div class="account-edit">
+    @{ Html.RenderPartial("_TopIdentifyPanel", new TopIdentityPanelModel(fixSpacing: true, applyXsXmClasses: true)); }
+    @{ Html.RenderPartial("_SubNavigation", "Summary"); }
+    <div class="content-edit">
+        <div class="cover-content edit edit-ver">
+            <div class="top-content">
+                <span class="title">Update Auto Rebalancing</span>
+                <a href="javascript:;" class="click-intructions ver-mobi">
+                    <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+                </a>
+            </div>
+            <!-- top content -->
+            <div class="second-content">
+                @using (Html.BeginForm("EditSummary", "Account", FormMethod.Post, new { id = "edit-summary-form" }))
+                {
+                    <div class="left-content">
+                        <div class="box-auto ver-y">
+                            <span class="title">Auto Rebalancing Frequency</span>
+                            <div class="dropdown-here ddown-here">
+                                <select name="Frequency" class="ddown-select big-text" title="save the file">
+                                    @foreach (string frequency in ViewBag.FrequencyOptions)
+                                    {
+                                        string selected = frequency == ViewBag.FrequencyOptions[0] ? "selected" : "";
+                                        <option value="@frequency" @selected>@frequency</option>
+                                    }
+                                </select>
+                                @{ Html.RenderPartial("_TinyHint", "Lorem ipsum domet"); }
+                            </div>
+                        </div>
+                        <!-- box auto -->
+                        <div class="content-fund">
+                            <div class="top-c-fund">
+                                <div class="percent">
+                                    <span class="title">Fund Name</span>
+                                    <span class="title clone">Percentage</span>
+                                </div>
+                            </div>
+                            <!-- top c fund -->
+                            <span class="topic-title">
+                                International Stocks
+                                <span class="icons arrow-right"></span>
+                            </span>
+                            <div class="box-content">
+                                <div class="title ver-y">
+                                    <span class="name">Templeton Foreign</span>
+                                </div>
+                                <div class="content-input ver-y">
+                                    <div class="input-here">
+                                        @Html.CustomTextBoxFor(x => x.TempletonForeign, "Enter Value", @class: "number-only")
+                                        <span class="text-percent">%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="topic-title">
+                                Small Cap Stocks
+                                <span class="icons arrow-right"></span>
+                            </span>
+                            <div class="box-content">
+                                <div class="title ver-y">
+                                    <span class="name">Ohio DC Large Cap Growth</span>
+                                </div>
+                                <div class="content-input ver-y">
+                                    <div class="input-here">
+                                        @Html.CustomTextBoxFor(x => x.SmallOhioDCLargeCapGrowth, "Enter Value", @class: "number-only")
+                                        <span class="text-percent">%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span class="topic-title">
+                                Mid Cap Stocks
+                                <span class="icons arrow-right"></span>
+                            </span>
+                            <div class="box-content">
+                                <div class="title ver-y">
+                                    <span class="name">Ohio DC Large Cap Growth</span>
+                                </div>
+                                <div class="content-input ver-y">
+                                    <div class="input-here">
+                                        @Html.CustomTextBoxFor(x => x.MidOhioDCLargeCapGrowth, "Enter Value", @class: "number-only")
+                                        <span class="text-percent">%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span class="topic-title">
+                                Large Cap Stocks
+                                <span class="icons arrow-right"></span>
+                            </span>
+                            <div class="box-content">
+                                <div class="title ver-y">
+                                    <span class="name">Dodge &amp; Cox Stocks</span>
+                                </div>
+                                <div class="content-input ver-y">
+                                    <div class="input-here">
+                                        @Html.CustomTextBoxFor(x => x.DodgeAndCoxStocks, "Enter Value", @class: "number-only")
+                                        <span class="text-percent">%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-content ver-two">
+                                <div class="title ver-y">
+                                    <span class="name">Fidelity Contrafund</span>
+                                </div>
+                                <div class="content-input ver-y">
+                                    <div class="input-here">
+                                        @Html.CustomTextBoxFor(x => x.FidelityContrafund, "Enter Value", @class: "number-only")
+                                        <span class="text-percent">%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-content">
+                                <div class="title ver-y">
+                                    <span class="name">Fidelity Growth Company</span>
+                                </div>
+                                <div class="content-input ver-y">
+                                    <div class="input-here">
+                                        @Html.CustomTextBoxFor(x => x.FidelityGrowthCompany, "Enter Value", @class: "number-only")
+                                        <span class="text-percent">%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="topic-title">
+                                Asset allocation funds
+                                <span class="icons arrow-right"></span>
+                            </span>
+                            <div class="box-content">
+                                <div class="title ver-y">
+                                    <span class="name">Lifepath 2020</span>
+                                </div>
+                                <div class="content-input ver-y">
+                                    <div class="input-here">
+                                        @Html.CustomTextBoxFor(x => x.Lifepath2020, "Enter Value", @class: "number-only")
+                                        <span class="text-percent">%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span class="topic-title">
+                                Bonds
+                                <span class="icons arrow-right"></span>
+                            </span>
+                            <div class="box-content">
+                                <div class="title ver-y">
+                                    <span class="name">Ohio DC Intermediate Bond</span>
+                                </div>
+                                <div class="content-input ver-y">
+                                    <div class="input-here">
+                                        @Html.CustomTextBoxFor(x => x.OhioDCIntermediateBond, "Enter Value", @class: "number-only")
+                                        <span class="text-percent">%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-content ver-two">
+                                <div class="title ver-y">
+                                    <span class="name">Vanguard Total Bond Market Index</span>
+                                </div>
+                                <div class="content-input ver-y">
+                                    <div class="input-here">
+                                        @Html.CustomTextBoxFor(x => x.VanguardTotalBondMarketIndex, "Enter Value", @class: "number-only")
+                                        <span class="text-percent">%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-total">
+                                <div class="percent">
+                                    <span class="title">total</span>
+                                    <span class="value">0.0%</span>
+                                </div>
+                                <span class="icons error-icon"></span>
+                                <p class="text-error">
+                                    The total percentage exceeds auto rebalancing percentage by 100%. Please adjust your percentage limited to total
+                                    100%
+                                </p>
+                            </div>
+                        </div>
+                        <!-- content fund -->
+                    </div>
+                }
+                @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopInstructions, cssClass: "hidden-xs hidden-sm")); }
+                <div class="clear"></div>
+            </div>
+            <!-- second content -->
+            <div class="third-content">
+                <div class="box-edit">
+                    <a href="@Url.Action("EnableSummary", "Account")" class="btn-c-change mix-xy">cancel changes</a>
+                    <div class="right-select cen-z">
+                        <a href="javascript:;" class="btn-continue mix-xy">continue &amp; review changes</a>
+                        <a href="@Url.Action("DisableSummary", "Account")" class="btn-d-auto mix-xy">DISABLE AUTO REBALANCING</a>
+                        <a href="@Url.Action("EnableSummary", "Account")" class="btn-canceled">cancel changes</a>
+                    </div>
+                    <!-- right select -->
+                    <div class="clear"></div>
+                </div>
+                <!-- box edit -->
+            </div>
+            <!-- third content -->
+        </div>
+        <!-- top content -->
+        <div class="cover-content edit review-ver hide">
+            <div class="top-content">
+                <span class="title">review</span>
+                <a href="javascript:;" class="click-intructions ver-mobi">
+                    <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+                </a>
+            </div>
+            <!-- top content -->
+            <div class="second-content">
+                <div class="left-content">
+                    <div class="box-auto ver-y">
+                        <span class="title">Auto Rebalancing Frequency</span>
+                        <span class="name">Quaterly</span>
+                    </div>
+                    <!-- box auto -->
+                    <div class="content-fund">
+                        <div class="top-c-fund">
+                            <div class="percent">
+                                <span class="title">Fund Name</span>
+                                <span class="title clone">Percentage</span>
+                            </div>
+                        </div>
+                        <!-- top c fund -->
+                        <span class="topic-title">
+                            International Stocks
+                            <span class="icons arrow-right"></span>
+                        </span>
+                        <div class="box-content">
+                            <div class="title ver-y">
+                                <span class="name">Templeton Foreign</span>
+                            </div>
+                            <div class="content-input ver-y">
+                                <div class="input-here">
+                                    <input type="text" title="put number" placeholder="Enter Value" class="number-only">
+                                    <span class="text-percent">10%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="topic-title">
+                            Small Cap Stocks
+                            <span class="icons arrow-right"></span>
+                        </span>
+                        <div class="box-content">
+                            <div class="title ver-y">
+                                <span class="name">Ohio DC Large Cap Growth</span>
+                            </div>
+                            <div class="content-input ver-y">
+                                <div class="input-here">
+                                    <input type="text" title="put number" placeholder="Enter Value" class="number-only">
+                                    <span class="text-percent">10%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <span class="topic-title">
+                            Mid Cap Stocks
+                            <span class="icons arrow-right"></span>
+                        </span>
+                        <div class="box-content">
+                            <div class="title ver-y">
+                                <span class="name">Ohio DC Large Cap Growth</span>
+                            </div>
+                            <div class="content-input ver-y">
+                                <div class="input-here">
+                                    <input type="text" title="put number" placeholder="Enter Value" class="number-only">
+                                    <span class="text-percent">25%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <span class="topic-title">
+                            Large Cap Stocks
+                            <span class="icons arrow-right"></span>
+                        </span>
+                        <div class="box-content">
+                            <div class="title ver-y">
+                                <span class="name">Dodge &amp; Cox Stocks</span>
+                            </div>
+                            <div class="content-input ver-y">
+                                <div class="input-here">
+                                    <input type="text" title="put number" placeholder="Enter Value" class="number-only">
+                                    <span class="text-percent">3%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-content ver-two">
+                            <div class="title ver-y">
+                                <span class="name">Fidelity Contrafund</span>
+                            </div>
+                            <div class="content-input ver-y">
+                                <div class="input-here">
+                                    <input type="text" title="put number" placeholder="Enter Value" class="number-only">
+                                    <span class="text-percent">7%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-content">
+                            <div class="title ver-y">
+                                <span class="name">Fidelity Growth Company</span>
+                            </div>
+                            <div class="content-input ver-y">
+                                <div class="input-here">
+                                    <input type="text" title="put number" placeholder="Enter Value" class="number-only">
+                                    <span class="text-percent">10%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="topic-title">
+                            Asset allocation funds
+                            <span class="icons arrow-right"></span>
+                        </span>
+                        <div class="box-content">
+                            <div class="title ver-y">
+                                <span class="name">Lifepath 2020</span>
+                            </div>
+                            <div class="content-input ver-y">
+                                <div class="input-here">
+                                    <input type="text" title="put number" placeholder="Enter Value" class="number-only">
+                                    <span class="text-percent">10%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <span class="topic-title">
+                            Bonds
+                            <span class="icons arrow-right"></span>
+                        </span>
+                        <div class="box-content">
+                            <div class="title ver-y">
+                                <span class="name">Ohio DC Intermediate Bond</span>
+                            </div>
+                            <div class="content-input ver-y">
+                                <div class="input-here">
+                                    <input type="text" title="put number" placeholder="Enter Value" class="number-only">
+                                    <span class="text-percent">7%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-content ver-two">
+                            <div class="title ver-y">
+                                <span class="name">Vanguard Total Bond Market Index</span>
+                            </div>
+                            <div class="content-input ver-y">
+                                <div class="input-here">
+                                    <input type="text" title="put number" placeholder="Enter Value" class="number-only">
+                                    <span class="text-percent">25%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-total">
+                            <div class="percent">
+                                <span class="title">total</span>
+                                <span class="value">0.0%</span>
+                            </div>
+                            <span class="icons error-icon"></span>
+                            <p class="text-error">
+                                The total percentage exceeds auto rebalancing percentage by 100%. Please adjust your percentage limited to total
+                                100%
+                            </p>
+                        </div>
+                    </div>
+                    <!-- content fund -->
+                </div>
+                @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopInstructions, cssClass: "hidden-xs hidden-sm")); }
+                <div class="clear"></div>
+            </div>
+            <!-- second content -->
+            <div class="third-content">
+                <div class="box-review">
+                    <a href="@Url.Action("EnableSummary", "Account")" class="btn-cancel mix-xy">cancel</a>
+                    <div class="right-select cen-z">
+                        <a href="javascript:;" class="btn-save mix-xy btn-save-me">save</a>
+                        <a href="javascript:;" class="btn-edit mix-xy btn-edit-me">edit</a>
+                    </div>
+                    <!-- right select -->
+                    <div class="clear"></div>
+                </div>
+                <!-- box edit -->
+                <div class="box-edit hide">
+                    <a href="@Url.Action("EnableSummary", "Account")" class="btn-c-change mix-xy">cancel changes</a>
+                    <div class="right-select cen-z">
+                        <a href="javascript:;" class="btn-continue mix-xy">continue &amp; review changes</a>
+                        <a href="@Url.Action("DisableSummary", "Account")" class="btn-d-auto mix-xy">DISABLE AUTO REBALANCING</a>
+                        <a href="@Url.Action("EnableSummary", "Account")" class="btn-canceled">cancel changes</a>
+                    </div>
+                    <!-- right select -->
+                    <div class="clear"></div>
+                </div>
+                <!-- box edit -->
+            </div>
+            <!-- third content	 -->
+        </div>
+        <!-- top content -->
+        <div class="cover-content compelete hide">
+            <div class="top-content">
+                <span class="title">Completed</span>
+                <a href="javascript:;" class="click-intructions ver-mobi">
+                    <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+                </a>
+            </div>
+            <!-- top content -->
+            <div class="second-content">
+                <div class="left-content">
+                    <h2>Successful!</h2>
+                    <div class="success-box">
+                        <img src="~/Content/i/select-box.png" alt="image">
+                        <span class="text">Your are now successfully update Auto Rebalancing</span>
+                        <a href="@Url.Action("EnableSummary", "Account")" class="btn-ok mix-xy">okay</a>
+                    </div>
+                </div>
+                @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopInstructions, cssClass: "hidden-xs hidden-sm")); }
+                <div class="clear"></div>
+            </div>
+            <!-- second content -->
+        </div>
+        <!-- top content -->
+    </div>
+    <!-- cover content -->
+</div>
+
+@section boxInstructions {
+    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileInstructions, showCloseButton: true)); }
+}

@@ -1,0 +1,305 @@
+﻿@{
+    ViewBag.Title = "Retrieve";
+    ViewBag.AtiveTab = NavigationTab.Home;
+}
+
+@section scripts {
+    <script src="~/bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/bower_components/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/bower_components/jquery-form/dist/jquery.form.min.js"></script>
+}
+
+<div class="retreive-page-content all-page">
+    <div class="hero-banner">
+        <p class="ver-desk">Forgot User ID/Password</p>
+        <p class="ver-mobi">Signup for an Online Account</p>
+    </div>
+    <!-- end /hero-banner -->
+    <div class="step-by-step">
+        <div class="nested-circle hol-x">
+            <ul class="ver-desk">
+                <li class="step01 current">
+                    <div class="group-circle mix-xy">
+                        <img class="first-sym" src="~/Content/i/seach-page01.png" alt="IMG">
+                        <img class="second-sym" src="~/Content/i/seach-page.png" alt="IMG">
+                        <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                        <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                    </div>
+                    <div class="group-name">
+                        <span class="name">Identification</span>
+                    </div>
+                </li>
+                <li class="step02">
+                    <div class="group-circle mix-xy">
+                        <img class="first-sym" src="~/Content/i/icon-person01.png" alt="IMG">
+                        <img class="second-sym" src="~/Content/i/icon-person.png" alt="IMG">
+                        <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                        <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                    </div>
+                    <div class="group-name">
+                        <span class="name">User ID</span>
+                    </div>
+                </li>
+                <li class="step03">
+                    <div class="group-circle mix-xy">
+                        <img class="first-sym" src="~/Content/i/indentifi01.png" alt="IMG">
+                        <img class="second-sym" src="~/Content/i/indentifi.png" alt="IMG">
+                        <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                        <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                    </div>
+                    <div class="group-name">
+                        <span class="name">Identification Code</span>
+                    </div>
+                </li>
+                <li class="step04">
+                    <div class="group-circle mix-xy">
+                        <img class="first-sym" src="~/Content/i/enter-code01.png" alt="IMG">
+                        <img class="second-sym" src="~/Content/i/enter-code.png" alt="IMG">
+                        <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                        <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                    </div>
+                    <div class="group-name">
+                        <span class="name">Enter Code</span>
+                    </div>
+                </li>
+                <li class="step05">
+                    <div class="group-circle mix-xy">
+                        <img class="first-sym" src="~/Content/i/icon-lock01.png" alt="IMG">
+                        <img class="second-sym" src="~/Content/i/icon-lock.png" alt="IMG">
+                        <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                        <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                    </div>
+                    <div class="group-name">
+                        <span class="name">Password</span>
+                    </div>
+                </li>
+            </ul>
+            <ul class="ver-mobi">
+                <li class="step01 current">
+                    <span class="step-number">1</span>
+                    <span class="icons icons-tick"></span>
+                </li>
+                <li class="step02">
+                    <span class="step-number">2</span>
+                    <span class="icons icons-tick"></span>
+                </li>
+                <li class="step03">
+                    <span class="step-number">3</span>
+                    <span class="icons icons-tick"></span>
+                </li>
+                <li class="step04">
+                    <span class="step-number">4</span>
+                    <span class="icons icons-tick"></span>
+                </li>
+                <li class="step05">
+                    <span class="step-number">5</span>
+                    <span class="icons icons-tick"></span>
+                </li>
+            </ul>
+            <a href="javascript:;" class="click-intructions ver-mobi">
+                <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+            </a>
+        </div>
+        <!-- end /nested-circle -->
+        <div class="step-more-details">
+            <div class="step-content step-one-content one-content">
+                <div class="top-title">
+                    <h1>Step 1 : Identification</h1>
+                </div>
+                <!-- end /top-title -->
+                <div class="middle-form">
+                    <div class="form-order01">
+                        @using (Html.BeginForm("RetrieveUserId", "Account", FormMethod.Post, new { id = "retrieve-form-step1" }))
+                        {
+                            <ul>
+                                <li>
+                                    <span class="name ver-y">Name</span>
+                                    <div class="typing-here">
+                                        @Html.CustomTextBox("Username", "Enter Name", @class: "iinput")
+                                    </div>
+                                    @{ Html.RenderPartial("_TinyHint", "Lorem ipsum domet"); }
+                                </li>
+                                <li>
+                                    <span class="name ver-y">Date of Birth</span>
+                                    <div class="typing-here">
+                                        @Html.CustomTextBox("DateOfBirth", "mm/dd/yy", @class: "iinput datepicker-birth")
+                                    </div>
+                                    @{ Html.RenderPartial("_TinyHint", "Lorem ipsum domet"); }
+                                </li>
+                                <li>
+                                    <span class="name ver-y">Last 4 digits of SSN</span>
+                                    <div class="typing-here">
+                                        @Html.CustomTextBox("SSNSuffix", @class: "iinput")
+                                    </div>
+                                    @{ Html.RenderPartial("_TinyHint", "Lorem ipsum domet"); }
+                                </li>
+                            </ul>
+                        }
+                    </div>
+                    <!-- end /form-order01 -->
+                    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.Instructions, cssClass: "ver-desk")); }
+                    <div class="clear"></div>
+                </div>
+                <!-- end /middle-form -->
+                <div class="bottom-button">
+                    <a href="@Url.Action("Index", "Home")" class="btn-cancel mix-xy">Cancel</a>
+                    <a href="javascript:;" class="btn-next mix-xy btn-next-step">Next</a>
+                    <div class="clear"></div>
+                </div>
+                <!-- end /bottom-button -->
+            </div>
+            <!-- end /step-one-content -->
+            <div class="step-content step-two-content hide">
+                <div class="top-title">
+                    <h1>Step 2 : User ID</h1>
+                </div>
+                <!-- end /top-title -->
+                <div class="middle-form">
+                    <div class="form-order02">
+                        <p>Your current User ID :</p>
+                        <p class="bold-name">Steve_Smith</p>
+                        <p class="txt-desc">If you would like to reset your password please click Next, Otherwise click Cancel.</p>
+                    </div>
+                    <!-- end /form-order01 -->
+                    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.Instructions, cssClass: "ver-desk")); }
+                    <div class="clear"></div>
+                </div>
+                <!-- end /middle-form -->
+                <div class="bottom-button">
+                    <a href="@Url.Action("Index", "Home")" class="btn-cancel mix-xy">Cancel</a>
+                    <a href="javascript:;" class="btn-next mix-xy btn-next-step">Next</a>
+                    <div class="clear"></div>
+                </div>
+                <!-- end /bottom-button -->
+            </div>
+            <!-- end /step-two-content -->
+            <div class="step-content step-three-content hide">
+                <div class="top-title">
+                    <h1>Step 3 : IdentIfication Code</h1>
+                </div>
+                <!-- end /top-title -->
+                <div class="middle-form">
+                    <div class="form-order01">
+                        @using (Html.BeginForm("SendIdentificationCode", "Account", FormMethod.Post, new { id = "retrieve-form-step3" }))
+                        {
+                            <input type="hidden" name="Username" />
+                            <p class="first-para">For added security, you must authenticate your identity. Choose to receive a four digit authorization code :</p>
+                            <div class="group-checkbox">
+                                <div class="first-checkbox">
+                                    <input id="cbox01" type="radio" name="SendTo" checked="checked" value="Email" />
+                                    <label class="select-value" for="cbox01">
+                                        <span>Send to EMail ID</span>
+                                    </label>
+                                    <span class="extra user-email">(ste****th@gmail.com)</span>
+                                </div>
+                                <div class="first-checkbox clone">
+                                    <input id="cbox02" type="radio" name="SendTo" value="Phone" />
+                                    <label class="select-value" for="cbox02">
+                                        <span>Send to Mobile</span>
+                                    </label>
+                                    <span class="extra user-mobile">(+102-658-985204)</span>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <!-- end /group-checkbox -->
+                            <div class="group-button mix-xy">
+                                <a href="@Url.Action("Index", "Home")" class="btn-cancel mix-xy">Cancel</a>
+                                <a href="javascript:;" class="btn-next mix-xy btn-next-step">Send</a>
+                            </div>
+                            <!-- end /group-button -->
+                        }
+                    </div>
+                    <!-- end /form-order01 -->
+                    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.Instructions, cssClass: "ver-desk")); }
+                    <div class="clear"></div>
+                </div>
+                <!-- end /middle-form -->
+            </div>
+            <!-- end /step-one-content -->
+            <div class="step-content step-four-content hide">
+                <div class="top-title">
+                    <h1>Step 4 : Enter code</h1>
+                </div>
+                <!-- end /top-title -->
+                <div class="middle-form">
+                    <div class="form-order01">
+                        @using (Html.BeginForm("ValidateIdentificationCode", "Account", FormMethod.Post, new { id = "retrieve-form-step4" }))
+                        {
+                            <p class="first-para">Check your Email or SMS for your 4 digit authentication code sent and enter below :</p>
+                            <div class="typing-here">
+                                @Html.CustomTextBox("Code", "Enter Code here", @class: "iinput")
+                            </div>
+                            <a href="javascript:;" class="btn-next mix-xy btn-next-step">Verify</a>
+                            <div class="group-support mix-xy">
+                                <p>Did not received the code?</p>
+                                <a href="javascript:;" class="try-again">Try Again.</a>
+                            </div>
+                            <!-- end /group-support -->
+                        }
+                    </div>
+                    <!-- end /form-order01 -->
+                    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.Instructions, cssClass: "ver-desk")); }
+                    <div class="clear"></div>
+                </div>
+                <!-- end /middle-form -->
+            </div>
+            <!-- end /step-one-content -->
+            <div class="step-content step-one-content step-five-content hide" data-redirect-url="@Url.Action("Index", "Home")">
+                <div class="top-title">
+                    <h1>Step 5 : Password</h1>
+                </div>
+                <!-- end /top-title -->
+                <div class="middle-form">
+                    <div class="form-order01" id="pwd-fleids">
+                        @using (Html.BeginForm("ChangePassword", "Account", FormMethod.Post, new { id = "retrieve-form-step5" }))
+                        {
+                            <input type="hidden" name="AccessCode" />
+                            <ul>
+                                <li>
+                                    <span class="name ver-y">New Password</span>
+                                    <div class="typing-here" id="new-pwd">
+                                        @Html.CustomTextBox("Password", "Enter New password", @class: "iinput", type: "password")
+                                    </div>
+                                    @{ Html.RenderPartial("_TinyHint", "Lorem ipsum domet"); }
+                                </li>
+                                <li>
+                                    <span class="name ver-y">Confirm New Password</span>
+                                    <div class="typing-here" id="con-pwd">
+                                        @Html.CustomTextBox("ConfirmPassword", "Confirm New password", @class: "iinput", type: "password")
+                                    </div>
+                                    @{ Html.RenderPartial("_TinyHint", "Lorem ipsum domet"); }
+                                </li>
+                            </ul>
+                        }
+                    </div>
+                    <div class="form-order01" style="display:none" id="success-pwd">
+                        <div class="success-pwd">
+                            <p>Your Password is successfully changed</p>
+                            <img src="~/Content/i/select-box.png" alt="select" />
+                        </div>
+                        <div class="bottom-button" style="border-top:none;">
+                            <a href="@Url.Action("Index", "Home")" class="btn-next mix-xy btn-success" style="float:left;">Login</a>
+                        </div>
+                    </div>
+                    <!-- end /form-order01 -->
+                    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.Instructions, cssClass: "ver-desk")); }
+                    <div class="clear"></div>
+                </div>
+                <!-- end /middle-form -->
+                <div class="bottom-button" id="bottomBtnContainer">
+                    <a href="@Url.Action("Index", "Home")" class="btn-cancel mix-xy">Cancel</a>
+                    <a href="javascript:;" class="btn-next mix-xy btn-success" id="pwd-btn">Update</a>
+                    <div class="clear"></div>
+                </div>
+                <!-- end /bottom-button -->
+            </div>
+            <!-- end /step-one-content -->
+        </div>
+        <!-- end /step-more-details -->
+    </div>
+</div>
+<!-- end /retreive-page-content -->
+
+@section boxInstructions {
+    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.Instructions, showCloseButton: true)); }
+}

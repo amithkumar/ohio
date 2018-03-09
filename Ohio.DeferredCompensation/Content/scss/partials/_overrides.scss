@@ -1,0 +1,90 @@
+.withdrawals-create, .withdrawals-edit {
+    .step-by-step {
+        .nested-circle {
+            ul {
+                li {
+                    &.step03 {
+                        .group-name {
+                            .name {
+                                right: inherit;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .step-more-details {
+            margin-bottom: 0;
+
+            .step-one-content {
+                .middle-form {
+                    .form-order01 ul li {
+                        .typing-here {
+                            border: none;
+                        }
+
+                        .name {
+                            padding-top: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        .step-more-details .step-one-content .middle-form .form-order01 ul li:last-child {
+            margin-bottom: 7px;
+        }
+    }
+
+    .center {
+        position: inherit;
+        left: 0;
+        padding-left: 0;
+    }
+}
+
+.view-withdrawal {
+    .step-by-step {
+        padding-top: 0;
+
+        .step-more-details {
+            * {
+                font-size: 100%;
+            }
+
+            margin-bottom: 0;
+
+
+            .step-one-content {
+                .middle-form {
+                    .form-order01 {
+                        margin-top: 0;
+
+                        ul li {
+                            height: auto;
+                        }
+                    }
+                }
+            }
+
+            .top-title {
+                padding-top: 0;
+            }
+        }
+    }
+}
+
+.account-fund-exchange {
+    .step-by-step .nested-circle ul li.step03 .group-name .name {
+        right: 0;
+    }
+
+    .step-by-step .step-more-details {
+        margin-bottom: 0;
+    }
+
+    .step-by-step .step-more-details .step-two-content .middle-form .form-order02 {
+        font-size: 100%;
+    }
+}

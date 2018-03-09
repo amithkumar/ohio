@@ -1,0 +1,39 @@
+﻿@model MyProfileCompletedStepModel
+
+<div class="step-content step-four-content hide">
+    <div class="top-title">
+        <h1>Step 4: Completed</h1>
+    </div>
+    <!-- end /top-title -->
+    <div class="middle-form">
+        <div class="left-content col-md-8 mt-4 px-lg-5 p-sm-3 pt-md-0 px-sm-0">
+            <span class="title ">Successful!</span>
+            <div class="success-box ">
+                <div class="row ">
+                    <div class="col-md-2 col-sm-2 col-xs-2">
+                        <img src="~/Content/i/select-box.png" class="img-responsive" alt="image">
+                    </div>
+                    <div class="col-md-10 col-sm-10 col-xs-10">
+                        <span class="text text-xs-lg text-sm-lg text-md-lg text-lg-lg">@Model.Message</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 col-sm-2 col-xs-0">
+                        &nbsp;
+                    </div>
+                    <div class="col-md-10 col-sm-10 col-xs-12 px-sm-0 px-xs-0 px-md-0">
+                        <a href="@Url.Action(Model.RedirectAction, "MyProfile")" class="btn-ok mix-xy @Model.RedirectClass w-lg-40 w-xl-40 w-xs-100 w-sm-100">@(Model.RedirectLabel ?? "okay")</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end /form-order01 -->
+        <div class="hidden-xs hidden-sm col-md-4 mt-4 px-sm-0 pr-sm-3 pl-md-0 pl-sm-3 ml-md-5 ml-lg-0 pb-3">
+            @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopStep4Instructions)); }
+        </div>
+        <!-- end /box-instructions -->
+        <div class="clear"></div>
+    </div>
+    <!-- end /middle-form -->
+</div>
+<!-- end /step-four-content -->

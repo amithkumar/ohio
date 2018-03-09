@@ -1,0 +1,303 @@
+﻿@model ContributionModel
+@{
+    ViewBag.Title = "Account Summary";
+    ViewBag.AtiveTab = NavigationTab.None;
+    ViewBag.IsLoggedIn = true;
+}
+
+<div class="account-summary-page no-charts all-page">
+    @{ Html.RenderPartial("_TopIdentifyPanel", new TopIdentityPanelModel { ApplyXsXmClasses = true, NavigationTab = "AccountManager" }); }
+    @{ Html.RenderPartial("_SubNavigation", "Contributions"); }
+
+    <div class="bottom-primary-content">
+        <div class="title-n-button ">
+            <div class="bold-title ver-y">
+                <img src="~/Content/i/icon-location01.png" alt="IMG">
+                <h1>Contribution</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="account-contribution">
+        <div class="primary-content">
+            <div class="tab-order02-content">
+                <div class="contribution-content">
+                    <div class="group-quarterly">
+                        <div class="blue-box ver-y pl-5 pl-sm-3 pl-md-3">
+                            <a id="account-contribution-tab1" href="javascript:;" class="simply-tab mix-xy active">Current Contribution</a>
+                            <a id="account-contribution-tab2" href="javascript:;" class="simply-tab mix-xy">Pending Contributions</a>
+                        </div>
+                        <!-- end /blue-box -->
+                        <div class="each-tab-details">
+                            <div class="tab-content tab-content-01 order01  ">
+                                <div class="row">
+                                    <div class="col-md-12 py-4 py-4 pl-md-3 pl-5 pl-5 pl-sm-3 pl-xs-3">
+                                        <div class="left-content ">
+                                            <h1 class="title mb-2 pl-0">$@Model.CurrentContributionAmount.ToString("N2")</h1>
+                                            <p class="sub-title">Current Contribution Amount</p>
+                                        </div>
+                                        <div class="right-content pb-2">
+                                            <a href="@Url.Action("EditContribution", "Account")" id="acc-con-edit-btn" class=" button-nxt btn btn-lg btn-danger pull-right">
+                                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> &nbsp; Edit
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-content tab-content-01 order02 hide py-3">
+                                <div class="row">
+                                    <div class="col-sm-12 col-xs-12 col-md-4 py-4 pl-md-3 pl-lg-5 pl-xl-5 pl-sm-3 pl-xs-3 pt-md-0 mt-sm-0">
+                                        <div class="bor-ri">
+                                            <h1 class="title mb-2 pl-0">$@Model.CurrentContributionAmount.ToString("N2")</h1>
+                                            <p class="sub-title">Current Contribution Amount</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-xs-12 col-md-4 py-4 hidden-xs hidden-sm">
+                                        <h1 class="title mb-2 pl-0">$@Model.NewContributionAmount.ToString("N2")</h1>
+                                        <p class="sub-title">New Contribution Amount</p>
+                                        <p class="para-text">Effective Date : @(Model.NewContributionEffectiveDate?.ToString("MMMM d, yyyy"))</p>
+                                    </div>
+                                    <div class="col-sm-12 col-xs-12 col-md-4 hidden-xs hidden-sm">
+                                        <a href="@Url.Action("EditContribution", "Account")" id="acc-con-edit-btn" class="button-nxt btn btn-lg btn-danger pull-right">
+                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> &nbsp; Edit
+                                        </a>
+                                        <a href="javascript:;" id="acc-con-edit-btn" class="button-nxt btn btn-lg delete pull-right">
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> &nbsp; Delete
+                                        </a>
+                                    </div>
+                                    <div class="row visible-xs visible-sm">
+                                        <div class="col-sm-6 col-xs-6 pr-sm-0 pr-md-0">
+                                            <h1 class="title mb-2 pl-0">$@Model.NewContributionAmount.ToString("N2")</h1>
+                                            <p class="sub-title">New Contribution Amount</p>
+                                        </div>
+                                        <div class="col-sm-6 col-xs-6">
+                                            <p class="sub-title py-2">Effective Date :</p>
+                                            <p class="para-text"> @(Model.NewContributionEffectiveDate?.ToString("MMM d, yyyy"))</p>
+                                        </div>
+                                    </div>
+                                    <div class="row visible-xs visible-sm">
+                                        <div class="col-sm-6 col-xs-6">
+                                            <a href="javascript:;" id="acc-con-edit-btn" class="button-nxt btn btn-lg delete pull-right">
+                                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> &nbsp; Delete
+                                            </a>
+                                        </div>
+                                        <div class="col-sm-6 col-xs-6">
+                                            <a href="@Url.Action("EditContribution", "Account")" id="acc-con-edit-btn" class="button-nxt btn btn-lg btn-danger pull-right">
+                                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> &nbsp; Edit
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end /tab-content -->
+                        </div>
+                        <!-- end /each-tab-details -->
+                    </div>
+                    <!-- end /group-quarterly -->
+                    <div class="complex-table01 ">
+                        <div class="first-group">
+                            <ul>
+                                <li class="column01">
+                                    <a href="javascript:;" class="name  ver-y">
+                                        Fund Name
+                                    </a>
+                                </li>
+                                <li class="column02">
+                                    <a href="javascript:;" class="name width70 ver-y">
+                                        Allocation Amount
+                                    </a>
+                                </li>
+                                <li class="column03">
+                                    <a href="javascript:;" class="name width72 ver-y">
+                                        Allocation Percent
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <!-- end /first-group -->
+                        <div class="second-group">
+                            <ul class="lineage01">
+                                @foreach (var group in Model.StockGroups)
+                                {
+                                    <li class="gene01">
+                                        <span class="bold-title">
+                                            @group.GroupName
+                                            <span class=" glyphicon glyphicon-play" aria-hidden="true"></span>
+                                        </span>
+                                        <ul class="lineage02">
+                                            @foreach (var stock in group.Stocks)
+                                            {
+                                                <li class="gene02">
+                                                    <div class="demo-value column01">
+                                                        <p class="unique">@stock.FundName</p>
+                                                    </div>
+                                                    <div class="demo-value column02">
+                                                        <p>$@stock.AllocationAmount.ToString("N2")</p>
+                                                    </div>
+                                                    <div class="demo-value column03">
+                                                        <p>@stock.AllocationPercentage.ToString("N2")%</p>
+                                                    </div>
+                                                </li>
+                                            }
+                                        </ul>
+                                        <div class="clear"></div>
+                                    </li>
+                                }
+                                <li class="gene01">
+                                    <ul class="lineage02 ">
+                                        <li class="gene02 total-value">
+                                            <div class="demo-value column01 ">
+                                                <p class="unique bold-text">TOTAL</p>
+                                            </div>
+                                            <div class="demo-value column02">
+                                                <p class="bold-text">$@Model.TotalAmount.ToString("N2")</p>
+                                            </div>
+                                            <div class="demo-value column03">
+                                                <p class="bold-text">@Model.TotalPercentage.ToString("N2")%</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="clear"></div>
+                                </li>
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        <!-- end /second-group -->
+                    </div>
+                    <div class="complex-table02 hide">
+                        <div class="bottom-table p-md-3 p-sm-3">
+                            <div class="main-content hidden-xs hidden-sm">
+                                <div class="first-table">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th class="column01" rowspan="2">
+                                                    <span class="title">Fund Name</span>
+                                                </th>
+                                                <th class="column" colspan="2">
+                                                    <span class="title">Current Allocation</span>
+                                                </th>
+                                                <th class="column" colspan="2">
+                                                    <span class="title">Pending Allocation</span>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th class="column02">
+                                                    <span class="title">In %</span>
+                                                </th>
+                                                <th class="column03">
+                                                    <span class="title">In $</span>
+                                                </th>
+                                                <th class="column04">
+                                                    <span class="title">In %</span>
+                                                </th>
+                                                <th class="column05">
+                                                    <span class="title">In $</span>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <!-- end /first-table -->
+                                <div class="second-table">
+                                    <table>
+                                        <tbody>
+                                            @foreach (var item in Model.PendingContributions)
+                                            {
+                                                <tr>
+                                                    <td class="column01">
+                                                        <span class="title">@item.FundName</span>
+                                                    </td>
+                                                    <td class="column02">
+                                                        <span class="title">@item.AllocationPercentage.ToString("N2")%</span>
+                                                    </td>
+                                                    <td class="column03">
+                                                        <span class="title">$@item.AllocationAmount.ToString("N2")</span>
+                                                    </td>
+                                                    <td class="column04">
+                                                        <span class="title">@item.PendingAllocationPercentage.ToString("N2")%</span>
+                                                    </td>
+                                                    <td class="column05">
+                                                        <span class="title">$@item.PendingAllocationAmount.ToString("N2")</span>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- end /second-table -->
+                            </div>
+                            <!-- end /main-content -->
+                            <div class="bottom-table-mobi visible-xs visible-sm">
+                                <div class="row pb-sm-3 pb-md-3 ">
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <div class="title">
+                                            Fund Name
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-3 text-center">
+                                        <div class="title">
+                                            In %
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-3 text-center">
+                                        <div class="title">
+                                            In $
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bottom-border mb-sm-2 mb-md-2"></div>
+
+                                @{ int index = 0; }
+                                @foreach (var item in Model.PendingContributions)
+                                {
+                                    <div class="row @Html.ClassIf("even", index++ % 2 == 0) px-md-2 px-sm-2">
+                                        <div class="col-md-12 col-sm-12 col-xs-12 bottom-border mb-sm-3 mb-md-3 px-md-1 px-sm-1">
+                                            <div class="data-header py-md-3 py-sm-3">@item.FundName</div>
+                                        </div>
+                                        <div class="row ">
+                                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                                <div class="data">
+                                                    Current Allocation
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-3 col-xs-3 text-center px-md-2 px-sm-2">
+                                                <div class="data">
+                                                    % @item.AllocationPercentage.ToString("N2")
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-3 col-xs-3 text-center px-md-2 px-sm-2">
+                                                <div class="data">
+                                                    $ @item.AllocationAmount.ToString("N2")
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row py-md-3 py-sm-3">
+                                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                                <div class="data">
+                                                    Pending Allocation
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-3 col-xs-3 text-center px-md-2 px-sm-2">
+                                                <div class="data">
+                                                    % @item.PendingAllocationPercentage.ToString("N2")
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-3 col-xs-3 text-center px-md-2 px-sm-2">
+                                                <div class="data">
+                                                    $ @item.PendingAllocationAmount.ToString("N2")
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end /complex-table -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

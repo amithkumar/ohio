@@ -1,0 +1,45 @@
+﻿<div class="step-content step-three-content hide">
+    <div class="top-title">
+        <h1>Step 3 : Enter Passcode</h1>
+    </div>
+    <!-- end /top-title -->
+    <div class="middle-form">
+        <div class="form-order01 col-md-8 mt-4 px-lg-5 p-sm-3 pt-md-0 px-sm-0">
+            @using (Html.BeginForm("ValidateIdentificationCode", "Account", FormMethod.Post, new { id = "change-form-step3" }))
+            {
+                <p class="first-para">
+                    Check your Email or SMS for your 4 digit authentication code sent and enter below
+                    :
+                </p>
+                <div class="typing-here">
+                    @Html.CustomTextBox("Code", "Enter Code here", @class: "iinput")
+                </div>
+                <div class="bottom-button visible-xs visible-sm verify">
+                    <a href="javascript:;" class="btn-next mix-xy mobile-verify">Verify</a>
+                </div>
+                <div class="group-support mix-xy hidden-xs hidden-sm">
+                    <p>Did not received the code?</p>
+                    <a href="javascript:;" class="try-again">Try Again.</a>
+                </div>
+                <div class="group-support visible-xs visible-sm text-center">
+                    <p class="p-0">Did not received the code?</p>
+                    <br>
+                    <a href="javascript:;" class="try-again">Try Again.</a>
+                </div>
+            }
+        </div>
+        <!-- end /form-order01 -->
+        <div class="hidden-xs hidden-sm col-md-4 mt-4 px-sm-0 pr-sm-3 pl-md-0 pl-sm-3 ml-md-5 ml-lg-0 pb-3">
+            @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopStep3Instructions)); }
+        </div>
+        <!-- end /box-instructions -->
+        <div class="clear"></div>
+    </div>
+    <!-- end /middle-form -->
+    <div class="bottom-button hidden-xs hidden-sm ">
+        <a href="javascript:;" class="btn-cancel mix-xy mobile-hide">Cancel</a>
+        <a href="javascript:;" class="btn-next mix-xy mobile-verify">Verify</a>
+        <div class="clear"></div>
+    </div>
+    <!-- end /bottom-button -->
+</div>

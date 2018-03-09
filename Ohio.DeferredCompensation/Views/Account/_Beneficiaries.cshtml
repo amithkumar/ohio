@@ -1,0 +1,30 @@
+﻿@model IList<BeneficiaryModel>
+
+<div class="list-box">
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                <div class="group-text-left">
+                    <p class="name-list">@item.Name</p>
+                    <p class="title-text text-ssn">
+                        ssn :
+                        <span class="content-text">@item.SSN</span>
+                    </p>
+                    <p class="title-text text-date">
+                        dob :
+                        <span class="content-text">@item.DateOfBirth.ToString("d MMM yyyy")</span>
+                    </p>
+                    <p class="title-text">
+                        relation :
+                        <span class="content-text">@item.Relation</span>
+                    </p>
+                </div>
+                <div class="group-text-right">
+                    <p class="text-percent">@item.Percent%</p>
+                </div>
+                <div class="clear"></div>
+            </li>
+        }
+    </ul>
+</div>

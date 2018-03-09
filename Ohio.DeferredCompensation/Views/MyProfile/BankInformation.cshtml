@@ -1,0 +1,162 @@
+﻿@model IList<BankInformationModel>
+@{
+    ViewBag.Title = "Bank Information";
+    ViewBag.AtiveTab = NavigationTab.None;
+    ViewBag.DarkOverlayClass = "account-manager-content";
+    ViewBag.IsLoggedIn = true;
+}
+
+<div class="account-manager-page all-page">
+    @{ Html.RenderPartial("_TopIdentifyManagerPanel", new TopIdentityPanelModel(applyXsXmClasses: true, navigationTab: "MyProfile")); }
+    @{ Html.RenderPartial("_MyProfileNavigation", "Manage Bank Information"); }
+
+    <div class="visible-xs visible-sm">
+        <div class="top-title-button active ">
+            <h1 class="active">Manage Bank Information</h1>
+        </div>
+    </div>
+
+    <!-- Bank Information -->
+    <div class="bank-information">
+        <div class="primary-content">
+            <div class="tab-content-group tab-order01-content">
+                <div class="title-n-button hidden-xs hidden-sm">
+                    <p>Bank Information</p>
+                    <a href="@Url.Action("AddBankInformation", "MyProfile")" class="red-btn mix-xy">+ &nbsp; Add bank information</a>
+                    <div class="clear"></div>
+                </div>
+                <div class="info p-sm-3 p-md-3">
+                    <div class="title">
+                        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Information
+                    </div>
+                    <div class="para">Currently you have not added Bank Information</div>
+                    <div class="row visible-xs visible-sm">
+                        <div class="col-sm-6 col-md-6 title-n-button mb-sm-0 mb-md-0 pl-sm-0 pl-md-0">
+                            <a href="@Url.Action("AddBankInformation", "MyProfile")" class="red2-btn mix-xy">+ &nbsp; Add bank information</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- end /title-n-button -->
+                <div class="main-table ">
+                    <div class="first-group hidden-xs hidden-sm">
+                        <ul>
+                            <li class="column01">
+                                <a href="javascript:;" class="name ver-y">
+                                    Bank Name
+                                </a>
+                            </li>
+                            <li class="column02">
+                                <a href="javascript:;" class="name ver-y">
+                                    Routing Number
+                                </a>
+                            </li>
+                            <li class="column03">
+                                <a href="javascript:;" class="name ver-y">
+                                    Account Number
+                                </a>
+                            </li>
+                            <li class="column03">
+                                <a href="javascript:;" class="name ver-y">
+                                    Type
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- end /first-group -->
+                    <div class="second-group hidden-xs hidden-sm">
+                        <ul>
+                            @foreach (var item in Model)
+                            {
+                                <li>
+                                    <div class="demo-value column01">
+                                        <p>@item.BankName</p>
+                                    </div>
+                                    <div class="demo-value column02">
+                                        <p>@item.RoutingNumber</p>
+                                    </div>
+                                    <div class="demo-value column03">
+                                        <p>@item.AccountNumber</p>
+                                    </div>
+                                    <div class="demo-value column04">
+                                        <p>@item.Type</p>
+                                    </div>
+                                    <div class="demo-value column05">
+                                        <div class="red-text">
+                                            <a href="@Url.Action("EditBankInformation", "MyProfile")">
+                                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                                <p class=" mini-text">Edit</p>
+                                            </a>
+                                            <a href="javascript:;">
+                                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                                <p class=" mini-text">Delete</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /second-group -->
+
+                    @foreach (var item in Model)
+                    {
+                        <div class="row mobi-tbl m-sm-3 m-md-3 visible-xs visible-sm">
+                            <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12 col-xs-12 p-sm-3 p-md-3">
+                                <div class="row">
+                                    <div class="col-lg-6 col-xl-6 col-md-6 col-sm-6 col-xs-6 p-md-0 p-sm-0">
+                                        <span class="title">Bank Name</span>
+                                        <span class="pull-right pr-sm-3 pr-md-3">:</span>
+                                    </div>
+                                    <div class="col-lg-6 col-xl-6 col-md-6 col-sm-6 col-xs-6 p-md-0 p-sm-0 text-right">
+                                        <span class="value">@item.BankName</span>
+                                    </div>
+                                </div>
+                                <div class="row my-sm-2 my-md-2">
+                                    <div class="col-lg-6 col-xl-6 col-md-6 col-sm-6 col-xs-6 p-md-0 p-sm-0">
+                                        <span class="title">Routing Number</span>
+                                        <span class="pull-right pr-sm-3 pr-md-3">:</span>
+                                    </div>
+                                    <div class="col-lg-6 col-xl-6 col-md-6 col-sm-6 col-xs-6 p-md-0 p-sm-0 text-right">
+                                        <span class="value ">@item.RoutingNumber</span>
+                                    </div>
+                                </div>
+                                <div class="row my-sm-2 my-md-2">
+                                    <div class="col-lg-6 col-xl-6 col-md-6 col-sm-6 col-xs-6 p-md-0 p-sm-0">
+                                        <span class="title">Account Number</span>
+                                        <span class="pull-right pr-sm-3 pr-md-3">:</span>
+                                    </div>
+                                    <div class="col-lg-6 col-xl-6 col-md-6 col-sm-6 col-xs-6 p-md-0 p-sm-0 text-right">
+                                        <span class="value ">@item.AccountNumber</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-xl-6 col-md-6 col-sm-6 col-xs-6 p-md-0 p-sm-0">
+                                        <span class="title">Type</span>
+                                        <span class="pull-right pr-sm-3 pr-md-3">:</span>
+                                    </div>
+                                    <div class="col-lg-6 col-xl-6 col-md-6 col-sm-6 col-xs-6 p-md-0 p-sm-0 text-right">
+                                        <span class="value">@item.Type</span>
+                                    </div>
+                                </div>
+                                <div class="row mt-sm-3 mt-md-3">
+                                    <div class="col-lg-6 col-xl-6 col-md-6 col-sm-6 col-xs-6 p-md-0 p-sm-0 pr-md-2 pr-sm-2">
+                                        <a href="javascript:;" id="acc-con-edit-btn" class="button-nxt btn btn-lg delete pull-right">
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> &nbsp; Delete
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-6 col-xl-6 col-md-6 col-sm-6 col-xs-6 p-md-0 p-sm-0 pl-md-2 pl-sm-2">
+                                        <a href="@Url.Action("EditBankInformation", "MyProfile")" id="acc-con-edit-btn" class="button-nxt btn btn-lg btn-danger pull-right">
+                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> &nbsp; Edit
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

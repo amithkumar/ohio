@@ -1,0 +1,57 @@
+﻿@using System.Linq
+@model IList<BeneficiaryModel>
+@{
+    ViewBag.Title = "Beneficiary";
+    ViewBag.AtiveTab = NavigationTab.Home;
+    ViewBag.IsLoggedIn = true;
+}
+
+<div class="beneficiaries-page">
+    @{ Html.RenderPartial("_TopIdentifyPanel", new TopIdentityPanelModel()); }
+    @{ Html.RenderPartial("_SubNavigation", "Beneficiaries"); }
+    <!-- end /top-multi-tab -->
+    <div class="bottom-primary-content">
+        <div class="title-n-button">
+            <div class="bold-title ver-y">
+                <img src="~/Content/i/icon-hand.png" alt="IMG">
+                <h1>Beneficiaries</h1>
+            </div>
+            <div class="group-btn">
+                <a href="@Url.Action("CopyBeneficiaries", "Account")" class="btn-click btn-copy mix-xy">
+                    <span class="name">COPY TO OTHER ACCOUNTS</span>
+                </a>
+                <a href="@Url.Action("ModifyBeneficiaries", "Account")" class="btn-click btn-info mix-xy">
+                    <span class="name">Modify Beneficiary Info</span>
+                </a>
+                <a href="@Url.Action("AddBeneficiary", "Account")" class="btn-click btn-add mix-xy">
+                    <span class="name">+ Add Beneficiary</span>
+                </a>
+            </div>
+        </div>
+        <!-- end /title-n-button -->
+        <div class="group-box">
+            <div class="content-box box-left">
+                <h1>Primary Beneficiaries</h1>
+                @{ Html.RenderPartial("_Beneficiaries", Model.Where(x => x.IsPrimary).ToList()); }
+            </div>
+            <div class="content-box box-right">
+                <h1>Contingent Beneficiaries</h1>
+                @{ Html.RenderPartial("_Beneficiaries", Model.Where(x => !x.IsPrimary).ToList()); }
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="group-btn ver-mobi">
+            <a href="@Url.Action("AddBeneficiary", "Account")" class="btn-click btn-add mix-xy">
+                <span class="name">+ Add Beneficiary</span>
+            </a>
+            <a href="@Url.Action("CopyBeneficiaries", "Account")" class="btn-click btn-copy mix-xy">
+                <span class="name">COPY TO OTHER ACCOUNTS</span>
+            </a>
+            <a href="@Url.Action("ModifyBeneficiaries", "Account")" class="btn-click btn-info mix-xy">
+                <span class="name">Modify Beneficiary Info</span>
+            </a>
+        </div>
+        <!-- end /group-btn ver-mobi -->
+    </div>
+    <!-- end /bottom-primary-content -->
+</div>

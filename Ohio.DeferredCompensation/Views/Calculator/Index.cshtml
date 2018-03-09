@@ -1,0 +1,60 @@
+﻿@model IList<ToolModel>
+@{
+    ViewBag.Title = "Calculator";
+    ViewBag.AtiveTab = NavigationTab.CalculatorsAndTools;
+}
+
+<div class="calculator all-page">
+    <div class="top-calculator">
+        <h2>Calculators &amp; Tools</h2>
+        <p class="text">
+            Planning for retirement and managing your account sometimes requires a little help. Here are some useful tools and calculators
+            that may help simplify your path to retirement.
+            <span class="text-sub"> Set your retirement savings goals with the help of the Interactive Retirement PlannerSM</span>
+        </p>
+    </div>
+    <!-- top calculator -->
+    <div class="second-calculator">
+        @foreach (var tool in Model)
+        {
+        <div class="box-content">
+            <div class="top-content">
+                <img src="@tool.ImageUrl" alt="image">
+            </div>
+            <!-- top contert -->
+            <h2>@tool.Title</h2>
+            <p class="text">
+                @tool.Description
+            </p>
+            <a href="@tool.Url" class="btn-use mix-xy">use tool</a>
+        </div>
+        }
+    </div>
+    <!-- second calculator -->
+    <div class="mobi-calculator">
+        <ul class="list-calculator">
+            @foreach (var tool in Model)
+            {
+            <li>
+                <a href="@tool.Url">
+                    <div class="box-item">
+                        <div class="top-title">
+                            <img src="@tool.ImageUrl" alt="image">
+                            <span class="title">@tool.Title</span>
+                            <span class="red-r-arrow">
+                                <span class="icons r-arrow"></span>
+                            </span>
+                        </div>
+                        <!-- top title -->
+                        <p class="text">
+                            @tool.Description
+                        </p>
+                    </div>
+                </a>
+                <!-- content item -->
+            </li>
+            }
+        </ul>
+    </div>
+    <!-- mobi calculator -->
+</div>

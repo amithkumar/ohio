@@ -1,0 +1,143 @@
+﻿@model ChangeEmployeePhoneModel
+@{
+    ViewBag.Title = "Change Mobile Phone";
+    ViewBag.AtiveTab = NavigationTab.None;
+    ViewBag.DarkOverlayClass = "account-manager-content";
+    ViewBag.IsLoggedIn = true;
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/third-party-forms-js")
+}
+
+<div class="account-manager-page all-page">
+    @{ Html.RenderPartial("_TopIdentifyManagerPanel", new TopIdentityPanelModel(applyXsXmClasses: true, navigationTab: "MyProfile")); }
+    @{ Html.RenderPartial("_MyProfileNavigation", "Personal Info"); }
+
+    <div class="visible-xs visible-sm title-n-button">
+        <div class="top-title-button  ">
+            <a href="@Url.Action("PersonalInfo", "MyProfile")" class="click-back">
+                <span class="icon glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+            </a>
+            <h1>Edit Employee Phone</h1>
+            <a href="javascript:;" class="click-intructions">
+                <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+            </a>
+        </div>
+    </div>
+
+    <!-- Change mobile phone details -->
+    <div class="edit-personal-info pt-lg-3 pt-xl-3">
+        <div class="step-by-step mt-lg-3 mt-xl-3 pt-md-0 pt-sm-0">
+
+            <div class="step-more-details">
+                <div class="step-content step-one-content">
+                    <div class="top-title hidden-xs hidden-sm">
+                        <h1 class="align-left">Edit Employee Phone</h1>
+                    </div>
+                    <!-- end /top-title -->
+                    @using (Html.BeginForm("EditEmployeePhone", "MyProfile", FormMethod.Post))
+                    {
+                        @Html.HiddenFor(x => x.EmployeeName)
+                        <div class="middle-form p-sm-3 p-md-3">
+                            <div class="left-detail col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8  mt-4 px-lg-5 p-sm-0 p-md-0 ">
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="col-md-4 pl-0 py-4 col-sm-6  col-xs-6 pb-md-2 pb-sm-2">
+                                            <span class="title ">Employee Name</span>
+                                        </div>
+                                        <div class="col-md-8 py-4 pr-sm-0 col-sm-6 pb-md-2 pb-sm-2 col-xs-6 pr-sm-0 pr-md-0 ">
+                                            <label class="label-text text-bold">@Model.EmployeeName</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="col-md-4 pl-0 py-4 col-sm-6  col-xs-6">
+                                            <span class="title ">Current Mobile Phone</span>
+                                        </div>
+                                        <div class="col-md-8 py-4 pr-sm-0 col-sm-6 col-xs-6 pr-sm-0 pr-md-0 ">
+                                            <label class="label-text text-bold">@Model.CurrentPhoneNumber</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-12 py-3 col-xs-12 pl-0 pb-md-3 py-3 pt-md-1 pt-sm-1 pt-xs-0 pb-sm-3 pb-xs-3">
+                                            <span class="title ">Phone Number</span>
+                                        </div>
+                                        <div class="col-md-8 col-sm-12  col-xs-12 cover-input px-sm-0 px-md-0">
+                                            <div class="input-here ">
+                                                @Html.CustomTextBoxFor(x => x.PhoneNumber, "Phone Number")
+                                                @{ Html.RenderPartial("_ClickMe", "Lorem ipsum domet"); }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end /form-order01 -->
+                            <div class="hidden-xs hidden-sm col-md-4 mt-4 px-sm-0 pr-sm-3 pl-md-0 pl-sm-3 ml-md-5 ml-lg-0 pb-3">
+                                @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopStep1Instructions)); }
+                            </div>
+                            <!-- end /box-instructions -->
+                            <div class="clear"></div>
+                        </div>
+                        <!-- end /middle-form -->
+                        <div class="bottom-button px-md-3 px-sm-3">
+                            <a href="@Url.Action("PersonalInfo", "MyProfile")" class="btn-cancel mix-xy">Cancel</a>
+                            <a href="javascript:;" class="btn-next mix-xy">Save</a>
+                            <div class="clear"></div>
+                        </div>
+                    }
+                </div>
+                <!-- end /step-one-content -->
+
+                <div class="step-content step-four-content hide">
+                    <div class="top-title hidden-xs hidden-sm">
+                        <h1 class="align-left">Edit Employee Phone</h1>
+                    </div>
+                    <!-- end /top-title -->
+                    <div class="middle-form">
+
+                        <div class="left-content col-md-8 mt-4 px-lg-5 p-sm-3 pt-md-0 px-sm-0">
+                            <span class="title ">Successful!</span>
+                            <div class="success-box ">
+                                <div class="row ">
+                                    <div class="col-md-2 col-sm-2 col-xs-2">
+                                        <img src="~/Content/i/select-box.png" class="img-responsive" alt="image">
+                                    </div>
+                                    <div class="col-md-10 col-sm-10 col-xs-10">
+                                        <span class="text text-xs-lg text-sm-lg text-md-lg text-lg-lg">Your phone number has been successfully updated.</span>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 col-sm-2 col-xs-0">
+                                        &nbsp;
+                                    </div>
+                                    <div class="col-md-10 col-sm-10 col-xs-12 px-sm-0 px-xs-0 px-md-0">
+                                        <a href="@Url.Action("PersonalInfo", "MyProfile")" class="btn-ok mix-xy  w-lg-40 w-xl-40 w-xs-100 w-sm-100">okay</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end /form-order01 -->
+                        <div class="hidden-xs hidden-sm col-md-4 mt-4 px-sm-0 pr-sm-3 pl-md-0 pl-sm-3 ml-md-5 ml-lg-0 pb-3">
+                            @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopStep2Instructions)); }
+                        </div>
+                        <!-- end /box-instructions -->
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /middle-form -->
+                </div>
+                <!-- end /step-four-content -->
+            </div>
+            <!-- end /step-more-details -->
+        </div>
+    </div>
+</div>
+
+@section boxInstructions {
+    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileInstructions, showCloseButton: true)); }
+}

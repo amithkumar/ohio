@@ -1,0 +1,264 @@
+.container-fluid {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: 'Gotham';
+	font-weight: normal;
+	font-style: normal;
+	color: #fff;
+	overflow-y: auto;
+	position: relative;
+}
+.row {
+	margin: 0;
+	padding: 0;
+}
+.clear, .clear:before, .clear:after {
+	clear: both;
+}
+.icons {
+	background-image: url(/Content/i/icons.png);
+	background-position: 0 0;
+}
+
+.hol-x {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+}
+
+.ver-y {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+.cen-z {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+}
+
+.mix-xy {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+}
+button {
+    border: none;
+    background-color: transparent;
+}
+
+@mixin iinput ($fontsize,$color,$colorplace) {
+	display: block;
+	height: 100%;
+	width: 100%;
+	color: $color;
+	font-size: $fontsize;
+	font-family: 'Gotham';
+	font-weight: normal;
+	border: none;
+	outline: none;
+	background:transparent;
+	margin: 0;
+	padding: 0;
+	&::-webkit-input-placeholder {
+		color: $colorplace;
+		opacity: 1;
+	}
+	&::-moz-placeholder  {
+		color: $colorplace;
+		opacity: 1;
+	}
+	&:-ms-input-placeholder {
+		color: $colorplace;
+		opacity:1;
+	}
+	&:-moz-placeholder {
+		color: $colorplace;
+		opacity: 1;
+	}
+	&:focus::-webkit-input-placeholder {
+	}
+	&:focus:-moz-placeholder {
+	}
+	&:focus::-moz-placeholder {
+	}
+	&:focus:-ms-input-placeholder {
+	}
+}
+
+.tick-me {
+    display: block;
+    height: 100%;
+    padding-left: 20px;
+    font-size: 10px;
+    font-weight: normal;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+}
+    .tick-me span {
+        display: inline-block;
+        padding-top: 2px;
+        height: 100%;
+        color: #555;
+        font-size: 13px;
+    }
+    .tick-me a {
+    	display: inline-block;
+    	font-size: 13px;
+    	color: #3c9edc;
+    	text-decoration: underline;
+    }
+    .tick-me::before, .tick-me::after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 0;
+    }
+    .tick-me::before {
+        display: block;
+        width: 13px;
+        height: 13px;
+        border: 1px solid #282828;
+        border-radius: 0;
+    }
+    .tick-me.box-tick::before {
+        width: 19px;
+        height: 19px;
+        border-radius: 3px;
+    }
+    .tick-me::after {
+        display: none;
+        width: 12px;
+        height: 10px;
+        background-image: url(/Content/i/icons.png);
+        background-position: -71px -71px;
+    }
+    input:checked + .tick-me::after {
+        display: block;
+        top: 3px;
+        left: 0px; 
+    }
+
+
+.tick-radio {
+    display: inline-block;
+    height: 100%;
+    margin-right: 22px;
+    padding-left: 20px;
+    font-size: 10px;
+    font-weight: normal;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+}
+    .tick-radio span {
+        display: block;
+        padding-left: 5px;
+        padding-top: 2px;
+        height: 100%;
+        color: #282828;
+        font-size: 13px;
+    }
+    .tick-radio h3 {
+        display: block;
+        padding-left: 5px;
+        height: 100%;
+        color: #282828;
+        font-size: 18px;
+    }
+    .tick-radio::before, .tick-radio::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .tick-radio::before {
+        display: block;
+        width: 15px;
+        height: 15px;
+        border: 1px solid #aeaeae;
+        border-radius: 50%;  
+    }
+    .tick-radio::after {
+        display: none;
+        width: 9px;
+        height: 9px;
+        background-color: #000;
+        border-radius: 50%;
+    }
+    input:checked + .tick-radio::after {
+        display: block;
+        top: 3px;
+        left: 3px; 
+    }
+
+.big-radio {
+    display: inline-block;
+    height: 100%;
+    margin-right: 22px;
+    padding-left: 20px;
+    font-size: 10px;
+    font-weight: normal;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+}
+    .big-radio span {
+        display: block;
+        padding-left: 5px;
+        padding-top: 2px;
+        height: 100%;
+        color: #282828;
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .big-radio h3 {
+        display: block;
+        padding-left: 5px;
+        height: 100%;
+        color: #282828;
+        font-size: 18px;
+    }
+    .big-radio::before, .big-radio::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .big-radio::before {
+        display: block;
+        width: 17px;
+        height: 17px;
+        border: 1px solid #aeaeae;
+        border-radius: 50%;  
+    }
+    .big-radio::after {
+        display: none;
+        width: 11px;
+        height: 11px;
+        background-color: #000;
+        border-radius: 50%;
+    }
+    input:checked + .big-radio::after {
+        display: block;
+        top: 3px;
+        left: 3px; 
+    }

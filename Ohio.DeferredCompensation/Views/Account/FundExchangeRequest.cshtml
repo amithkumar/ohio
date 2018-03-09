@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Account Fund Exchange";
+    ViewBag.AtiveTab = NavigationTab.None;
+    ViewBag.DarkOverlayClass = "account-manager-content";
+    ViewBag.IsLoggedIn = true;
+    ViewBag.UseSingleSocialImage = true;
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/third-party-forms-js")
+}
+
+<div class="account-fund-exchange all-page">
+    @{ Html.RenderPartial("_TopIdentifyPanel", new TopIdentityPanelModel { ApplyXsXmClasses = true }); }
+    @{ Html.RenderPartial("_SubNavigation", "FundExchange"); }
+
+    <div class="breadcrumb ver-y">
+        <a href="@Url.Action("FundExchange", "Account")">
+            <span class="label">Request Fund Exchange</span>
+        </a>
+    </div>
+
+    <div class="content-plan step02 content-step02 ">
+        @{ Html.RenderPartial("_FundExchangeType"); }
+        @{ Html.RenderPartial("_EndResultExchangeType", (EndResultExchangeModel)ViewBag.EndResultModel); }
+    </div>
+    <!-- content plan step02-->
+</div>
+
+@section boxInstructions {
+    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileInstructions, showCloseButton: true)); }
+}

@@ -1,0 +1,92 @@
+﻿@model EnableSummaryModel
+@{
+    ViewBag.Title = "Account Summary";
+    ViewBag.AtiveTab = NavigationTab.None;
+    ViewBag.IsLoggedIn = true;
+}
+
+<div class="account-enable">
+    @{ Html.RenderPartial("_TopIdentifyPanel", new TopIdentityPanelModel(fixSpacing: true, applyXsXmClasses: true)); }
+    @{ Html.RenderPartial("_SubNavigation", "Summary"); }
+    <div class="account-content">
+        <div class="cover-content">
+            <div class="top-content">
+                <span class="text">Auto Rebalancing Details</span>
+                <span class="title">
+                    Last Update :
+                    <span class="day">@Model.LastUpdate.ToString("MM/dd/yyyy")</span>
+                </span>
+            </div>
+            <!-- top content -->
+            <div class="second-content">
+                <div class="first-s-content">
+                    <span class="name">
+                        <span class="title">Frequency</span>@Model.Frequency
+                    </span>
+                    <span class="name">
+                        <span class="title">next rebalacing date</span>@Model.NextRebalancingDate.ToString("MM/dd/yyyy")
+                    </span>
+                </div>
+                <!-- first s content -->
+                <div class="distribution">
+                    <div class="cover-d-fund">
+                        <span class="title-box">Fund Distribution</span>
+                        <div class="content-fund">
+                            <div class="top-c-fund">
+                                <span class="percent">
+                                    <span class="title">Fund Name</span>Percentage
+                                </span>
+                            </div>
+                            <span class="topic-title">
+                                International Stocks
+                                <span class="icons arrow-right"></span>
+                            </span>
+                            <div class="box-content">
+                                <span class="num">
+                                    <span class="name">Templeton Foreign</span>@Model.TempletonForeign.ToString("N2")%
+                                </span>
+                            </div>
+                            <span class="topic-title">
+                                Small Cap Stocks
+                                <span class="icons arrow-right"></span>
+                            </span>
+                            <div class="box-content">
+                                <span class="num">
+                                    <span class="name">Ohio DC Large Cap Growth</span>@Model.SmallCapOhioGrowth.ToString("N2")%
+                                </span>
+                            </div>
+                            <span class="topic-title">
+                                Mid Cap Stocks
+                                <span class="icons arrow-right"></span>
+                            </span>
+                            <div class="box-content">
+                                <span class="num">
+                                    <span class="name">Ohio DC Large Cap Growth</span>@Model.MidCapOhioGrowth.ToString("N2")%
+                                </span>
+                            </div>
+                            <div class="box-total">
+                                <span class="percent">
+                                    <span class="title">total</span>@((Model.TempletonForeign + Model.SmallCapOhioGrowth + Model.MidCapOhioGrowth).ToString("N2"))%
+                                </span>
+                            </div>
+                        </div>
+                        <!-- content fund -->
+                    </div>
+                    <!-- cover d fund -->
+                </div>
+                <!-- Distribution -->
+            </div>
+            <!-- second content -->
+            <div class="third-content ver-y">
+                <a href="@Url.Action("Summary", "Account")" class="btn-cancel mix-xy">cancel</a>
+                <a href="@Url.Action("EditSummary", "Account")" class="btn-machange">make changes</a>
+            </div>
+            <a href="@Url.Action("EditSummary", "Account")" class="btn-change ver-y">
+                <span class="icons icon-pen"></span>
+                <span class="text">make changes</span>
+            </a>
+        </div>
+        <!-- cover content -->
+    </div>
+    <!-- end /account-content -->
+</div>

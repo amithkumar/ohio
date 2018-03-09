@@ -1,0 +1,27 @@
+﻿@model TopIdentityPanelModel
+
+<div class="top-identify-manager @Html.ClassIf("fix-spacing", Model.FixSpacing)">
+    <div class="left-group">
+        <div class="cover-all-v02">
+            <div class="top-group @Html.ClassIf("hidden-xs hidden-sm", Model.ApplyXsXmClasses)">
+                <a href="javascript:;" class="btn-view mix-xy">
+                    View Account Number
+                    <span class="icons"></span>
+                </a>
+            </div>
+            <!-- end /top-group -->
+            <div class="top-group @Html.ClassIf("visible-xs visible-sm", Model.ApplyXsXmClasses)">
+                <a href="javascript:;" class="btn-view ver-y">
+                    View Account No :
+                    <span class="icons"></span>
+                </a>
+            </div>
+            <!-- end /top-group -->
+            @{ Html.RenderPartial("_AccountDropdown"); }
+        </div>
+        <!-- end /cover-all -->
+    </div>
+    <!-- end /left-group -->
+    @{ Html.RenderPartial("_Navigation", Model.NavigationTab ?? string.Empty); }
+    <div class="clear"></div>
+</div>

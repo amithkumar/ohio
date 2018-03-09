@@ -1,0 +1,1205 @@
+﻿@model WithdrawalRequestModel
+@{
+    ViewBag.Title = "Withdrawals Edit Page";
+    ViewBag.AtiveTab = NavigationTab.None;
+    ViewBag.DarkOverlayClass = "account-manager-content";
+    ViewBag.IsLoggedIn = true;
+    ViewBag.UseSingleSocialImage = true;
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/third-party-forms-js")
+}
+
+<div class="withdrawals-edit all-page">
+    @{ Html.RenderPartial("_TopIdentifyPanel", new TopIdentityPanelModel { ApplyXsXmClasses = true }); }
+    @{ Html.RenderPartial("_SubNavigation", "Withdrawals"); }
+
+    <div class="create-tab-one ">
+        <div class="breadcrumb ver-y">
+            <a href="@Url.Action("Withdrawals", "Account")">
+                <span class="label titles">Edit Withdrawal Request</span>
+            </a>
+        </div>
+        <div class="step-by-step hidden-xs hidden-sm">
+            <div class="nested-circle hol-x">
+                <ul class="desk-step">
+                    <li class="step02 current">
+                        <div class="group-circle mix-xy">
+                            <img class="first-sym" src="~/Content/i/icon-payment-options-black.png" alt="IMG">
+                            <img class="second-sym" src="~/Content/i/icon-payment-options.png" alt="IMG">
+                            <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                            <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                            <span class="icons icon-v"></span>
+                        </div>
+                        <div class="group-name">
+                            <span class="name bold">Payment Options</span>
+                        </div>
+                    </li>
+                    <li class="step03">
+                        <div class="group-circle mix-xy">
+                            <img class="first-sym" src="~/Content/i/seach-page01.png" alt="IMG">
+                            <img class="second-sym" src="~/Content/i/seach-page.png" alt="IMG">
+                            <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                            <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                            <span class="icons icon-v"></span>
+                        </div>
+                        <div class="group-name">
+                            <span class="name bold clear-right">Review</span>
+                        </div>
+                    </li>
+                    <li class="step04">
+                        <div class="group-circle mix-xy">
+                            <img class="first-sym" src="~/Content/i/indentifi01.png" alt="IMG">
+                            <img class="second-sym" src="~/Content/i/indentifi.png" alt="IMG">
+                            <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                            <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                            <span class="icons icon-v"></span>
+                        </div>
+                        <div class="group-name">
+                            <span class="name bold">Identification Code</span>
+                        </div>
+                    </li>
+                    <li class="step05">
+                        <div class="group-circle mix-xy">
+                            <img class="first-sym" src="~/Content/i/enter-code01.png" alt="IMG">
+                            <img class="second-sym" src="~/Content/i/enter-code.png" alt="IMG">
+                            <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                            <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                            <span class="icons icon-v"></span>
+                        </div>
+                        <div class="group-name">
+                            <span class="name bold">Enter Code</span>
+                        </div>
+                    </li>
+                </ul>
+                <a href="javascript:;" class="click-intructions">
+                    <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+                </a>
+            </div>
+            <!-- end /nested-circle -->
+            <div class="step-more-details">
+                @using (Html.BeginForm("EditWithdrawal", "Account", FormMethod.Post))
+                {
+                    <input type="hidden" name="AccessCode" value="code" />
+                    <input type="hidden" name="@nameof(WithdrawalRequestModel.Plan)" value="@Model.Plan" />
+                    <!-- end /step-one-content -->
+                    <div class="step-content step-one-content payment-step">
+                        <div class="top-title">
+                            <div class="title">Step 1 : Payment Option</div>
+                        </div>
+                        <!-- end /top-title -->
+                        <div class="middle-form">
+                            <div class="form-order01">
+                                <ul>
+                                    <li class="border-bottom height-55">
+                                        <span class="name ver-y bold">Start Withdrawal Date</span>
+                                        <div class="typing-here start-withdrawal-date">
+                                            @Html.CustomTextBoxFor(x => x.StartDate, "dd/mm/yy", @class: "iinput datepicker-birth start-withdrawal-date", id: "start-withdrawal-date01")
+                                            <button class="icons select-calculator"></button>
+                                        </div>
+                                        <label for="start-withdrawal-date01" class="hide">Start Withdrawal Date</label>
+                                    </li>
+                                    <li class="border-bottom height-55">
+                                        <span class="name ver-y bold">Desired Payment Frequency</span>
+                                        <div class="typing-here desired-payment-frequency">
+                                            <div class="box-radio">
+                                                <input type="radio" id="boxx03" name="@nameof(WithdrawalRequestModel.PaymentFrequency)" value="Monthly" @Html.CheckedIf(Model.PaymentFrequency == "Monthly")>
+                                                <label for="boxx03" class="big-radio">
+                                                    <span>Monthly</span>
+                                                </label>
+                                                <input type="radio" id="boxx04" name="@nameof(WithdrawalRequestModel.PaymentFrequency)" value="Quarterly" @Html.CheckedIf(Model.PaymentFrequency == "Quarterly")>
+                                                <label for="boxx04" class="big-radio">
+                                                    <span>Quarterly</span>
+                                                </label>
+                                                <input type="radio" id="boxx05" name="@nameof(WithdrawalRequestModel.PaymentFrequency)" value="SemiAnnually" @Html.CheckedIf(Model.PaymentFrequency == "SemiAnnually")>
+                                                <label for="boxx05" class="big-radio">
+                                                    <span>Semi-Annually</span>
+                                                </label>
+                                                <input type="radio" id="boxx06" name="@nameof(WithdrawalRequestModel.PaymentFrequency)" value="Annually" @Html.CheckedIf(Model.PaymentFrequency == "Annually")>
+                                                <label for="boxx06" class="big-radio">
+                                                    <span>Annually</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="border-bottom height-150">
+                                        <span class="name bold">Enter Payment Option</span>
+                                        <div class="typing-here enter-payment-option">
+                                            <div class="box-radio">
+                                                <input type="radio" id="boxxpaymentoption01" name="@nameof(WithdrawalRequestModel.PaymentOption)" value="DollarAmount" @Html.CheckedIf(Model.PaymentOption == "DollarAmount")>
+                                                <label for="boxxpaymentoption01" class="big-radio">
+                                                    <span>Dollar Ammount</span>
+                                                </label>
+                                                <input type="radio" id="boxxpaymentoption02" name="@nameof(WithdrawalRequestModel.PaymentOption)" value="PercentToWithdraw" @Html.CheckedIf(Model.PaymentOption == "PercentToWithdraw")>
+                                                <label for="boxxpaymentoption02" class="big-radio">
+                                                    <span>% of account value  to be withdrawn</span>
+                                                </label>
+                                                <input type="radio" id="boxxpaymentoption03" name="@nameof(WithdrawalRequestModel.PaymentOption)" value="TimePeriod" @Html.CheckedIf(Model.PaymentOption == "TimePeriod")>
+                                                <label for="boxxpaymentoption03" class="big-radio">
+                                                    <span>Time Period</span>
+                                                </label>
+                                            </div>
+                                            <div class="input-container">
+                                                <div>
+                                                    $@Html.CustomTextBoxFor(x => x.PaymentOptionDollarAmount, id: "payment01")
+                                                    <label for="payment01" class="hide">Label</label>
+                                                </div>
+                                                <div>
+                                                    @Html.CustomTextBoxFor(x => x.PaymentOptionPercentToWithdraw, @class: "width64 percentage-type disabled", id: "percent01")%
+                                                    <label for="percent01" class="hide">Label</label>
+                                                </div>
+                                                <div>
+                                                    @Html.CustomTextBoxFor(x => x.PaymentOptionTimePeriod, @class: "width64 disabled", id: "years01")years
+                                                    <label for="years01" class="hide">Label</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="border-bottom  height-100">
+                                        <span class="name bold">Fund Selection</span>
+                                        <div class="typing-here fund-selection">
+                                            <div class="box-radio clearfix">
+                                                <input type="radio" id="boxxfundselection04" name="@nameof(WithdrawalRequestModel.FundSelectionOption)" value="AllFunds" @Html.CheckedIf(Model.FundSelectionOption == "AllFunds")>
+                                                <label for="boxxfundselection04" class="big-radio">
+                                                    <span>All  Funds (Pro-Rata)</span>
+                                                </label>
+                                                <input type="radio" id="boxxfundselection05" name="@nameof(WithdrawalRequestModel.FundSelectionOption)" value="ChooseFund" @Html.CheckedIf(Model.FundSelectionOption == "ChooseFund")>
+                                                <label for="boxxfundselection05" class="big-radio">
+                                                    <span>Choose Fund</span>
+                                                </label>
+                                            </div>
+                                            <div class="input-container">
+                                                <div>
+                                                </div>
+                                                <div>
+                                                    <div class="dropdown-here ddown-here disabled">
+                                                        @Html.CustomSelectFor(x => x.FundSelectionSelectedFund, (IList<string>)ViewBag.FundNames, "Select Fund", nullValue: "SELECT", value: Model.FundSelectionSelectedFund, @class: "ddown-select big-text hide", id: "ui-id-1")
+                                                        <span class="icons-ddown"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="border-bottom height-306">
+                                        <span class="name ver-y bold auto-height">Bank Deposit Information</span>
+                                        <button class="modify-btn" type="button">MODIFY</button>
+                                        <div class="typing-here bank-deposit-information">
+                                            <ul>
+                                                <li>
+                                                    <span class="name ver-y">Direct Deposit or Check</span>
+                                                    <div class="typing-here desired-payment-frequency">
+                                                        <div class="box-radio">
+                                                            <input type="radio" id="directdepositorcheck01" name="@nameof(WithdrawalRequestModel.DepositOption)" value="DirectDeposit" @Html.CheckedIf(Model.DepositOption == "DirectDeposit")>
+                                                            <label for="directdepositorcheck01" class="big-radio">
+                                                                <span>Direct Deposit</span>
+                                                            </label>
+                                                            <input type="radio" id="directdepositorchec02" name="@nameof(WithdrawalRequestModel.DepositOption)" value="Check" @Html.CheckedIf(Model.DepositOption == "Check")>
+                                                            <label for="directdepositorchec02" class="big-radio">
+                                                                <span>Check</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <span class="name ver-y">Routing #</span>
+                                                    <div class="typing-here routing">
+                                                        @Html.CustomTextBoxFor(x => x.NewDepositRoutingNumber, "Enter Routing #", @class: "iinput hide", id: "routing-id1")
+                                                        <span>@Model.DepositRoutingNumber</span>
+                                                    </div>
+                                                    <label for="routing-id1" class="hide">Routing #</label>
+                                                </li>
+                                                <li>
+                                                    <span class="name ver-y">Bank Account #</span>
+                                                    <div class="typing-here backaccount">
+                                                        @Html.CustomTextBoxFor(x => x.NewDepositBankAccount, "Enter Bank Account #", @class: "iinput hide", id: "bank-account-id1")
+                                                        <span>@Model.DepositBankAccount</span>
+                                                    </div>
+                                                    <label for="bank-account-id1" class="hide">Bank Account #</label>
+                                                </li>
+                                                <li>
+                                                    <span class="name ver-y">Bank Name</span>
+                                                    <div class="typing-here bankname">
+                                                        <span>@Model.DepositBankName</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <span class="name ver-y">Type or Account</span>
+                                                    <div class="typing-here desired-payment-frequency">
+                                                        <div class="box-radio">
+                                                            <input type="radio" id="typeoraccount01" name="@nameof(WithdrawalRequestModel.DepositTypeOrAccount)" value="Checking" @Html.CheckedIf(Model.DepositTypeOrAccount == "Checking")>
+                                                            <label for="typeoraccount01" class="big-radio">
+                                                                <span>Checking</span>
+                                                            </label>
+                                                            <input type="radio" id="typeoraccount02" name="@nameof(WithdrawalRequestModel.DepositTypeOrAccount)" value="Savings" @Html.CheckedIf(Model.DepositTypeOrAccount == "Savings")>
+                                                            <label for="typeoraccount02" class="big-radio">
+                                                                <span>Saveings</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <div class="tip-info hide">
+                                                <span class="icons tip"></span> Lumpsum or Annual Payment only for the check payment method
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="border-bottom height-255">
+                                        <span class="name ver-y bold width-per-100 auto-height">Federal Tax Withholding Information</span>
+                                        <div class="typing-here bank-deposit-information">
+                                            <ul>
+                                                <li>
+                                                    <span class="name ver-y">Federal Tax Exempt</span>
+                                                    <div class="typing-here desired-payment-frequency">
+                                                        <div class="box-radio">
+                                                            <input type="radio" id="federaltaxexempt01" name="@nameof(WithdrawalRequestModel.FederalTaxExempt)" value="true" @Html.CheckedIf(Model.FederalTaxExempt)>
+                                                            <label for="federaltaxexempt01" class="big-radio">
+                                                                <span>Yes</span>
+                                                            </label>
+                                                            <input type="radio" id="federaltaxexempt02" name="@nameof(WithdrawalRequestModel.FederalTaxExempt)" value="false" @Html.CheckedIf(!Model.FederalTaxExempt)>
+                                                            <label for="federaltaxexempt02" class="big-radio">
+                                                                <span>No</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="height-200">
+                                                    <label for="withholding-percentage01"
+                                                           class="name ver-y name-withholding-percentage">Withholding  Percentage</label>
+                                                    <div class="typing-here withholdingpercentage clearfix">
+                                                        <div class="input-container-left">
+                                                            @Html.CustomTextBoxFor(x => x.FederalTaxWithholdingPercentage, @class: "iinput percentage-type", id: "withholding-percentage01")%
+                                                        </div>
+                                                        <div class="divider">
+                                                            <span class="or-txt">(Or)</span>
+                                                        </div>
+                                                        <div class="input-container-right">
+                                                            <ul>
+                                                                <li>
+                                                                    <span class="name ver-y">Marital Status</span>
+                                                                    <div class="typing-here desired-payment-frequency">
+                                                                        <div class="box-radio">
+                                                                            <input type="radio" id="maritalstatus01" name="@nameof(WithdrawalRequestModel.MaritalStatus)" value="true" @Html.CheckedIf(Model.MaritalStatus)>
+                                                                            <label for="maritalstatus01" class="big-radio">
+                                                                                <span>Yes</span>
+                                                                            </label>
+                                                                            <input type="radio" id="maritalstatus02" name="@nameof(WithdrawalRequestModel.MaritalStatus)" value="false" @Html.CheckedIf(!Model.MaritalStatus)>
+                                                                            <label for="maritalstatus02" class="big-radio">
+                                                                                <span>No</span>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <label for="number-of-allowances" class="name ver-y">Number  Of Allowances</label>
+                                                                    <div class="typing-here">
+                                                                        @Html.CustomTextBoxFor(x => x.FederalTaxNumberOfAllowances, @class: "iinput width64", id: "number-of-allowances")
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <label for="additional-withholding" class="name ver-y">Additional  Withholding</label>
+                                                                    <div class="typing-here">
+                                                                        $@Html.CustomTextBoxFor(x => x.FederalTaxAdditionalWithholding, @class: "iinput width124", id: "additional-withholding")
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="border-bottom height-225">
+                                        <span class="name ver-y bold auto-height width-per-100">State of Ohio Tax Withholding Information</span>
+                                        <div class="typing-here bank-deposit-information">
+                                            <ul>
+                                                <li>
+                                                    <span class="name ver-y">State Tax Exempt</span>
+                                                    <div class="typing-here desired-payment-frequency">
+                                                        <div class="box-radio">
+                                                            <input type="radio" id="statetaxexempt01" name="@nameof(WithdrawalRequestModel.StateTaxExempt)" value="true" @Html.CheckedIf(Model.StateTaxExempt)>
+                                                            <label for="statetaxexempt01" class="big-radio">
+                                                                <span>Yes</span>
+                                                            </label>
+                                                            <input type="radio" id="statetaxexempt02" name="@nameof(WithdrawalRequestModel.StateTaxExempt)" value="false" @Html.CheckedIf(!Model.StateTaxExempt)>
+                                                            <label for="statetaxexempt02" class="big-radio">
+                                                                <span>No</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="typing-here enter-payment-option">
+                                                        <div class="box-radio">
+                                                            <input type="radio" id="statetaxwithholding01" name="@nameof(WithdrawalRequestModel.StateTaxOption)" value="NumberOfAllowances" @Html.CheckedIf(Model.StateTaxOption == "NumberOfAllowances")>
+                                                            <label for="statetaxwithholding01" class="big-radio">
+                                                                <span>Number Of Allowances</span>
+                                                            </label>
+                                                            <input type="radio" id="statetaxwithholding02" name="@nameof(WithdrawalRequestModel.StateTaxOption)" value="WithholdingAmount" @Html.CheckedIf(Model.StateTaxOption == "WithholdingAmount")>
+                                                            <label for="statetaxwithholding02" class="big-radio">
+                                                                <span>Withholding Dollar Amount</span>
+                                                            </label>
+                                                            <input type="radio" id="statetaxwithholding03" name="@nameof(WithdrawalRequestModel.StateTaxOption)" value="WithholdingPercentage" @Html.CheckedIf(Model.StateTaxOption == "WithholdingPercentage")>
+                                                            <label for="statetaxwithholding03" class="big-radio">
+                                                                <span>Witholding Percentage</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="input-container">
+                                                            <div>
+                                                                @Html.CustomTextBoxFor(x => x.StateTaxNumberOfAllowances, @class: "width64", id: "payment02")
+                                                                <label for="payment02" class="hide">Label</label>
+                                                            </div>
+                                                            <div>
+                                                                $@Html.CustomTextBoxFor(x => x.StateTaxWithholdingAmount, @class: "disabled", id: "percent02")
+                                                                <label for="percent02" class="hide">Label</label>
+                                                            </div>
+                                                            <div>
+                                                                @Html.CustomTextBoxFor(x => x.StateTaxWithholdingPercentage, @class: "width64 percentage-type disabled", id: "years02")%
+                                                                <label for="years02" class="hide">Label</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- end /form-order01 -->
+                            @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopStep2Instructions, cssClass: "hidden-xs hidden-sm height1000")); }
+                            <div class="clear"></div>
+                        </div>
+                        <!-- end /middle-form -->
+                        <div class="bottom-button">
+                            <a href="javascript:;" class="btn-cancel mix-xy">PREVIOUS</a>
+                            <a href="javascript:;" class="btn-next mix-xy validate-all-positive-numeric validate-model-form">NEXT</a>
+                            <div class="clear"></div>
+                        </div>
+                        <!-- end /bottom-button -->
+                    </div>
+                    <!-- end /step-two-content -->
+                    <div class="step-content step-three-content hide">
+                        <div class="top-title">
+                            <div class="title">Step 2 : Review</div>
+                        </div>
+                        <!-- end /top-title -->
+                        <div class="middle-form">
+                            <div class="form-order01">
+                                <div class="row">
+                                    <ul>
+                                        <li>
+                                            <span class="title">Start Withdrawal Date</span>
+                                            <span class="descr">10/01/2017</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Desired Payment Frequency</span>
+                                            <span class="descr">Monthly</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Enter Payment Option</span>
+                                            <span class="descr">Dollar Acount<em>$ 1,000.00</em></span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Gross Amount</span>
+                                            <span class="descr">$ 1,000.00</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Net Amount</span>
+                                            <span class="descr">$ 970.40</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Fund Selection</span>
+                                            <span class="descr">All Funds(Pro-Rata)</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="row">
+                                    <h5>
+                                        Bank Deposit Information
+                                    </h5>
+                                    <ul class="padding20">
+                                        <li>
+                                            <span class="title">Direct Deposit or Check</span>
+                                            <span class="descr">Direct Deposit</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Routing #</span>
+                                            <span class="descr">****6789</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Bank Account #</span>
+                                            <span class="descr">****1234</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">BankName</span>
+                                            <span class="descr">HUNTINGTON NATIONAL BANK</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Type of Account</span>
+                                            <span class="descr">Checking</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="row">
+                                    <h5>
+                                        Federal Tax Withholding Information
+                                    </h5>
+                                    <ul class="padding20">
+                                        <li>
+                                            <span class="title">Federal Tax Exempt</span>
+                                            <span class="descr">Yes</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Marital Status</span>
+                                            <span class="descr">Married</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Number Of Allowances</span>
+                                            <span class="descr">3</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Additional Withholding</span>
+                                            <span class="descr">Dollar Amount<em>$500</em></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="row">
+                                    <h5>
+                                        State Of Ohio Tax Withholding Information
+                                    </h5>
+                                    <ul class="padding20">
+                                        <li>
+                                            <span class="title">State Tax Exempt</span>
+                                            <span class="descr">Yes</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Number Of Allowances</span>
+                                            <span class="descr">3</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Additional Withholding</span>
+                                            <span class="descr">Dollar Amount<em>$500</em></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="row agree">
+                                    <h5>
+                                        Consent
+                                    </h5>
+                                    <div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                                        </p>
+                                        <input type="checkbox" id="agree" name="@nameof(WithdrawalRequestModel.AgreementAccepted)" value="true" />
+                                        <label for="agree" class="big-checkbox">
+                                            <span>I agree to Terms and conditions</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end /form-order01 -->
+                            @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopStep3Instructions, cssClass: "hidden-xs hidden-sm height1000")); }
+                            <div class="clear"></div>
+                        </div>
+                        <!-- end /middle-form -->
+                        <div class="bottom-button">
+                            <a href="javascript:;" class="btn-cancel mix-xy">PREVIOUS</a>
+                            <a href="javascript:;" class="btn-next mix-xy disabled">NEXT</a>
+                            <div class="clear"></div>
+                        </div>
+                        <!-- end /bottom-button -->
+                    </div>
+                    <!-- end /step-three-content -->
+                }
+                <div class="step-content step-four-content hide">
+                    @using (Html.BeginForm("SendIdentificationCode", "Account", FormMethod.Post))
+                    {
+                        <div class="top-title">
+                            <div class="title">Step 3 : Identification Code</div>
+                        </div>
+                        <!-- end /top-title -->
+                        <div class="middle-form">
+                            <div class="content-left">
+                                <input type="hidden" name="Username" value="@ViewBag.Username" />
+                                <p class="txt">
+                                    For added security, you must authenticate your identity. Choose to receive a four
+                                    digit authorization code :
+                                </p>
+                                <div class="form-boxs clearfix">
+                                    <div class="box-radio">
+                                        <input type="radio" id="boxx07" name="SendTo" value="Email" checked="">
+                                        <label for="boxx07" class="big-radio">
+                                            <span>Send to EMail ID</span>
+                                        </label>
+                                        <div class="gray-txt">(@ViewBag.CurrentEmailMask)</div>
+                                    </div>
+                                    <!-- box radio -->
+                                    <div class="or-boxs">
+                                        (Or)
+                                    </div>
+                                    <div class="box-radio">
+                                        <input type="radio" id="boxx08" name="SendTo" value="Phone">
+                                        <label for="boxx08" class="big-radio">
+                                            <span>Send to Mobile</span>
+                                        </label>
+                                        <div class="gray-txt">(@ViewBag.CurrentPhoneNumber)</div>
+                                    </div>
+                                    <!-- box radio -->
+                                </div>
+                            </div>
+
+                            @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopStep4Instructions, cssClass: "hidden-xs hidden-sm")); }
+                            <div class="clear"></div>
+                        </div>
+                        <!-- end /middle-form -->
+                        <div class="bottom-button">
+                            <a href="javascript:;" class="btn-cancel mix-xy">Previous</a>
+                            <a href="javascript:;" class="btn-next mix-xy btn-next-step send-code-form">Send</a>
+                            <div class="clear"></div>
+                        </div>
+                        <!-- end /bottom-button -->
+                    }
+                </div>
+                <!-- end /step-four-content -->
+                <div class="step-content step-five-content hide">
+                    @using (Html.BeginForm("ValidateIdentificationCode", "Account", FormMethod.Post))
+                    {
+                        <div class="top-title">
+                            <div class="title">Step 4 : Enter Code</div>
+                        </div>
+                        <!-- end /top-title -->
+                        <div class="middle-form">
+                            <div class="content-left">
+                                <p class="txt">
+                                    Check your Email or SMS for your 4 digit authentication code sent and enter below :
+                                </p>
+                                <div class="form-boxs clearfix center">
+                                    <div class="input-here">
+                                        @Html.CustomTextBox("Code", "Enter Code here", @class: "enter-code-input")
+                                    </div>
+                                    <div class="bottom-txt">Did not received the code? <a href="javascript:;" class="red-link try-again-withdrawal">Try Again.</a></div>
+                                </div>
+                            </div>
+
+                            @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopStep5Instructions, cssClass: "hidden-xs hidden-sm")); }
+                            <div class="clear"></div>
+                        </div>
+                        <!-- end /middle-form -->
+                        <div class="bottom-button">
+                            <a href="javascript:;" class="btn-cancel mix-xy">Previous</a>
+                            <a href="javascript:;" class="btn-next mix-xy btn-next-step disabled validate-code-form">VERIFY</a>
+                            <div class="clear"></div>
+                        </div>
+                        <!-- end /bottom-button -->
+                    }
+                </div>
+                <!-- end /step-five-content -->
+                <div class="step-content step-completed-content hide">
+                    <div class="top-title">
+                        <div class="title">Completed</div>
+                    </div>
+                    <!-- end /top-title -->
+                    <div class="middle-form">
+                        <div class="form-order02">
+                            <div class="content-left">
+                                <span class="big-text">Successful!</span>
+                                <div class="group-notice">
+                                    <img src="~/Content/i/select-box.png" alt="IMG">
+                                    <p>
+                                        Your pending withdrawal request has been successfully
+                                        modified.
+                                    </p>
+                                    <p>
+                                        Your confirmation number is  :    <span class="red-link confirmation-code">746352</span>
+                                    </p>
+                                </div>
+                                <!-- end /group-notice -->
+                                <a href="@Url.Action("Withdrawals", "Account",new { withMockWithDrawals = true })" class="btn-view mix-xy">VIEW WITHDRAWALS</a>
+                            </div>
+                        </div>
+                        <!-- end /form-order01 -->
+                        @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopStepCompletedInstructions, cssClass: "hidden-xs hidden-sm")); }
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /middle-form -->
+                </div>
+                <!-- end /step two content -->
+            </div>
+            <!-- end /step-more-details -->
+        </div>
+
+        <!-- end /step-by-step -->
+        <div class="step-by-step-mobi hidden-md hidden-lg">
+            <div class="nested-circle mix-xy">
+                <ul>
+                    <li class="mix-xy current">
+                        <span class="number">1</span>
+                        <span class="icons"></span>
+                    </li>
+                    <li class="mix-xy ">
+                        <span class="number">2</span>
+                        <span class="icons"></span>
+                    </li>
+                    <li class="mix-xy">
+                        <span class="number">3</span>
+                        <span class="icons"></span>
+                    </li>
+                    <li class="mix-xy">
+                        <span class="number">4</span>
+                        <span class="icons"></span>
+                    </li>
+                </ul>
+                <a href="javascript:;" class="click-intructions">
+                    <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+                </a>
+            </div>
+            <!-- end /nested-circle -->
+            <div class="step-details">
+                @using (Html.BeginForm("EditWithdrawal", "Account", FormMethod.Post))
+                {
+                    <input type="hidden" name="AccessCode" value="code" />
+                    <input type="hidden" name="@nameof(WithdrawalRequestModel.Plan)" value="@Model.Plan" />
+                    <div class="step-n02-content step-mobile-content">
+                        <span class="top-black-title">Step 1 : Payment Option</span>
+                        <!-- end /top-title -->
+                        <div class="second-group">
+                            <div class="middle-form">
+                                <div class="form-order01">
+                                    <ul>
+                                        <li class="border-bottom height-55">
+                                            <span class="name ver-y bold">Start Withdrawal Date</span>
+                                            <div class="typing-here start-withdrawal-date">
+                                                @Html.CustomTextBoxFor(x => x.StartDate, "dd/mm/yy", @class: "iinput datepicker-birth start-withdrawal-date", id: "start-withdrawal-date02")
+                                                <button class="icons select-calculator"></button>
+                                            </div>
+                                            <label for="start-withdrawal-date02" class="hide">Start Withdrawal Date</label>
+                                        </li>
+                                        <li class="border-bottom height-55">
+                                            <span class="name ver-y bold">Desired Payment Frequency</span>
+                                            <div class="typing-here desired-payment-frequency">
+                                                <div class="box-radio">
+                                                    <input type="radio" id="boxx09" name="@nameof(WithdrawalRequestModel.PaymentFrequency)" value="Monthly" @Html.CheckedIf(Model.PaymentFrequency == "Monthly")>
+                                                    <label for="boxx09" class="big-radio">
+                                                        <span>Monthly</span>
+                                                    </label>
+                                                    <input type="radio" id="boxx10" name="@nameof(WithdrawalRequestModel.PaymentFrequency)" value="Quarterly" @Html.CheckedIf(Model.PaymentFrequency == "Quarterly")>
+                                                    <label for="boxx10" class="big-radio">
+                                                        <span>Quarterly</span>
+                                                    </label>
+                                                    <input type="radio" id="boxx11" name="@nameof(WithdrawalRequestModel.PaymentFrequency)" value="SemiAnnually" @Html.CheckedIf(Model.PaymentFrequency == "SemiAnnually")>
+                                                    <label for="boxx11" class="big-radio">
+                                                        <span>Semi-Annually</span>
+                                                    </label>
+                                                    <input type="radio" id="boxx12" name="@nameof(WithdrawalRequestModel.PaymentFrequency)" value="Annually" @Html.CheckedIf(Model.PaymentFrequency == "Annually")>
+                                                    <label for="boxx12" class="big-radio">
+                                                        <span>Annually</span>
+                                                    </label>
+                                                </div>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </li>
+                                        <li class="border-bottom height-150">
+                                            <span class="name bold">Enter Payment Option</span>
+                                            <div class="typing-here enter-payment-option clearfix">
+                                                <div class="box-radio enter-pay">
+                                                    <input type="radio" id="boxxpaymentoption04" name="@nameof(WithdrawalRequestModel.PaymentOption)" value="DollarAmount" @Html.CheckedIf(Model.PaymentOption == "DollarAmount")>
+                                                    <label for="boxxpaymentoption04" class="big-radio">
+                                                        <span>Dollar Ammount</span>
+                                                    </label>
+                                                    <input type="radio" id="boxxpaymentoption05" name="@nameof(WithdrawalRequestModel.PaymentOption)" value="PercentToWithdraw" @Html.CheckedIf(Model.PaymentOption == "PercentToWithdraw")>
+                                                    <label for="boxxpaymentoption05" class="big-radio">
+                                                        <span>% of account value  to be withdrawn</span>
+                                                    </label>
+                                                    <input type="radio" id="boxxpaymentoption06" name="@nameof(WithdrawalRequestModel.PaymentOption)" value="TimePeriod" @Html.CheckedIf(Model.PaymentOption == "TimePeriod")>
+                                                    <label for="boxxpaymentoption06" class="big-radio">
+                                                        <span>Time Period</span>
+                                                    </label>
+                                                </div>
+                                                <div class="input-container">
+                                                    <div>
+                                                        <span class="dollar">$</span>@Html.CustomTextBoxFor(x => x.PaymentOptionDollarAmount, id: "payment03")
+                                                        <label for="payment03" class="hide">Label</label>
+                                                    </div>
+                                                    <div>
+                                                        @Html.CustomTextBoxFor(x => x.PaymentOptionPercentToWithdraw, @class: "width64 percentage-type disabled", id: "percent03")%
+                                                        <label for="percent03" class="hide">Label</label>
+                                                    </div>
+                                                    <div>
+                                                        @Html.CustomTextBoxFor(x => x.PaymentOptionTimePeriod, @class: "width64 disabled", id: "years03")years
+                                                        <label for="years03" class="hide">Label</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="border-bottom  height-100">
+                                            <span class="name">Fund Selection</span>
+                                            <div class="typing-here fund-selection">
+                                                <div class="box-radio clearfix">
+                                                    <input type="radio" id="boxxfundselection03" name="@nameof(WithdrawalRequestModel.FundSelectionOption)" value="AllFunds" @Html.CheckedIf(Model.FundSelectionOption == "AllFunds")>
+                                                    <label for="boxxfundselection03" class="big-radio">
+                                                        <span>All  Funds (Pro-Rata)</span>
+                                                    </label>
+                                                    <input type="radio" id="bofundselection04" name="@nameof(WithdrawalRequestModel.FundSelectionOption)" value="ChooseFund" @Html.CheckedIf(Model.FundSelectionOption == "ChooseFund")>
+                                                    <label for="bofundselection04" class="big-radio">
+                                                        <span>Choose Fund</span>
+                                                    </label>
+                                                </div>
+                                                <div class="input-container">
+                                                    <div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="input-here drop-input ddown-here big-text disabled">
+                                                            @Html.CustomSelectFor(x => x.FundSelectionSelectedFund, (IList<string>)ViewBag.FundNames, "Select Fund", nullValue: "SELECT", value: Model.FundSelectionSelectedFund, @class: "ddown-select", id: "sel-amount")
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="border-bottom height-306">
+                                            <span class="name ver-y bold auto-height">Bank Deposit Information</span>
+                                            <button class="modify-btn" type="button"><span class="icons icon-edit"></span>Edit</button>
+                                            <div class="typing-here bank-deposit-information">
+                                                <ul class="clearfix">
+                                                    <li class="clearfix">
+                                                        <span class="name ver-y">Direct Deposit or Check</span>
+                                                        <div class="typing-here desired-payment-frequency">
+                                                            <div class="box-radio clearfix">
+                                                                <input type="radio" id="directdepositorcheck03" name="@nameof(WithdrawalRequestModel.DepositOption)" value="DirectDeposit" @Html.CheckedIf(Model.DepositOption == "DirectDeposit")>
+                                                                <label for="directdepositorcheck03" class="big-radio">
+                                                                    <span>Direct Deposit</span>
+                                                                </label>
+                                                                <input type="radio" id="directdepositorchec04" name="@nameof(WithdrawalRequestModel.DepositOption)" value="Check" @Html.CheckedIf(Model.DepositOption == "Check")>
+                                                                <label for="directdepositorchec04" class="big-radio">
+                                                                    <span>Check</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="clearfix">
+                                                        <span class="name ver-y">Routing #</span>
+                                                        <div class="typing-here routing">
+                                                            @Html.CustomTextBoxFor(x => x.NewDepositRoutingNumber, "Enter Routing #", @class: "input hide", id: "routing-id2")
+                                                            <span>@Model.DepositRoutingNumber</span>
+                                                        </div>
+                                                        <label for="routing-id2" class="hide">Routing #</label>
+                                                    </li>
+                                                    <li class="clearfix">
+                                                        <span class="name ver-y">Bank Account #</span>
+                                                        <div class="typing-here backaccount">
+                                                            @Html.CustomTextBoxFor(x => x.NewDepositBankAccount, "Enter Bank Account #", @class: "input hide", id: "bank-account-id2")
+                                                            <span>@Model.DepositBankAccount</span>
+                                                        </div>
+                                                        <label for="bank-account-id2" class="hide">Bank Account #</label>
+                                                    </li>
+                                                    <li class="clearfix">
+                                                        <span class="name ver-y">Bank Name</span>
+                                                        <div class="typing-here bankname">
+                                                            <span>@Model.DepositBankName</span>
+                                                        </div>
+                                                    </li>
+                                                    <li class="hide clearfix">
+                                                        <span class="name ver-y">Type or Account</span>
+                                                        <div class="typing-here desired-payment-frequency">
+                                                            <div class="box-radio clearfix">
+                                                                <input type="radio" id="typeoraccount03" name="@nameof(WithdrawalRequestModel.DepositTypeOrAccount)" value="Checking" @Html.CheckedIf(Model.DepositTypeOrAccount == "Checking")>
+                                                                <label for="typeoraccount03" class="big-radio">
+                                                                    <span>Checking</span>
+                                                                </label>
+                                                                <input type="radio" id="typeoraccount04" name="@nameof(WithdrawalRequestModel.DepositTypeOrAccount)" value="Savings" @Html.CheckedIf(Model.DepositTypeOrAccount == "Savings")>
+                                                                <label for="typeoraccount04" class="big-radio">
+                                                                    <span>Saveings</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+                                                </ul>
+                                                <div class="tip-info hide">
+                                                    <span class="icons tip"></span> Lumpsum or Annual Payment only for the check payment method
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="border-bottom height-255">
+                                            <span class="name ver-y bold width-per-100 auto-height">Federal Tax Withholding Information</span>
+                                            <div class="typing-here bank-deposit-information">
+                                                <ul>
+                                                    <li>
+                                                        <span class="name ver-y">Federal Tax Exempt</span>
+                                                        <div class="typing-here desired-payment-frequency">
+                                                            <div class="box-radio clearfix">
+                                                                <input type="radio" id="federaltaxexempt03" name="@nameof(WithdrawalRequestModel.FederalTaxExempt)" value="true" @Html.CheckedIf(Model.FederalTaxExempt)>
+                                                                <label for="federaltaxexempt03" class="big-radio">
+                                                                    <span>Yes</span>
+                                                                </label>
+                                                                <input type="radio" id="federaltaxexempt04" name="@nameof(WithdrawalRequestModel.FederalTaxExempt)" value="false" @Html.CheckedIf(!Model.FederalTaxExempt)>
+                                                                <label for="federaltaxexempt04" class="big-radio">
+                                                                    <span>No</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="height-200">
+                                                        <span class="name ver-y name-withholding-percentage">Withholding  Percentage</span>
+                                                        <div class="input-container-left">
+                                                            @Html.CustomTextBoxFor(x => x.FederalTaxWithholdingPercentage, @class: "input percentage-type", id: "withholding-percentage02")<span class="pani">%</span>
+                                                            <label for="withholding-percentage02" class="hide">Withholding  Percentage</label>
+                                                        </div>
+                                                        <div class="typing-here withholdingpercentage">
+                                                            <div class="divider">
+                                                                <span class="txt">(Or)</span>
+                                                            </div>
+                                                            <div class="input-container-right">
+                                                                <ul>
+                                                                    <li>
+                                                                        <span class="name ver-y">Marital Status</span>
+                                                                        <div class="typing-here desired-payment-frequency">
+                                                                            <div class="box-radio clearfix">
+                                                                                <input type="radio" id="maritalstatus03" name="@nameof(WithdrawalRequestModel.MaritalStatus)" value="true" @Html.CheckedIf(Model.MaritalStatus)>
+                                                                                <label for="maritalstatus03" class="big-radio">
+                                                                                    <span>Yes</span>
+                                                                                </label>
+                                                                                <input type="radio" id="maritalstatus04" name="@nameof(WithdrawalRequestModel.MaritalStatus)" value="false" @Html.CheckedIf(!Model.MaritalStatus)>
+                                                                                <label for="maritalstatus04" class="big-radio">
+                                                                                    <span>No</span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <span class="name ver-y fl">Number  Of Allowances</span>
+                                                                        <div class="typing-here fl">
+                                                                            @Html.CustomTextBoxFor(x => x.FederalTaxNumberOfAllowances, @class: "width64", id: "number-of-allowances01")
+                                                                        </div>
+                                                                        <label for="number-of-allowances01" class="hide">Number  Of Allowances</label>
+                                                                    </li>
+                                                                    <li>
+                                                                        <span class="name ver-y fl">Additional  Withholding</span>
+                                                                        <div class="typing-here fl">
+                                                                            $@Html.CustomTextBoxFor(x => x.FederalTaxAdditionalWithholding, @class: "width124", id: "additional-withholding02")
+                                                                        </div>
+                                                                        <label for="additional-withholding02" class="hide">Additional  Withholding</label>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="border-bottom height-225">
+                                            <span class="name ver-y bold auto-height width-per-100">State of Ohio Tax Withholding Information</span>
+                                            <div class="typing-here bank-deposit-information">
+                                                <ul>
+                                                    <li>
+                                                        <span class="name ver-y">State Tax Exempt</span>
+                                                        <div class="typing-here desired-payment-frequency">
+                                                            <div class="box-radio clearfix">
+                                                                <input type="radio" id="statetaxexempt03" name="@nameof(WithdrawalRequestModel.StateTaxExempt)" value="true" @Html.CheckedIf(Model.StateTaxExempt)>
+                                                                <label for="statetaxexempt03" class="big-radio">
+                                                                    <span>Yes</span>
+                                                                </label>
+                                                                <input type="radio" id="statetaxexempt04" name="@nameof(WithdrawalRequestModel.StateTaxExempt)" value="false" @Html.CheckedIf(!Model.StateTaxExempt)>
+                                                                <label for="statetaxexempt04" class="big-radio">
+                                                                    <span>No</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="typing-here enter-payment-option clearfix">
+                                                            <div class="box-radio clearfix">
+                                                                <input type="radio" id="statetaxwithholding04" name="@nameof(WithdrawalRequestModel.StateTaxOption)" value="NumberOfAllowances" @Html.CheckedIf(Model.StateTaxOption == "NumberOfAllowances")>
+                                                                <label for="statetaxwithholding04" class="big-radio">
+                                                                    <span>Number Of Allowances</span>
+                                                                </label>
+                                                                <input type="radio" id="statetaxwithholding05" name="@nameof(WithdrawalRequestModel.StateTaxOption)" value="WithholdingAmount" @Html.CheckedIf(Model.StateTaxOption == "WithholdingAmount")>
+                                                                <label for="statetaxwithholding05" class="big-radio">
+                                                                    <span>Withholding Dollar Amount</span>
+                                                                </label>
+                                                                <input type="radio" id="statetaxwithholding06" name="@nameof(WithdrawalRequestModel.StateTaxOption)" value="WithholdingPercentage" @Html.CheckedIf(Model.StateTaxOption == "WithholdingPercentage")>
+                                                                <label for="statetaxwithholding06" class="big-radio">
+                                                                    <span>Witholding Percentage</span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="input-container">
+                                                                <div>
+                                                                    @Html.CustomTextBoxFor(x => x.StateTaxNumberOfAllowances, @class: "width64", id: "payment04")
+                                                                    <label for="payment04" class="hide">Label</label>
+                                                                </div>
+                                                                <div>
+                                                                    <span class="dollar">$</span>@Html.CustomTextBoxFor(x => x.StateTaxWithholdingAmount, @class: "disabled", id: "percent04")
+                                                                    <label for="percent04" class="hide">Label</label>
+                                                                </div>
+                                                                <div>
+                                                                    @Html.CustomTextBoxFor(x => x.StateTaxWithholdingPercentage, @class: "width64 percentage-type disabled", id: "years04")<span class="parent-one">%</span>
+                                                                    <label for="years04" class="hide">Label</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileStep2Instructions, cssClass: "hidden-xs hidden-sm")); }
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <!-- end /middle-form -->
+                        <div class="third-group mix-xy">
+                            <a href="javascript:;" class="btn-cancel mix-xy btn-previous-step">Cancel</a>
+                            <a href="javascript:;" class="btn-next mix-xy btn-next-step validate-all-positive-numeric validate-model-form">Next</a>
+                            <div class="clear"></div>
+                        </div>
+                        <!-- end /bottom-button -->
+                    </div>
+                    <!-- end /step two content -->
+                    <div class="step-n03-content step-mobile-content hide">
+                        <span class="top-black-title">Step 2 : Review</span>
+                        <!-- end /top-title -->
+                        <div class="second-group">
+                            <div class="form-order01">
+                                <div class="row">
+                                    <ul>
+                                        <li>
+                                            <span class="title">Start Withdrawal Date</span>
+                                            <span class="descr">10/01/2017</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Desired Payment Frequency</span>
+                                            <span class="descr">Monthly</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Enter Payment Option</span>
+                                            <span class="descr">Dollar Acount<em>$ 1,000.00</em></span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Gross Amount</span>
+                                            <span class="descr">$ 1,000.00</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Net Amount</span>
+                                            <span class="descr">$ 970.40</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Fund Selection</span>
+                                            <span class="descr">All Funds(Pro-Rata)</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="row">
+                                    <h5>
+                                        Bank Deposit Information
+                                    </h5>
+                                    <ul class="padding20">
+                                        <li>
+                                            <span class="title">Direct Deposit or Check</span>
+                                            <span class="descr">Direct Deposit</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Routing #</span>
+                                            <span class="descr">****6789</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Bank Account #</span>
+                                            <span class="descr">****1234</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">BankName</span>
+                                            <span class="descr">HUNTINGTON NATIONAL BANK</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Type of Account</span>
+                                            <span class="descr">Checking</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="row">
+                                    <h5>
+                                        Federal Tax Withholding Information
+                                    </h5>
+                                    <ul class="padding20">
+                                        <li>
+                                            <span class="title">Federal Tax Exempt</span>
+                                            <span class="descr">Yes</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Marital Status</span>
+                                            <span class="descr">Married</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Number Of Allowances</span>
+                                            <span class="descr">3</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Additional Withholding</span>
+                                            <span class="descr">Dollar Amount<em>$500</em></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="row">
+                                    <h5>
+                                        State Of Ohio Tax Withholding Information
+                                    </h5>
+                                    <ul class="padding20">
+                                        <li>
+                                            <span class="title">State Tax Exempt</span>
+                                            <span class="descr">Yes</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Number Of Allowances</span>
+                                            <span class="descr">3</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Additional Withholding</span>
+                                            <span class="descr">Dollar Amount<em>$500</em></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="row agree">
+                                    <h5>
+                                        Consent
+                                    </h5>
+                                    <div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                                        </p>
+                                        <input type="checkbox" id="agree-mobile" name="@nameof(WithdrawalRequestModel.AgreementAccepted)" value="true" />
+                                        <label for="agree-mobile" class="big-checkbox">
+                                            <span>I agree to Terms and conditions</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileStep3Instructions, cssClass: "hidden-xs hidden-sm")); }
+                            <div class="clear"></div>
+                        </div>
+                        <!-- end /middle-form -->
+                        <div class="third-group mix-xy">
+                            <a href="javascript:;" class="btn-cancel mix-xy">Cancel</a>
+                            <a href="javascript:;" class="btn-next mix-xy disabled">NEXT</a>
+                            <div class="clear"></div>
+                        </div>
+                        <!-- end /bottom-button -->
+                    </div>
+                    <!-- end /step-three-content -->
+                }
+                <div class="step-n04-content step-mobile-content hide">
+                    @using (Html.BeginForm("SendIdentificationCode", "Account", FormMethod.Post))
+                    {
+                        <span class="top-black-title">Step 3 : Identification Code</span>
+                        <!-- end /top-title -->
+                        <div class="second-group">
+                            <div class="content-left">
+                                <input type="hidden" name="Username" value="@ViewBag.Username" />
+                                <p class="txt">
+                                    For added security, you must authenticate your identity. Choose to receive a four
+                                    digit authorization code :
+                                </p>
+                                <div class="form-boxs clearfix">
+                                    <div class="box-radio">
+                                        <input type="radio" id="boxx13" name="SendTo" value="Email" checked="">
+                                        <label for="boxx13" class="big-radio">
+                                            <span>Send to EMail ID</span>
+                                        </label>
+                                        <div class="gray-txt">(@ViewBag.CurrentEmailMask)</div>
+                                    </div>
+                                    <!-- box radio -->
+                                    <div class="or-boxs">
+                                        (Or)
+                                    </div>
+                                    <div class="box-radio">
+                                        <input type="radio" id="boxx14" name="SendTo" value="Phone">
+                                        <label for="boxx14" class="big-radio">
+                                            <span>Send to Mobile</span>
+                                        </label>
+                                        <div class="gray-txt">(@ViewBag.CurrentPhoneNumber)</div>
+                                    </div>
+                                    <!-- box radio -->
+                                </div>
+                            </div>
+
+                            @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileStep4Instructions, cssClass: "hidden-xs hidden-sm")); }
+                            <div class="clear"></div>
+                        </div>
+                        <!-- end /middle-form -->
+                        <div class="third-group mix-xy">
+                            <a href="javascript:;" class="btn-cancel mix-xy">Cancel</a>
+                            <a href="javascript:;" class="btn-next mix-xy btn-next-step send-code-form">Send</a>
+                            <div class="clear"></div>
+                        </div>
+                        <!-- end /bottom-button -->
+                    }
+                </div>
+                <!-- end /step-one-content -->
+                <div class="step-n05-content step-mobile-content hide">
+                    @using (Html.BeginForm("ValidateIdentificationCode", "Account", FormMethod.Post))
+                    {
+                        <span class="top-black-title">Step 4 : Enter Code</span>
+                        <!-- end /top-title -->
+                        <div class="second-group">
+                            <div class="content-left">
+                                <p class="txt">
+                                    Check your Email or SMS for your 4 digit authentication code sent and enter below :
+                                </p>
+                                <div class="form-boxs clearfix center">
+                                    <div class="input-here">
+                                        @Html.CustomTextBox("Code", "Enter Code here", @class: "enter-code-input")
+                                    </div>
+                                </div>
+                            </div>
+
+                            @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileStep5Instructions, cssClass: "hidden-xs hidden-sm")); }
+                            <div class="clear"></div>
+                        </div>
+                        <!-- end /middle-form -->
+                        <div class="third-group">
+                            <a href="javascript:;" class="btn-next mix-xy btn-next-step disabled btn-submit-form-ajax validate-code-form">VERIFY</a>
+                            <div class="bottom-txt"><span class="block">Did not received the code?</span> <a href="javascript:;" class="red-link try-again-withdrawal">Try Again.</a></div>
+                            <div class="clear"></div>
+                        </div>
+                        <!-- end /bottom-button -->
+                    }
+                </div>
+                <!-- end /step-five-content -->
+                <div class="step-n06-content step-mobile-content hide">
+                    <span class="top-black-title">Completed</span>
+                    <!-- end /top-title -->
+                    <div class="second-group">
+                        <div class="form-order02">
+                            <div class="content-left">
+                                <span class="big-text">Successful!</span>
+                                <div class="group-notice">
+                                    <img src="~/Content/i/select-box.png" alt="IMG">
+                                    <p>
+                                        Your pending withdrawal request has been successfully
+                                        modified.
+                                    </p>
+                                    <p>
+                                        Your confirmation number is  :    <span class="red-link confirmation-code">746352</span>
+                                    </p>
+                                </div>
+                                <!-- end /group-notice -->
+                                <a href="@Url.Action("Withdrawals", "Account",new { withMockWithDrawals = true })" class="btn-view mix-xy">VIEW WITHDRAWALS</a>
+                            </div>
+                        </div>
+                        @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileStepCompletedInstructions, cssClass: "hidden-xs hidden-sm")); }
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /middle-form -->
+                </div>
+                <!-- end /step two content -->
+            </div>
+            <!-- end /step-more-details -->
+        </div>
+        <!-- end /step-by-step -->
+    </div>
+    <!-- end .create-tab-one -->
+</div>
+
+@section boxInstructions {
+    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileInstructions, showCloseButton: true)); }
+}

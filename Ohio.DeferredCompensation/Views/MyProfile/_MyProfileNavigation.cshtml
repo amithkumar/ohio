@@ -1,0 +1,18 @@
+﻿@model string
+
+<div class="top-multi-tab mini hidden-xs hidden-sm">
+    <ul class="cen-z">
+        <li>
+            <a href="@Url.Action("PersonalInfo", "MyProfile")" class="title mix-xy @Html.ActiveClassIf(Model == "Personal Info")">Personal Info</a>
+        </li>
+        <li>
+            <a href="@Url.Action("LoginCredentials", "MyProfile")" class="title mix-xy @Html.ActiveClassIf(Model == "Login Credentials")">Login Credentials</a>
+        </li>
+        <li>
+            <a href="@Url.Action("EDeliveryPreferences", "MyProfile")" class="title mix-xy @Html.ActiveClassIf(Model == "E-Delivery Preferences")">E-Delivery Preferences</a>
+        </li>
+        <li>
+            <a href="@Url.Action("BankInformation", "MyProfile")" class="title mix-xy @Html.ActiveClassIf(Model == "Manage Bank Information")">Manage Bank Information</a>
+        </li>
+    </ul>
+</div>

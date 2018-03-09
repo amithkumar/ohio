@@ -1,0 +1,689 @@
+﻿@model EndResultExchangeModel
+@{
+    var jss = new System.Web.Script.Serialization.JavaScriptSerializer();
+    var modelJson = jss.Serialize(Model);
+}
+<input type="hidden" id="end-result-exchange-model" value="@modelJson" />
+<div class="step-by-step request-fund hidden-xs hidden-sm hide">
+    @using (Html.BeginForm("EndResultExchangeRequest", "Account", FormMethod.Post))
+    {
+        <div class="nested-circle hol-x">
+            <ul class="desk-step">
+                <li class="step01 current">
+                    <div class="group-circle mix-xy clear-border">
+                        <img class="first-sym" src="~/Content/i/icon-exchange-type.jpg" alt="IMG">
+                        <img class="second-sym" src="~/Content/i/icon-exchange-type.jpg" alt="IMG">
+                        <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                        <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                        <span class="icons icon-v"></span>
+                    </div>
+                    <div class="group-name">
+                        <span class="name bold">Exchange Type</span>
+                    </div>
+                </li>
+                <li class="step02">
+                    <div class="group-circle mix-xy clear-border">
+                        <img class="first-sym" src="~/Content/i/icon-investment01.png" alt="IMG">
+                        <img class="second-sym" src="~/Content/i/icon-investment.png" alt="IMG">
+                        <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                        <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                        <span class="icons icon-v"></span>
+                    </div>
+                    <div class="group-name">
+                        <span class="name bold">New Investment</span>
+                    </div>
+                </li>
+                <li class="step03">
+                    <div class="group-circle mix-xy clear-border">
+                        <img class="first-sym" src="~/Content/i/seach-page01.png" alt="IMG">
+                        <img class="second-sym" src="~/Content/i/seach-page.png" alt="IMG">
+                        <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                        <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                        <span class="icons icon-v"></span>
+                    </div>
+                    <div class="group-name">
+                        <span class="name bold">Review</span>
+                    </div>
+                </li>
+            </ul>
+            <a href="javascript:;" class="click-intructions">
+                <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+            </a>
+        </div>
+        <!-- end /nested-circle -->
+        <div class="step-more-details">
+            <div class="step-content step-one-content">
+                <div class="top-title">
+                    <div class="title">Step 1 : Exchange Type</div>
+                </div>
+                <!-- end /top-title -->
+                <div class="middle-form">
+                    <div class="form-order01">
+                        <div class="box-radio">
+                            <input type="radio" id="boxx06" name="ivest02">
+                            <label for="boxx06" class="big-radio">
+                                <span>Fund Exchange</span>
+                            </label>
+                            <input type="radio" id="boxx07" name="ivest02">
+                            <label for="boxx07" class="big-radio">
+                                <span>End Result Exchange</span>
+                            </label>
+                        </div>
+                        <!-- box radio -->
+                    </div>
+                    <!-- end /form-order01 -->
+                    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopEndResultStep1Instructions, cssClass: "hidden-xs hidden-sm")); }
+                    <div class="clear"></div>
+                </div>
+                <!-- end /middle-form -->
+                <div class="bottom-button">
+                    <a href="javascript:;" class="btn-cancel mix-xy">Cancel</a>
+                    <a href="javascript:;" class="btn-next mix-xy btn-next-step">Next</a>
+                    <div class="clear"></div>
+                </div>
+                <!-- end /bottom-button -->
+            </div>
+            <!-- end /step-one-content -->
+            <div class="step-content step-two-content hide">
+                <div class="top-title">
+                    <div class="title">Step 2 : Choose New Investment</div>
+                </div>
+                <!-- end /top-title -->
+                <div class="content-edit">
+                    <div class="cover-content edit">
+                        <div class="second-content">
+                            <div class="left-content desired-allocation">
+                                <div class="report">
+                                    <div class="report02">
+                                        <img src="~/Content/i/icon-new-investment.png" alt="" />
+                                        <div class="pie-chart-dynamic hide"></div>
+                                        New Investment
+                                    </div>
+                                    <div class="report01">
+                                        <div class="pie-chart"></div> Exists Investment
+                                    </div>
+                                </div>
+                                <div class="box-auto ver-y">
+                                    <span class="title">Desired Allocation</span>
+                                </div>
+                                <!-- box auto -->
+                                <div class="content-fund">
+                                    <div class="top-c-fund">
+                                        <span class="title width33">Fund Name</span>
+                                        <span class="title right">Existing Investment</span>
+                                        <span class="title right padding-right-20">New Investment</span>
+                                    </div>
+                                    <!-- top c fund -->
+                                    <span class="topic-title">
+                                        International Stocks
+                                        <span class="icons arrow-right"></span>
+                                    </span>
+                                    <div class="box-content">
+                                        <span class="nameone">Templeton Foreign</span>
+                                        <span class="text-investment right">@Model.TempletonForeign%</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.NewTempletonForeign, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <span class="topic-title">
+                                        Small Cap Stocks
+                                        <span class="icons arrow-right"></span>
+                                    </span>
+                                    <div class="box-content">
+                                        <span class="nameone">Ohio DC Small Cap Growth</span>
+                                        <span class="text-investment right">@Model.OhioDCSmallCapGrowth%</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.NewOhioDCSmallCapGrowth, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <span class="topic-title">
+                                        Mid Cap Stocks
+                                        <span class="icons arrow-right"></span>
+                                    </span>
+                                    <div class="box-content">
+                                        <span class="nameone">Vanguard Capital Opportunity</span>
+                                        <span class="text-investment right">@Model.VanguardCapitalOpportunity%</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.NewVanguardCapitalOpportunity, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <span class="topic-title">
+                                        Large Cap Stocks
+                                        <span class="icons arrow-right"></span>
+                                    </span>
+                                    <div class="box-content">
+                                        <span class="nameone">Dodge & Cox Stocks</span>
+                                        <span class="text-investment right">@Model.DodgeAndCoxStocks%</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.NewDodgeAndCoxStocks, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <div class="box-content two">
+                                        <span class="nameone">Fidelity Contrafund</span>
+                                        <span class="text-investment right">@Model.FidelityContrafund%</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.NewFidelityContrafund, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <div class="box-content">
+                                        <span class="nameone">Fidelity Growth Company</span>
+                                        <span class="text-investment right">@Model.FidelityGrowthCompany%</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.NewFidelityGrowthCompany, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <div class="box-content two">
+                                        <span class="nameone">Ohio DC Large Cap Growth</span>
+                                        <span class="text-investment right">@Model.OhioDCLargeCapGrowth%</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.NewOhioDCLargeCapGrowth, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <span class="topic-title">
+                                        Asset allocation funds
+                                        <span class="icons arrow-right"></span>
+                                    </span>
+                                    <div class="box-content">
+                                        <span class="nameone">Lifepath 2020</span>
+                                        <span class="text-investment right">@Model.Lifepath2020%</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.NewLifepath2020, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <span class="topic-title">
+                                        Bonds
+                                        <span class="icons arrow-right"></span>
+                                    </span>
+                                    <div class="box-content">
+                                        <span class="nameone">Ohio DC Intermediate Bond</span>
+                                        <span class="text-investment right">@Model.OhioDCIntermediateBond%</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.NewOhioDCIntermediateBond, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+                                    <div class="box-content two">
+                                        <span class="nameone">Vanguard Total Bond Market Index</span>
+                                        <span class="text-investment right">@Model.VanguardTotalBondMarketIndex%</span>
+                                        <div class="input-here">
+                                            @Html.CustomTextBoxFor(x => x.NewVanguardTotalBondMarketIndex, "Enter Value", @class: "number-only")
+                                            <span class="text-percent">%</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="box-total">
+                                        <span class="percent">
+                                            <span class="title">total</span>
+                                            <span class="title right">@Model.Total.ToString("N2")%</span>
+                                            <span class="title right padding-right-20">0.00%</span>
+                                        </span>
+                                        <span class="icons error-icon"></span>
+                                        <p class="text-error">
+                                            The total percentage exceeds auto rebalancing percentage by 100%. Please adjust your percentage limited to total
+                                            100%
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- content fund -->
+                            </div>
+                            @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopEndResultStep2Instructions, cssClass: "hidden-xs hidden-sm height965")); }
+                            <div class="clear"></div>
+                        </div>
+                        <!-- second content -->
+                    </div>
+                    <!-- top content -->
+                </div>
+                <!-- cover content -->
+                <div class="bottom-button">
+                    <a href="javascript:;" class="btn-cancel mix-xy">PREVIOUS</a>
+                    <a href="javascript:;" class="btn-next mix-xy validate-all-positive-numeric">NEXT</a>
+                    <div class="clear"></div>
+                </div>
+                <!-- end /bottom-button -->
+            </div>
+            <!-- end /step-one-content -->
+            <div class="step-content step-three-content step-five-content hide">
+                <div class="top-title">
+                    <div class="title">Step 3 : Review</div>
+                </div>
+                <!-- end /top-title -->
+                <div class="content-edit">
+                    <div class="cover-content edit">
+                        <div class="second-content">
+                            <div class="left-content">
+                                <div class="left">
+                                    <div class="report width140">
+                                        <div class="pie-chart"></div> Exists Investment
+                                    </div>
+                                    <div class="box-auto ver-y">
+                                        <span class="title">EXISTING INVESTMENT</span>
+                                    </div>
+                                    <!-- box auto -->
+                                    <div class="content-fund">
+                                        <div class="top-c-fund">
+                                            <span class="percent reviewper">
+                                                <span class="title">Fund Name</span><span class="next">Percentage</span>
+                                            </span>
+                                        </div>
+                                        <!-- top c fund -->
+                                        <span class="topic-title">International Stocks</span>
+                                        <div class="box-content">
+                                            <span class="nametwo">Templeton Foreign</span><span class="right">@(Model.TempletonForeign?.ToString("N2"))%</span>
+                                        </div>
+                                        <span class="topic-title">Small Cap Stocks</span>
+                                        <div class="box-content">
+                                            <span class="nametwo">Ohio DC Large Cap Growth</span> <span class="right">@(Model.OhioDCLargeCapGrowth?.ToString("N2"))%</span>
+                                        </div>
+                                        <span class="topic-title">Mid Cap Stocks</span>
+                                        <div class="box-content">
+                                            <span class="nametwo">Vanguard Capital Opportunity</span><span class="right">@(Model.VanguardCapitalOpportunity?.ToString("N2"))%</span>
+                                        </div>
+                                    </div>
+                                    <!-- content fund -->
+                                </div>
+                                <div class="right">
+                                    <div class="report width140">
+                                        <div class="pie-chart"></div> New Investment
+                                    </div>
+                                    <div class="box-auto ver-y">
+                                        <span class="title">NEW INVESTMENT</span>
+                                    </div>
+                                    <!-- box auto -->
+                                    <div class="content-fund reviewfund">
+                                        <div class="top-c-fund">
+                                            <span class="percent reviewper">
+                                                <span class="title">Fund Name</span><span class="next">Percentage</span>
+                                            </span>
+                                        </div>
+                                        <!-- top c fund -->
+                                        <span class="topic-title">International Stocks</span>
+                                        <div class="box-content">
+                                            <span class="nametwo">Templeton Foreign</span><span class="right">30.00%</span>
+                                        </div>
+                                        <span class="topic-title">Small Cap Stocks</span>
+                                        <div class="box-content">
+                                            <span class="nametwo">Ohio DC Large Cap Growth</span> <span class="right">40.00%</span>
+                                        </div>
+                                        <span class="topic-title">Mid Cap Stocks</span>
+                                        <div class="box-content">
+                                            <span class="nametwo">Vanguard Capital Opportunity</span> <span class="right">30.00%</span>
+                                        </div>
+                                    </div>
+                                    <!-- content fund -->
+                                </div>
+                            </div>
+                            @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopEndResultStep3Instructions, cssClass: "hidden-xs hidden-sm")); }
+                            <div class="clear"></div>
+                        </div>
+                        <!-- second content -->
+                    </div>
+                    <!-- top content -->
+                </div>
+                <!-- cover content -->
+                <div class="bottom-button">
+                    <a href="javascript:;" class="btn-cancel mix-xy btn-previous-step">Previous</a>
+                    <div class="right-btn">
+                        <a href="javascript:;" class="btn-next mix-xy btn-next-step btn-submit-form-ajax">FINISH AND CONFIRM</a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!-- end /bottom-button -->
+            </div>
+            <!-- end /step-one-content -->
+            <div class="step-content step-completed-content hide">
+                <div class="top-title">
+                    <div class="title">Completed</div>
+                </div>
+                <!-- end /top-title -->
+                <div class="middle-form">
+                    <div class="form-order02">
+                        <div class="content-left">
+                            <span class="big-text">Successful!</span>
+                            <div class="group-notice">
+                                <img src="~/Content/i/select-box.png" alt="IMG">
+                                <p>
+                                    Your Fund Investments Reallocation has been
+                                    successfully created.
+                                </p>
+                            </div>
+                            <!-- end /group-notice -->
+                            <a href="@Url.Action("FundExchange", "Account")" class="btn-view mix-xy">VIEW FUND EXCHANGES</a>
+                        </div>
+                    </div>
+                    <!-- end /form-order01 -->
+                    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopEndResultStepCompletedInstructions, cssClass: "hidden-xs hidden-sm")); }
+                    <div class="clear"></div>
+                </div>
+                <!-- end /middle-form -->
+            </div>
+            <!-- end /step two content -->
+        </div>
+        <!-- end /step-more-details -->
+    }
+</div>
+<!-- end /step-by-step -->
+
+<div class="step-by-step-mobi request-fund-mobi hidden-md hidden-lg hide">
+    @using (Html.BeginForm("EndResultExchangeRequest", "Account", FormMethod.Post))
+    {
+        <div class="nested-circle mix-xy">
+            <ul>
+                <li class="mix-xy current">
+                    <span class="number">1</span>
+                    <span class="icons"></span>
+                </li>
+                <li class="mix-xy ">
+                    <span class="number">2</span>
+                    <span class="icons"></span>
+                </li>
+                <li class="mix-xy">
+                    <span class="number">3</span>
+                    <span class="icons"></span>
+                </li>
+            </ul>
+            <a href="javascript:;" class="click-intructions">
+                <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+            </a>
+        </div>
+        <!-- end /nested-circle -->
+        <div class="step-details">
+            <div class="step-n01-content step-mobile-content">
+                <span class="top-black-title">Step 1 : Exchange Type</span>
+                <div class="second-group">
+                    <ul class="choose-style">
+                        <li>
+                            <input type="radio" id="cbox25" name="style">
+                            <label for="cbox25" class="tiny-circle">
+                                <span>Fund Exchange</span>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="radio" id="cbox26" name="style">
+                            <label for="cbox26" class="tiny-circle">
+                                <span>End Result Exchange</span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <!-- end /second-group -->
+                <div class="third-group mix-xy">
+                    <a href="javascript:;" class="btn-cancel mix-xy">Cancel</a>
+                    <a href="javascript:;" class="btn-next mix-xy btn-next-step">Next</a>
+                    <div class="clear"></div>
+                </div>
+                <!-- end /third-group -->
+            </div>
+            <!-- end /step-n01-content -->
+            <div class="step-n06-content step-mobile-content hide">
+                <span class="top-black-title">Step 2 : End Result Exchange</span>
+                <!-- end /top-title -->
+                <div class="second-group">
+                    <div class="left-content desired-allocation">
+                        <div class="report">
+                            <div class="report01">
+                                <div class="pie-chart"></div>
+                                <span class="txt">Exists Investment</span>
+                            </div>
+                            <div class="report02">
+                                <img src="~/Content/i/icon-new-investment.png" alt="" />
+                                <div class="pie-chart-dynamic hide"></div>
+                                <span class="txt">New Investment</span>
+                            </div>
+                        </div>
+                        <div class="content-fund">
+                            <div class="top-c-fund">
+                                <span class="title right">Existing Investment</span>
+                                <span class="title right padding-right-20">New Investment</span>
+                            </div>
+                            <!-- top c fund -->
+                            <span class="topic-title">
+                                International Stocks
+                                <span class="icons arrow-right"></span>
+                            </span>
+                            <div class="box-content">
+                                <span class="nameone">Templeton Foreign<span class="text-investment right">@Model.TempletonForeign%</span></span>
+                                <div class="input-here">
+                                    @Html.CustomTextBoxFor(x => x.NewTempletonForeign, "Enter Value", @class: "number-only")
+                                    <span class="text-percent">%</span>
+                                </div>
+                            </div>
+                            <span class="topic-title">
+                                Small Cap Stocks
+                                <span class="icons arrow-right"></span>
+                            </span>
+                            <div class="box-content">
+                                <span class="nameone">Ohio DC Small Cap Growth<span class="text-investment right">@Model.OhioDCSmallCapGrowth%</span></span>
+                                <div class="input-here">
+                                    @Html.CustomTextBoxFor(x => x.NewOhioDCSmallCapGrowth, "Enter Value", @class: "number-only")
+                                    <span class="text-percent">%</span>
+                                </div>
+                            </div>
+                            <span class="topic-title">
+                                Mid Cap Stocks
+                                <span class="icons arrow-right"></span>
+                            </span>
+                            <div class="box-content">
+                                <span class="nameone">Vanguard Capital Opportunity<span class="text-investment right">@Model.VanguardCapitalOpportunity%</span></span>
+                                <div class="input-here">
+                                    @Html.CustomTextBoxFor(x => x.NewVanguardCapitalOpportunity, "Enter Value", @class: "number-only")
+                                    <span class="text-percent">%</span>
+                                </div>
+                            </div>
+                            <span class="topic-title">
+                                Large Cap Stocks
+                                <span class="icons arrow-right"></span>
+                            </span>
+                            <div class="box-content">
+                                <span class="nameone">Dodge & Cox Stocks<span class="text-investment right">@Model.DodgeAndCoxStocks%</span></span>
+                                <div class="input-here">
+                                    @Html.CustomTextBoxFor(x => x.NewDodgeAndCoxStocks, "Enter Value", @class: "number-only")
+                                    <span class="text-percent">%</span>
+                                </div>
+                            </div>
+                            <div class="box-content two">
+                                <span class="nameone">Fidelity Contrafund<span class="text-investment right">@Model.FidelityContrafund%</span></span>
+                                <div class="input-here">
+                                    @Html.CustomTextBoxFor(x => x.NewFidelityContrafund, "Enter Value", @class: "number-only")
+                                    <span class="text-percent">%</span>
+                                </div>
+                            </div>
+                            <div class="box-content">
+                                <span class="nameone">Fidelity Growth Company<span class="text-investment right">@Model.FidelityGrowthCompany%</span></span>
+                                <div class="input-here">
+                                    @Html.CustomTextBoxFor(x => x.NewFidelityGrowthCompany, "Enter Value", @class: "number-only")
+                                    <span class="text-percent">%</span>
+                                </div>
+                            </div>
+                            <div class="box-content two">
+                                <span class="nameone">Ohio DC Large Cap Growth<span class="text-investment right">@Model.OhioDCLargeCapGrowth%</span></span>
+                                <div class="input-here">
+                                    @Html.CustomTextBoxFor(x => x.NewOhioDCLargeCapGrowth, "Enter Value", @class: "number-only")
+                                    <span class="text-percent">%</span>
+                                </div>
+                            </div>
+                            <span class="topic-title">
+                                Asset allocation funds
+                                <span class="icons arrow-right"></span>
+                            </span>
+                            <div class="box-content">
+                                <span class="nameone">Lifepath 2020<span class="text-investment right">@Model.Lifepath2020%</span></span>
+                                <div class="input-here">
+                                    @Html.CustomTextBoxFor(x => x.NewLifepath2020, "Enter Value", @class: "number-only")
+                                    <span class="text-percent">%</span>
+                                </div>
+                            </div>
+                            <span class="topic-title">
+                                Bonds
+                                <span class="icons arrow-right"></span>
+                            </span>
+                            <div class="box-content">
+                                <span class="nameone">Ohio DC Intermediate Bond<span class="text-investment right">@Model.OhioDCIntermediateBond%</span></span>
+                                <div class="input-here">
+                                    @Html.CustomTextBoxFor(x => x.NewOhioDCIntermediateBond, "Enter Value", @class: "number-only")
+                                    <span class="text-percent">%</span>
+                                </div>
+                            </div>
+                            <div class="box-content two">
+                                <span class="nameone">Vanguard Total Bond Market Index<span class="text-investment right">@Model.VanguardTotalBondMarketIndex%</span></span>
+                                <div class="input-here">
+                                    @Html.CustomTextBoxFor(x => x.NewVanguardTotalBondMarketIndex, "Enter Value", @class: "number-only")
+                                    <span class="text-percent">%</span>
+                                </div>
+                            </div>
+                            <span class="topic-title">total</span>
+                            <div class="box-total">
+                                <div class="percent">
+                                    <span class="title">@Model.Total.ToString("N2")%</span>
+                                    <span class="value">0.00%</span>
+                                </div>
+                                <span class="icons error-icon"></span>
+                                <p class="text-error">
+                                    The total percentage exceeds auto rebalancing percentage by 100%. Please adjust your percentage limited to total
+                                    100%
+                                </p>
+                            </div>
+                        </div>
+                        <!-- content fund -->
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!-- end /middle-form -->
+                <div class="third-group mix-xy">
+                    <a href="javascript:;" class="btn-cancel mix-xy btn-previous-step">Previous</a>
+                    <a href="javascript:;" class="btn-next mix-xy btn-next-step validate-all-positive-numeric">Next</a>
+                    <div class="clear"></div>
+                </div>
+                <!-- end /bottom-button -->
+            </div>
+            <!-- end /step two content -->
+            <div class="step-n07-content step-mobile-content hide">
+                <span class="top-black-title">Step 3 : Review</span>
+                <!-- end /top-title -->
+                <div class="content-edit second-group">
+                    <div class="cover-content edit">
+                        <div class="second-content">
+                            <div class="left-content">
+                                <div class="left">
+                                    <div class="report width140">
+                                        <div class="report01">
+                                            <div class="pie-chart"></div> <span class="txt">Exists Investment</span>
+                                        </div>
+                                        <div class="report02">
+                                            <div class="pie-chart"></div> <span class="txt">New Investment</span>
+                                        </div>
+                                    </div>
+                                    <div class="box-auto ver-y">
+                                        <span class="title">EXISTING INVESTMENT</span>
+                                    </div>
+                                    <!-- box auto -->
+                                    <div class="content-fund">
+                                        <div class="top-c-fund">
+                                            <span class="percent reviewper">
+                                                <span class="title">Fund Name</span><span class="next">Percentage</span>
+                                            </span>
+                                        </div>
+                                        <!-- top c fund -->
+                                        <span class="topic-title">International Stocks</span>
+                                        <div class="box-content">
+                                            <span class="nametwo">Templeton Foreign</span><span class="right">@(Model.TempletonForeign?.ToString("N2"))%</span>
+                                        </div>
+                                        <span class="topic-title">Small Cap Stocks</span>
+                                        <div class="box-content">
+                                            <span class="nametwo">Ohio DC Large Cap Growth</span> @(Model.OhioDCLargeCapGrowth?.ToString("N2"))%
+                                        </div>
+                                        <span class="topic-title">Mid Cap Stocks</span>
+                                        <div class="box-content">
+                                            <span class="nametwo">Vanguard Capital Opportunity</span><span class="right">@(Model.VanguardCapitalOpportunity?.ToString("N2"))%</span>
+                                        </div>
+                                    </div>
+                                    <!-- content fund -->
+                                </div>
+                                <div class="right">
+                                    <div class="box-auto ver-y">
+                                        <span class="title">NEW INVESTMENT</span>
+                                    </div>
+                                    <!-- box auto -->
+                                    <div class="content-fund reviewfund">
+                                        <div class="top-c-fund">
+                                            <span class="percent reviewper">
+                                                <span class="title">Fund Name</span><span class="next">Percentage</span>
+                                            </span>
+                                        </div>
+                                        <!-- top c fund -->
+                                        <span class="topic-title">International Stocks</span>
+                                        <div class="box-content">
+                                            <span class="nametwo">Templeton Foreign</span><span class="right">30.00%</span>
+                                        </div>
+                                        <span class="topic-title">Small Cap Stocks</span>
+                                        <div class="box-content">
+                                            <span class="nametwo">Ohio DC Large Cap Growth</span> <span class="right">40.00%</span>
+                                        </div>
+                                        <span class="topic-title">Mid Cap Stocks</span>
+                                        <div class="box-content">
+                                            <span class="nametwo">Vanguard Capital Opportunity</span> <span class="right">30.00%</span>
+                                        </div>
+                                    </div>
+                                    <!-- content fund -->
+                                </div>
+                            </div>
+                            @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileEndResultStep3Instructions, cssClass: "hidden-xs hidden-sm")); }
+                            <div class="clear"></div>
+                        </div>
+                        <!-- second content -->
+                    </div>
+                    <!-- top content -->
+                </div>
+                <!-- cover content -->
+                <div class="third-group mix-xy">
+                    <a href="javascript:;" class="btn-next mix-xy btn-next-step btn-submit-form-ajax">FINISH AND CONFIRM</a>
+                    <a href="javascript:;" class="btn-cancel mix-xy btn-previous-step">Previous</a>
+                    <div class="clear"></div>
+                </div>
+                <!-- end /bottom-button -->
+            </div>
+            <!-- end .step-n05 -->
+            <div class="step-n08-content step-mobile-content hide">
+                <span class="top-black-title">Completed</span>
+                <!-- end /top-title -->
+                <div class="second-group content-edit">
+                    <div class="cover-content edit">
+                        <div class="second-content">
+                            <div class="content-left">
+                                <span class="big-text">Successful!</span>
+                                <div class="group-notice">
+                                    <img src="~/Content/i/select-box.png" alt="IMG">
+                                    <p>
+                                        Your Fund Investments Reallocation has been
+                                        successfully created.
+                                    </p>
+                                </div>
+                                <!-- end /group-notice -->
+                            </div>
+                            @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileEndResultStepCompletedInstructions, cssClass: "hidden-xs hidden-sm")); }
+                            <div class="clear"></div>
+                        </div>
+                        <!-- second content -->
+                    </div>
+                    <!-- top content -->
+                </div>
+                <!-- second content -->
+                <div class="third-group mix-xy">
+                    <a href="@Url.Action("FundExchange", "Account")" class="btn-next mix-xy">Okay</a>
+                    <div class="clear"></div>
+                </div>
+                <!-- end /bottom-button -->
+            </div>
+            <!-- end /step-n04-content -->
+        </div>
+        <!-- end /step-details -->
+    }
+</div>
+<!-- end /step-by-step-mobi -->

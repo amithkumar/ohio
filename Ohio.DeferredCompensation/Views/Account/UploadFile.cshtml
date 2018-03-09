@@ -1,0 +1,143 @@
+﻿@model UploadFileModel
+@{
+    ViewBag.Title = "Upload Files";
+    ViewBag.AtiveTab = NavigationTab.Home;
+    ViewBag.IsLoggedIn = true;
+}
+
+@section scripts {
+    <script src="~/bower_components/jquery-knob/js/jquery.knob.js"></script>
+    <script src="~/bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+    <script src="~/bower_components/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+    <script src="~/bower_components/blueimp-file-upload/js/jquery.fileupload.js"></script>
+    <script src="~/bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/bower_components/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/bower_components/jquery-form/dist/jquery.form.min.js"></script>
+}
+
+<div class="upload-file-page">
+    @{ Html.RenderPartial("_TopIdentifyPanel", new TopIdentityPanelModel(fixSpacing: true)); }
+    <div class="bottom-primary-content">
+        <div class="title-n-button">
+            <div class="bold-title ver-y">
+                <a href="@Url.Action("Beneficiaries", "Account")" class="click-back">
+                    <span class="icons row-back"></span>
+                    <span class="title text-red">File Manager</span>
+                </a>
+                <span class="text-title">Upload</span>
+            </div>
+            <div class="bold-title-completed ver-y hide">
+                <span class="title-completed">Completed</span>
+            </div>
+            <a href="javascript:;" class="click-intructions">
+                <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+            </a>
+        </div>
+        <!-- end /title-n-button -->
+        <div class="group-content upload-box">
+            <div class="top-content">
+                <h1>Upload File</h1>
+            </div>
+            <div class="bottom-content">
+                <div class="group-content-bottom">
+                    <div class="content-left">
+                        <div class="file-upload">
+                            <span class="title-text">File</span>
+                            <form class="group-box" id="fileupload" method="post" action="@Url.Action("UploadFiles")" enctype="multipart/form-data">
+                                <div class="box-upload">
+                                    <a href="javascript:;" class="click-me mix-xy" id="drop-area">
+                                        <div>
+                                            <img src="~/Content/i/icons-upload.png" alt="IMG">
+                                            <p class="text-drag">Drag &amp; drop your file here or browse files to upload</p>
+                                        </div>
+                                    </a>
+                                    <div class="content-progress">
+                                        <ul></ul>
+                                    </div>
+                                </div>
+                                <div class="box-browser">
+                                    <input type="text" title="Text input" class="txt-filename" disabled>
+                                    <a href="javascript:;" class="btn-browser mix-xy">
+                                        <span class="name">Browser</span>
+                                    </a>
+                                    <input type="file" name="upl" title="Text input" class="hide" multiple>
+                                    <div class="clear"></div>
+                                </div>
+                            </form>
+                        </div>
+
+                        @using (Html.BeginForm("UploadFile", "Account", FormMethod.Post, new { id = "file-form" }))
+                        {
+                            <div class="document-type">
+                                <span class="title-text">Document Type</span>
+                                <div class="group-box">
+                                    <div class="ddown-here">
+                                        <select class="ddown-select" title="Numbers" name="DocumentType">
+                                            <option selected="selected">Select</option>
+                                            @foreach (string type in ViewBag.DocumentTypes)
+                                            {
+                                                <option value="@type">@type</option>
+                                            }
+                                        </select>
+                                        <span class="icons icons-down"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comments">
+                                <span class="title-text">Comments</span>
+                                <div class="group-box">
+                                    <div class="ddown-here">
+                                        @Html.CustomTextAreaFor(x => x.Comments, "Enter your message here")
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                    <!-- end /content-left -->
+                    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopInstructions)); }
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <!-- end /bottom-content -->
+            <div class="group-btn">
+                <a href="@Url.Action("Manager", "Account")" class="btn-click btn-cancel mix-xy">
+                    <span class="name">Cancel</span>
+                </a>
+                <a href="javascript:;" class="btn-click btn-upload mix-xy">
+                    <span class="name">Upload</span>
+                </a>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <!-- end /upload-box -->
+        <div class="group-content succeed-box hide">
+            <div class="top-content">
+                <h1>Completed</h1>
+            </div>
+            <div class="bottom-content">
+                <div class="group-content-bottom">
+                    <div class="content-left">
+                        <span class="big-text">Successful!</span>
+                        <div class="group-notice">
+                            <img src="~/Content/i/select-box.png" alt="IMG">
+                            <p>Your file has been successfull uploaded in the system!</p>
+                        </div>
+                        <!-- end /group-notice -->
+                        <a href="@Url.Action("Manager", "Account")" class="btn-ok mix-xy">Okay</a>
+                    </div>
+                    <!-- end /content-left -->
+                    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopInstructions)); }
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <!-- end /bottom-content -->
+        </div>
+        <!-- end /upload-box -->
+    </div>
+    <!-- end /bottom-primary-content -->
+</div>
+
+@section boxInstructions {
+    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileInstructions, showCloseButton: true)); }
+}

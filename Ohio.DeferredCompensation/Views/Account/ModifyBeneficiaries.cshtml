@@ -1,0 +1,522 @@
+﻿@{
+    ViewBag.Title = "Beneficiaries";
+    ViewBag.AtiveTab = NavigationTab.Home;
+    ViewBag.IsLoggedIn = true;
+}
+
+<div class="modify-beneficiaries-page">
+    @{ Html.RenderPartial("_TopIdentifyPanel", new TopIdentityPanelModel()); }
+    @{ Html.RenderPartial("_SubNavigation", "Beneficiaries"); }
+    <div class="bottom-primary-content">
+        <div class="title-n-button">
+            <div class="bold-title ver-y">
+                <a href="@Url.Action("Beneficiaries", "Account")" class="click-back">
+                    <span class="icons row-back"></span>
+                    <span class="title text-red">Beneficiaries</span>
+                </a>
+                <span class="text-title">Modify Beneficiaries</span>
+            </div>
+        </div>
+        <!-- end /title-n-button -->
+        <div class="group-box">
+            <div class="bottom-content">
+                <div class="group-box-content">
+                    <div class="box-add primary-beneficiary">
+                        <div class="top-add">
+                            <span class="text">Primary Beneficiary</span>
+                            <a href="javascript:;" class="click-add">+ Add More</a>
+                        </div>
+                        <!-- top add -->
+                        <div class="group-table">
+                            <div class="list-table">
+                                <div class="second-add">
+                                    <span class="text">Beneficiary 1</span>
+                                    <button class="icons click-remove"></button>
+                                </div>
+                                <!-- second add -->
+                                <div class="item-table">
+                                    <div class="add-select">
+                                        <ul class="list-add">
+                                            <li>
+                                                <div class="first-select">
+                                                    <span class="text">Name</span>
+                                                    <div class="input-here">
+                                                        <input type="text" placeholder="Enter Name" title="save the file" value="Monica Geller">
+                                                    </div>
+                                                </div>
+                                                <!-- end /first-select -->
+                                            </li>
+                                            <li>
+                                                <div class="first-select">
+                                                    <span class="text">Relationship</span>
+                                                    <div class="input-here ddown-here big-text">
+                                                        <select name="select" class="ddown-select" title="save the file">
+                                                            <option>Select</option>
+                                                            <option selected="selected">Spouse</option>
+                                                            <option>Father</option>
+                                                            <option>Brother</option>
+                                                            <option>Nephew</option>
+                                                            <option>Child</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!-- end /first-select -->
+                                            </li>
+                                            <li>
+                                                <div class="first-select text-ssn">
+                                                    <span class="text">SSN</span>
+                                                    <div class="input-here">
+                                                        <input type="text" placeholder="Enter SSN" title="save the file" value="023528752">
+                                                    </div>
+                                                </div>
+                                                <!-- end /first-select -->
+                                            </li>
+                                            <li>
+                                                <div class="first-select">
+                                                    <span class="text">Date of Birth</span>
+                                                    <div class="input-here date-birth">
+                                                        <input class="datepicker-birth" type="text" placeholder="dd/mm/yy" title="save the file" value="06/05/1985">
+                                                        <button class="icons select-calculator"></button>
+                                                    </div>
+                                                </div>
+                                                <!-- end /first-select -->
+                                            </li>
+                                        </ul>
+                                        <!-- left add -->
+                                    </div>
+                                    <!-- end /add-select -->
+                                    <div class="group-select-right">
+                                        <div class="number-percent ver-y">
+                                            <span class="text">Percentage (%)</span>
+                                            <div class="input-here">
+                                                <input type="text" title="save the file" value="45%">
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <!-- end /number-per -->
+                                        <div class="note-text">
+                                            <p>
+                                                <span>Note</span> : Total percentage mus be equal to 100% copy
+                                            </p>
+                                        </div>
+                                        <!-- end /note-text -->
+                                    </div>
+                                    <!-- end /group-select-right -->
+                                    <div class="clear"></div>
+                                </div>
+                                <!-- end /item-table -->
+                            </div>
+                            <!-- list-table -->
+                            <div class="list-table">
+                                <div class="second-add">
+                                    <span class="text">Beneficiary 2</span>
+                                    <button class="icons click-remove"></button>
+                                </div>
+                                <!-- second add -->
+                                <div class="item-table">
+                                    <div class="add-select">
+                                        <ul class="list-add">
+                                            <li>
+                                                <div class="first-select">
+                                                    <span class="text">Name</span>
+                                                    <div class="input-here">
+                                                        <input type="text" placeholder="Enter Name" title="save the file" value="Rechel Greene">
+                                                    </div>
+                                                </div>
+                                                <!-- end /first-select -->
+                                            </li>
+                                            <li>
+                                                <div class="first-select">
+                                                    <span class="text">Relationship</span>
+                                                    <div class="input-here ddown-here big-text">
+                                                        <select name="select" class="ddown-select" title="save the file">
+                                                            <option>Select</option>
+                                                            <option>Spouse</option>
+                                                            <option selected="selected">Father</option>
+                                                            <option>Brother</option>
+                                                            <option>Nephew</option>
+                                                            <option>Child</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!-- end /first-select -->
+                                            </li>
+                                            <li>
+                                                <div class="first-select text-ssn">
+                                                    <span class="text">SSN</span>
+                                                    <div class="input-here">
+                                                        <input type="text" placeholder="Enter SSN" title="save the file" value="023528752">
+                                                    </div>
+                                                </div>
+                                                <!-- end /first-select -->
+                                            </li>
+                                            <li>
+                                                <div class="first-select">
+                                                    <span class="text">Date of Birth</span>
+                                                    <div class="input-here date-birth">
+                                                        <input class="datepicker-birth" type="text" placeholder="dd/mm/yy" title="save the file" value="06/05/1985">
+                                                        <button class="icons select-calculator"></button>
+                                                    </div>
+                                                </div>
+                                                <!-- end /first-select -->
+                                            </li>
+                                        </ul>
+                                        <!-- left add -->
+                                    </div>
+                                    <!-- end /add-select -->
+                                    <div class="group-select-right">
+                                        <div class="number-percent ver-y">
+                                            <span class="text">Percentage (%)</span>
+                                            <div class="input-here">
+                                                <input type="text" title="save the file" value="45%">
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <!-- end /number-per -->
+                                        <div class="note-text">
+                                            <p>
+                                                <span>Note</span> : Total percentage mus be equal to 100% copy
+                                            </p>
+                                        </div>
+                                        <!-- end /note-text -->
+                                    </div>
+                                    <!-- end /group-select-right -->
+                                    <div class="clear"></div>
+                                </div>
+                                <!-- end /item-table -->
+                            </div>
+                            <!-- list-table -->
+                            <div class="list-table">
+                                <div class="second-add">
+                                    <span class="text">Beneficiary 3</span>
+                                    <button class="icons click-remove"></button>
+                                </div>
+                                <!-- second add -->
+                                <div class="item-table">
+                                    <div class="add-select">
+                                        <ul class="list-add">
+                                            <li>
+                                                <div class="first-select">
+                                                    <span class="text">Name</span>
+                                                    <div class="input-here">
+                                                        <input type="text" placeholder="Enter Name" title="save the file" value="Stuart Mcgrahill">
+                                                    </div>
+                                                </div>
+                                                <!-- end /first-select -->
+                                            </li>
+                                            <li>
+                                                <div class="first-select">
+                                                    <span class="text">Relationship</span>
+                                                    <div class="input-here ddown-here big-text">
+                                                        <select name="select" class="ddown-select" title="save the file">
+                                                            <option>Select</option>
+                                                            <option>Spouse</option>
+                                                            <option>Father</option>
+                                                            <option selected="selected">Brother</option>
+                                                            <option>Nephew</option>
+                                                            <option>Child</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!-- end /first-select -->
+                                            </li>
+                                            <li>
+                                                <div class="first-select text-ssn">
+                                                    <span class="text">SSN</span>
+                                                    <div class="input-here">
+                                                        <input type="text" placeholder="Enter SSN" title="save the file" value="023528752">
+                                                    </div>
+                                                </div>
+                                                <!-- end /first-select -->
+                                            </li>
+                                            <li>
+                                                <div class="first-select">
+                                                    <span class="text">Date of Birth</span>
+                                                    <div class="input-here date-birth">
+                                                        <input class="datepicker-birth" type="text" placeholder="dd/mm/yy" title="save the file" value="06/05/1985">
+                                                        <button class="icons select-calculator"></button>
+                                                    </div>
+                                                </div>
+                                                <!-- end /first-select -->
+                                            </li>
+                                        </ul>
+                                        <!-- left add -->
+                                    </div>
+                                    <!-- end /add-select -->
+                                    <div class="group-select-right">
+                                        <div class="number-percent ver-y">
+                                            <span class="text">Percentage (%)</span>
+                                            <div class="input-here">
+                                                <input type="text" title="save the file" value="45%">
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <!-- end /number-per -->
+                                        <div class="note-text">
+                                            <p>
+                                                <span>Note</span> : Total percentage mus be equal to 100% copy
+                                            </p>
+                                        </div>
+                                        <!-- end /note-text -->
+                                    </div>
+                                    <!-- end /group-select-right -->
+                                    <div class="clear"></div>
+                                </div>
+                                <!-- end /item-table -->
+                            </div>
+                            <!-- list-table -->
+                        </div>
+                        <!-- group-table -->
+                    </div>
+                    <!-- end /box-add -->
+                    <div class="box-add contingent-beneficiaries">
+                        <div class="top-add">
+                            <span class="text">Contingent Beneficiaries</span>
+                            <a href="javascript:;" class="click-add">+ Add More</a>
+                        </div>
+                        <!-- top add -->
+                        <div class="group-table">
+                            <div class="list-table">
+                                <div class="second-add">
+                                    <span class="text">Beneficiary 1</span>
+                                    <button class="icons click-remove"></button>
+                                </div>
+                                <!-- second add -->
+                                <div class="item-table">
+                                    <div class="add-select">
+                                        <ul class="list-add">
+                                            <li>
+                                                <div class="first-select">
+                                                    <span class="text">Name</span>
+                                                    <div class="input-here">
+                                                        <input type="text" placeholder="Enter Name" title="save the file" value="Shane Watson">
+                                                    </div>
+                                                </div>
+                                                <!-- end /first-select -->
+                                            </li>
+                                            <li>
+                                                <div class="first-select">
+                                                    <span class="text">Relationship</span>
+                                                    <div class="input-here ddown-here big-text">
+                                                        <select name="select" class="ddown-select" title="save the file">
+                                                            <option>Select</option>
+                                                            <option>Spouse</option>
+                                                            <option>Father</option>
+                                                            <option>Brother</option>
+                                                            <option selected="selected">Nephew</option>
+                                                            <option>Child</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!-- end /first-select -->
+                                            </li>
+                                            <li>
+                                                <div class="first-select text-ssn">
+                                                    <span class="text">SSN</span>
+                                                    <div class="input-here">
+                                                        <input type="text" placeholder="Enter SSN" title="save the file" value="023528752">
+                                                    </div>
+                                                </div>
+                                                <!-- end /first-select -->
+                                            </li>
+                                            <li>
+                                                <div class="first-select">
+                                                    <span class="text">Date of Birth</span>
+                                                    <div class="input-here date-birth">
+                                                        <input class="datepicker-birth" type="text" placeholder="dd/mm/yy" title="save the file" value="06/05/1985">
+                                                        <button class="icons select-calculator"></button>
+                                                    </div>
+                                                </div>
+                                                <!-- end /first-select -->
+                                            </li>
+                                        </ul>
+                                        <!-- left add -->
+                                    </div>
+                                    <!-- end /add-select -->
+                                    <div class="group-select-right">
+                                        <div class="number-percent ver-y">
+                                            <span class="text">Percentage (%)</span>
+                                            <div class="input-here">
+                                                <input type="text" title="save the file" value="45%">
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <!-- end /number-per -->
+                                        <div class="note-text">
+                                            <p>
+                                                <span>Note</span> : Total percentage mus be equal to 100% copy
+                                            </p>
+                                        </div>
+                                        <!-- end /note-text -->
+                                    </div>
+                                    <!-- end /group-select-right -->
+                                    <div class="clear"></div>
+                                </div>
+                                <!-- end /item-table -->
+                            </div>
+                            <!-- list-table -->
+                            <div class="list-table">
+                                <div class="second-add">
+                                    <span class="text">Beneficiary 2</span>
+                                    <button class="icons click-remove"></button>
+                                </div>
+                                <!-- second add -->
+                                <div class="item-table">
+                                    <div class="add-select">
+                                        <ul class="list-add">
+                                            <li>
+                                                <div class="first-select">
+                                                    <span class="text">Name</span>
+                                                    <div class="input-here">
+                                                        <input type="text" placeholder="Enter Name" title="save the file" value="Priyanka Mano">
+                                                    </div>
+                                                </div>
+                                                <!-- end /first-select -->
+                                            </li>
+                                            <li>
+                                                <div class="first-select">
+                                                    <span class="text">Relationship</span>
+                                                    <div class="input-here ddown-here big-text">
+                                                        <select name="select" class="ddown-select" title="save the file">
+                                                            <option>Select</option>
+                                                            <option>Spouse</option>
+                                                            <option>Father</option>
+                                                            <option>Brother</option>
+                                                            <option>Nephew</option>
+                                                            <option selected="selected">Child</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!-- end /first-select -->
+                                            </li>
+                                            <li>
+                                                <div class="first-select text-ssn">
+                                                    <span class="text">SSN</span>
+                                                    <div class="input-here">
+                                                        <input type="text" placeholder="Enter SSN" title="save the file" value="023528752">
+                                                    </div>
+                                                </div>
+                                                <!-- end /first-select -->
+                                            </li>
+                                            <li>
+                                                <div class="first-select">
+                                                    <span class="text">Date of Birth</span>
+                                                    <div class="input-here date-birth">
+                                                        <input class="datepicker-birth" type="text" placeholder="dd/mm/yy" title="save the file" value="06/05/1985">
+                                                        <button class="icons select-calculator"></button>
+                                                    </div>
+                                                </div>
+                                                <!-- end /first-select -->
+                                            </li>
+                                        </ul>
+                                        <!-- left add -->
+                                    </div>
+                                    <!-- end /add-select -->
+                                    <div class="group-select-right">
+                                        <div class="number-percent ver-y">
+                                            <span class="text">Percentage (%)</span>
+                                            <div class="input-here">
+                                                <input type="text" title="save the file" value="45%">
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <!-- end /number-per -->
+                                        <div class="note-text">
+                                            <p>
+                                                <span>Note</span> : Total percentage mus be equal to 100% copy
+                                            </p>
+                                        </div>
+                                        <!-- end /note-text -->
+                                    </div>
+                                    <!-- end /group-select-right -->
+                                    <div class="clear"></div>
+                                </div>
+                                <!-- end /item-table -->
+                            </div>
+                            <!-- list-table -->
+                        </div>
+                        <!-- group-table -->
+                    </div>
+                    <!-- end /box-add -->
+                    <div class="group-btn">
+                        <a href="@Url.Action("Beneficiaries", "Account")" class="btn-click btn-add mix-xy">
+                            <span class="name">Save</span>
+                        </a>
+                        <a href="@Url.Action("Beneficiaries", "Account")" class="btn-click btn-cancel mix-xy">
+                            <span class="name">Cancel</span>
+                        </a>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /group-btn -->
+                </div>
+                <div class="box-instructions">
+                    <div class="group-name ver-y">
+                        <span class="icons"></span>
+                        <span class="title">Instructions</span>
+                    </div>
+                    <div class="group-para">
+                        <ul>
+                            <li>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida
+                                    dolor sit amet lacus accumsalon et viverra justo commodo.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida
+                                    dolor sit amet lacus accumsalon et viverra justo commodo.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida
+                                    dolor sit amet lacus accumsalon et viverra justo commodo.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida
+                                    dolor sit amet lacus accumsalon et viverra justo commodo.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida
+                                    dolor sit amet lacus accumsalon et viverra justo commodo.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida
+                                    dolor sit amet lacus accumsalon et viverra justo commodo.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida
+                                    dolor sit amet lacus accumsalon et viverra justo commodo.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida
+                                    dolor sit amet lacus accumsalon et viverra justo commodo.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida
+                                    dolor sit amet lacus accumsalon et viverra justo commodo.
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- end /box-instructions -->
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <!-- end /bottom-primary-content -->
+</div>

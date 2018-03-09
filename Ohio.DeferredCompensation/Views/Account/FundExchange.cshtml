@@ -1,0 +1,152 @@
+﻿@model List<FundExchangeModel>
+@{
+    ViewBag.Title = "Account Fund Exchange";
+    ViewBag.AtiveTab = NavigationTab.None;
+    ViewBag.DarkOverlayClass = "account-manager-content";
+    ViewBag.IsLoggedIn = true;
+    ViewBag.UseSingleSocialImage = true;
+}
+
+<div class="account-fund-exchange all-page">
+    @{ Html.RenderPartial("_TopIdentifyPanel", new TopIdentityPanelModel { ApplyXsXmClasses = true }); }
+    @{ Html.RenderPartial("_SubNavigation", "FundExchange"); }
+
+    <div class="content-plan content-step01">
+        <div class="top-content top-gray">
+            <span class="text">Pending Fund Exchange</span>
+            <span class="title">
+                <span class="label-txt">Confirmation ID</span>
+                <span class="value">@ViewBag.ConfirmationId</span>
+            </span>
+            <span class="title">
+                <span class="label-txt">Effective date</span>
+                <span class="value">@ViewBag.EffectiveDate.ToString("MM/dd/yyyy")</span>
+            </span>
+            <div class="btn-boxs clearfix">
+                <h4 class="red-txt hidden-lg hidden-md">Fund Exchange</h4>
+                <div class="right-btn">
+                    <a href="javascript:;" class="btn-white ver-y">
+                        <span class="icons icon-delete"></span>
+                        <span class="text">DELETE</span>
+                    </a>
+                    <a href="@Url.Action("FundExchangeRequest", "Account")" class="btn-red ver-y">
+                        <span class="icon-plus">+</span>
+                        <span class="text">ADD EXCHANGE</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <!-- end .top-content -->
+        <div class="box-content">
+            <div class="main-content hidden-xs hidden-sm">
+                <ul class="list-title">
+                    <li>
+                        <span class="title">
+                            <input type="checkbox" id="cxen01">
+                            <label for="cxen01" class="tick-me box-tick item-tick">&nbsp;</label>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="title  txt-center">Exchange From</span>
+                    </li>
+                    <li>
+                        <span class="title txt-right">From %</span>
+                    </li>
+                    <li>
+                        <span class="title txt-center">Exchange To</span>
+                    </li>
+                    <li>
+                        <span class="title">To %</span>
+                    </li>
+                </ul>
+                <!-- list title -->
+                <div class="group-list">
+                    <ul class="list-colum">
+                        @foreach (var item in Model)
+                        {
+                            <li>
+                                <ul class="list-row">
+                                    <li>
+                                        <span class="text-file">
+                                            <input type="checkbox" id="cxen02">
+                                            <label for="cxen02" class="tick-me box-tick item-tick">&nbsp;</label>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span class="text-file">@item.ExchangeFrom</span>
+                                    </li>
+                                    <li>
+                                        <span class="text-file">@item.ExchangeFromValue%</span>
+                                    </li>
+                                    <li>
+                                        <div class="text-file">
+                                            @foreach (var value in item.ExchangeTo)
+                                            {
+                                                <p>@value</p>
+                                            }
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="text-file">@item.ExchangeToValue%</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                    <!-- list colum -->
+                </div>
+                <!-- end /group-list -->
+            </div>
+            <!-- main content -->
+            <div class="main-content-mobi hidden-md hidden-lg">
+                <div class="mobi-table one-table">
+                    <ul>
+                        @foreach (var item in Model)
+                        {
+                            <li>
+                                <div class="table-row">
+                                    <div class="col-check">
+                                        <input type="checkbox" id="cxen11">
+                                        <label for="cxen11" class="tick-me box-tick item-tick">&nbsp;</label>
+                                    </div>
+                                    <div class="left-area">
+                                        <span class="label-txt">Exchange From</span>
+                                        <span class="value-txt">@item.ExchangeFrom</span>
+                                    </div>
+                                    <div class="right-area">
+                                        <span class="label-txt">From %</span>
+                                        <span class="value-txt">@item.ExchangeFromValue%</span>
+                                    </div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="col-check">
+                                    </div>
+                                    <div class="left-area">
+                                        <span class="label-txt">Exchange To</span>
+                                        @foreach (var value in item.ExchangeTo)
+                                        {
+                                            <span class="value-txt">@value</span>
+                                        }
+                                    </div>
+                                    <div class="right-area">
+                                        <span class="label-txt">To %</span>
+                                        <span class="value-txt">@item.ExchangeToValue%</span>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                    <!-- main content -->
+                </div>
+                <!-- content box -->
+            </div>
+        </div>
+        <!-- content box -->
+    </div>
+    <!-- content plan -->
+</div>
+
+@section boxInstructions {
+    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileInstructions, showCloseButton: true)); }
+}

@@ -1,0 +1,226 @@
+﻿@model SignupModel
+@{
+    ViewBag.Title = "Sign up";
+    ViewBag.AtiveTab = NavigationTab.Home;
+}
+
+@section scripts {
+    <script src="~/bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/bower_components/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/bower_components/jquery-form/dist/jquery.form.min.js"></script>
+}
+
+<div class="signup-page all-page">
+    <div class="hero-banner">
+        <p>Signup for an Online Account</p>
+    </div>
+    <!-- end /hero-banner -->
+    <div class="step-by-step align-top-step">
+        <div class="nested-circle hol-x">
+            <ul class="desk-step">
+                <li class="step01 current">
+                    <div class="group-circle mix-xy">
+                        <img class="first-sym" src="~/Content/i/icon-lock01.png" alt="IMG">
+                        <img class="second-sym" src="~/Content/i/icon-lock.png" alt="IMG">
+                        <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                        <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                        <span class="icons icon-v"></span>
+                    </div>
+                    <div class="group-name">
+                        <span class="name">Identification</span>
+                    </div>
+                </li>
+                <li class="step02">
+                    <div class="group-circle mix-xy">
+                        <img class="first-sym" src="~/Content/i/icon-person01.png" alt="IMG">
+                        <img class="second-sym" src="~/Content/i/icon-person.png" alt="IMG">
+                        <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                        <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                        <span class="icons icon-v"></span>
+                    </div>
+                    <div class="group-name">
+                        <span class="name">Online Profile</span>
+                    </div>
+                </li>
+                <li class="step03">
+                    <div class="group-circle mix-xy">
+                        <img class="first-sym" src="~/Content/i/icon-select01.png" alt="IMG">
+                        <img class="second-sym" src="~/Content/i/icon-select.png" alt="IMG">
+                        <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                        <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                        <span class="icons icon-v"></span>
+                    </div>
+                    <div class="group-name">
+                        <span class="name">Identification Code</span>
+                    </div>
+                </li>
+            </ul>
+            <ul class="mobi-step">
+                <li class="step01 current">
+                    <span class="step-number">1</span>
+                    <span class="icons icons-tick"></span>
+                </li>
+                <li class="step02">
+                    <span class="step-number">2</span>
+                    <span class="icons icons-tick"></span>
+                </li>
+                <li class="step03">
+                    <span class="step-number">3</span>
+                    <span class="icons icons-tick"></span>
+                </li>
+            </ul>
+            <a href="javascript:;" class="click-intructions">
+                <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+            </a>
+        </div>
+        <!-- end /nested-circle -->
+        <div class="step-more-details">
+            @using (Html.BeginForm("Signup", "Account", FormMethod.Post, new { ajax = "true" }))
+            {
+                <div class="step-content step-one-content ">
+                    <div class="top-title">
+                        <h1>Step 1 : Account Verification</h1>
+                    </div>
+                    <!-- end /top-title -->
+                    <div class="middle-form">
+                        <div class="form-order01">
+                            <ul>
+                                <li>
+                                    <span class="name ver-y">Account Number</span>
+                                    <div class="typing-here">
+                                        @Html.CustomTextBoxFor(m => m.AccountNumber, "Enter Account Number", @class: "iinput")
+                                        @{ Html.RenderPartial("_TinyHint", "Lorem ipsum domet"); }
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="double-line">
+                                <span class="tiny-line"></span>
+                                <span class="black-text">Or</span>
+                            </div>
+                            <!-- end /double-line -->
+                            <ul>
+                                <li>
+                                    <span class="name ver-y">SSN</span>
+                                    <div class="typing-here">
+                                        @Html.CustomTextBoxFor(m => m.SSN, "Enter SSN", @class: "iinput")
+                                        @{ Html.RenderPartial("_TinyHint", "Lorem ipsum domet"); }
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="name ver-y">Date of Birth</span>
+                                    <div class="typing-here">
+                                        @Html.CustomTextBoxFor(m => m.DateOfBirth, "mm/dd/yy", @class: "iinput datepicker-birth")
+                                        @{ Html.RenderPartial("_TinyHint", "Lorem ipsum domet"); }
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- end /form-order01 -->
+                        @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopStep1Instructions, cssClass: "hidden-xs hidden-sm")); }
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /middle-form -->
+                    <div class="bottom-button">
+                        <a href="@Url.Action("Index", "Home")" class="btn-cancel mix-xy">Cancel</a>
+                        <a href="javascript:;" class="btn-next mix-xy">Next</a>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /bottom-button -->
+                </div>
+                <!-- end /step-one-content -->
+                <div class="step-content step-two-content hide">
+                    <div class="top-title">
+                        <h1>Step 2 : Online Profile</h1>
+                    </div>
+                    <!-- end /top-title -->
+                    <div class="middle-form">
+                        <div class="form-order02">
+                            <ul class="validate-step2">
+                                <li>
+                                    <span class="name ver-y">Username</span>
+                                    <div class="typing-here">
+                                        @Html.CustomTextBoxFor(m => m.Username, "Enter Username", @class: "iinput")
+                                        @{ Html.RenderPartial("_TinyHint", "Lorem ipsum domet"); }
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="name ver-y">Password</span>
+                                    <div class="typing-here">
+                                        @Html.CustomPasswordFor(m => m.Password, "Enter Password", @class: "iinput")
+                                        @{ Html.RenderPartial("_TinyHint", "Lorem ipsum domet"); }
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="name ver-y">Confirm Password</span>
+                                    <div class="typing-here">
+                                        @Html.CustomPasswordFor(m => m.ConfirmPassword, "Enter Confirm Password", @class: "iinput")
+                                        @{ Html.RenderPartial("_TinyHint", "Lorem ipsum domet"); }
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="name ver-y">Account Recovery Email ID</span>
+                                    <div class="typing-here">
+                                        @Html.CustomTextBoxFor(m => m.AccountRecoveryEmailId, "Enter Email ID", @class: "iinput txt-email")
+                                        @{ Html.RenderPartial("_TinyHint", "Lorem ipsum domet"); }
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="name ver-y">Account Recovery Phone #</span>
+                                    <div class="typing-here">
+                                        @Html.CustomTextBoxFor(m => m.AccountRecoveryPhone, "Enter phone number", @class: "iinput")
+                                        @{ Html.RenderPartial("_TinyHint", "Lorem ipsum domet"); }
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="cover-tick">
+                                @Html.CustomCheckBox(
+                                    "I agree to the</span> <a href=\"javascript:;\">terms &amp; conditions</a> <span>of this site",
+                                    "AgreementAccepted", Model?.AgreementAccepted, "cxform01")
+                            </div>
+                        </div>
+                        <!-- end /form-order01 -->
+                        @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopStep2Instructions, cssClass: "hidden-xs hidden-sm")); }
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /middle-form -->
+                    <div class="bottom-button">
+                        <a href="@Url.Action("Index", "Home")" class="btn-cancel mix-xy">Cancel</a>
+                        <a href="javascript:;" class="btn-next mix-xy">Next</a>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /bottom-button -->
+                </div>
+            }
+            <!-- end /step-two-content -->
+            <div class="step-content step-three-content hide">
+                <div class="top-title">
+                    <h1>Step 3 : Completed</h1>
+                </div>
+                <!-- end /top-title -->
+                <div class="middle-form">
+                    <span class="text-success">Your User ID has been successfully Created!</span>
+                    <img src="~/Content/i/select-box.png" alt="image">
+                    <p>
+                        <span class="name">
+                            <span class="title">Your User ID : </span>Steve_Smith
+                        </span>
+                    </p>
+                    <p>
+                        <span class="name">
+                            <span class="title">Account # : </span>0235870586
+                        </span>
+                    </p>
+                    <a href="@Url.Action("Manager")" class="click-login mix-xy">login</a>
+                </div>
+                <!-- end /middle-form -->
+            </div>
+            <!-- end /step-three-content -->
+        </div>
+        <!-- end /step-more-details -->
+    </div>
+</div>
+<!-- end /signup-page-content -->
+
+@section boxInstructions {
+    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileInstructions, showCloseButton: true)); }
+}

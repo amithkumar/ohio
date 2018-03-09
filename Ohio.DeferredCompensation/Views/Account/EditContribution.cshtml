@@ -1,0 +1,263 @@
+﻿@model EditContributionModel
+@{
+    ViewBag.Title = "Account Summary";
+    ViewBag.AtiveTab = NavigationTab.None;
+    ViewBag.IsLoggedIn = true;
+}
+
+<div class="account-summary-page no-charts all-page">
+    @{ Html.RenderPartial("_TopIdentifyPanel", new TopIdentityPanelModel { ApplyXsXmClasses = true, NavigationTab = "AccountManager" }); }
+    @{ Html.RenderPartial("_SubNavigation", "Contributions"); }
+
+    <div class="visible-xs visible-sm title-n-button account-manager-page pb-md-0 pb-sm-0">
+        <div class="top-title-button  ">
+            <a href="@Url.Action("Contributions", "Account")" class="click-back">
+                <span class="icon glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+            </a>
+            <h1>Contribution</h1>
+            <a href="javascript:;" class="click-intructions">
+                <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+            </a>
+        </div>
+    </div>
+
+    <div class="account-contribution-edit my-3 py-3 py-sm-0 py-md-0 my-md-0 my-sm-0">
+        <div class="box-step pt-3">
+            <div class="nested-circle hol-x pt-3 pt-sm-0 pt-md-0">
+                <ul>
+                    <li class="step01 current">
+                        <div class="group-circle mix-xy">
+                            <img class="first-sym" src="~/Content/i/icon-location01.png" alt="IMG">
+                            <img class="second-sym" src="~/Content/i/icon-location.png" alt="IMG">
+                            <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                            <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                            <span class="icons icon-v"></span>
+                            <div class="number-cir">
+                                <span class="number">1</span>
+                                <span class="icon-ok glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <div class="group-name">
+                            <span class="name">Contribution</span>
+                        </div>
+                    </li>
+                    <li class="step02">
+                        <div class="group-circle mix-xy">
+                            <img class="first-sym" src="~/Content/i/seach-page01.png" alt="IMG">
+                            <img class="second-sym" src="~/Content/i/seach-page.png" alt="IMG">
+                            <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                            <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                            <span class="icons icon-v"></span>
+                            <div class="number-cir">
+                                <span class="number">2</span>
+                                <span class="icon-ok glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <div class="group-name">
+                            <span class="name">Review</span>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- end /nested-circle -->
+            <div class="step-more-details">
+                <div class="step-content step-one-content ">
+                    <div class="cover-title mix-xy">
+                        <h2>Step 1 : Input Contribution</h2>
+                    </div>
+                    <!-- cover title -->
+                    <div class="middle-form cen-z p-sm-0 p-md-0 pb-lg-3 pb-xl-3">
+                        <div class="form-order04 p-sm-3 p-md-3 col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8  mt-4 px-lg-5 p-sm-3 pt-md-0 px-sm-0 ">
+                            <div class="row ">
+                                <div class="col-lg-5 col-xl-5 col-md-7 col-sm-7 col-xs-7 pl-0 pt-0 pb-3 ">
+                                    <span class="title ">Current Deferral Amount</span>
+                                    <span class="pull-right">:</span>
+                                </div>
+                                <div class="col-lg-7 col-xl-7 col-md-5 col-sm-5 col-xs-5 pt-0 pb-3 pl-0 pr-sm-0  text-lg-left text-md-right text-sm-right text-xs-right">
+                                    <label class="label-text ">$ @Model.CurrentDeferralAmount.ToString("N2")</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-lg-5 col-xl-5 col-md-8 col-sm-8 col-xs-8 py-3 col-xs-12 pl-0 py-md-3 pt-sm-0 pt-xs-0 pb-sm-3 pb-xs-3">
+                                        <span class="title ">New Deferral Amount ($)</span>
+                                        <span class="pull-right">:</span>
+                                    </div>
+                                    <div class="col-lg-7 col-xl-7 col-md-4 col-sm-4 col-xs-4 cover-input px-sm-0 px-md-0 pl-0 pr-3 pt-sm-2 pt-md-2">
+                                        <div class="input-here amount">
+                                            @Html.CustomTextBoxFor(x => x.NewDeferralAmount, "500")
+                                            @{ Html.RenderPartial("_ClickMe", "Lorem ipsum domet"); }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-md-5 col-sm-5 col-xs-5  pl-0 pt-0 pb-3 col-sm-6  col-xs-6">
+                                        <span class="title ">Allocation Option</span>
+                                        <span class="pull-right">:</span>
+                                    </div>
+                                    <div class="col-md-7 col-sm-7 col-xs-7 pt-0 pb-3 pl-0 pr-md-0 pr-sm-0 ">
+                                        <span class="text">
+                                            <input type="radio" id="bcheck011" name="@nameof(EditContributionModel.AllocationOption)" value="Dollar" @Html.CheckedIf(Model.AllocationOption == "Dollar")>
+                                            <label for="bcheck011" class="big-radio">
+                                                <span class="font-14">Dollar</span>
+                                            </label>
+                                        </span>
+                                        <span class="text">
+                                            <input type="radio" id="bcheck021" name="@nameof(EditContributionModel.AllocationOption)" value="Percentage" @Html.CheckedIf(Model.AllocationOption == "Percentage")>
+                                            <label for="bcheck021" class="big-radio">
+                                                <span class="font-14">Percentage</span>
+                                            </label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="second-content  mb-sm-3 mb-md-3 mb-lg-3 mb-3">
+                                <div class="top-title ver-y">
+                                    <span class="name column01">Fund Name </span>
+                                    <span class="name column02 hidden-xs hidden-sm ">Current Contribution </span>
+                                    <span class="name column03 hidden-xs hidden-sm ">Current Percent </span>
+                                    <span class="name column04">Allocation Amount</span>
+                                </div>
+                                <div class="detail-content">
+                                    @foreach (var group in Model.StockGroups)
+                                    {
+                                        <div class="cover-box stock-group" data-stock-group="@group.GroupName">
+                                            <a href="javascript:;" class="click-text pl-sm-2 pl-md-2">
+                                                @group.GroupName
+                                                <span class="icons icon-row"></span>
+                                            </a>
+                                            <!-- click text -->
+                                            <ul class="list-text">
+                                                @foreach (var item in group.Stocks)
+                                                {
+                                                    <li class="py-md-3 py-sm-3 mobi">
+                                                        <span class="text column01">
+                                                            <span class="data-row-bold">@item.FundName</span>
+                                                            <p class="visible-xs visible-sm">Current Contribution and % : %@item.AllocationPercentage.ToString("N2")</p>
+                                                        </span>
+                                                        <span class="text column02 hidden-xs hidden-sm ">$@item.AllocationAmount.ToString("N2")</span>
+                                                        <span class="text column03 hidden-xs hidden-sm ">@item.AllocationPercentage.ToString("N2")%</span>
+                                                        <div class="column04">
+                                                            <div class="ver-y dollar-sign">$</div>
+                                                            <div class="input-here">
+                                                                <input type="text" name="alloAmount" placeholder="Enter Value" title="save the file" data-fund-name="@item.FundName">
+                                                            </div>
+                                                            <div class="ver-y percentage-sign">&nbsp;%</div>
+                                                        </div>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    }
+
+                                    <div class="box-total ">
+                                        <span class="text column01">total</span>
+                                        <span class="text column02 ">$@Model.TotalAmount.ToString("N2")</span>
+                                        <span class="text column03 hidden-xs hidden-sm ">@Model.TotalPercentage.ToString("N2")%</span>
+                                        <span class="num column04" id="total-value"></span>
+                                    </div>
+
+                                    <div class="total-error mt-3" id="total-error">
+                                        <span class="error-msg mt-3 hide">
+                                            The new allocation total amount exceeds your current contribution amount by $50.00.
+                                            Please adjest your allowcation to match your contribution amount.
+                                        </span>
+                                    </div>
+                                </div>
+                                <!-- detail content -->
+                            </div>
+                            <!-- second content -->
+                        </div>
+                        <!-- end /form-order01 -->
+                        <div class="hidden-xs hidden-sm col-md-4 mt-4 px-sm-0 pr-sm-3 pl-md-0 pl-sm-3 ml-md-5 ml-lg-0 pb-3">
+                            @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopInstructions)); }
+                        </div>
+                        <!-- end /box-instructions -->
+                    </div>
+                    <!-- end /middle-form -->
+                    <div class="cover-btn cen-z  px-md-3 px-sm-3">
+                        <a href="@Url.Action("Contributions", "Account")" class="pre-btn mix-xy">cancel</a>
+                        <a href="javascript:;" id="acc-con-step1-next" class="next-btn mix-xy">next</a>
+                    </div>
+                    <!-- end /cover btn -->
+                </div>
+
+                <!-- end /step-one-content -->
+                <div class="step-content step-two-content hide">
+                    <div class="cover-title mix-xy">
+                        <h2>Step 2 : Review</h2>
+                    </div>
+                    <!-- cover title -->
+                    <div class="middle-form cen-z p-sm-0 p-md-3 pb-lg-3 pb-xl-3">
+                        <div id="edit-review-form"></div>
+                        <!-- end /form-order01 -->
+                        <div class="hidden-xs hidden-sm col-md-4 mt-4 px-sm-0 pr-sm-3 pl-md-0 pl-sm-3 ml-md-5 ml-lg-0 pb-3">
+                            @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopInstructions, cssClass: "hidden-xs hidden-sm")); }
+                        </div>
+                        <!-- end /box-instructions -->
+                    </div>
+                    <!-- end /middle-form -->
+                    <div class="cover-btn cen-z px-md-3 px-sm-3">
+                        <a href="javascript:;" class="pre-btn mix-xy" id="acc-con-step2-prv">previous</a>
+                        <a href="javascript:;" id="acc-con-step2-next" class="next-btn mix-xy">next</a>
+                    </div>
+                    <!-- end /cover btn -->
+                    <!-- end /bottom-button -->
+                </div>
+                <!-- end /step-two-content -->
+                <!-- end /step-three-content -->
+                <div class="step-content step-four-content hide">
+                    <div class="cover-title mix-xy">
+                        <h2>Step 2 : Completed</h2>
+                    </div>
+                    <!-- end /top-title -->
+                    <div class="middle-form cen-z ">
+                        <div class="left-content p-sm-0 p-md-0 col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8  mt-4 px-lg-5 p-sm-3 pt-md-0 px-sm-0 ">
+                            <span class="title">Successful!</span>
+                            <div class="success-box ">
+
+                                <div class="row ">
+                                    <div class="col-md-2 col-sm-2 col-xs-2">
+                                        <img src="~/Content/i/select-box.png" class="img-responsive" alt="image">
+                                    </div>
+                                    <div class="col-md-10 col-sm-10 col-xs-10">
+                                        <span class="text text-xs-lg text-sm-lg text-md-lg text-lg-lg">Your are now successfully update Contribution.</span>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 col-sm-2 col-xs-0">
+                                        &nbsp;
+                                    </div>
+                                    <div class="col-md-10 col-sm-10 col-xs-12 px-sm-0 px-xs-0 px-md-3">
+                                        <a href="@Url.Action("Contributions", "Account")" class="btn-ok mix-xy w-md-40 w-lg-40 w-xl-40 w-xs-100 w-sm-100">okay</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end /form-order01 -->
+                        <div class="hidden-xs hidden-sm col-md-4 mt-4 px-sm-0 pr-sm-3 pl-md-0 pl-sm-3 ml-md-5 ml-lg-0 pb-3">
+                            @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopInstructions, cssClass: "hidden-xs hidden-sm")); }
+                        </div>
+                        <!-- end /box-instructions -->
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /middle-form -->
+                </div>
+                <!-- end /step-four-content -->
+            </div>
+            <!-- end /step-more-details -->
+        </div>
+    </div>
+</div>
+
+@section boxInstructions {
+    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileInstructions, showCloseButton: true)); }
+}

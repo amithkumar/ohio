@@ -1,0 +1,183 @@
+﻿@{
+    ViewBag.Title = "Account Manager";
+    ViewBag.AtiveTab = NavigationTab.None;
+    ViewBag.DarkOverlayClass = "account-manager-content";
+    ViewBag.IsLoggedIn = true;
+    IList<AccountManagerStockModel> stocks = ViewBag.Stocks;
+    List<AccountManagerAccountModel> accounts = ViewBag.Accounts;
+}
+
+<div class="account-manager-page all-page">
+    @{ Html.RenderPartial("_TopIdentifyManagerPanel", new TopIdentityPanelModel(applyXsXmClasses: true, navigationTab: "AccountManager")); }
+    <div class="top-title-button">
+        <h1>Account Manager</h1>
+        <a href="@Url.Action("Enrollment", "Account")" class="btn-acc mix-xy">+ Account Enrollment</a>
+    </div>
+    <!-- end /top-title-button -->
+    <div class="big-part-one">
+        <div class="wrapper-all cen-z">
+            <div class="circle-chart">
+                <div class="pie-chart"></div>
+            </div>
+            <ul class="group-value">
+                @foreach (var stock in stocks)
+                {
+                    <li class="value-chart ver-y">
+                        <div>
+                            <span class="big-number @stock.ColorClass">@stock.Value%</span>
+                            <p>@stock.Name</p>
+                            <div class="clear"></div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+        <!-- end /wrapper-all -->
+    </div>
+    <!-- end /big-part-one -->
+    <div class="big-part-two">
+        <div class="group-table hidden-xs hidden-sm">
+            <div class="first-group">
+                <ul>
+                    <li class="column01">
+                        <a href="javascript:;" class="name ver-y">
+                            Account Number
+                            <span class="icons"></span>
+                        </a>
+                    </li>
+                    <li class="column02">
+                        <a href="javascript:;" class="name ver-y">
+                            Account Type
+                            <span class="icons"></span>
+                        </a>
+                    </li>
+                    <li class="column03">
+                        <a href="javascript:;" class="name ver-y">
+                            Employer Name
+                            <span class="icons"></span>
+                        </a>
+                    </li>
+                    <li class="column04">
+                        <a href="javascript:;" class="name ver-y">
+                            YTD Contribution
+                            <span class="icons"></span>
+                        </a>
+                    </li>
+                    <li class="column05">
+                        <a href="javascript:;" class="name ver-y">
+                            Total %
+                            <span class="icons"></span>
+                        </a>
+                    </li>
+                    <li class="column06">
+                        <a href="javascript:;" class="name ver-y">
+                            Current Balance
+                            <span class="icons"></span>
+                        </a>
+                    </li>
+                    <li class="column07">
+                        <a href="javascript:;" class="name ver-y">View</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- end /first-group -->
+            <div class="second-group">
+                <ul>
+                    @foreach (var account in accounts)
+                    {
+                        <li>
+                            <div class="demo-value column01">
+                                <p>@account.AccountNumber</p>
+                            </div>
+                            <div class="demo-value column02">
+                                <p class="bold">@account.AccountType</p>
+                            </div>
+                            <div class="demo-value column03">
+                                <p>@account.EmployerName</p>
+                            </div>
+                            <div class="demo-value column04">
+                                <p>$@account.YTDContribution.ToString("N2")</p>
+                            </div>
+                            <div class="demo-value column05">
+                                <p>@account.Total.ToString("N2")%</p>
+                            </div>
+                            <div class="demo-value column06">
+                                <p>$@account.CurrentBalance.ToString("N2")</p>
+                            </div>
+                            <div class="demo-value column07">
+                                <a href="@Url.Action("Summary", "Account")" class="view-details">VIEW DETAILS</a>
+                            </div>
+                        </li>
+                    }
+                </ul>
+                <div class="clear"></div>
+            </div>
+            <!-- end /second-group -->
+            <div class="third-group">
+                <ul>
+                    <li>
+                        <div class="demo-value column01">
+                            <p>TOTAL</p>
+                        </div>
+                        <div class="demo-value column04">
+                            <p>$@(accounts.Sum(x => x.YTDContribution).ToString("N2"))</p>
+                        </div>
+                        <div class="demo-value column05">
+                            <p>@(accounts.Sum(x => x.Total).ToString("N2"))%</p>
+                        </div>
+                        <div class="demo-value column06">
+                            <p>$@(accounts.Sum(x => x.CurrentBalance).ToString("N2"))</p>
+                        </div>
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+            <!-- end /third-group -->
+        </div>
+        <!-- end /group-table -->
+        <div class="group-table visible-xs visible-sm">
+            <h1>Account Numbers :</h1>
+            <ul class="group-list">
+                @foreach (var account in accounts)
+                {
+                    <li class="list-item">
+                        <div class="group-text-top">
+                            <span class="text-number">#@account.AccountNumber</span>
+                            <a href="javascript:;" class="click-view">View Details</a>
+                            <div class="clear"></div>
+                        </div>
+                        <ul>
+                            <li class="group-text">
+                                <span class="title">Account Type</span>
+                                <span class="text-name">@account.AccountType</span>
+                                <div class="clear"></div>
+                            </li>
+                            <li class="group-text">
+                                <span class="title">@account.EmployerName</span>
+                                <span class="text-name">Acme Employer</span>
+                                <div class="clear"></div>
+                            </li>
+                            <li class="group-text">
+                                <span class="title">YTD Contribution</span>
+                                <span class="text-name">$@account.YTDContribution.ToString("N2")</span>
+                                <div class="clear"></div>
+                            </li>
+                            <li class="group-text">
+                                <span class="title">Total %</span>
+                                <span class="text-name">@account.Total.ToString("N2")%</span>
+                                <div class="clear"></div>
+                            </li>
+                            <li class="group-text">
+                                <span class="title">Current Balance</span>
+                                <span class="text-name">$@account.CurrentBalance.ToString("N2")</span>
+                                <div class="clear"></div>
+                            </li>
+                        </ul>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <!-- end /big-part-two -->
+</div>
+<!-- end /account-manager-page -->

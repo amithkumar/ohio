@@ -1,0 +1,179 @@
+﻿@model ProfileModel
+@{
+    ViewBag.Title = "My Profile";
+    ViewBag.AtiveTab = NavigationTab.None;
+    ViewBag.DarkOverlayClass = "account-manager-content";
+    ViewBag.IsLoggedIn = true;
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/third-party-forms-js")
+}
+
+<div class="account-manager-page all-page">
+    @{ Html.RenderPartial("_TopIdentifyManagerPanel", new TopIdentityPanelModel(applyXsXmClasses: true, navigationTab: "MyProfile")); }
+    @{ Html.RenderPartial("_MyProfileNavigation", "Personal Info"); }
+
+    <div class="visible-xs visible-sm title-n-button">
+        <div class="top-title-button  ">
+            <a href="@Url.Action("PersonalInfo", "MyProfile")" class="click-back">
+                <span class="icon glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+            </a>
+            <h1>Edit Personal Info</h1>
+            <a href="javascript:;" class="click-intructions">
+                <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+            </a>
+        </div>
+    </div>
+
+    <!-- Edit Personal Info Form -->
+    <div class="edit-personal-info pt-lg-3 pt-xl-3">
+        <div class="step-by-step pt-sm-0 pt-md-0 mt-lg-3 mt-xl-3">
+            <div class="step-more-details">
+                <div class="step-content step-one-content">
+                    <div class="top-title hidden-xs hidden-sm">
+                        <h1 class="align-left">Edit Personal Info</h1>
+                    </div>
+                    <!-- end /top-title -->
+                    @using (Html.BeginForm("EditPersonalInfo", "MyProfile", FormMethod.Post))
+                    {
+                        <div class="row middle-form p-sm-3 p-md-3">
+                            <div class="left-detail col-md-8  mt-4 m-sm-0 m-md-0 pl-0 px-lg-0 p-sm-0 p-md-0 p-sm-0 ">
+                                <div class="row ">
+                                    <div class="col-md-2 col-sm-12  col-xs-12 pl-3 pl-md-0 pl-sm-0 py-3">
+                                        <span class="title ">Name</span>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12 col-xs-12 cover-input px-sm-0 px-md-0">
+                                        <div class="input-here ">
+                                            @Html.CustomTextBoxFor(x => x.FirstName, "First Name")
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 col-sm-12 col-xs-12 cover-input px-0 px-lg-3 px-sm-0 px-md-0">
+                                        <div class="input-here ">
+                                            @Html.CustomTextBoxFor(x => x.Initial, "Initial")
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12  col-xs-12 cover-input px-sm-0 px-md-0">
+                                        <div class="input-here ">
+                                            @Html.CustomTextBoxFor(x => x.LastName, "Last Name")
+                                            @{ Html.RenderPartial("_ClickMe", "Lorem ipsum domet"); }
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 pl-3 py-3 pl-md-0 pl-sm-0 ">
+                                        <span class="title ">Address</span>
+                                    </div>
+                                    <div class="col-md-10 cover-input px-sm-0  px-md-0">
+                                        <div class="input-here address">
+                                            @Html.CustomTextAreaFor(x => x.Address, "Enter address here")
+                                            @{ Html.RenderPartial("_ClickMe", "Lorem ipsum domet"); }
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row pl-0">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-10 p-0">
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-6 col-xs-6 cover-input px-sm-0 px-md-0">
+                                                <div class="input-here ">
+                                                    @Html.CustomTextBoxFor(x => x.City, "City")
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-6 cover-input pl-md-3 pl-sm-3 px-0 px-lg-3 px-sm-0 px-md-0">
+                                                <div class="input-here ddown-here big-text">
+                                                    @Html.CustomSelectFor(x => x.State, (IList<string>)ViewBag.States, "State", nullValue: "State", @class: "ddown-select", id: "sel-retire")
+                                                    <span class="icons-ddown"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-12 col-xs-12 cover-input px-sm-0 px-md-0">
+                                                <div class="input-here ">
+                                                    @Html.CustomTextBoxFor(x => x.ZipCode, "Zipcode")
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 pl-3 py-3 pl-md-0 pl-sm-0 ">
+                                        <span class="title ">Home Phone</span>
+                                    </div>
+                                    <div class="col-md-10 cover-input px-sm-0 px-md-0">
+                                        <div class="input-here ">
+                                            @Html.CustomTextBoxFor(x => x.HomePhone, "Enter home phone number")
+                                            @{ Html.RenderPartial("_ClickMe", "Lorem ipsum domet"); }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- end /form-order01 -->
+                            <div class="hidden-xs hidden-sm col-md-4 mt-4 px-sm-0 pr-sm-3 pl-md-0 pl-sm-0 ml-md-5 ml-lg-0 pb-3 pr-md-5">
+                                @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopStep1Instructions)); }
+                            </div>
+                            <!-- end /box-instructions -->
+                            <div class="clear"></div>
+                        </div>
+                        <!-- end /middle-form -->
+                        <div class="bottom-button px-sm-3 px-md-3">
+                            <a href="@Url.Action("PersonalInfo", "MyProfile")" class="btn-cancel mix-xy">Cancel</a>
+                            <a href="javascript:;" class="btn-next mix-xy">Save</a>
+                            <div class="clear"></div>
+                        </div>
+                        <!-- end /bottom-button -->
+                    }
+                </div>
+
+                <div class="step-content step-four-content hide">
+                    <div class="top-title hidden-xs hidden-sm ">
+                        <h1 class="align-left">Edit Personal Info</h1>
+                    </div>
+                    <!-- end /top-title -->
+                    <div class="row middle-form">
+                        <div class="left-content col-md-8  mt-4 px-lg-5 p-sm-3 pt-md-0 px-sm-0">
+                            <div>
+                                <span class="title">Successful!</span>
+                                <div class="success-box ">
+
+                                    <div class="row ">
+                                        <div class="col-md-2 col-sm-2 col-xs-2">
+                                            <img src="~/Content/i/select-box.png" class="img-responsive" alt="image">
+                                        </div>
+                                        <div class="col-md-10 col-sm-10 col-xs-10">
+                                            <span class="text text-xs-lg text-sm-lg text-md-lg text-lg-lg">Your personal info has been successfully updated.</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="row ">
+                                        <div class="col-md-2 col-sm-2 col-xs-0">
+                                            &nbsp;
+                                        </div>
+                                        <div class="col-md-10 col-sm-10 col-xs-12 px-sm-0 px-xs-0 px-md-3 mb-sm-3 mb-md-3">
+                                            <a href="@Url.Action("PersonalInfo", "MyProfile")" class="btn-ok mix-xy w-md-100 w-lg-40 w-xl-40 w-xs-100 w-sm-100">okay</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- end /form-order01 -->
+                        <div class="hidden-xs hidden-sm col-md-4 mt-4 px-sm-0 pr-sm-3 pl-md-0 pl-sm-3 ml-md-5 ml-lg-0 pb-3 pr-md-5">
+                            @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopStep2Instructions, cssClass: "hidden-xs hidden-sm")); }
+                        </div>
+                        <!-- end /box-instructions -->
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /middle-form -->
+
+                </div>
+                <!-- end /step-two-content -->
+            </div>
+        </div>
+    </div>
+</div>
+
+@section boxInstructions {
+    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileInstructions, showCloseButton: true)); }
+}

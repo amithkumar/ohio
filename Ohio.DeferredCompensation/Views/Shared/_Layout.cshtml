@@ -1,0 +1,320 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+
+    <!-- Jquery UI -->
+    @Styles.Render("~/Content/common")
+
+    <!-- JS Files-->
+    @Scripts.Render("~/bundles/third-party-common-js")
+    @RenderSection("scripts", required: false)
+    <!-- script -->
+    @Scripts.Render("~/bundles/site-js")
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <header>
+                <div class="cover-header">
+                    <a href="@Url.Action("Index", "Home")" class="click-logo">
+                        <img src="~/Content/i/logo.png" alt="logo page">
+                    </a>
+                    <!-- click logo -->
+                    <div class="right-header cen-z">
+                        <ul class="list-title">
+                            <li @Html.GetTabClass(NavigationTab.Home)>
+                                @Html.ActionLink("Home", "Index", "Home")
+                            </li>
+                            <li @Html.GetTabClass(NavigationTab.Investments)>
+                                <a href="@Url.Action("Index", "Investment")">Investments</a>
+                            </li>
+                            <li @Html.GetTabClass(NavigationTab.Resources)>
+                                <a href="@Url.Action("Index", "Resource")">Resources</a>
+                            </li>
+                            <li @Html.GetTabClass(NavigationTab.CalculatorsAndTools)>
+                                <a href="@Url.Action("Index", "Calculator")">Calculators/Tools</a>
+                            </li>
+                            <li @Html.GetTabClass(NavigationTab.FAQ)>
+                                <a href="javascript:;">FAQ</a>
+                            </li>
+                            <li @Html.GetTabClass(NavigationTab.AboutUs)>
+                                @Html.ActionLink("About Us", "AboutUs", "Home")
+                            </li>
+                            <li @Html.GetTabClass(NavigationTab.ContactUs)>
+                                <a href="javascript:;" class="click-me">Contact Us</a>
+                                <div class="popup-contact hide">
+                                    <ul class="list-contact">
+                                        <li>
+                                            <span class="title">Phone</span>
+                                            <span class="number">102-685-9850325</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">FAX</span>
+                                            <span class="number">102-685-9850325</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">send an Email</span>
+                                            <a class="click-email" href="@Url.ActionLinkIf((string)ViewBag.Title != "Send Email", "SendEmail", "Home")">supportinfo@ohiodc.com</a>
+                                        </li>
+                                    </ul>
+                                    <!-- list contact -->
+                                    <a href="@Url.Action("ContactUs", "Home")" class="contact-info">Contact Info</a>
+                                    <button class="icons click-close"></button>
+                                </div>
+                                <!-- popup contact -->
+                            </li>
+                            <li @Html.GetTabClass(NavigationTab.Help)>
+                                <a href="javascript:;">Help</a>
+                            </li>
+                        </ul>
+                        <!-- list title -->
+                        <div class="box-seach">
+                            <a href="javascript:;" class="click-seach mix-xy">
+                                <span class="icons seach01"></span>
+                            </a>
+                            <!-- click seach -->
+                            <div class="detail-seach hide">
+                                <span class="icons seach02"></span>
+                                <input type="search" placeholder="Search website here" title="save the file">
+                                <a href="javascript:;" class="click-go mix-xy">go</a>
+                            </div>
+                            <!-- detail seach -->
+                        </div>
+                        <!-- box seach -->
+                        @{ bool isLoggedIn = ViewBag.IsLoggedIn == true; }
+                        <div class="select-person @Html.ClassIfNotLoggedIn("hide") @Html.ClassIf("show-person", isLoggedIn)">
+                            <span class="text-welcom">Welcome, </span>
+                            <span class="name">
+                                Mitchel Starc
+                                <span class="icons icon-down"></span>
+                            </span>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="box-seach log-out @Html.ClassIfNotLoggedIn("hide") @Html.ClassIf("show-person", isLoggedIn)">
+                            <a href="@Url.Action("Index", "Home")" class="click-seach mix-xy">
+                                <img src="~/Content/i/logoutpic.png" alt="logout" />
+                            </a>
+                        </div>
+                    </div>
+                    <!-- right header -->
+                </div>
+                <!-- cover header -->
+                <div class="header-mobi">
+                    <div class="left-header ver-y">
+                        <a href="javascript:;" class=" click-menu">
+                            <span class="icons hamber-icon"></span>
+                        </a>
+                        <!-- click menu -->
+                        <a href="@Url.Action("Index", "Home")" class="click-logo">
+                            <img src="~/Content/i/mobi/logo.png" alt="logo">
+                        </a>
+                        <!-- click logo -->
+                    </div>
+                    <!-- left header -->
+                    <div class="right-header ver-y">
+                        <a href="javascript:;" class="click-phone">
+                            <span class="icons phone-icon"></span>
+                        </a>
+                        <a href="javascript:;" class="click-seach">
+                            <span class="icons seach-icon"></span>
+                        </a>
+                        <div class="popup-contact hide">
+                            <ul class="list-contact">
+                                <li>
+                                    <span class="title">Phone</span>
+                                    <span class="number">102-685-9850325</span>
+                                </li>
+                                <li>
+                                    <span class="title">FAX</span>
+                                    <span class="number">102-685-9850325</span>
+                                </li>
+                                <li>
+                                    <span class="title">send an Email</span>
+                                    <a class="click-email" href="@Url.Action("SendEmail", "Home")">supportinfo@ohiodc.com.com</a>
+                                </li>
+                            </ul>
+                            <!-- list contact -->
+                            <a href="@Url.Action("ContactUs", "Home")" class="contact-info">Contact Info</a>
+                            <button class="icons click-close"></button>
+                        </div>
+                        <!-- popup contact -->
+                    </div>
+                    <!-- right header -->
+                    <div class="mobi-seach hide">
+                        <span class="icons seach05"></span>
+                        <input type="search" placeholder="Search website here" title="save the file">
+                        <a href="javascript:;" class="click-go mix-xy">go</a>
+                    </div>
+                    <!-- detail seach -->
+                    <div class="clear"></div>
+                </div>
+                <!-- header mobi -->
+            </header>
+            <!-- header -->
+            @if (ViewBag.Notifications != null)
+            {
+                foreach (NotificationModel notification in ViewBag.Notifications)
+                {
+                    <div class="noti-arlet">
+                        <span class="icons icon-ring"></span>
+                        <span class="text-arlet">
+                            <strong>@notification.Type</strong> : @notification.Content
+                            <strong>@notification.Date</strong>.
+                        </span>
+                        <a href="javascript:;" class="click-close mix-xy">
+                            <span class="icons icon-x"></span>
+                        </a>
+                    </div>
+                }
+            }
+            <!-- noti-arlet -->
+            @RenderBody()
+            <footer>
+                <div class="top-footer">
+                    <ul class="list-menu">
+                        <li class="active">
+                            <a href="@Url.Action("Index", "Home")">Home</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Contact Us</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Privacy and Security</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Legal terms</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">Employer Website</a>
+                        </li>
+                    </ul>
+                    <!-- list menu -->
+                    <div class="connect-with cen-z">
+                        <a href="javascript:;" class="click-facebook">
+                            @if (ViewBag.UseSingleSocialImage == true)
+                            {
+                                <img src="~/Content/i/facebook.png" alt="facebook">
+                            }
+                            else
+                            {
+                                <img class="hidden-xs hidden-sm" src="~/Content/i/facebook.png" alt="facebook">
+                                <img class="hidden-md hidden-lg" src="~/Content/i/mobi/facebook.png" alt="facebook">
+                            }
+                        </a>
+                        <a href="javascript:;" class="click-in">
+                            @if (ViewBag.UseSingleSocialImage == true)
+                            {
+                                <img src="~/Content/i/icon-in.png" alt="in">
+                            }
+                            else
+                            {
+                                <img class="hidden-xs hidden-sm" src="~/Content/i/icon-in.png" alt="in">
+                                <img class="hidden-md hidden-lg" src="~/Content/i/mobi/icon-in.png" alt="in">
+                            }
+                        </a>
+                    </div>
+                    <!-- connect with -->
+                </div>
+                <!-- top footer -->
+                <div class="second-footer">
+                    <p class="text-footer">
+                        <span class="icons icon-location"></span>
+                        OHIO DEFERRED COMPENSATION OFFICE -  257 EAST TOWN ST, SUITE 457, COLUMBUS, OHIO 43215-4626 PHONE.
+                        <strong>877-644-6457</strong>
+                    </p>
+                    <span class="sub-text">©2018 ohio deferred compensation, All Rights Reserved</span>
+                </div>
+                <!-- second footer -->
+            </footer>
+            <!-- footer -->
+        </div>
+        <!-- end .row. -->
+        @RenderSection("boxInstructions", required: false)
+        <div class="mobi-navigation @Html.ClassIfNotLoggedIn("no-login")">
+            <div class="top-menu">
+                <span class="text-wellcom">Welcome,</span>
+                <a href="javascript:;" class="click-name">
+                    <span class="name">Mitchel Starc</span>
+                    <span class="icons arrow-m-right"></span>
+                </a>
+                <!-- click name -->
+            </div>
+            <!-- top menu -->
+            <ul class="list-menu">
+                <li class="active">
+                    <p>
+                        <a href="@Url.Action("Index", "Home")" class="title">Home</a>
+                        <a href="javascript:;" class="click-down">
+                            <span class="icons arrow-down"></span>
+                        </a>
+                    </p>
+                    <div class="content-list">
+                        <a href="@Url.Action("Index", "Investment")" class="title-nav">Investments</a>
+                        <a href="@Url.Action("Index", "Resource")" class="title-nav">Resources</a>
+                        <a href="@Url.Action("Index", "Calculator")" class="title-nav">Calculators/Tools</a>
+                        <a href="javascript:;" class="title-nav">FAQ</a>
+                        <a href="@Url.Action("AboutUs", "Home")" class="title-nav">About Us</a>
+                        <a href="javascript:;" class="title-nav">Help</a>
+                    </div>
+                    <!-- content list -->
+                </li>
+                <li class="profile-ver">
+                    <p>
+                        <a href="javascript:;" class="title">Profile</a>
+                        <a href="javascript:;" class="click-down">
+                            <span class="icons arrow-down"></span>
+                        </a>
+                    </p>
+                    <div class="content-list">
+                        <a href="javascript:;" class="title-nav has-thired-level">My Profile</a>
+                        <div class="content-list third-level">
+                            <div class="border-inner">
+                                <a href="@Url.Action("PersonalInfo", "MyProfile")" class="title-nav">Personal Info</a>
+                                <a href="@Url.Action("LoginCredentials", "MyProfile")" class="title-nav">Login Credentials</a>
+                                <a href="@Url.Action("EDeliveryPreferences", "MyProfile")" class="title-nav">E-Delivery Preferences</a>
+                                <a href="@Url.Action("BankInformation", "MyProfile")" class="title-nav">Manage Bank Info</a>
+                            </div>
+                        </div>
+                        <a href="@Url.Action("Manager", "Account")" class="title-nav">Account Manager</a>
+                        <a href="@Url.Action("FileManager", "Account")" class="title-nav">File Manager</a>
+                    </div>
+                    <!-- content list -->
+                </li>
+                <li class="account-ver">
+                    <p>
+                        <a href="javascript:;" class="title">Account</a>
+                        <a href="javascript:;" class="click-down">
+                            <span class="icons arrow-down"></span>
+                        </a>
+                    </p>
+                    <div class="content-list">
+                        <a href="@Url.Action("Summary", "Account")" class="title-nav">Summary</a>
+                        <a href="@Url.Action("Statements", "Account")" class="title-nav">Statements</a>
+                        <a href="@Url.Action("Beneficiaries", "Account")" class="title-nav">Benefeciaries</a>
+                        <a href="@Url.Action("Contributions", "Account")" class="title-nav">Contributions</a>
+                        <a href="@Url.Action("FundExchange", "Account")" class="title-nav">Find Exchange</a>
+                        <a href="@Url.Action("TransactionHistory", "Account")" class="title-nav">Transaction History</a>
+                        <a href="@Url.Action("Withdrawals", "Account")" class="title-nav">Withdrawals</a>
+                    </div>
+                    <!-- content list -->
+                </li>
+                <li class="logout-ver">
+                    <a href="@Url.Action("Index", "Home")" class="click-logout">
+                        <span class="title">Logout</span>
+                    </a>
+                </li>
+            </ul>
+            <!-- list menu -->
+        </div>
+        <!-- mobi navigation -->
+        <div class="dark-overlay @ViewBag.DarkOverlayClass hide"></div>
+    </div>
+    <!-- end .container-fluid. -->
+</body>
+
+</html>

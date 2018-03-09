@@ -1,0 +1,81 @@
+﻿@model EDeliveryPreferencesModel
+@{
+    ViewBag.Title = "My Profile";
+    ViewBag.AtiveTab = NavigationTab.None;
+    ViewBag.DarkOverlayClass = "account-manager-content";
+    ViewBag.IsLoggedIn = true;
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/third-party-forms-js")
+}
+
+<div class="account-manager-page all-page">
+    @{ Html.RenderPartial("_TopIdentifyManagerPanel", new TopIdentityPanelModel(applyXsXmClasses: true, navigationTab: "MyProfile")); }
+    @{ Html.RenderPartial("_MyProfileNavigation", "E-Delivery Preferences"); }
+
+    <div class="visible-xs visible-sm title-n-button">
+        <div class="top-title-button active ">
+            <h1 class="active">E-Delivery Preferences</h1>
+            <a href="javascript:;" class="click-intructions">
+                <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+            </a>
+        </div>
+    </div>
+
+    <!-- Change mobile phone details -->
+    <div class="edit-personal-info pt-lg-3 pt-xl-3">
+        <div class="step-by-step mt-lg-3 mt-xl-3 pt-md-0 pt-sm-0">
+
+            <div class="step-more-details">
+                <div class="step-content step-one-content">
+                    <div class="top-title hidden-xs hidden-sm">
+                        <h1 class="align-left">E-Delivery Preferences</h1>
+                    </div>
+                    <!-- end /top-title -->
+                    <div class="middle-form p-sm-3 p-md-3">
+                        <div class="left-detail col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8  mt-4 px-lg-5 p-sm-0 p-md-0 ">
+                            @using (Html.BeginForm("EDeliveryPreferences", "MyProfile", FormMethod.Post))
+                            {
+                                <div class="row">
+                                    <div class="row quarterly-statement">
+                                        <div class="col-md-8 pl-0 py-4 col-sm-12  col-xs-12">
+                                            <span class="title ">Quarterly statement & Focus News Letter:</span>
+                                        </div>
+                                        <div class="col-md-4 py-4 pl-0 pr-sm-0 col-sm-12  col-xs-12 text-lg-left ">
+                                            <span class="text">
+                                                <input type="radio" id="bcheck01" name="@nameof(EDeliveryPreferencesModel.QuarterlyStatementAndFocusNewsLetter)" value="true" @Html.CheckedIf(Model.QuarterlyStatementAndFocusNewsLetter)>
+                                                <label for="bcheck01" class="big-radio">
+                                                    <span>Yes</span>
+                                                </label>
+                                            </span>
+                                            <span class="text">
+                                                <input type="radio" id="bcheck02" name="@nameof(EDeliveryPreferencesModel.QuarterlyStatementAndFocusNewsLetter)" value="false" @Html.CheckedIf(!Model.QuarterlyStatementAndFocusNewsLetter)>
+                                                <label for="bcheck02" class="big-radio">
+                                                    <span>No</span>
+                                                </label>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <!-- end /form-order01 -->
+                        <div class="hidden-xs hidden-sm col-md-4 mt-4 px-sm-0 pr-sm-3 pl-md-0 pl-sm-3 ml-md-5 ml-lg-0 pb-3">
+                            @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopInstructions)); }
+                        </div>
+                        <!-- end /box-instructions -->
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /middle-form -->
+                </div>
+                <!-- end /step-one-content -->
+            </div>
+            <!-- end /step-more-details -->
+        </div>
+    </div>
+</div>
+
+@section boxInstructions {
+    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileInstructions, showCloseButton: true)); }
+}

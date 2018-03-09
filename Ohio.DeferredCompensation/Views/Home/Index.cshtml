@@ -1,0 +1,316 @@
+﻿@model LoginModel
+
+@{
+    ViewBag.Title = "Home";
+    ViewBag.AtiveTab = NavigationTab.Home;
+}
+
+@section scripts {
+    <script src="~/bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/bower_components/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<div class="landing-page all-page">
+    <div class="top-landing">
+        <div class="slider-here">
+            <img src="~/Content/i/lager-image01.jpg" alt="image">
+            <div class="content-slider">
+                <h2>Welcome to Ohio Deferred Compensation</h2>
+                <p class="text-slider">
+                    We have access to a variety of investment options. Whether you’re a hands-on or hands-off investor, there are options
+                    for you. The Program is unique that it is a public, non-profit organization created by Ohio legislation.
+                </p>
+                <a href="@Url.Action("Enrollment", "Account")" class="click-join mix-xy">Join Now</a>
+            </div>
+        </div>
+        <div class="slider-here">
+            <img src="~/Content/i/lager-image01.jpg" alt="image">
+            <div class="content-slider">
+                <h2>Welcome to Ohio Deferred Compensation</h2>
+                <p class="text-slider">
+                    We have access to a variety of investment options. Whether you’re a hands-on or hands-off investor, there are options
+                    for you. The Program is unique that it is a public, non-profit organization created by Ohio legislation.
+                </p>
+                <a href="@Url.Action("Enrollment", "Account")" class="click-join mix-xy">Join Now</a>
+            </div>
+        </div>
+        <div class="slider-here">
+            <img src="~/Content/i/lager-image01.jpg" alt="image">
+            <div class="content-slider">
+                <h2>Welcome to Ohio Deferred Compensation</h2>
+                <p class="text-slider">
+                    We have access to a variety of investment options. Whether you’re a hands-on or hands-off investor, there are options
+                    for you. The Program is unique that it is a public, non-profit organization created by Ohio legislation.
+                </p>
+                <a href="@Url.Action("Enrollment", "Account")" class="click-join mix-xy">Join Now</a>
+            </div>
+        </div>
+        <div class="slider-here">
+            <img src="~/Content/i/lager-image01.jpg" alt="image">
+            <div class="content-slider">
+                <h2>Welcome to Ohio Deferred Compensation</h2>
+                <p class="text-slider">
+                    We have access to a variety of investment options. Whether you’re a hands-on or hands-off investor, there are options
+                    for you. The Program is unique that it is a public, non-profit organization created by Ohio legislation.
+                </p>
+                <a href="@Url.Action("Enrollment", "Account")" class="click-join mix-xy">Join Now</a>
+            </div>
+        </div>
+    </div>
+    <!-- end top landing -->
+    <div class="mobi-login">
+        <div class="tab-select cen-z">
+            <a href="javascript:;" class="select-tab select-login mix-xy active">Login</a>
+            <a href="javascript:;" class="select-tab select-signup mix-xy">Signup</a>
+        </div>
+        <!-- tab select -->
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+        {
+            <div class="tab-content tab-login">
+                <div class="cover-input">
+                    <span class="title">Username</span>
+                    <div class="input-here">
+                        @Html.CustomTextBoxFor(m => m.Username, "Enter Username")
+                    </div>
+                    <!-- input here -->
+                </div>
+                <!-- cover input -->
+                <div class="cover-input">
+                    <span class="title">Password</span>
+                    <div class="input-here">
+                        @Html.CustomPasswordFor(m => m.Password, "Enter Password")
+                    </div>
+                    <!-- input here -->
+                </div>
+                <!-- cover input -->
+                <a href="javascript:;" class="click-login mix-xy submit-form">login</a>
+                <div class="cover-check cen-z">
+                    <div class="check-here">
+                        @Html.CustomCheckBox("Remember me", "RememberMe", Model?.RememberMe, "login01")
+                    </div>
+                    <!-- check here	 -->
+                    <a href="@Url.Action("Retrieve", "Account")" class="click-forgot">Forgot Password?</a>
+                </div>
+                <!-- cover check -->
+            </div>
+            <!-- tab login -->
+        }
+
+        @using (Html.BeginForm("SignupPartial", "Account", FormMethod.Post))
+        {
+            <div class="tab-content tab-signup hide">
+                <ul>
+                    <li>
+                        <span class="name ver-y">Account Number</span>
+                        <div class="typing-here">
+                            @Html.CustomTextBox("AccountNumber", "Enter Account Number", @class: "iinput")
+                            @{ Html.RenderPartial("_TinyHint", "Lorem ipsum domet"); }
+                        </div>
+                    </li>
+                </ul>
+                <p class="line-space">
+                    <span class="text-space">or</span>
+                </p>
+                <ul>
+                    <li>
+                        <span class="name ver-y">SSN</span>
+                        <div class="typing-here">
+                            @Html.CustomTextBox("SSN", "Enter SSN", @class: "iinput")
+                            @{ Html.RenderPartial("_TinyHint", "Lorem ipsum domet"); }
+                        </div>
+                    </li>
+                    <li>
+                        <span class="name ver-y">Date of Birth</span>
+                        <div class="typing-here">
+                            @Html.CustomTextBox("DateOfBirth", "mm/dd/yy", @class: "iinput datepicker-birth")
+                            @{ Html.RenderPartial("_TinyHint", "Lorem ipsum domet"); }
+                        </div>
+                    </li>
+                </ul>
+                <a href="javascript:;" class="btn-create mix-xy submit-form">CREATE ACCOUNT</a>
+            </div>
+        }
+        <!-- tab signup -->
+    </div>
+    <!-- mobi login		 -->
+    <div class="second-landing ver-y">
+        <div class="cover-box cen-z">
+            <div class="box-content">
+                <div class="cover-image">
+                    <img src="~/Content/i/umbrella.png" alt="image">
+                </div>
+                <!-- cover-image -->
+                <a href="javascript:;" class="title">Are you prepared for retirement?</a>
+                <span class="text">Find out with the My Interactive Retirement Planner which is being used by more than 500k people around the globe</span>
+                <a href="javascript:;" class="click-learn">Learn More</a>
+            </div>
+            <!-- box content -->
+            <div class="box-content">
+                <div class="cover-image">
+                    <img src="~/Content/i/icon-smart.png" alt="image">
+                </div>
+                <!-- cover-image -->
+                <a href="javascript:;" class="title">SMarT helps you reach your investing goal</a>
+                <span class="text">SMarT can help in Automatic increases each year can make a difference in reaching your retirement goals</span>
+                <a href="@Url.Action("SmartPlan", "Account")" class="click-learn">Learn More</a>
+            </div>
+            <!-- box content -->
+            <div class="box-content">
+                <div class="cover-image">
+                    <img src="~/Content/i/icon-pig.png" alt="image">
+                </div>
+                <!-- cover-image -->
+                <a href="javascript:;" class="title">Learn the benefits of enrolling</a>
+                <span class="text">Professor Penny gives you the top seven reasons why enrolling in Ohio Deferred Compensation makes sense</span>
+                <a href="javascript:;" class="click-learn">Learn More</a>
+            </div>
+            <!-- box content -->
+        </div>
+        <!-- cover box -->
+    </div>
+    <!-- end second landing -->
+
+    <div class="third-landing">
+        <h2>Important Plan Updates and Announcements</h2>
+        <div class="box-plant">
+            <div class="box-detail">
+                <div class="left-b-detail">
+                    <img src="~/Content/i/topic-image01.png" alt="image">
+                </div>
+                <!-- left box detail -->
+                <div class="right-b-detail">
+                    <a href="javascript:;" class="title">Defined contribution plans were updated!</a>
+                    <p class="text">The amount employees have at retirement depends on the amount of contributions made, the investment choices,</p>
+                    <a href="javascript:;" class="click-learn">LEARN MORE</a>
+                </div>
+                <!-- right box detail -->
+            </div>
+            <!-- box detail -->
+            <div class="box-detail">
+                <div class="left-b-detail">
+                    <img src="~/Content/i/topic-image02.png" alt="image">
+                </div>
+                <!-- left box detail -->
+                <div class="right-b-detail">
+                    <a href="javascript:;" class="title">New Ohio Public Sector Retirement Plans </a>
+                    <p class="text">The amount employees have at retirement depends on the amount of contributions made, the investment choices,</p>
+                    <a href="javascript:;" class="click-learn">LEARN MORE</a>
+                </div>
+                <!-- right box detail -->
+            </div>
+            <!-- box detail -->
+            <div class="box-detail">
+                <div class="left-b-detail">
+                    <img src="~/Content/i/topic-image03.png" alt="image">
+                </div>
+                <!-- left box detail -->
+                <div class="right-b-detail">
+                    <a href="javascript:;" class="title">New Defined Benefit Plan documents</a>
+                    <p class="text">The amount employees have at retirement depends on the amount of contributions made, the investment choices,</p>
+                    <a href="javascript:;" class="click-learn">LEARN MORE</a>
+                </div>
+                <!-- right box detail -->
+            </div>
+            <!-- box detail -->
+            <div class="box-detail">
+                <div class="left-b-detail">
+                    <img src="~/Content/i/topic-image04.png" alt="image">
+                </div>
+                <!-- left box detail -->
+                <div class="right-b-detail">
+                    <a href="javascript:;" class="title">Defined contribution plans were updated!</a>
+                    <p class="text">The amount employees have at retirement depends on the amount of contributions made, the investment choices,</p>
+                    <a href="javascript:;" class="click-learn">LEARN MORE</a>
+                </div>
+                <!-- right box detail -->
+            </div>
+            <!-- box detail -->
+            <div class="box-detail">
+                <div class="left-b-detail">
+                    <img src="~/Content/i/topic-image05.png" alt="image">
+                </div>
+                <!-- left box detail -->
+                <div class="right-b-detail">
+                    <a href="javascript:;" class="title">New Ohio Public Sector Retirement Plans </a>
+                    <p class="text">The amount employees have at retirement depends on the amount of contributions made, the investment choices,</p>
+                    <a href="javascript:;" class="click-learn">LEARN MORE</a>
+                </div>
+                <!-- right box detail -->
+            </div>
+            <!-- box detail -->
+            <div class="box-detail">
+                <div class="left-b-detail">
+                    <img src="~/Content/i/topic-image06.png" alt="image">
+                </div>
+                <!-- left box detail -->
+                <div class="right-b-detail">
+                    <a href="javascript:;" class="title">New Defined Benefit Plan documents</a>
+                    <p class="text">The amount employees have at retirement depends on the amount of contributions made, the investment choices,</p>
+                    <a href="javascript:;" class="click-learn">LEARN MORE</a>
+                </div>
+                <!-- right box detail -->
+            </div>
+            <!-- box detail -->
+        </div>
+        <!-- box plant -->
+        <div class="box-pagination">
+            <ul class="list-number">
+                <li class="active">
+                    <a href="javascript:;">1</a>
+                </li>
+                <li>
+                    <a href="javascript:;">2</a>
+                </li>
+                <li>
+                    <a href="javascript:;">3</a>
+                </li>
+                <li>
+                    <a href="javascript:;">4</a>
+                </li>
+                <li>
+                    <a href="javascript:;">5</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- third landing -->
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+    {
+        <div class="box-login">
+            <div class="cover-input">
+                <span class="title">Username</span>
+                <div class="input-here">
+                    @Html.CustomTextBoxFor(m => m.Username, "Enter Username")
+                </div>
+                <!-- input here -->
+            </div>
+            <!-- cover input -->
+            <div class="cover-input">
+                <span class="title">Password</span>
+                <div class="input-here">
+                    @Html.CustomPasswordFor(m => m.Password, "Enter Password")
+                </div>
+                <!-- input here -->
+            </div>
+            <!-- cover input -->
+            <a href="javascript:;" class="click-login mix-xy submit-form">login</a>
+            <div class="cover-check cen-z">
+                <div class="check-here">
+                    @Html.CustomCheckBox("Remember me", "RememberMe", Model?.RememberMe, "login012")
+                </div>
+                <!-- check here	 -->
+                <a href="@Url.Action("Retrieve", "Account")" class="click-forgot">Forgot Password?</a>
+            </div>
+            <!-- cover check -->
+            <div class="sub-login mix-xy">
+                <p>
+                    <a href="@Url.Action("Signup", "Account")" class="sign-up">Sign Up</a>
+                    <span class="text-sign"> for an online Account</span>
+                </p>
+            </div>
+            <!-- sub login -->
+        </div>
+        <!-- end box-login -->
+    }
+</div>
+<!-- landing page -->

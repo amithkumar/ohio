@@ -1,0 +1,168 @@
+﻿@model IList<FileModel>
+@{
+    ViewBag.Title = "File Manager";
+    ViewBag.AtiveTab = NavigationTab.None;
+    ViewBag.IsLoggedIn = true;
+}
+
+<div class="file-manager-page">
+    @{ Html.RenderPartial("_TopIdentifyManagerPanel", new TopIdentityPanelModel(fixSpacing: true, applyXsXmClasses: true, navigationTab: "FileManager")); }
+    @{ Html.RenderPartial("_TopIdentifyPanel", new TopIdentityPanelModel()); }
+    <div class="manager-content">
+        <div class="top-m-content ver-y">
+            <img class="img01" src="~/Content/i/icon-file.png" alt="image">
+            <img class="img02" src="~/Content/i/mobi/icon-file.png" alt="image">
+            <h2>File Manager</h2>
+            <a href="@Url.Action("UploadFile", "Account")" class="add-upload mix-xy">+ upload file</a>
+        </div>
+        <!-- top m content -->
+        <div class="main-content hidden-xs hidden-sm">
+            <ul class="list-title">
+                <li>
+                    <span class="title">File Name</span>
+                </li>
+                <li>
+                    <span class="title">Upload Date</span>
+                </li>
+                <li>
+                    <span class="title">File Size</span>
+                </li>
+                <li>
+                    <span class="title">Document Type</span>
+                </li>
+                <li>
+                    <span class="title">Comment</span>
+                </li>
+            </ul>
+            <!-- list title -->
+            <div class="group-list">
+                <ul class="list-colum">
+                    @foreach (var file in Model)
+                    {
+                        <li data-fileid="@file.Id">
+                            <ul class="list-row">
+                                <li>
+                                    <span class="text-file">@file.FileName</span>
+                                </li>
+                                <li>
+                                    <span class="text-file">@file.UploadDate.ToString("MM/dd/yyyy")</span>
+                                </li>
+                                <li>
+                                    <span class="text-file">@file.FileSize</span>
+                                </li>
+                                <li>
+                                    <span class="text-file">@file.DocumentType</span>
+                                </li>
+                                <li>
+                                    <p class="text">@file.Comment</p>
+                                    <div class="right-comment">
+                                        <a href="javascript:;" class="click-view">
+                                            <span class="icons view-seach-new"></span>
+                                            <span class="name">View</span>
+                                        </a>
+                                        <a href="javascript:;" class="click-delete">
+                                            <span class="icons delete-icon"></span>
+                                            <span class="name">Delete</span>
+                                        </a>
+                                    </div>
+                                    <!-- right comment -->
+                                </li>
+                            </ul>
+                            <!-- list row -->
+                            <div class="delete-file hide">
+                                <p class="text-delete">Are you sure want to delete file “@file.FileName”?</p>
+                                <div class="box-select cen-z">
+                                    <a href="javascript:;" class="btn-no mix-xy">no</a>
+                                    <a href="javascript:;" class="btn-yes mix-xy">yes</a>
+                                </div>
+                            </div>
+                            <!-- delete file -->
+                        </li>
+                    }
+                </ul>
+                <!-- list colum -->
+            </div>
+            <!-- end /group-list -->
+        </div>
+        <!-- main content -->
+        <div class="main-content-mobi hidden-md hidden-lg">
+            <div class="group-title">
+                <span class="title01">File Name</span>
+                <span class="title02">Size/Upload Date</span>
+            </div>
+            <!-- end /group-title -->
+            <div class="group-files">
+                <ul>
+                    @foreach (var file in Model)
+                    {
+                        <li class="ver-y">
+                            <a href="javascript:;" class="iarrow">
+                                <span class="icons r-right"></span>
+                            </a>
+                            <div class="cover-all">
+                                <div class="left-content">
+                                    <p class="file-name">@file.FileName</p>
+                                    <p class="file-type">@file.DocumentType</p>
+                                </div>
+                                <div class="right-content">
+                                    <p class="file-size">@file.FileSize</p>
+                                    <p class="file-type">@file.UploadDate.ToString("MM/dd/yyyy")</p>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+                <a href="javascript:;" class="btn-more mix-xy">Load More</a>
+            </div>
+            <!-- end /group-files -->
+        </div>
+        <!-- end /main-content-mobi -->
+        <div class="sub-content cen-z hidden-xs hidden-sm">
+            <div class="left-sub">
+                <div class="show-page ver-y">
+                    <span class="text">Show</span>
+                    <div class="dropdown-here ddown-here">
+                        <select name="select" class="ddown-select" title="save the file">
+                            <option>Select</option>
+                            <option>5</option>
+                            <option selected="selected">10</option>
+                            <option>20</option>
+                            <option>50</option>
+                        </select>
+                        <span class="icons-ddown"></span>
+                    </div>
+                    <!-- dropdown here -->
+                    <span class="text">per page</span>
+                </div>
+                <!-- show page -->
+            </div>
+            <!-- left sub -->
+            <div class="right-sub">
+                <div class="box-pagination">
+                    <ul class="list-number">
+                        <li class="active">
+                            <a href="javascript:;">1</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">2</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">3</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">4</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">5</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- box pagination -->
+            </div>
+            <!-- right sub -->
+        </div>
+        <!-- sub content -->
+    </div>
+    <!-- manager content -->
+</div>
+

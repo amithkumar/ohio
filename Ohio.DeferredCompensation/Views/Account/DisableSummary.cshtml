@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "Account Summary";
+    ViewBag.AtiveTab = NavigationTab.None;
+    ViewBag.IsLoggedIn = true;
+}
+
+<div class="account-disable success-ver">
+    @{ Html.RenderPartial("_TopIdentifyPanel", new TopIdentityPanelModel(fixSpacing: true, applyXsXmClasses: true)); }
+    @{ Html.RenderPartial("_SubNavigation", "Summary"); }
+    <div class="content-disable">
+        <div class="group-content succeed-box">
+            <div class="bottom-content">
+                <div class="group-content-bottom">
+                    <div class="top-extra-title hidden-md hidden-lg">
+                        <p>Completed</p>
+                    </div>
+                    <div class="content-left">
+                        <span class="big-text">Successful!</span>
+                        <div class="group-notice">
+                            <img src="~/Content/i/select-box.png" alt="IMG">
+                            <p>Your are now successfull disabled Auto Rebalancing</p>
+                        </div>
+                        <!-- end /group-notice -->
+                        <a href="javascript:;" class="btn-ok mix-xy">Okay</a>
+                    </div>
+                    <!-- end /content-left -->
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <!-- end /bottom-content -->
+        </div>
+        <!-- end /upload-box -->
+        <div class="cover-content">
+            <div class="top-content">
+                <span class="title">Auto Rebalancing Disable</span>
+            </div>
+            <!-- top content -->
+            <div class="second-content">
+                <p class="text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit
+                    amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis
+                    dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis
+                    orci, sed rhoncus sapien nunc eget.
+                </p>
+                <p class="text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit
+                    amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis
+                    dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis
+                    orci, sed rhoncus sapien nunc eget.
+                </p>
+                <p class="text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit
+                    amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis
+                    dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis
+                    orci, sed rhoncus sapien nunc eget.
+                </p>
+            </div>
+            <!-- second content -->
+            <div class="third-content ver-y">
+                <a href="@Url.Action("Summary", "Account")" class="btn-cancel mix-xy">cancel</a>
+                <a href="@Url.Action("EnableSummary", "Account")" class="btn-active">ENABLE AUTO REBALANCING</a>
+            </div>
+            <a href="@Url.Action("EnableSummary", "Account")" class="enable-auto ver-y">
+                <span class="icons icon-pen"></span>
+                <span class="text">ENABLE AUTO REBALANCING</span>
+            </a>
+        </div>
+        <!-- cover content -->
+    </div>
+    <!-- end /account-disable -->
+</div>

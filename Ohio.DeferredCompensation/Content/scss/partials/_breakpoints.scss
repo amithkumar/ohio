@@ -1,0 +1,438 @@
+//Media Queries for Standard Devices
+@media only screen and (min-width: 1024px) and (max-width: 1280px) {
+	// Retrieve Page
+	.retreive-page-content {
+		width: 100%;
+		position: relative; // Step By Step
+		.step-by-step {
+			width: calc(100% - 40px); // Step More Details
+			.step-more-details {
+				width: 100%;
+				position: relative; // Middle Form
+				.middle-form {
+					padding: 28px 50px 35px;
+					position: relative;
+				}
+			}
+		}
+	} // About Us Page
+	.about-us-page {
+		width: 100%;
+		position: relative; // Primary Content
+		.primary-content {
+			position: relative; // Tab 01
+			.tab-order01-content {
+				padding: 52px 40px 110px; // Part One
+				.big-part-one {
+					.group-quote {
+						height: 205px;
+						.cover-all {
+							p {
+								width: 780px;
+							}
+						}
+					}
+				}
+			} // Tab 02
+			.tab-order02-content {
+				padding: 52px 20px 35px; // Part One
+				.big-part-one {
+					// Board Members
+					.board-members {
+						width: 880px;
+					}
+				}
+			} // Tab 03
+			.tab-order03-content {
+				padding: 48px 40px 115px;
+			}
+		}
+	} // Investments Page
+	.investments-page {
+		width: 100%;
+		position: relative; // Primary Content
+		.primary-content {
+			position: relative; // Tab 01
+			.tab-order01-content {
+				padding: 36px 20px 70px;
+			} // Tab 02
+			.tab-order02-content {
+				padding: 26px 20px 70px;
+				.big-part-two {
+					.complex-table {
+						.second-group {
+							.lineage01 {
+								.gene01 {
+									.lineage02 {
+										.gene02 {
+											.demo-value {
+												&.column01 {
+													p {
+														font-size: 11px;
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	} // Account Manager Page
+	.account-manager-page {
+		padding-bottom: 70px; // Top Identify ID
+		.top-identify-id {
+			padding: 0 20px;
+		} // Top Title Button
+		.top-title-button {
+			padding: 0 20px;
+			h1 {
+				&.active{
+					color: #df3225;
+				}
+			} // Active color
+		} // Big Part One
+		.big-part-one {
+			width: calc(100% - 20px);
+			.wrapper-all {
+				padding: 0 40px;
+			}
+		} // Big Part Two
+		.big-part-two {
+			width: calc(100% - 20px);
+		}
+	} // Account Summary Page
+	.account-summary-page {
+		width: 100%;
+		position: relative; // Top Identify ID
+		.top-identify-id {
+			padding: 0 20px;
+		} // Top Multi Tab
+		.top-multi-tab {
+			height: 60px;
+			padding: 0 20px;
+			ul {
+				li {
+					.title {
+						padding: 0 15px;
+					}
+				}
+			}
+		} // Bottom Primary Content
+		.bottom-primary-content {
+			width: 100%;
+			padding: 20px 20px 0;
+			position: relative; // Big Part One
+			.big-part-one {
+				padding-right: 20px; // Left Box
+				.left-white-box {
+					width: 360px;
+					padding: 37px 20px 0;
+				} // Right Box
+				.right-white-box {
+					width: calc(100% - 360px);
+					left: 20px; // Top Title
+					.top-title-content {
+						h1 {
+							margin-left: 20px;
+						}
+						.double-btn {
+							width: 330px;
+							height: 43px;
+							margin-right: 20px;
+						}
+					} // Bottom Main Content
+					.bottom-main-content {
+						height: 459px;
+						padding: 0 20px 0 200px;
+						position: relative; // Left Chart
+						.left-circle-chart {
+							width: 200px;
+						} // Right Table
+						.right-multi-table {
+							// First Table
+							.first-table {
+								margin-bottom: 8px;
+								position: relative;
+								table {
+									width: 100%;
+									position: relative;
+									thead {
+										width: 100%;
+										position: relative;
+										tr {
+											width: 100%;
+											border-bottom: 1px solid #c9c9c9;
+											position: relative;
+											th {
+												height: 40px;
+												vertical-align: middle;
+												&.column01 {
+													width: 52.22%;
+													padding-left: 40px;
+												}
+												&.column02 {
+													width: 27.20%;
+												}
+												&.column03 {
+													width: 20.58%;
+													.title {
+														text-indent: 12px;
+													}
+												}
+												.title {
+													display: block;
+													font-size: 14px;
+													font-weight: 500;
+												}
+												.square {
+													display: block;
+													width: 8px;
+													height: 8px;
+													background-color: #cccccc;
+													position: absolute;
+													top: 16px;
+													left: 10px;
+												}
+											}
+										}
+									}
+								}
+							} // Second Table
+							.second-table {
+								position: relative;
+								table {
+									width: 100%;
+									position: relative;
+									tbody {
+										width: 100%;
+										position: relative;
+										tr {
+											width: 100%;
+											position: relative;
+											&:nth-child(odd) {
+												background-color: #f6f6f6;
+												td {
+													height: 42px;
+													.square {
+														top: 16px;
+													}
+												}
+											}
+											td {
+												height: 57px;
+												vertical-align: middle;
+												&.column01 {
+													position: relative;
+													width: 52.22%;
+													padding-left: 40px;
+												}
+												&.column02 {
+													width: 27.20%;
+													.title {
+														width: 80px;
+														text-align: center;
+													}
+												}
+												&.column03 {
+													width: 20.58%;
+												}
+												.title {
+													display: block;
+													font-size: 13px;
+													&.bold {
+														font-weight: 500;
+													}
+												}
+												.square {
+													display: block;
+													width: 8px;
+													height: 8px;
+													position: absolute;
+													top: 25px;
+													left: 10px;
+													&.red {
+														background-color: #df3225;
+													}
+													&.yellow {
+														background-color: #f1aa00;
+													}
+													&.violet {
+														background-color: #783c95;
+													}
+													&.blue {
+														background-color: #3c9edb;
+													}
+													&.green {
+														background-color: #43d057;
+													}
+													&.cyan {
+														background-color: #03dbc9;
+													}
+													&.pink {
+														background-color: #e84ed4;
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			} // Big Part Three
+			.big-part-three {
+				padding: 0 20px 0 0;
+				position: relative; // Left White Box
+				.left-white-box {
+					width: calc(100% - 550px);
+					padding: 34px 20px 0; // Bottom Table
+					.bottom-table {
+						// Main Content
+						.main-content {
+							// First Table
+							.first-table {
+								table {
+									width: 100%;
+									position: relative;
+									thead {
+										width: 100%;
+										position: relative;
+										tr {
+											width: 100%;
+											background-color: #e5e5e5;
+											position: relative;
+											th {
+												height: 40px;
+												vertical-align: middle;
+												&.column01 {
+													width: 52.22%;
+													padding-left: 20px;
+												}
+												&.column02 {
+													width: 27.20%;
+												}
+												&.column03 {
+													width: 20.58%;
+													.title {
+														text-indent: 12px;
+													}
+												}
+												.title {
+													display: block;
+													font-size: 14px;
+													font-weight: 500;
+												}
+											}
+										}
+									}
+								}
+							} // Second Table
+							.second-table {
+								position: relative;
+								table {
+									width: 100%;
+									position: relative;
+									tbody {
+										width: 100%;
+										position: relative;
+										tr {
+											width: 100%;
+											position: relative;
+											&:nth-child(odd) {
+												background-color: #f6f6f6;
+												td {
+													height: 39px;
+													.square {
+														top: 16px;
+													}
+												}
+											}
+											td {
+												height: 54px;
+												vertical-align: middle;
+												&.column01 {
+													width: 52.22%;
+													padding-left: 20px;
+													.title {
+														text-transform: uppercase;
+													}
+												}
+												&.column02 {
+													width: 27.20%;
+													.title {
+														width: 80px;
+														text-align: center;
+													}
+												}
+												&.column03 {
+													width: 20.58%;
+												}
+												.title {
+													display: block;
+													font-size: 13px;
+													&.bold {
+														font-weight: 500;
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				} // Right White Box
+				.right-white-box {
+					width: 550px;
+					padding-top: 30px;
+					left: 20px; // Middle Chart
+					.middle-chart {
+						overflow: hidden;
+						position: relative;
+					}
+				}
+			}
+		}
+	} // Resource Page
+	.resources-page {
+		// Primary Content
+		.primary-content {
+			.tab-order03-content {
+				padding: 0px 16px 62px;
+			}
+			.tab-order02-content {
+				padding: 0px 16px 62px;
+				.cover-box {
+					.second-content {
+						.grid-group {
+							.list-content {
+								li {
+									.cover-content {
+										.title {
+											font-size: 16px;
+										}
+										.ellipsis-text {
+											width: 256px;
+											height: 100px;
+											float: left;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.tab-order01-content {
+				padding: 0px 20px 62px;
+			}
+		}
+	}
+}
+
+// ---END---

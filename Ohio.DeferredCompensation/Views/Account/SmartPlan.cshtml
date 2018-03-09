@@ -1,0 +1,608 @@
+﻿@{
+    ViewBag.Title = "SMarT Plan";
+    ViewBag.AtiveTab = NavigationTab.None;
+    ViewBag.DarkOverlayClass = "account-manager-content";
+}
+
+<div class="smart-plan-page all-page">
+    @{ Html.RenderPartial("_TopIdentifyPanel", new TopIdentityPanelModel(applyXsXmClasses: true)); }
+    @{ Html.RenderPartial("_SubNavigation", "Summary"); }
+    <div class="content-plan step04 content-step01">
+        <a href="@Url.Action("Summary", "Account")" class="click-back">
+            <span class="icons row-back"></span>
+            <span class="title">SMarT PLAN</span>
+        </a>
+        <!-- click back -->
+        <div class="box-content">
+            <div class="cover-image">
+                <img src="~/Content/i/icon-smart.png" alt="smart">
+                <a href="javascript:;" class="click-intructions ver-mobi">
+                    <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+                </a>
+            </div>
+            <!-- cover image -->
+            <div class="cover-content">
+                <h2>You’re not Enrolled into SMarT Plan </h2>
+                <span class="title">Try the SMarT Plan today! See below How does SMarT work? </span>
+                <p class="text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod biben loremdum laoreet. Proin gravida dolor
+                    sit amet lacus accumsan et viverra justo loremiod commodo. Proin lore lsodales pulvinar tempor. Cum sociis natoque
+                    penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus ascre pharetra vulputate,
+                    felis tellus mollis orci, sed rhoncus sapien nunc eget. . Nam fermentum, nulla luctus pharetra vulputate, felis tellus
+                    mollis orci, sed rhoncus sapi loreen did.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod
+                    biben loremdum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo loriem commodo. Proin lore lsodales
+                    pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                </p>
+            </div>
+            <!-- cover content -->
+            <a class="btn-enrol mix-xy" href="javascript:;">Enroll in SMarT Plan</a>
+        </div>
+        <!-- content box -->
+    </div>
+    <!-- content plan step01-->
+    <div class="content-plan step02 step05 content-step02 hide">
+        <a href="@Url.Action("Summary", "Account")" class="click-back">
+            <span class="icons row-back"></span>
+            <span class="title text-red">SMarT PLAN</span>
+        </a>
+        <!-- click back -->
+        <span class="text-update">Enroll into SMarT Plan</span>
+        <div class="box-content">
+            <div class="cover-image">
+                <img src="~/Content/i/icon-smart.png" alt="smart">
+                <a href="javascript:;" class="click-intructions ver-mobi">
+                    <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+                </a>
+            </div>
+            <!-- cover image -->
+            <div class="cover-content">
+                <div class="left-content">
+                    <h2>Select one of the options below :</h2>
+                    <div class="cover-box">
+                        <div class="box-radio">
+                            <input type="radio" id="cplan06" name="bplan02" checked>
+                            <label for="cplan06" class="tick-radio">
+                                <span>Increase per pay deferral amount each year by :</span>
+                            </label>
+                            <button class="icons quest01"></button>
+                            <ul class="list-select">
+                                <li>
+                                    <span class="title visible-xs visible-sm">Select Amount</span>
+                                    <div class="select-here ddown-here">
+                                        <select name="select" class="ddown-select" title="save the file">
+                                            <option>Select</option>
+                                            <option selected="selected">$100</option>
+                                            <option>$200</option>
+                                            <option>$300</option>
+                                            <option>$400</option>
+                                        </select>
+                                        <span class="icons-ddown"></span>
+                                    </div>
+                                    <div class="clear"></div>
+                                </li>
+                                <li>
+                                    <span class="title">Starting Month</span>
+                                    <div class="select-here ddown-here">
+                                        <select name="select" class="ddown-select" title="save the file">
+                                            <option>Select</option>
+                                            <option selected="selected">January</option>
+                                            <option>February</option>
+                                            <option>March</option>
+                                            <option>April</option>
+                                            <option>May</option>
+                                            <option>June</option>
+                                            <option>July</option>
+                                            <option>August</option>
+                                            <option>September</option>
+                                            <option>October</option>
+                                            <option>November</option>
+                                            <option>December</option>
+                                        </select>
+                                        <span class="icons-ddown"></span>
+                                    </div>
+                                    <div class="clear"></div>
+                                </li>
+                                <li>
+                                    <span class="title">Starting Year</span>
+                                    <div class="select-here ddown-here">
+                                        <select name="select" class="ddown-select" title="save the file">
+                                            <option>Select</option>
+                                            <option>2010</option>
+                                            <option>2011</option>
+                                            <option>2012</option>
+                                            <option>2013</option>
+                                            <option>2014</option>
+                                            <option>2015</option>
+                                            <option>2016</option>
+                                            <option selected="selected">2017</option>
+                                        </select>
+                                        <span class="icons-ddown"></span>
+                                    </div>
+                                    <div class="clear"></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- box radio -->
+                        <div class="box-radio">
+                            <input type="radio" id="cplan07" name="bplan02">
+                            <label for="cplan07" class="tick-radio">
+                                <span>Increase deferral amount each year to reach IRS Regular Maximum:</span>
+                            </label>
+                            <button class="icons quest01"></button>
+                        </div>
+                        <!-- box radio -->
+                        <div class="box-radio">
+                            <input type="radio" id="cplan08" name="bplan02">
+                            <label for="cplan08" class="tick-radio">
+                                <span>Increase deferral amount each year to reach IRS 50+ Maximum</span>
+                            </label>
+                            <button class="icons quest01"></button>
+                        </div>
+                        <!-- box radio -->
+                    </div>
+                    <!-- cover box -->
+                    <div class="cover-select">
+                        <a href="javascript:;" class="btn-change continute mix-xy">Continue &amp; Review changes</a>
+                        <a href="javascript:;" class="btn-change cancel-change mix-xy">Cancel changes</a>
+                    </div>
+                </div>
+                <!-- left content -->
+                @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.Instructions, cssClass: "hidden-xs hidden-sm")); }
+                <div class="clear"></div>
+            </div>
+            <!-- cover content -->
+        </div>
+        <!-- content box -->
+    </div>
+    <!-- content plan step02-->
+
+    <div class="content-plan step02 step03 step06 content-step03 hide">
+        <a href="@Url.Action("Summary", "Account")" class="click-back">
+            <span class="icons row-back"></span>
+            <span class="title text-red">SMarT PLAN</span>
+        </a>
+        <!-- click back -->
+        <span class="text-update">Enroll into SMarT Plan</span>
+        <div class="box-content">
+            <div class="cover-image">
+                <img src="~/Content/i/icon-smart.png" alt="smart">
+                <a href="javascript:;" class="click-intructions ver-mobi">
+                    <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+                </a>
+            </div>
+            <!-- cover image -->
+            <div class="cover-content">
+                <div class="left-content">
+                    <h2>Update Smart Plan</h2>
+                    <div class="box-select">
+                        <div class="cover-input">
+                            <span class="title">Select Option</span>
+                            <div class="input-here hidden-xs hidden-sm">
+                                <input type="text" placeholder="Increase Pay per day differel Amount each year" title="save the file">
+                            </div>
+                            <!-- input here -->
+                            <div class="input-here ddown-here visible-xs visible-sm">
+                                <select name="select" class="ddown-select" title="save the file">
+                                    <option>Select</option>
+                                    <option selected="selected">Increase Pay per day differel Amount each year</option>
+                                    <option>Increase Pay per day differel Amount each year</option>
+                                    <option>Increase Pay per day differel Amount each year</option>
+                                    <option>Increase Pay per day differel Amount each year</option>
+                                </select>
+                            </div>
+                            <!-- end /ddown-here ver-mobile -->
+                        </div>
+                        <!-- cover input -->
+                        <div class="cover-input">
+                            <span class="title">Increase Amount by</span>
+                            <div class="input-here hidden-xs hidden-sm">
+                                <input type="text" placeholder="$150.00" title="save the file">
+                            </div>
+                            <!-- input here -->
+                            <div class="input-here ddown-here visible-xs visible-sm">
+                                <select name="select" class="ddown-select" title="save the file">
+                                    <option>Select</option>
+                                    <option selected="selected">$150.00</option>
+                                    <option>$150.00</option>
+                                    <option>$150.00</option>
+                                    <option>$150.00</option>
+                                </select>
+                            </div>
+                            <!-- end /ddown-here ver-mobile -->
+                        </div>
+                        <!-- cover input -->
+                        <div class="cover-input">
+                            <span class="title">Starting month</span>
+                            <div class="input-here hidden-xs hidden-sm">
+                                <input type="text" placeholder="January" title="save the file">
+                            </div>
+                            <!-- input here -->
+                            <div class="input-here ddown-here visible-xs visible-sm">
+                                <select name="select" class="ddown-select" title="save the file">
+                                    <option>Select</option>
+                                    <option selected="selected">January</option>
+                                    <option>January</option>
+                                    <option>January</option>
+                                    <option>January</option>
+                                </select>
+                            </div>
+                            <!-- end /ddown-here ver-mobile -->
+                        </div>
+                        <!-- cover input -->
+                        <div class="cover-input">
+                            <span class="title">Starting Year</span>
+                            <div class="input-here hidden-xs hidden-sm">
+                                <input type="text" placeholder="2018" title="save the file">
+                            </div>
+                            <!-- input here -->
+                            <div class="input-here ddown-here visible-xs visible-sm">
+                                <select name="select" class="ddown-select" title="save the file">
+                                    <option>Select</option>
+                                    <option selected="selected">2018</option>
+                                    <option>2018</option>
+                                    <option>2018</option>
+                                    <option>2018</option>
+                                </select>
+                            </div>
+                            <!-- end /ddown-here ver-mobile -->
+                        </div>
+                        <!-- cover input -->
+                        <div class="cover-input">
+                            <span class="title">Consent</span>
+                            <div class="area-here">
+                                <textarea title="save the file"></textarea>
+                            </div>
+                            <!-- input here -->
+                        </div>
+                        <!-- cover input -->
+                        <div class="cover-input">
+                            <div class="cover-tick">
+                                <input type="checkbox" id="cup11">
+                                <label for="cup11" class="tick-me">
+                                    <span>I agree to the</span>
+                                    <a href="javascript:;">terms &amp; conditions</a>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- cover input -->
+                        <div class="btn-step cen-z">
+                            <a href="javascript:;" class="btn-button save mix-xy">save</a>
+                            <a href="javascript:;" class="btn-button edit mix-xy">edit</a>
+                            <a href="javascript:;" class="btn-button cancel mix-xy">cancel</a>
+                        </div>
+                        <!-- btn step -->
+                        <div class="clear"></div>
+                    </div>
+                    <!-- box select -->
+                </div>
+                <!-- left content -->
+                @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.Instructions, cssClass: "hidden-xs hidden-sm")); }
+                <div class="clear"></div>
+            </div>
+            <!-- cover content -->
+        </div>
+        <!-- content box -->
+    </div>
+    <!-- content plan step03-->
+
+    <div class="content-plan step02 step07 content-step04 hide">
+        <a href="@Url.Action("Summary", "Account")" class="click-back">
+            <span class="icons row-back"></span>
+            <span class="title text-red">SMarT PLAN</span>
+        </a>
+        <!-- click back -->
+        <span class="text-update">Enroll into SMarT Plan</span>
+        <div class="box-content">
+            <div class="cover-image">
+                <img src="~/Content/i/icon-smart.png" alt="smart">
+                <a href="javascript:;" class="click-intructions ver-mobi">
+                    <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+                </a>
+            </div>
+            <!-- cover image -->
+            <div class="cover-content">
+                <div class="left-content">
+                    <span class="title">Successful!</span>
+                    <div class="success-box">
+                        <img src="~/Content/i/select-box.png" alt="image">
+                        <span class="text">Your are now successfully Enrolled into SMarT lan</span>
+                        <a href="@Url.Action("Summary", "Account")" class="btn-ok mix-xy">okay</a>
+                    </div>
+                </div>
+                <!-- left content -->
+                @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.Instructions, cssClass: "hidden-xs hidden-sm")); }
+                <div class="clear"></div>
+            </div>
+            <!-- cover content -->
+        </div>
+        <!-- content box -->
+    </div>
+    <!-- content plan step04-->
+
+    <div class="content-plan content-step05 hide">
+        <a href="@Url.Action("Summary", "Account")" class="click-back">
+            <span class="icons row-back"></span>
+            <span class="title">SMarT PLAN</span>
+        </a>
+        <!-- click back -->
+        <div class="box-content">
+            <div class="cover-image">
+                <img src="~/Content/i/icon-smart.png" alt="smart">
+            </div>
+            <!-- cover image -->
+            <div class="cover-content">
+                <ul class="list-text">
+                    <li>
+                        <span class="title">SMarT Increase Election</span>
+                        <span class="text">Per pay increase $150.00</span>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <span class="title">Start Month</span>
+                        <span class="text">January</span>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <span class="title">Starting Year</span>
+                        <span class="text">2015</span>
+                        <div class="clear"></div>
+                    </li>
+                </ul>
+                <!-- list text -->
+                <div class="cover-change ver-y">
+                    <a href="javascript:;" class="btn-change mix-xy">make changes</a>
+                </div>
+            </div>
+            <!-- cover content -->
+        </div>
+        <!-- content box -->
+    </div>
+    <!-- content plan step05-->
+
+    <div class="content-plan step02 content-step06 hide">
+        <a href="@Url.Action("Summary", "Account")" class="click-back">
+            <span class="icons row-back"></span>
+            <span class="title text-red">SMarT PLAN</span>
+        </a>
+        <!-- click back -->
+        <span class="text-update">Update Smart Plan</span>
+        <div class="box-content">
+            <div class="cover-image">
+                <img src="~/Content/i/icon-smart.png" alt="smart">
+                <a href="javascript:;" class="click-intructions ver-mobi">
+                    <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+                </a>
+            </div>
+            <!-- cover image -->
+            <div class="cover-content">
+                <div class="left-content">
+                    <h2>Select one of the options below :</h2>
+                    <div class="cover-box">
+                        <div class="box-radio">
+                            <input type="radio" id="cplan01" name="bplan01" checked>
+                            <label for="cplan01" class="tick-radio">
+                                <span>Increase per pay deferral amount each year by :</span>
+                            </label>
+                            <button class="icons quest01"></button>
+                            <ul class="list-select">
+                                <li>
+                                    <span class="title visible-xs visible-sm">Select Amount</span>
+                                    <div class="select-here ddown-here">
+                                        <select name="select" class="ddown-select" title="save the file">
+                                            <option>Select</option>
+                                            <option selected="selected">$100</option>
+                                            <option>$200</option>
+                                            <option>$300</option>
+                                            <option>$400</option>
+                                        </select>
+                                        <span class="icons-ddown"></span>
+                                    </div>
+                                    <div class="clear"></div>
+                                </li>
+                                <li>
+                                    <span class="title">Starting Month</span>
+                                    <div class="select-here ddown-here">
+                                        <select name="select" class="ddown-select" title="save the file">
+                                            <option>Select</option>
+                                            <option selected="selected">January</option>
+                                            <option>February</option>
+                                            <option>March</option>
+                                            <option>April</option>
+                                            <option>May</option>
+                                            <option>June</option>
+                                            <option>July</option>
+                                            <option>August</option>
+                                            <option>September</option>
+                                            <option>October</option>
+                                            <option>November</option>
+                                            <option>December</option>
+                                        </select>
+                                        <span class="icons-ddown"></span>
+                                    </div>
+                                    <div class="clear"></div>
+                                </li>
+                                <li>
+                                    <span class="title">Starting Year</span>
+                                    <div class="select-here ddown-here">
+                                        <select name="select" class="ddown-select" title="save the file">
+                                            <option>Select</option>
+                                            <option>2010</option>
+                                            <option>2011</option>
+                                            <option>2012</option>
+                                            <option>2013</option>
+                                            <option>2014</option>
+                                            <option>2015</option>
+                                            <option>2016</option>
+                                            <option selected="selected">2017</option>
+                                        </select>
+                                        <span class="icons-ddown"></span>
+                                    </div>
+                                    <div class="clear"></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- box radio -->
+                        <div class="box-radio">
+                            <input type="radio" id="cplan02" name="bplan01">
+                            <label for="cplan02" class="tick-radio">
+                                <span>Increase deferral amount each year to reach IRS Regular Maximum:</span>
+                            </label>
+                            <button class="icons quest01"></button>
+                        </div>
+                        <!-- box radio -->
+                        <div class="box-radio">
+                            <input type="radio" id="cplan03" name="bplan01">
+                            <label for="cplan03" class="tick-radio">
+                                <span>Increase deferral amount each year to reach IRS 50+ Maximum</span>
+                            </label>
+                            <button class="icons quest01"></button>
+                        </div>
+                        <!-- box radio -->
+                    </div>
+                    <!-- cover box -->
+                    <div class="cover-select">
+                        <a href="javascript:;" class="btn-button continute mix-xy">Continue &amp; Review changes</a>
+                        <a href="javascript:;" class="btn-button smart-enrollment mix-xy">Suspend SMarT Enrollment</a>
+                        <a href="javascript:;" class="btn-button cancel-change mix-xy">Cancel changes</a>
+                    </div>
+                </div>
+                <!-- left content -->
+                @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.Instructions, cssClass: "hidden-xs hidden-sm")); }
+                <div class="clear"></div>
+            </div>
+            <!-- cover content -->
+        </div>
+        <!-- content box -->
+    </div>
+    <!-- content plan step06-->
+
+    <div class="content-plan step02 step03 content-step07 hide">
+        <a href="@Url.Action("Summary", "Account")" class="click-back">
+            <span class="icons row-back"></span>
+            <span class="title text-red">SMarT PLAN</span>
+        </a>
+        <!-- click back -->
+        <span class="text-update">Update Smart Plan</span>
+        <div class="box-content">
+            <div class="cover-image">
+                <img src="~/Content/i/icon-smart.png" alt="smart">
+            </div>
+            <!-- cover image -->
+            <div class="cover-content">
+                <div class="left-content">
+                    <h2>Update Smart Plan</h2>
+                    <div class="box-select">
+                        <div class="cover-input">
+                            <span class="title">Select Option</span>
+                            <div class="input-here hidden-xs hidden-sm">
+                                <input type="text" placeholder="Increase Pay per day differel Amount each year" title="save the file">
+                            </div>
+                            <!-- input here -->
+                            <div class="input-here ddown-here visible-xs visible-sm">
+                                <select name="select" class="ddown-select" title="save the file">
+                                    <option>Select</option>
+                                    <option selected="selected">Increase Pay per day differel Amount each year</option>
+                                    <option>Increase Pay per day differel Amount each year</option>
+                                    <option>Increase Pay per day differel Amount each year</option>
+                                    <option>Increase Pay per day differel Amount each year</option>
+                                </select>
+                            </div>
+                            <!-- end /ddown-here ver-mobile -->
+                        </div>
+                        <!-- cover input -->
+                        <div class="cover-input">
+                            <span class="title">Increase Amount by</span>
+                            <div class="input-here hidden-xs hidden-sm">
+                                <input type="text" placeholder="$150.00" title="save the file">
+                            </div>
+                            <!-- input here -->
+                            <div class="input-here ddown-here visible-xs visible-sm">
+                                <select name="select" class="ddown-select" title="save the file">
+                                    <option>Select</option>
+                                    <option selected="selected">$150.00</option>
+                                    <option>$150.00</option>
+                                    <option>$150.00</option>
+                                    <option>$150.00</option>
+                                </select>
+                            </div>
+                            <!-- end /ddown-here ver-mobile -->
+                        </div>
+                        <!-- cover input -->
+                        <div class="cover-input">
+                            <span class="title">Starting month</span>
+                            <div class="input-here hidden-xs hidden-sm">
+                                <input type="text" placeholder="January" title="save the file">
+                            </div>
+                            <!-- input here -->
+                            <div class="input-here ddown-here visible-xs visible-sm">
+                                <select name="select" class="ddown-select" title="save the file">
+                                    <option>Select</option>
+                                    <option selected="selected">January</option>
+                                    <option>January</option>
+                                    <option>January</option>
+                                    <option>January</option>
+                                </select>
+                            </div>
+                            <!-- end /ddown-here ver-mobile -->
+                        </div>
+                        <!-- cover input -->
+                        <div class="cover-input">
+                            <span class="title">Starting Year</span>
+                            <div class="input-here hidden-xs hidden-sm">
+                                <input type="text" placeholder="2018" title="save the file">
+                            </div>
+                            <!-- input here -->
+                            <div class="input-here ddown-here visible-xs visible-sm">
+                                <select name="select" class="ddown-select" title="save the file">
+                                    <option>Select</option>
+                                    <option selected="selected">2018</option>
+                                    <option>2018</option>
+                                    <option>2018</option>
+                                    <option>2018</option>
+                                </select>
+                            </div>
+                            <!-- end /ddown-here ver-mobile -->
+                        </div>
+                        <!-- cover input -->
+                        <div class="cover-input">
+                            <span class="title">Consent</span>
+                            <div class="area-here">
+                                <textarea title="save the file"></textarea>
+                            </div>
+                            <!-- input here -->
+                        </div>
+                        <!-- cover input -->
+                        <div class="cover-input">
+                            <div class="cover-tick">
+                                <input type="checkbox" id="cup01">
+                                <label for="cup01" class="tick-me">
+                                    <span>I agree to the</span>
+                                    <a href="javascript:;">terms &amp; conditions</a>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- cover input -->
+                        <div class="btn-step cen-z">
+                            <a href="javascript:;" class="btn-button save mix-xy">save</a>
+                            <a href="javascript:;" class="btn-button edit mix-xy">edit</a>
+                            <a href="javascript:;" class="btn-button cancel mix-xy">cancel</a>
+                        </div>
+                        <!-- btn step -->
+                        <div class="clear"></div>
+                    </div>
+                    <!-- box select -->
+                </div>
+                <!-- left content -->
+                @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.Instructions, cssClass: "hidden-xs hidden-sm")); }
+                <div class="clear"></div>
+            </div>
+            <!-- cover content -->
+        </div>
+        <!-- content box -->
+    </div>
+    <!-- content plan step07-->
+</div>
+
+@section boxInstructions {
+    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.Instructions, showCloseButton: true)); }
+}

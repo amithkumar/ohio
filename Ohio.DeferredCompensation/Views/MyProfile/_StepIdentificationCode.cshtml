@@ -1,0 +1,63 @@
+﻿<div class="step-content step-two-content hide">
+    <div class="top-title">
+        <h1>Step 2 : Identification Code</h1>
+    </div>
+    <!-- end /top-title -->
+    <div class="row middle-form  p-sm-0 p-md-0">
+        <div class="form-order02 col-md-8 mt-4 px-lg-5 p-sm-3 p-md-3 px-sm-0">
+            @using (Html.BeginForm("SendIdentificationCode", "Account", FormMethod.Post, new { id = "change-form-step2" }))
+            {
+                <input type="hidden" name="Username" value="@ViewBag.Username" />
+                <p>
+                    For added sequrity, you must authenticate your identity.
+                    <span class="mobile-hide">Choose to recive a four digit authorization code :</span>
+                </p>
+                <ul class="list-money">
+                    @if (ViewBag.HideEmailAuth != true)
+                    {
+                        <li>
+                            <span class="text hidden-xs hidden-sm">
+                                <input class="mobile-hide" type="radio" id="bcheck01" name="SendTo" value="Email" checked>
+                                <label for="bcheck01" class="big-radio">
+                                    <span>Send to EMail ID</span>
+                                </label>
+                            </span>
+                            <div class="text text-left bold visible-xs visible-sm ">
+                                <p class="p-sm-0 p-md-0 text-bold">Send to EMail ID</p>
+                            </div>
+                            <span class="tiny-text">
+                                (@ViewBag.CurrentEmailMask)
+                            </span>
+                        </li>
+                    }
+                    @if (ViewBag.HideMobileAuth != true)
+                    {
+                        @*<li class="hide-xs hidden-xs hidden-sm">(or)</li>*@
+                        <li class="hide-xs hidden-xs hidden-sm">
+                            <span class="text">
+                                <input type="radio" id="bcheck02" name="SendTo" value="Phone">
+                                <label for="bcheck02" class="big-radio">
+                                    <span>Send to Mobile</span>
+                                </label>
+                            </span>
+                            <span class="tiny-text">(@ViewBag.CurrentPhoneNumber)</span>
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+        <!-- end /form-order01 -->
+        <div class="hidden-xs hidden-sm col-md-4 mt-4 px-sm-0 pr-sm-3 pl-md-0 pl-sm-3 ml-md-5 ml-lg-0 pb-3">
+            @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopStep2Instructions)); }
+        </div>
+        <!-- end /box-instructions -->
+        <div class="clear"></div>
+    </div>
+    <!-- end /middle-form -->
+    <div class="bottom-button px-md-3 px-sm-3">
+        <a href="javascript:;" class="btn-cancel mix-xy ">Cancel</a>
+        <a href="javascript:;" class="btn-next mix-xy">Send</a>
+        <div class="clear"></div>
+    </div>
+    <!-- end /bottom-button -->
+</div>

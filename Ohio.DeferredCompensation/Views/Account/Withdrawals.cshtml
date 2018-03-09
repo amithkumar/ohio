@@ -1,0 +1,358 @@
+﻿@model WithdrawalSummaryModel
+@{
+    ViewBag.Title = "Withdrawals Landing Page";
+    ViewBag.AtiveTab = NavigationTab.None;
+    ViewBag.DarkOverlayClass = "account-manager-content";
+    ViewBag.IsLoggedIn = true;
+    ViewBag.UseSingleSocialImage = true;
+}
+<div class="withdrawals-landing-page all-page">
+    @{ Html.RenderPartial("_TopIdentifyPanel", new TopIdentityPanelModel { ApplyXsXmClasses = true }); }
+    @{ Html.RenderPartial("_SubNavigation", "Withdrawals"); }
+    <div class="top-content">
+        <div class="margin-inner">
+            <span class="text">Withdrawals</span>
+            <div class="btn-boxs clearfix">
+                <a href="@Url.Action("CreateWithdrawal", "Account")" class="btn-red ver-y">
+                    <span class="icon-plus">+</span>
+                    <span class="text">CREATE WITHDRAWAL REQUEST</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="content-plan content-step01">
+        <div class="box-content">
+            <div class="main-content">
+                <div class="white-boxs">
+                    <div class="line-title">
+                        <span class="title">Account Value</span>
+                        <span class="price">$ @Model.AccountValue.ToString("N2")</span>
+                    </div>
+                    <div class="white-body">
+                        <h4>Required Minimum Distribution (RMD)</h4>
+                        <div class="row-line">
+                            <span class="title">Required Minimum Distribution (RMD)</span>
+                            <span class="price">$ @Model.RequiredMinDistribution.ToString("N2")</span>
+                        </div>
+                        <div class="row-line">
+                            <span class="title">Year to Date Payments</span>
+                            <span class="price">$ @Model.YearToDatePayments.ToString("N2")</span>
+                        </div>
+                        <div class="row-line">
+                            <span class="title">Remaining RMD Balance</span>
+                            <span class="price">$ @Model.RemainingRMDBalance.ToString("N2")</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- end .white-boxs -->
+                @if (((IList<string>)ViewBag.Alerts).Count > 0)
+                {
+                    <div class="red-bar">
+                        @foreach (var item in (IList<string>)ViewBag.Alerts)
+                        {
+                            <span class="icons icon-i"></span>@item
+                        }
+                    </div>
+                }
+                <div class="item">
+                    <div class="sub-title">
+                        Current Withdrawals
+                    </div>
+                    @if (Model.CurrentWithdrawals.Count == 0)
+                    {
+                        <div class="white-bar">
+                            <p>
+                                <span class="icons icon-i"></span>
+                                <span class="title">Information</span>
+                            </p>
+                            <p class="txt">
+                                Currently there are no current Withdrawals
+                            </p>
+                        </div>
+                    }
+                    @if (Model.CurrentWithdrawals.Count > 0)
+                    {
+                        <div class="table-content hidden-xs hidden-sm">
+                            <ul class="list-title">
+                                <li>
+                                    <span class="title">Request #</span>
+                                </li>
+                                <li>
+                                    <span class="title">Entry Date</span>
+                                </li>
+                                <li>
+                                    <span class="title">Type</span>
+                                </li>
+                                <li>
+                                    <span class="title">Start Date</span>
+                                </li>
+                                <li>
+                                    <span class="title">Payment Frequency</span>
+                                </li>
+                                <li>
+                                    <span class="title">Payment Option</span>
+                                </li>
+                                <li>
+                                    <span class="title">Status</span>
+                                </li>
+                                <li>
+                                    <span class="title">Next Payment Date</span>
+                                </li>
+                            </ul>
+                            <!-- list title -->
+                            <div class="group-list">
+                                <ul class="list-colum">
+                                    @foreach (var item in Model.CurrentWithdrawals)
+                                {
+                                    <li>
+                                        <ul class="list-row">
+                                            <li>
+                                                <span class="text-file">@item.RequestNumber</span>
+                                            </li>
+                                            <li>
+                                                <span class="text-file">@item.EntryDate.ToString("MM/dd/yyyy")</span>
+                                            </li>
+                                            <li>
+                                                <span class="text-file">@item.Type</span>
+                                            </li>
+                                            <li>
+                                                <span class="text-file">@item.StartDate.ToString("MM/dd/yyyy")</span>
+                                            </li>
+                                            <li>
+                                                <span class="text-file">@item.PaymentFrequency</span>
+                                            </li>
+                                            <li>
+                                                <span class="text-file">$ @item.PaymentOption</span>
+                                            </li>
+                                            <li>
+                                                <span class="text-file">@item.Status</span>
+                                            </li>
+                                            <li>
+                                                <span class="text-file">@item.NextPaymentDate.ToString("MM/dd/yyyy")</span>
+                                                <div class="right-comment">
+                                                    <a href="@Url.Action("CurrentWithdrawal", "Account")" class="click-view">
+                                                        <span class="icons view-seach"></span>
+                                                        <span class="name">View</span>
+                                                    </a>
+                                                    <a href="@Url.Action("EditWithdrawal", "Account")" class="click-delete">
+                                                        <span class="edit-icon"></span>
+                                                        <span class="name">Edit</span>
+                                                    </a>
+                                                </div>
+                                                <!-- right comment -->
+                                            </li>
+                                        </ul>
+                                        <!-- list row -->
+                                    </li>
+                                }
+                                </ul>
+                                <!-- list colum -->
+                            </div>
+                            <!-- end /group-list -->
+                        </div>
+                        foreach (var item in Model.CurrentWithdrawals)
+                        {
+                            <div class="table-content-mobi hidden-md hidden-lg">
+                                <ul>
+                                    <li>
+                                        <div class="item label-txt">Request#</div>
+                                        <div class="item value-txt">@item.RequestNumber</div>
+                                    </li>
+                                    <li>
+                                        <div class="item label-txt">Entry Date</div>
+                                        <div class="item value-txt">@item.EntryDate.ToString("MM/dd/yyyy")</div>
+                                    </li>
+                                    <li>
+                                        <div class="item label-txt">Type</div>
+                                        <div class="item value-txt">@item.Type</div>
+                                    </li>
+                                    <li>
+                                        <div class="item label-txt">Start Date </div>
+                                        <div class="item value-txt">@item.StartDate.ToString("MM/dd/yyyy")</div>
+                                    </li>
+                                    <li>
+                                        <div class="item label-txt">Payment Frequency</div>
+                                        <div class="item value-txt">@item.PaymentFrequency</div>
+                                    </li>
+                                    <li>
+                                        <div class="item label-txt">Payment Option</div>
+                                        <div class="item value-txt">@item.PaymentOption</div>
+                                    </li>
+                                    <li>
+                                        <div class="item label-txt">Status</div>
+                                        <div class="item value-txt">@item.Status</div>
+                                    </li>
+                                    <li>
+                                        <div class="item label-txt">Next Payment Date</div>
+                                        <div class="item value-txt">@item.NextPaymentDate.ToString("MM/dd/yyyy")</div>
+                                    </li>
+                                </ul>
+                                <div class="tool-group">
+                                    <a href="@Url.Action("CurrentWithdrawal", "Account")" class="click-view">
+                                        <span class="icons view-seach"></span>
+                                        <span class="name">View</span>
+                                    </a>
+                                    <a href="@Url.Action("EditWithdrawal", "Account")" class="click-delete">
+                                        <span class="icons edit-icon"></span>
+                                        <span class="name">Edit</span>
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+                <!-- end .item -->
+                <div class="item">
+                    <div class="sub-title">
+                        Pending Withdrawals
+                    </div>
+                    @if (Model.PendingWithdrawals.Count == 0)
+                    {
+                        <div class="white-bar">
+                            <p>
+                                <span class="icons icon-i"></span>
+                                <span class="title">Information</span>
+                            </p>
+                            <p class="txt">
+                                Currently there are no pending Withdrawals
+                            </p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="table-content hidden-xs hidden-sm">
+                            <ul class="list-title">
+                                <li>
+                                    <span class="title">Request #</span>
+                                </li>
+                                <li>
+                                    <span class="title">Entry Date</span>
+                                </li>
+                                <li>
+                                    <span class="title">Type</span>
+                                </li>
+                                <li>
+                                    <span class="title">Start Date</span>
+                                </li>
+                                <li>
+                                    <span class="title">Payment Frequency</span>
+                                </li>
+                                <li>
+                                    <span class="title">Payment Option</span>
+                                </li>
+                                <li>
+                                    <span class="title">Status</span>
+                                </li>
+                                <li>
+                                    <span class="title"></span>
+                                </li>
+                            </ul>
+                            <!-- list title -->
+                            <div class="group-list">
+                                <ul class="list-colum">
+                                    @foreach (var item in Model.PendingWithdrawals)
+                                    {
+                                        <li>
+                                            <ul class="list-row">
+                                                <li>
+                                                    <span class="text-file">@item.RequestNumber</span>
+                                                </li>
+                                                <li>
+                                                    <span class="text-file">@item.EntryDate.ToString("MM/dd/yyyy")</span>
+                                                </li>
+                                                <li>
+                                                    <span class="text-file">@item.Type</span>
+                                                </li>
+                                                <li>
+                                                    <span class="text-file">@item.StartDate.ToString("MM/dd/yyyy")</span>
+                                                </li>
+                                                <li>
+                                                    <span class="text-file">@item.PaymentFrequency</span>
+                                                </li>
+                                                <li>
+                                                    <span class="text-file">$ @item.PaymentOption</span>
+                                                </li>
+                                                <li>
+                                                    <span class="text-file">@item.Status</span>
+                                                </li>
+                                                <li>
+                                                    <span class="text-file"></span>
+                                                    <div class="right-comment">
+                                                        <a href="@Url.Action("PendingWithdrawal", "Account")" class="click-view">
+                                                            <span class="icons view-seach"></span>
+                                                            <span class="name">View</span>
+                                                        </a>
+                                                        <a href="@Url.Action("EditWithdrawal", "Account")" class="click-delete">
+                                                            <span class="edit-icon"></span>
+                                                            <span class="name">Edit</span>
+                                                        </a>
+                                                    </div>
+                                                    <!-- right comment -->
+                                                </li>
+                                            </ul>
+                                            <!-- list row -->
+                                        </li>
+                                    }
+                                </ul>
+                                <!-- list colum -->
+                            </div>
+                            <!-- end /group-list -->
+                        </div>
+                        foreach (var item in Model.CurrentWithdrawals)
+                        {
+                            <div class="table-content-mobi hidden-md hidden-lg">
+                                <ul>
+                                    <li>
+                                        <div class="item label-txt">Request#</div>
+                                        <div class="item value-txt">@item.RequestNumber</div>
+                                    </li>
+                                    <li>
+                                        <div class="item label-txt">Entry Date</div>
+                                        <div class="item value-txt">@item.EntryDate.ToString("MM/dd/yyyy")</div>
+                                    </li>
+                                    <li>
+                                        <div class="item label-txt">Type</div>
+                                        <div class="item value-txt">@item.Type</div>
+                                    </li>
+                                    <li>
+                                        <div class="item label-txt">Start Date </div>
+                                        <div class="item value-txt">@item.StartDate.ToString("MM/dd/yyyy")</div>
+                                    </li>
+                                    <li>
+                                        <div class="item label-txt">Payment Frequency</div>
+                                        <div class="item value-txt">@item.PaymentFrequency</div>
+                                    </li>
+                                    <li>
+                                        <div class="item label-txt">Payment Option</div>
+                                        <div class="item value-txt">@item.PaymentOption</div>
+                                    </li>
+                                    <li>
+                                        <div class="item label-txt">Status</div>
+                                        <div class="item value-txt">@item.Status</div>
+                                    </li>
+                                </ul>
+                                <div class="tool-group">
+                                    <a href="@Url.Action("PendingWithdrawal", "Account")" class="click-view">
+                                        <span class="icons view-seach"></span>
+                                        <span class="name">View</span>
+                                    </a>
+                                    <a href="@Url.Action("EditWithdrawal", "Account")" class="click-delete">
+                                        <span class="icons edit-icon"></span>
+                                        <span class="name">Edit</span>
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+                <!-- end .item -->
+            </div>
+            <!-- main content -->
+        </div>
+        <!-- content box -->
+    </div>
+    <!-- content plan -->
+</div>
+@section boxInstructions {
+    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileInstructions, showCloseButton: true)); }
+}

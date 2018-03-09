@@ -1,0 +1,31 @@
+@font-face {
+	font-family: 'Gotham';
+	src: url('/Content/fonts/hinted-Gotham-Medium.woff') format('woff'),
+	    url('/Content/fonts/hinted-Gotham-Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+  }
+  
+  @font-face {
+	font-family: 'Gotham';
+	src: url('/Content/fonts/hinted-Gotham-Light.woff') format('woff'),
+	    url('/Content/fonts/hinted-Gotham-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+  }
+  
+  @font-face {
+	font-family: 'Gotham';
+	src: url('/Content/fonts/hinted-Gotham-Bold.woff') format('woff'),
+	    url('/Content/fonts/hinted-Gotham-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+  }
+  
+  @font-face {
+	font-family: 'Gotham';
+	src: url('/Content/fonts/hinted-Gotham-Book.woff') format('woff'),
+	    url('/Content/fonts/hinted-Gotham-Book.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+  }

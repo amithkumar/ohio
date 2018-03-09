@@ -1,0 +1,163 @@
+﻿@model WithdrawalModel
+@{
+    ViewBag.Title = "View Withdrawal";
+    ViewBag.AtiveTab = NavigationTab.Home;
+    ViewBag.IsLoggedIn = true;
+    ViewBag.UseSingleSocialImage = true;
+}
+
+<div class="add-benificiary-page">
+    @{ Html.RenderPartial("_TopIdentifyPanel", new TopIdentityPanelModel { ApplyXsXmClasses = true }); }
+    @{ Html.RenderPartial("_SubNavigation", "Withdrawals"); }
+
+    <div class="view-withdrawal all-page">
+        <div class="step-by-step">
+            <div class="step-more-details">
+                <div class="step-content step-one-content">
+                    <div class="top-title">
+                        <span class="title-span hidden-sm hidden-xs">Current Withdrawal Details</span>
+                        <div class="breadcrumb ver-y hidden-lg hidden-md">
+                            <a href="@Url.Action("Withdrawals", "Account")">
+                                <span class="label titles">Current Withdrawal Details</span>
+                            </a>
+                        </div>
+                        <div class="clearfix">
+                            <button class="edit"><span class="icons"></span> EDIT WITHDRAWAL</button>
+                            <button class="stop"><span class="icons"></span>STOP WITHDRAWAL</button>
+                        </div>
+                    </div>
+                    <div class="middle-form">
+                        <div class="total-title">
+                            Account Value: <span>$ @Model.AccountValue.ToString("N2")</span>
+                        </div>
+                        <div class="form-order01">
+                            <div class="left">
+                                <div class="row">
+                                    <ul>
+                                        <li>
+                                            <span class="title">Start Withdrawal Date</span>
+                                            <span class="descr">@Model.StartDate.ToString("MM/dd/yyyy")</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Stop Withdrawal Date</span>
+                                            <span class="descr">@Model.StopDate.ToString("MM/dd/yyyy")</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Desired Payment Frequency</span>
+                                            <span class="descr">@Model.PaymentFrequency</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Enter Payment Option</span>
+                                            <span class="descr">Dollar Acount<em>$ @Model.PaymentOption.ToString("N2")</em></span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Gross Amount</span>
+                                            <span class="descr">$ @Model.GrossAmount.ToString("N2")</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Net Amount</span>
+                                            <span class="descr">$ @Model.NetAmount.ToString("N2")</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Fund Selection</span>
+                                            <span class="descr">@Model.FundSelection</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="row">
+                                    <h5>
+                                        Bank Deposit Information
+                                    </h5>
+                                    <ul class="padding20">
+                                        <li>
+                                            <span class="title">Direct Deposit or Check</span>
+                                            <span class="descr">@Model.DepositOption</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Routing #</span>
+                                            <span class="descr">@Model.RoutingNumber</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Bank Account #</span>
+                                            <span class="descr">@Model.BankAccountNumber</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">BankName</span>
+                                            <span class="descr">@Model.BankName</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Type of Account</span>
+                                            <span class="descr">@Model.AccountType</span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                            <div class="right">
+                                <div class="row">
+                                    <h5>
+                                        Federal Tax Information
+                                    </h5>
+                                    <ul class="padding20">
+                                        <li>
+                                            <span class="title">Federal Tax Exempt</span>
+                                            <span class="descr">@(Model.FederalTaxExempt ? "Yes" : "No")</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Marital Status</span>
+                                            <span class="descr">@(Model.FederalTaxExempt ? "Married" : "Not Married")</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Number Of Allowances</span>
+                                            <span class="descr">@Model.FederalNumberOfAllowances</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Additional Withholding</span>
+                                            <span class="descr">Dollar Amount<em>$@Model.FederalAdditionalWithholding</em></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="row">
+                                    <h5>
+                                        State Tax Information
+                                    </h5>
+                                    <ul class="padding20">
+                                        <li>
+                                            <span class="title">State Tax Exempt</span>
+                                            <span class="descr">@(Model.StateTaxExempt ? "Yes" : "No")</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Number Of Allowances</span>
+                                            <span class="descr">@Model.StateNumberOfAllowances</span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Additional Withholding</span>
+                                            <span class="descr">Dollar Amount<em>$@Model.StateAdditionalWithholding</em></span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!-- end /form-order01 -->
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /middle-form -->
+                    <div class="bottom-button">
+                        <a href="@Url.Action("Withdrawals", "Account")" class="btn-cancel mix-xy">BACK</a>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /bottom-button -->
+                </div>
+                <!-- end /step-one-content -->
+            </div>
+            <!-- end /step-more-details -->
+        </div>
+    </div>
+    <!-- end /bottom-primary-content -->
+</div>
+
+@section boxInstructions {
+    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileInstructions, showCloseButton: true)); }
+}

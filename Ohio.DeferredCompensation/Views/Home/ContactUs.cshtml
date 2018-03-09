@@ -1,0 +1,139 @@
+﻿@{
+    ViewBag.Title = "Contact Us";
+    ViewBag.AtiveTab = NavigationTab.ContactUs;
+    List<HolidayModel> holidays = ViewBag.Holidays;
+}
+
+@section scripts {
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2E7X-MupCCgHl_9F80fSLBLyKeS2Srqs&callback=initMap" async defer></script>
+}
+
+<div class="contact-page all-page">
+    <div class="hero-banner">
+        <p>Contact Us</p>
+    </div>
+    <!-- end /hero-banner -->
+    <div class="step-by-step">
+        <div class="top-content">
+            <span class="title">
+                The Service Center has licensed Account Executives who can help you
+                <span class="title-sub">with your account.</span>
+            </span>
+            <p class="text">
+                They can assist with enrollment, deferral changes, allocation changes to your investment options, asset allocation
+                information, and withdrawals.
+            </p>
+        </div>
+        <!-- top content -->
+        <div class="second-content cen-z">
+            <ul class="list-content">
+                <li>
+                    <img src="~/Content/i/address.png" alt="image">
+                    <span class="title">Address</span>
+                    <p class="text" id="text-address">257 East Town Street, Suite 457 Columbus, Ohio 43215</p>
+                </li>
+                <li>
+                    <img src="~/Content/i/phone.png" alt="image">
+                    <span class="title">Phone</span>
+                    <p class="text">877 - 644 - 6457</p>
+                    <p class="text">Monday - Friday, 8 AM - 5.30 PM</p>
+                </li>
+                <li>
+                    <img src="~/Content/i/email.png" alt="image">
+                    <span class="title">Email ID</span>
+                    <p class="text">Send an Email : </p>
+                    <a href="@Url.Action("SendEmail", "Home")">supportinfo@ohiodc.com.com</a>
+                </li>
+                <li>
+                    <img src="~/Content/i/fax.png" alt="image">
+                    <span class="title">Fax</span>
+                    <p class="text">614 - 222 - 9457</p>
+                    <p class="text">Operates all the time 24x7</p>
+                </li>
+                <li>
+                    <img src="~/Content/i/wordking-time.png" alt="image">
+                    <span class="title">Working Hours</span>
+                    <p class="text">Monday - Friday, 8 AM - 4.30 PM</p>
+                </li>
+            </ul>
+            <!-- list content -->
+            <div class="map-here" id="map"></div>
+        </div>
+        <!-- second content -->
+        <div class="third-content">
+            <img src="~/Content/i/calculator.png" alt="image">
+            <h2>Appointments</h2>
+            <p class="text">
+                You can make an appointment with a Retirement Planning Specialist by calling
+                <strong>877 - 644 - 6457</strong>.
+            </p>
+            <p class="text">
+                Information provided by Retirement Planning Specialist is for educational purposes only and is not intended as investment
+                advice.
+            </p>
+            <p class="text desk-text">
+                The Service Center and exchange processing will be affected by the following New York Stock Exchange holiday schedule.
+                When the Service Center is closed, you may still access your account by using the automated telephone system or the
+                website. Exchanges recived on holidays will be processed as of the market close on the next business day.
+            </p>
+        </div>
+        <!-- third content	 -->
+        <div class="four-content">
+            <ul class="list-title">
+                <li>
+                    <span>Holiday</span>
+                </li>
+                <li>
+                    <span>Date closed</span>
+                </li>
+                <li>
+                    <span>Exchange Processed</span>
+                </li>
+            </ul>
+            <!-- list title -->
+            <ul class="list-colum">
+                @foreach (var holiday in holidays)
+                {
+                    <li>
+                        <ul class="list-row">
+                            <li>
+                                <span>@holiday.Title</span>
+                            </li>
+                            <li>
+                                <span>@holiday.DateClosed.ToString("MMMM d yyyy")</span>
+                            </li>
+                            <li>
+                                <span>@holiday.DateProcessed.ToString("MMMM d yyyy")</span>
+                            </li>
+                        </ul>
+                    </li>
+                }
+            </ul>
+            <!-- list colum	 -->
+        </div>
+        <!-- four content -->
+        <div class="mobi-table">
+            <h2>HolidayS</h2>
+            <ul class="list-content">
+                @foreach (var holiday in holidays)
+                {
+                    <li>
+                        <div class="cover-content">
+                            <span class="title">@holiday.Title</span>
+                            <p>
+                                <span class="title">Date closed :</span>
+                                <span class="day">@holiday.DateClosed.ToString("MMMM d yyyy")</span>
+                            </p>
+                            <p>
+                                <span class="title">Exchange Processed :</span>
+                                <span class="day">@holiday.DateProcessed.ToString("MMMM d yyyy")</span>
+                            </p>
+                        </div>
+                    </li>
+                }
+            </ul>
+            <!-- list content -->
+        </div>
+        <!-- mobi table -->
+    </div>
+</div>

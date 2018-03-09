@@ -1,0 +1,15 @@
+﻿@model string
+
+<div class="right-group hidden-xs hidden-sm">
+    <ul>
+        <li class="ver-y @Html.ActiveClassIf(Model == "AccountManager")">
+            <a href="@Url.Action("Manager", "Account")" class="title ver-y">Account Manager</a>
+        </li>
+        <li class="ver-y @Html.ActiveClassIf(Model == "MyProfile")">
+            <a href="@Url.ActionLinkIf(Model != "MyProfile", "PersonalInfo", "MyProfile")" class="title ver-y">My Profile</a>
+        </li>
+        <li class="ver-y @Html.ActiveClassIf(Model == "FileManager")">
+            <a href="@Url.Action("FileManager", "Account")" class="title ver-y">File Manager</a>
+        </li>
+    </ul>
+</div>

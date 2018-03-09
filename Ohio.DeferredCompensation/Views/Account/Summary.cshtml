@@ -1,0 +1,373 @@
+﻿@model AccountSummaryModel
+@{
+    ViewBag.Title = "Account Summary";
+    ViewBag.AtiveTab = NavigationTab.None;
+    ViewBag.IsLoggedIn = true;
+}
+
+<div class="account-summary-page all-page">
+    @{ Html.RenderPartial("_TopIdentifyPanel", new TopIdentityPanelModel(applyXsXmClasses: true)); }
+    @{ Html.RenderPartial("_SubNavigation", "Summary"); }
+    <div class="bottom-primary-content">
+        <div class="title-n-button">
+            <div class="bold-title ver-y">
+                <img src="~/Content/i/pokemon.png" alt="IMG">
+                <h1>Account Summary </h1>
+            </div>
+            <a href="javascript:;" class="btn-print mix-xy hidden-xs hidden-sm">
+                <span class="icons"></span>
+                <span class="name">Print</span>
+            </a>
+        </div>
+        <!-- end /title-n-button -->
+        <div class="big-part-one">
+            <div class="left-white-box">
+                <div class="first-floor">
+                    <div class="demo-info">
+                        <span class="title">Account Number</span>
+                        <p class="text-name">
+                            <span class="big-number">@Model.AccountNumber</span>
+                            <span class="address">@Model.Location</span>
+                        </p>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /demo-info -->
+                    <div class="demo-info order02">
+                        <span class="title">Account Holder</span>
+                        <p class="text-name">
+                            <span class="name">@Model.AccountHolder</span>
+                        </p>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /demo-info -->
+                    <div class="demo-info last">
+                        <span class="title">Enrolled since</span>
+                        <p class="text-name">
+                            <span class="name">@Model.EnrolledSince.ToString("dd MMM yyyy")</span>
+                            <span class="years">@Model.EnrolledSinceDescription</span>
+                        </p>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /demo-info -->
+                </div>
+                <!-- end /first-floor -->
+                <div class="second-floor">
+                    <div class="smart-plan">
+                        <span class="title">Smart Plan</span>
+                        <div class="main-group">
+                            <p>@(Model.HasSmartPlan ? "Yes" : "No")</p>
+                            <a href="@Url.Action("SmartPlan", "Account")" class="btn-view mix-xy">View Details</a>
+                        </div>
+                        <!-- end /main-content -->
+                    </div>
+                    <!-- end /smart-plan -->
+                    <div class="smart-plan clone">
+                        <span class="title">Auto Rebalancing</span>
+                        <div class="main-group">
+                            <p>@(Model.HasAutoRebalancing ? "Yes" : "No")</p>
+                            <a href="@Url.Action("EnableSummary", "Account")" class="btn-view mix-xy">View Details</a>
+                        </div>
+                        <!-- end /main-content -->
+                    </div>
+                    <!-- end /smart-plan -->
+                    <div class="clear"></div>
+                </div>
+                <!-- end /second-floor -->
+            </div>
+            <!-- end /left-white-box -->
+            <div class="right-white-box">
+                <div class="top-title-content">
+                    <h1>Fund Allocation</h1>
+                    <div class="double-btn">
+                        <a href="javascript:;" class="btn-fund btn-fund-asset mix-xy active">Fund Assets</a>
+                        <a href="javascript:;" class="btn-fund btn-fund-classification mix-xy">Fund Classification</a>
+                    </div>
+                    <!-- end /double-btn -->
+                </div>
+                <!-- end /top-title-content -->
+                <div class="bottom-main-content fund-asset-content hide">
+                    <div class="left-circle-chart">
+                        <div class="chart-here">
+                            <div class="pie-chart"></div>
+                        </div>
+                        <!-- end /chart-here -->
+                        <div class="group-value">
+                            <div class="group-value01">
+                                <p>$@Model.FundAssets.Sum(x => x.Value).ToString("N2")</p>
+                                <span class="name">(Total Value)</span>
+                            </div>
+                            <!-- end /group-value01 -->
+                            <div class="group-value02">
+                                <p>@DateTime.Today.ToString("dd MMM yyyy")</p>
+                                <span class="name">(Till Date)</span>
+                            </div>
+                            <!-- end /group-value01 -->
+                        </div>
+                        <!-- end /group-value -->
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /left-circle-chart -->
+                    <div class="right-multi-table">
+                        <div class="first-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="column01">
+                                            <span class="square"></span>
+                                            <span class="title">Fund Name</span>
+                                        </th>
+                                        <th class="column02">
+                                            <p class="title">
+                                                <span class="hidden-xs hidden-sm">Percentage</span>
+                                                <span class="visible-xs visible-sm">(%)</span>
+                                            </p>
+                                        </th>
+                                        <th class="column03">
+                                            <span class="title">Value</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <!-- end /first-table -->
+                        <div class="second-table">
+                            <table>
+
+                                <tbody>
+                                    @foreach (var item in Model.FundAssets)
+                                    {
+                                        <tr>
+                                            <td class="column01">
+                                                <span class="square @item.ColorClass"></span>
+                                                <span class="title bold">@item.FundName</span>
+                                            </td>
+                                            <td class="column02">
+                                                <span class="title bold">@item.Percentage%</span>
+                                            </td>
+                                            <td class="column03">
+                                                <span class="title">$@item.Value.ToString("N2")</span>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- end /second-table -->
+                        <p class="read-me">*Price is based as of previous day of fund Pricing</p>
+                    </div>
+                    <!-- end /right-multi-table -->
+                </div>
+                <!-- end /bottom-main-content -->
+                <div class="bottom-main-content fund-classification-content">
+                    <div class="left-circle-chart">
+                        <div class="chart-here">
+                            <div class="pie-chart"></div>
+                        </div>
+                        <!-- end /chart-here -->
+                        <div class="group-value">
+                            <div class="group-value01">
+                                <p>$@Model.FundClassifications.Sum(x => x.Value).ToString("N2")</p>
+                                <span class="name">(Total Value)</span>
+                            </div>
+                            <!-- end /group-value01 -->
+                            <div class="group-value02">
+                                <p>@DateTime.Today.ToString("dd MMM yyyy")</p>
+                                <span class="name">(Till Date)</span>
+                            </div>
+                            <!-- end /group-value01 -->
+                        </div>
+                        <!-- end /group-value -->
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end /left-circle-chart -->
+                    <div class="right-multi-table">
+                        <div class="first-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="column01">
+                                            <span class="square"></span>
+                                            <span class="title">Fund Classification</span>
+                                        </th>
+                                        <th class="column02">
+                                            <p class="title">
+                                                <span class="hidden-xs hidden-sm">Percentage</span>
+                                                <span class="visible-xs visible-sm">(%)</span>
+                                            </p>
+                                        </th>
+                                        <th class="column03">
+                                            <span class="title">Value</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <!-- end /first-table -->
+                        <div class="second-table">
+                            <table>
+                                <tbody>
+                                    @foreach (var item in Model.FundClassifications)
+                                    {
+                                        <tr>
+                                            <td class="column01">
+                                                <span class="square @item.ColorClass"></span>
+                                                <span class="title bold">@item.FundClassification</span>
+                                            </td>
+                                            <td class="column02">
+                                                <span class="title bold">@item.Percentage%</span>
+                                            </td>
+                                            <td class="column03">
+                                                <span class="title">$@item.Value.ToString("N2")</span>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- end /second-table -->
+                        <p class="read-me">*Price is based as of previous day of fund Pricing</p>
+                    </div>
+                    <!-- end /right-multi-table -->
+                </div>
+                <!-- end /bottom-main-content -->
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!-- end /big-part-one -->
+        <div class="big-part-two">
+            <div class="wrapper-all ver-y">
+                <h1>Your Past Performance</h1>
+                <ul>
+                    <li class="mix-xy">
+                        <div>
+                            <p>@Model.FirstYearPerformance.ToString("N2")%</p>
+                            <p>1st Year</p>
+                        </div>
+                    </li>
+                    <li class="mix-xy">
+                        <div>
+                            <p>@Model.ThirdYearPerformance.ToString("N2")%</p>
+                            <p>3rd Year</p>
+                        </div>
+                    </li>
+                    <li class="mix-xy">
+                        <div>
+                            <p>@Model.FivthYearPerformance.ToString("N2")%</p>
+                            <p>5th Year</p>
+                        </div>
+                    </li>
+                    <li class="mix-xy">
+                        <div>
+                            <p>@Model.TenthYearPerformance.ToString("N2")%</p>
+                            <p>10th Year</p>
+                        </div>
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+            <!-- end /wrapper-all -->
+        </div>
+        <!-- end /big-part-two -->
+        <div class="big-part-three">
+            <div class="left-white-box">
+                <div class="top-contribution">
+                    <div class="left-contribution">
+                        <span class="title">Pre tax contribution</span>
+                        <p class="visible-xs visible-sm">$@Model.PreTaxContribution.ToString("N2")</p>
+                        <div class="group-value hidden-xs hidden-sm">
+                            <p>$@Model.PreTaxContribution.ToString("N2")</p>
+                            <input type="text" value="$@Model.PreTaxContribution.ToString("N2")" title="Type of fruit" />
+                            <button class="icons pen-blue"><span class="edit-space">Edit</span></button>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="left-contribution clone">
+                        <span class="title">YTD contribution</span>
+                        <p>$@Model.YTDContribution.ToString("N2")</p>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!-- end /top-contribution -->
+                <div class="bottom-table">
+                    <h1>Pre-Tax Contribution Breakdown</h1>
+                    <div class="main-content">
+                        <div class="first-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="column01">
+                                            <span class="title">Fund Name</span>
+                                        </th>
+                                        <th class="column02">
+                                            <span class="title hidden-xs hidden-sm">Percentage</span>
+                                            <span class="title visible-xs visible-sm">(%)</span>
+                                        </th>
+                                        <th class="column03">
+                                            <span class="title">Value</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <!-- end /first-table -->
+                        <div class="second-table">
+                            <table>
+
+                                <tbody>
+                                    @foreach (var item in Model.PreTaxContributions)
+                                    {
+                                        <tr>
+                                            <td class="column01">
+                                                <span class="title bold">@item.FundName</span>
+                                            </td>
+                                            <td class="column02">
+                                                <span class="title bold">@item.Percentage%</span>
+                                            </td>
+                                            <td class="column03">
+                                                <span class="title">$@item.Value.ToString("N2")</span>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- end /second-table -->
+                    </div>
+                    <!-- end /main-content -->
+                </div>
+                <!-- end /bottom-table -->
+            </div>
+            <!-- end /left-white-box -->
+            <div class="right-white-box">
+                <div class="top-title">
+                    <h1>Account value Overtime</h1>
+                    <div class="group-period mix-xy">
+                        <p class="hidden-xs hidden-sm">Period :</p>
+                        <div class="ddown-here">
+                            <select name="select" class="ddown-select small-ddown" title="save the file">
+                                @foreach (string period in ViewBag.Periods)
+                                {
+                                    string selected = period == ViewBag.Periods[0] ? "selected" : "";
+                                    <option value="@period" @selected>@period</option>
+                                }
+                            </select>
+                            <span class="icons-ddown"></span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!-- end /top-title -->
+                <div class="middle-chart">
+                    <div class="line-chart"></div>
+                </div>
+                <!-- end /middle-chart -->
+                <p class="read-me">(For a total of Year to Date Period)</p>
+            </div>
+            <!-- end /right-white-box -->
+            <div class="clear"></div>
+        </div>
+        <!-- end /big-part-three -->
+    </div>
+    <!-- end /bottom-primary-content -->
+</div>

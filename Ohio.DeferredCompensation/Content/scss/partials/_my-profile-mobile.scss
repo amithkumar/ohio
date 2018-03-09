@@ -1,0 +1,418 @@
+
+@media only screen and (max-width: 770px) {
+
+    .mobile-hide{
+        display: none;
+    }
+
+    .tab-order02-content{ 
+    .contribution-content{ 
+    .group-quarterly{
+    .each-tab-details {
+        .button-nxt{
+            width:100% !important;
+            margin-right: 0 !important;
+            &.delete{
+                width:100% !important;
+            }
+        }
+        .tab-content-01{
+            .bor-ri{
+                border-right: none !important;
+            }
+        }
+    
+    }}}}
+    
+    
+    .top-multi-tab{
+        height: 40px;
+        border-bottom: none;
+        margin-bottom: 20px;
+        padding: 0 40px;
+    }
+
+    .account-summary-page{
+        .top-identify-id {
+            padding: 0 15px;
+            .left-group{
+                padding-right: 10px;
+                &:before{
+                    display: none;
+                }
+            }
+        }
+        .top-multi-tab{
+            height: 40px;
+            border-bottom: none;
+            margin-bottom: 20px;
+            .mobile-page-title{
+                font-size: 20px;
+            }
+        }
+    }
+
+    .account-manager-page{
+        .top-identify-id{
+            padding: 0 20px;
+            background-color: rgb(241, 241, 241);
+            .left-group{
+                position: static;
+            }
+        }
+    }
+
+    .ohio-logo{
+        float: left;
+        position: relative;
+        right: 100px;
+    }
+
+    .step-by-step {
+        width: 100%;
+        padding-top: 30px;
+
+        .nested-circle{
+            height: 60px;
+            margin-bottom: 20px;
+            ul {
+                &:before{
+                    top:20px;
+                }
+               li {
+                margin-right: 40px;
+                &.current {
+                    .group-circle {
+                        margin-bottom: 10px;
+                        border-radius: 50%;
+                        border: 3px solid red;
+                        background-color: #fff;
+                        position: relative;
+                        .first-sym {
+                            display: none;
+                        }
+                        .second-sym,
+                        .first-cir {
+                            display: none;
+                            width: 50px;
+                            height: 50px;
+                        }
+                        .number-cir {
+                            display: block;
+                            font-weight: 500;
+                            color: red;
+                            .number{
+                                font-weight: 600;
+                                display: block;
+                                color: red;
+                                
+                            }
+                            .icon-ok {
+                                display: none;
+                            }
+                        }
+                    }
+                    .group-name {
+                        .name {
+                            &:before {
+                                // display: block;
+                            }
+                        }
+                    }
+                } 
+                &.done {
+                    .group-circle {
+                        // border: 0;
+                        border: 3px solid red;
+                        .first-sym,
+                        .first-cir {
+                            display: none;
+                        }
+                        .second-sym,
+                        .second-cir {
+                            display: none;
+                        }
+                        .icon-v {
+                            display: none;
+                            width: 21px;
+                            height: 21px;
+                            background-position: -38px -37px;
+                            position: absolute;
+                            bottom: -7px;
+                        }
+                        .number-cir {
+                            display: block;
+                            font-weight: 500;
+                            color: red;
+                            .number{
+                                display: none;
+                            }
+                            .icon-ok {
+                                display: block;
+                                color: red;
+                            }
+                        }
+                    }
+                    .group-name {
+                        .name {
+                            &:before {
+                                display: none;
+                            }
+                        }
+                    }
+                } 
+                .group-circle{
+                    width: 50px;
+                    height: 50px;
+                    .first-sym {
+                        display: none;
+                    }
+                    .second-sym{
+                        display: none;
+                    }
+                    .number-cir {
+                        display: block;
+                        font-weight: 500;
+                        
+                        .number{
+                            color: black;
+                            font-weight: 500;
+                            }
+                        .icon-ok {
+                            display: none;
+                        }
+                    }
+                }
+                .group-name {
+                    display: none;
+                }
+               }
+            }
+        }
+
+        .step-more-details {
+            .top-title{
+                border-bottom: 0;
+                padding-bottom: 0;
+            }
+            .middle-form {
+                // padding: 20px 30px;
+                .box-instructions{
+                    display: none;
+                }
+            }
+            .step-one-content, .step-two-content, .step-three-content, .step-four-content {
+                .top-title{
+                    border-bottom: 0;
+                    h1{
+                        font-size: 16px;
+                    }
+                }
+                .middle-form {
+                    // padding: 20px 30px;
+                    .box-instructions{
+                        display: none;
+                    }
+                   
+                    .left-detail{
+                        .cover-input-name{
+                            display: none;
+                          
+                        }
+                        .cover-input{
+                           padding-left: 0;
+                            .title{
+                                position: relative;
+                                top: -8px;
+                            }
+                            .input-here{
+                                .click-question{
+                                    display: none;
+                                }
+                                .address{
+                                   
+                                }
+                                
+                            }
+                            .input-here-address{
+                                 height: 150px;  
+                                 width: 450px;
+                            }
+                        }
+                    }
+                    .form-order01, .form-order02 {
+                        .group-support{
+                            .try-again{
+                                font-size: 16px;
+                            }
+                        }
+                        p{
+                            padding-right: 20px;
+                        }
+                        width: 100%;
+                        padding-bottom: 20px;
+                        ul{
+                            li{
+                                padding-right: 0;
+                                margin-bottom: 0;
+                                .name{
+                                    width: 200px;
+                                    p{
+                                        width: 100%;
+                                    }
+                                    .tiny-text{
+                                        width: 100%;
+                                        position: absolute;
+                                       
+                                    }
+                                }
+                               .tiny-hint{
+                                   .click-me{
+                                    .icons{
+                                        display: none;
+                                    }
+                                   }
+                               }
+                                .label-text{
+                                    position: relative;
+                                    right: -100px;
+                                }
+                                .typing-here{
+                                    width: 100%;
+                                    
+                                }
+                                .iinput1{
+                                    margin-top: 20px;
+                                }
+                            }
+                        }
+                        .first-para{
+                            padding: 0 25px;
+                            text-align: center;
+                        }
+                        .success-message{
+                            h1{
+                                margin-bottom: 30px;
+                                padding-left: 0;
+                            }
+                            .row{
+                                .col-md-2{
+                                    padding-left: 0;
+                                    img{
+                                        height: 70px;
+                                    }
+                                }
+                                .col-md-7{
+                                    position: relative;
+                                    top: -70px;
+                                    left: 100px;
+                                    padding-right: 80px;
+                                    p{
+                                        font-size: 20px;
+                                    }
+                                    .btn-next{
+                                        width: 440px;
+                                        position: relative;
+                                        left: -100px;
+                                        margin-top: 40px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .box-instructions {
+                        display: none;
+                    }
+                }
+            }
+            .step-two-content{
+                .middle-form{
+                    // padding: 30px 20px;
+                    .form-order02{
+                       p{
+                           font-size:16px;
+                       }
+                        .list-money{
+                            li{
+                                
+                            }
+                            
+                        }
+                    }
+                }
+            }
+            .bottom-button{
+                border-top: 0;
+                padding-top: 0;
+                height:60px;
+                width:100%;
+                margin-left: 0;
+                
+                .btn-cancel, .btn-next{
+                    width: 150px;
+                }
+                .btn-cancel{
+                    margin-left: -5px;
+                    width:50%;
+                }
+               .btn-next{
+                   margin-right: -5px;
+                   width:50%;
+               }
+               .mobile-verify{
+                margin-right: 25%;
+            }
+            }
+        }
+    }
+
+
+
+.account-summary-page{
+    .primary-content{
+        .tab-order02-content{
+            padding: 0;
+            width: 100%;
+            .contribution-content{
+                img{
+                    display:none;
+                }
+                h1{
+                    padding-left: 20px;
+                }
+                .group-quarterly{
+                    .each-tab-details{
+                       .tab-content-01{
+                            .group-current{
+                               &.button-panel{
+                                    .button{
+                                        margin-top: 0;
+                                    }
+                                }
+                            }
+                        }
+                        .tab-content{
+                            .group-current{
+                                .mix-xy{
+                                    .group-text{
+                                        .title-price{
+                                            padding-left: 188px;
+                                        }
+                                        .title{
+                                            margin-left: 190px;
+                                        }
+                                    }
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+}

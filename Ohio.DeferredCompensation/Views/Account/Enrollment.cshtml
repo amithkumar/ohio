@@ -1,0 +1,1527 @@
+﻿@model EnrollmentModel
+@{
+    ViewBag.Title = "Enrollment";
+    ViewBag.AtiveTab = NavigationTab.Home;
+}
+
+@section scripts {
+    <script src="~/bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/bower_components/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/bower_components/jquery-form/dist/jquery.form.min.js"></script>
+}
+
+<div class="enrollment-page">
+    <div class="cover-image">
+        <h2>Welcome to Enrollment Process</h2>
+        <img src="~/Content/i/lager-image.jpg" alt="image">
+    </div>
+    <!-- cover image -->
+
+    <div class="about-enrollment">
+        <div class="cover-about">
+            <div class="top-about mix-xy">
+                <h2>Please read the following before starting the Enrollment Proces</h2>
+            </div>
+            <!-- top about -->
+            <div class="second-about">
+                <p class="text-about">
+                    Before you begin the online enrollment, we recommend you to obtain your most recent pay stub and beneficiary info
+                    such as social security number and address information. If you need help at any time in the process, please contact
+                    us.
+                </p>
+                <p class="text-about">
+                    Review the
+                    <a href="javascript:;" class="text-red">Plan Document</a> and
+                    <a href="javascript:;" class="text-red">Memorandum of Understanding (MOU)</a>.
+                </p>
+                <p class="text-about">
+                    Complete the online enrollment application. Remember to print the Maximum Plan Contribution Calculation Page. You
+                    should print the Participation Agreement and Memorandum of Understanding for your records.
+                </p>
+                <p class="text-about">
+                    Upon completion of the online enrollment process, your deferrals will begin no sooner than the first paydate occuring
+                    31 days from the date your enrollment is submitted online. However, your beneficiary election will be defaulted to
+                    your estate until you print, sign and mail the Participation Agreement to:
+                </p>
+                <p class="text-ohio ver-y">
+                    <span class="icons icon-location"></span>
+                    Ohio Deferred Compensation, 257 East Town Street, Suite 457, Columbus, Ohio 43215-4626
+                </p>
+                <p class="text-about">
+                    Continuing this online enrollment process constitutes and shall be deemed to be an acceptance of the
+                    <a href="javascript:;" class="text-red">Additional Legal Terms.</a>
+                </p>
+            </div>
+            <!-- second about -->
+            <div class="third-about cen-z">
+                <a href="@Url.Action("Index", "Home")" class="btn-cancel mix-xy">cancel</a>
+                <a href="javascript:;" class="btn-start mix-xy">get started</a>
+            </div>
+            <!-- third about -->
+        </div>
+        <!-- cover about -->
+    </div>
+    <!-- about enrollment -->
+
+    <div class="box-step hide">
+        @using (Html.BeginForm("Enrollment", "Account", FormMethod.Post))
+        {
+            <div class="nested-circle hol-x">
+                <ul class="desk-step">
+                    <li class="step01 current">
+                        <div class="group-circle mix-xy">
+                            <img class="first-sym" src="~/Content/i/icon-person01.png" alt="IMG">
+                            <img class="second-sym" src="~/Content/i/icon-person.png" alt="IMG">
+                            <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                            <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                            <span class="icons icon-v"></span>
+                        </div>
+                        <div class="group-name">
+                            <span class="name">Profile</span>
+                        </div>
+                    </li>
+                    <li class="step02">
+                        <div class="group-circle mix-xy">
+                            <img class="first-sym" src="~/Content/i/icon-lock01.png" alt="IMG">
+                            <img class="second-sym" src="~/Content/i/icon-lock.png" alt="IMG">
+                            <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                            <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                            <span class="icons icon-v"></span>
+                        </div>
+                        <div class="group-name">
+                            <span class="name">Account Type</span>
+                        </div>
+                    </li>
+                    <li class="step03">
+                        <div class="group-circle mix-xy">
+                            <img class="first-sym" src="~/Content/i/icon-house01.png" alt="IMG">
+                            <img class="second-sym" src="~/Content/i/icon-house.png" alt="IMG">
+                            <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                            <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                            <span class="icons icon-v"></span>
+                        </div>
+                        <div class="group-name">
+                            <span class="name">Investment Methode</span>
+                        </div>
+                    </li>
+                    <li class="step04">
+                        <div class="group-circle mix-xy">
+                            <img class="first-sym" src="~/Content/i/icon-location01.png" alt="IMG">
+                            <img class="second-sym" src="~/Content/i/icon-location.png" alt="IMG">
+                            <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                            <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                        </div>
+                        <div class="group-name">
+                            <span class="name">Allocation</span>
+                        </div>
+                    </li>
+                    <li class="step05">
+                        <div class="group-circle mix-xy">
+                            <img class="first-sym" src="~/Content/i/icon-page01.png" alt="IMG">
+                            <img class="second-sym" src="~/Content/i/icon-page.png" alt="IMG">
+                            <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                            <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                        </div>
+                        <div class="group-name">
+                            <span class="name">SMarT Plan</span>
+                        </div>
+                    </li>
+                    <li class="step06">
+                        <div class="group-circle mix-xy">
+                            <img class="first-sym" src="~/Content/i/icon-benfica01.png" alt="IMG">
+                            <img class="second-sym" src="~/Content/i/icon-benfica.png" alt="IMG">
+                            <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                            <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                        </div>
+                        <div class="group-name">
+                            <span class="name">Beneficiaries</span>
+                        </div>
+                    </li>
+                    <li class="step07">
+                        <div class="group-circle mix-xy">
+                            <img class="first-sym" src="~/Content/i/icon-laptop01.png" alt="IMG">
+                            <img class="second-sym" src="~/Content/i/icon-laptop.png" alt="IMG">
+                            <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                            <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                        </div>
+                        <div class="group-name">
+                            <span class="name">Online Account</span>
+                        </div>
+                    </li>
+                    <li class="step08">
+                        <div class="group-circle mix-xy">
+                            <img class="first-sym" src="~/Content/i/seach-page01.png" alt="IMG">
+                            <img class="second-sym" src="~/Content/i/seach-page.png" alt="IMG">
+                            <img class="first-cir" src="~/Content/i/progress25.png" alt="IMG">
+                            <img class="second-cir" src="~/Content/i/progress100.png" alt="IMG">
+                        </div>
+                        <div class="group-name">
+                            <span class="name">Review</span>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="mobi-step">
+                    <li class="step01 current">
+                        <span class="step-number">1</span>
+                        <span class="icons icons-tick"></span>
+                    </li>
+                    <li class="step02">
+                        <span class="step-number">2</span>
+                        <span class="icons icons-tick"></span>
+                    </li>
+                    <li class="step03">
+                        <span class="step-number">3</span>
+                        <span class="icons icons-tick"></span>
+                    </li>
+                    <li class="step044">
+                        <span class="step-number">4</span>
+                        <span class="icons icons-tick"></span>
+                    </li>
+                    <li class="step05">
+                        <span class="step-number">5</span>
+                        <span class="icons icons-tick"></span>
+                    </li>
+                    <li class="step06">
+                        <span class="step-number">6</span>
+                        <span class="icons icons-tick"></span>
+                    </li>
+                    <li class="step07">
+                        <span class="step-number">7</span>
+                        <span class="icons icons-tick"></span>
+                    </li>
+                    <li class="step08">
+                        <span class="step-number">8</span>
+                        <span class="icons icons-tick"></span>
+                    </li>
+                </ul>
+                <a href="javascript:;" class="click-intructions">
+                    <img src="~/Content/i/mobi/icons-intructions.png" alt="IMG">
+                </a>
+            </div>
+            <!-- end /nested-circle -->
+
+            <div class="step-content step-one-content one-content">
+                <div class="cover-title mix-xy">
+                    <h2>Step 1 : Profile</h2>
+                </div>
+                <!-- cover title -->
+                <div class="detail-profile">
+                    <div class="left-detail">
+                        <div class="cover-input">
+                            <span class="title">Name</span>
+                            <div class="input-here first-name">
+                                @Html.CustomTextBoxFor(x => x.FirstName, "First Name")
+                                <a href="javascript:;" class="click-me hidden-md hidden-lg">
+                                    <span class="icons click-question"></span>
+                                    <div class="tooltip-question">
+                                        <p class="content-question">Lorem ipsum domet</p>
+                                    </div>
+                                    <div class="clear"></div>
+                                </a>
+                            </div>
+                            <!-- input here	 -->
+                            <div class="input-here initial">
+                                @Html.CustomTextBoxFor(x => x.Initial, "Initial")
+                            </div>
+                            <!-- input here	 -->
+                            <div class="input-here last-name">
+                                @Html.CustomTextBoxFor(x => x.LastName, "Last Name")
+                                <a href="javascript:;" class="click-me hidden-xs hidden-sm">
+                                    <span class="icons click-question"></span>
+                                    <div class="tooltip-question">
+                                        <p class="content-question">Lorem ipsum domet</p>
+                                    </div>
+                                    <div class="clear"></div>
+                                </a>
+                            </div>
+                            <!-- input here	 -->
+                        </div>
+                        <!-- cover input -->
+                        <div class="cover-input">
+                            <span class="title">Address</span>
+                            <div class="input-here address">
+                                @Html.CustomTextAreaFor(x => x.Address, "Enter address here")
+                                <a href="javascript:;" class="click-me">
+                                    <span class="icons click-question"></span>
+                                    <div class="tooltip-question">
+                                        <p class="content-question">Lorem ipsum domet</p>
+                                    </div>
+                                    <div class="clear"></div>
+                                </a>
+                            </div>
+                            <!-- input here	 -->
+                            <div class="input-here city">
+                                @Html.CustomTextAreaFor(x => x.City, "Enter City")
+                            </div>
+                            <!-- input here	 -->
+                            <div class="input-here city mobi-zip">
+                                @Html.CustomTextAreaFor(x => x.State, "Enter State")
+                            </div>
+                            <!-- input here	 -->
+                            <div class="input-here city zip-code">
+                                @Html.CustomTextAreaFor(x => x.ZipCode, "Enter Zip code")
+                            </div>
+                            <!-- input here	 -->
+                        </div>
+                        <!-- cover input -->
+                        <div class="cover-input">
+                            <span class="title">Social Security Number</span>
+                            <div class="input-here">
+                                @Html.CustomTextBoxFor(x => x.SSN, "Enter Security Number")
+                                <a href="javascript:;" class="click-me">
+                                    <span class="icons click-question"></span>
+                                    <div class="tooltip-question">
+                                        <p class="content-question">Lorem ipsum domet</p>
+                                    </div>
+                                    <div class="clear"></div>
+                                </a>
+                            </div>
+                            <!-- input here	 -->
+                        </div>
+                        <!-- cover input -->
+                        <div class="cover-input">
+                            <span class="title">Date of Birth</span>
+                            <div class="input-here date-birth">
+                                @Html.CustomTextBoxFor(x => x.DateOfBirth, "dd/mm/yy", @class: "datepicker-birth")
+                                <button class="icons carlendar02"></button>
+                                <a href="javascript:;" class="click-me">
+                                    <span class="icons click-question"></span>
+                                    <div class="tooltip-question">
+                                        <p class="content-question">Lorem ipsum domet</p>
+                                    </div>
+                                    <div class="clear"></div>
+                                </a>
+                            </div>
+                            <!-- input here	 -->
+                        </div>
+                        <!-- cover input -->
+                        <div class="cover-input ">
+                            <span class="title">Gender</span>
+                            <div class="input-here gender">
+                                <input type="radio" name="Gender" id="bcheck01" value="Male" checked>
+                                <label for="bcheck01" class="big-radio">
+                                    <span>MALE</span>
+                                </label>
+                                <input type="radio" name="Gender" id="bcheck02" value="Female">
+                                <label for="bcheck02" class="big-radio">
+                                    <span>FEMALE</span>
+                                </label>
+                                <a href="javascript:;" class="click-me">
+                                    <span class="icons click-question"></span>
+                                    <div class="tooltip-question">
+                                        <p class="content-question">Lorem ipsum domet</p>
+                                    </div>
+                                    <div class="clear"></div>
+                                </a>
+                            </div>
+                            <!-- input here	 -->
+                        </div>
+                        <!-- cover input -->
+                        <div class="cover-input">
+                            <span class="title">Personal Phone Number</span>
+                            <div class="input-here">
+                                @Html.CustomTextBoxFor(x => x.PersonalPhone, "Enter Phone Number")
+                                <a href="javascript:;" class="click-me">
+                                    <span class="icons click-question"></span>
+                                    <div class="tooltip-question">
+                                        <p class="content-question">Lorem ipsum domet</p>
+                                    </div>
+                                    <div class="clear"></div>
+                                </a>
+                            </div>
+                            <!-- input here	 -->
+                        </div>
+                        <!-- cover input -->
+                        <div class="cover-input">
+                            <span class="title">Email ID</span>
+                            <div class="input-here">
+                                @Html.CustomTextBoxFor(x => x.EmailId, "Enter Email Address", @class: "txt-email")
+                                <a href="javascript:;" class="click-me">
+                                    <span class="icons click-question"></span>
+                                    <div class="tooltip-question">
+                                        <p class="content-question">Lorem ipsum domet</p>
+                                    </div>
+                                    <div class="clear"></div>
+                                </a>
+                            </div>
+                            <!-- input here	 -->
+                        </div>
+                        <!-- cover input -->
+                        <div class="cover-input">
+                            <span class="title">Employer</span>
+                            <div class="input-here employer">
+                                @Html.CustomTextBoxFor(x => x.Employer, "Search for Employer")
+                                <button class="icons click-seach"></button>
+                                <a href="javascript:;" class="click-me">
+                                    <span class="icons click-question"></span>
+                                    <div class="tooltip-question">
+                                        <p class="content-question">Lorem ipsum domet</p>
+                                    </div>
+                                    <div class="clear"></div>
+                                </a>
+                            </div>
+                            <!-- input here	 -->
+                            <p class="text">
+                                If you cannot find your employer, you may not be eligible to enroll. Please contact customer service at
+                                <strong>877-644-6457</strong> for assistance.
+                            </p>
+                        </div>
+                        <!-- cover input -->
+                        <div class="cover-input">
+                            <span class="title">Retirement Plan</span>
+                            <div class="input-here ddown-here big-text">
+                                <select name="@nameof(EnrollmentModel.RetirementPlan)" class="ddown-select" title="save the file" id="sel-retire">
+                                    <option selected="selected">Select</option>
+                                    <option value="Lorem ipsum">Lorem ipsum</option>
+                                    <option value="Lorem ipsum">Lorem ipsum</option>
+                                    <option value="Lorem ipsum">Lorem ipsum</option>
+                                </select>
+                                <span class="icons-ddown"></span>
+                                <a href="javascript:;" class="click-me">
+                                    <span class="icons click-question"></span>
+                                    <div class="tooltip-question">
+                                        <p class="content-question">Lorem ipsum domet</p>
+                                    </div>
+                                    <div class="clear"></div>
+                                </a>
+                            </div>
+                            <!-- input here	 -->
+
+                        </div>
+                        <!-- cover input -->
+                        <div class="cover-input">
+                            <span class="title">Amount to contribute/pay period</span>
+                            <div class="input-here ddown-here big-text">
+                                <select name="@nameof(EnrollmentModel.AmountToContribute)" class="ddown-select" title="save the file" id="sel-amount">
+                                    <option selected="selected">Select</option>
+                                    <option value="100">100</option>
+                                    <option value="80">80</option>
+                                    <option value="50">50</option>
+                                </select>
+                                <span class="icons-ddown"></span>
+                                <a href="javascript:;" class="click-me">
+                                    <span class="icons click-question"></span>
+                                    <div class="tooltip-question">
+                                        <p class="content-question">Lorem ipsum domet</p>
+                                    </div>
+                                    <div class="clear"></div>
+                                </a>
+                            </div>
+                            <!-- input here	 -->
+
+                        </div>
+                        <!-- cover input -->
+                        <div class="cover-input">
+                            <span class="title">Pay frequency</span>
+                            <div class="input-here ddown-here big-text">
+                                <select name="@nameof(EnrollmentModel.PayFrequency)" class="ddown-select" title="Numbers" id="sel-pay">
+                                    <option selected="selected">Select</option>
+                                    <option value="Lorem ipsum">Lorem ipsum</option>
+                                    <option value="Lorem ipsum">Lorem ipsum</option>
+                                    <option value="Lorem ipsum">Lorem ipsum</option>
+                                </select>
+                                <span class="icons-ddown"></span>
+                                <a href="javascript:;" class="click-me">
+                                    <span class="icons click-question"></span>
+                                    <div class="tooltip-question">
+                                        <p class="content-question">Lorem ipsum domet</p>
+                                    </div>
+                                    <div class="clear"></div>
+                                </a>
+                            </div>
+                            <!-- input here	 -->
+
+                        </div>
+                        <!-- cover input -->
+
+                        <div class="cover-text">
+                            <span class="text-sub">
+                                Estimated annual contribution
+                                <strong>$1,200.00</strong>
+                            </span>
+                            <span class="text-sub">
+                                Maximum annual contribution limit
+                                <strong>$18,000.00</strong>
+                            </span>
+                        </div>
+                        <!-- cover text -->
+                    </div>
+                    <!-- left detail -->
+                    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopInstructions, cssClass: "hidden-xs hidden-sm")); }
+                    <div class="clear"></div>
+                </div>
+                <!-- detail profile -->
+                <div class="cover-btn cen-z">
+                    <a href="javascript:;" class="pre-btn mix-xy">previous</a>
+                    <a href="javascript:;" class="next-btn mix-xy">next</a>
+                </div>
+            </div>
+            <!-- profile -->
+
+            <div class="step-content step-two-content hide">
+                <div class="cover-title mix-xy">
+                    <h2>Step 2 : Account Type</h2>
+                </div>
+                <!-- cover title -->
+                <div class="middle-form">
+                    <div class="form-order02">
+                        <span class="first-text">I would like to Enroll in a :</span>
+                        <div class="box-radio">
+                            <input type="radio" id="ctype01" name="@nameof(EnrollmentModel.EnrollPlan)" value="Traditional457" checked>
+                            <label for="ctype01" class="big-radio">
+                                <span>Traditional 457 Plan</span>
+                            </label>
+                        </div>
+                        <p class="text">
+                            Traditional 457 plan is a ipsum dolor sit amet, consectet uloir adipiscing elit. Aenean euismod bibendum laoreet.
+                            Proi lorein loregravida dolor sit amet lacus accumsan et viverra justo lorema comodo. Proin sodales pulvinar tempor.
+                            Lorem ipsum dolor lorasit amet, lore consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida
+                            dolor sit amet lacus accumsan uet viverra justo commodo san et viverra justo lorema comodo. Proin sodales pulvinar
+                            tempor. Lorem ipsum dolorasit amet, lore consectetur adipiscing elit. Aenean euismod blorem ipsum doloe sit aetu.
+                        </p>
+                        <div class="box-radio">
+                            <input type="radio" id="ctype02" name="@nameof(EnrollmentModel.EnrollPlan)" value="ROTH457">
+                            <label for="ctype02" class="big-radio">
+                                <span>ROTH 457 Plan</span>
+                            </label>
+                        </div>
+                        <p class="text">
+                            Traditional 457 plan is a ipsum dolor sit amet, consectet uloir adipiscing elit. Aenean euismod bibendum laoreet.
+                            Proi lorein ips gravida dolor sit amet lacus accumsan et viverra justo lorema comodo. Proin sodales pulvinar tempor.
+                            Lorem ipsum doloras loit amet, lore consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida
+                            dolor sit amet lacus accumsan lore uet viverra justo commodo san et viverra justo lorema comodo. Proin sodales pulvinar
+                            tempor. Lorem ipsum dolorasit amet, lmeore consectetur adipiscing elit. Aenean euismod blorem ipsum doloe sit aetu.
+                        </p>
+                        <p class="text-note">
+                            <span>NOTE</span> : If you would like to enroll in both Traditional and Roth 457 Plans, you must complete enrollment separately
+                            for each.
+                        </p>
+                    </div>
+                    <!-- end /form-order01 -->
+                    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopInstructions, cssClass: "hidden-xs hidden-sm")); }
+                    <div class="clear"></div>
+                </div>
+                <!-- end /middle-form -->
+                <div class="cover-btn cen-z">
+                    <a href="javascript:;" class="pre-btn mix-xy">previous</a>
+                    <a href="javascript:;" class="next-btn mix-xy">next</a>
+                </div>
+                <!-- end /cover btn -->
+            </div>
+            <!-- end /step two content -->
+
+            <div class="step-content step-two-content step-three-content hide">
+                <div class="cover-title mix-xy">
+                    <h2>Step 3 : Investment Method</h2>
+                </div>
+                <!-- cover title -->
+                <div class="middle-form">
+                    <div class="form-order02">
+                        <p class="text-learn">
+                            <span>Ohio DC's LifePath funds make planning for retirement easy! </span>
+                            <a href="javascript:;" class="click-learn">Learn more here</a>
+                        </p>
+                        <h2>How would you like to invest today?</h2>
+                        <div class="box-radio">
+                            <input type="radio" id="cinvest01" name="@nameof(EnrollmentModel.InvestOption)" value="BirthDateBased" checked>
+                            <label for="cinvest01" class="tick-radio">
+                                <span class="w-nowrap">Choose a LifePath Fund based on my birth date</span>
+                            </label>
+                        </div>
+                        <p class="text">
+                            Lifepath fund based on birth date is a ipsum dolor sit amet, consectet uloir adipiscing elit. Aenean euismod bibendum
+                            laoreet. Proi lorein gravida dolor sit amet lacus accumsan et viverra justo lorema comodo. Proin sodales pulvinar
+                            tempor. Lorem ipsum dolorasit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida
+                            dolor sit amet.
+                        </p>
+                        <div class="box-radio">
+                            <input type="radio" id="cinvest02" name="@nameof(EnrollmentModel.InvestOption)" value="ChooseMyOwn">
+                            <label for="cinvest02" class="tick-radio">
+                                <span>No thanks, I would like to choose my own investments</span>
+                            </label>
+                        </div>
+                        <p class="text">
+                            Own investment is a psum dolor sit amet, consectet uloir adipiscing elit. Aenean euismod bibendum laoreet. Proi lorein
+                            gravid lorea dolor sit amet lacus accumsan et viverra justo lorema comodo. Proin sodales pulvinar tempor. Lorem
+                            ipsum dolo lorirasit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.
+                        </p>
+                    </div>
+                    <!-- end /form-order01 -->
+                    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopInstructions, cssClass: "hidden-xs hidden-sm")); }
+                    <div class="clear"></div>
+                </div>
+                <!-- end /middle-form -->
+                <div class="cover-btn cen-z">
+                    <a href="javascript:;" class="pre-btn mix-xy">previous</a>
+                    <a href="javascript:;" class="next-btn mix-xy">next</a>
+                </div>
+                <!-- end /cover btn -->
+            </div>
+            <!-- end /step three content -->
+
+            <div class="step-content step-four-content hide">
+                <div class="cover-title mix-xy">
+                    <h2>Step 4 : Allocation</h2>
+                </div>
+                <!-- cover title -->
+                <div class="middle-form">
+                    <div class="form-order04">
+                        <div class="top-content">
+                            <div class="fist-content cen-z">
+                                <p class="text-contribus">
+                                    Contribution Amount :
+                                    <span>$550.00</span>
+                                </p>
+                                <a href="javascript:;" class="click-view mix-xy">View Fund Performance</a>
+                            </div>
+                            <div class="box-radio ">
+                                <div class="cover-box ver-y">
+                                    <span class="text-option">Allocation Option :</span>
+                                    <input type="radio" id="callo01" name="@nameof(EnrollmentModel.AllocationOption)" value="Dollar" checked>
+                                    <label for="callo01" class="tick-radio">
+                                        <span>Dollar</span>
+                                    </label>
+                                    <input type="radio" id="callo02" name="@nameof(EnrollmentModel.AllocationOption)" value="Percentage">
+                                    <label for="callo02" class="tick-radio">
+                                        <span>Percentage</span>
+                                    </label>
+                                </div>
+                                <!-- cover box -->
+                            </div>
+                            <!-- box radio -->
+                        </div>
+                        <!-- top content -->
+                        <div class="second-content">
+                            <div class="top-title ver-y">
+                                <span class="name">
+                                    Fund Name
+                                    <span class="icons icon-down02"></span>
+                                </span>
+                                <span class="name">Allocation Amount</span>
+                                <button class="click-t-title"></button>
+                            </div>
+                            <div class="detail-content">
+                                <div class="cover-box">
+                                    <a href="javascript:;" class="click-text">
+                                        International Stocks
+                                        <span class="icons icon-row"></span>
+                                    </a>
+                                    <!-- click text -->
+                                    <ul class="list-text">
+                                        <li>
+                                            <span class="text">Templeton Foreign</span>
+                                            <div class="input-here">
+                                                @Html.CustomTextBoxFor(x => x.TempletonForeign, "Enter Value", @class: "number-only fund-stock-value")
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span class="text">Vanguard International Growth</span>
+                                            <div class="input-here">
+                                                @Html.CustomTextBoxFor(x => x.VanguardInternationalGrowth, "Enter Value", @class: "number-only fund-stock-value")
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span class="text">Vanguard Total International Stock Index</span>
+                                            <div class="input-here">
+                                                @Html.CustomTextBoxFor(x => x.VanguardTotalInternationalStockIndex, "Enter Value", @class: "number-only fund-stock-value")
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- cover box -->
+                                <div class="cover-box">
+                                    <a href="javascript:;" class="click-text">
+                                        Small Cap Stocks
+                                        <span class="icons icon-row"></span>
+                                    </a>
+                                    <!-- click text -->
+                                    <ul class="list-text">
+                                        <li>
+                                            <span class="text">Ohio DC Small Cap Value</span>
+                                            <div class="input-here">
+                                                @Html.CustomTextBoxFor(x => x.OhioDCSmallCapValue, "Enter Value", @class: "number-only fund-stock-value")
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span class="text">Vanguard Small Cap Index</span>
+                                            <div class="input-here">
+                                                @Html.CustomTextBoxFor(x => x.VanguardSmallCapIndex, "Enter Value", @class: "number-only fund-stock-value")
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- cover box -->
+                                <div class="cover-box">
+                                    <a href="javascript:;" class="click-text">
+                                        Mid Cap Stocks
+                                        <span class="icons icon-row"></span>
+                                    </a>
+                                    <!-- click text -->
+                                    <ul class="list-text">
+                                        <li>
+                                            <span class="text">Vangaurd Capital Opportunity</span>
+                                            <div class="input-here">
+                                                @Html.CustomTextBoxFor(x => x.VangaurdCapitalOpportunity, "Enter Value", @class: "number-only fund-stock-value")
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- cover box -->
+                                <div class="cover-box">
+                                    <a href="javascript:;" class="click-text">
+                                        Large Cap Stocks
+                                        <span class="icons icon-row"></span>
+                                    </a>
+                                    <!-- click text -->
+                                    <ul class="list-text">
+                                        <li>
+                                            <span class="text">Dodge &amp; Cox Stocks</span>
+                                            <div class="input-here">
+                                                @Html.CustomTextBoxFor(x => x.DodgeAndCoxStocks, "Enter Value", @class: "number-only fund-stock-value")
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span class="text">Fidelity Contrafund</span>
+                                            <div class="input-here">
+                                                @Html.CustomTextBoxFor(x => x.FidelityContrafund, "Enter Value", @class: "number-only fund-stock-value")
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span class="text">Fidelity Growth Company</span>
+                                            <div class="input-here">
+                                                @Html.CustomTextBoxFor(x => x.FidelityGrowthCompany, "Enter Value", @class: "number-only fund-stock-value")
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span class="text">Ohio DC Large Cap Growth</span>
+                                            <div class="input-here">
+                                                @Html.CustomTextBoxFor(x => x.OhioDCLargeCapGrowth, "Enter Value", @class: "number-only fund-stock-value")
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- cover box -->
+                                <div class="cover-box">
+                                    <a href="javascript:;" class="click-text">
+                                        Asset allocation funds
+                                        <span class="icons icon-row"></span>
+                                    </a>
+                                    <!-- click text -->
+                                    <ul class="list-text">
+                                        <li>
+                                            <span class="text">Lifepath 2020</span>
+                                            <div class="input-here">
+                                                @Html.CustomTextBoxFor(x => x.Lifepath2020, "Enter Value", @class: "number-only fund-stock-value")
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span class="text">Lifepath 2025</span>
+                                            <div class="input-here">
+                                                @Html.CustomTextBoxFor(x => x.Lifepath2025, "Enter Value", @class: "number-only fund-stock-value")
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span class="text">Lifepath 2030</span>
+                                            <div class="input-here">
+                                                @Html.CustomTextBoxFor(x => x.Lifepath2030, "Enter Value", @class: "number-only fund-stock-value")
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span class="text">Lifepath Retirement</span>
+                                            <div class="input-here">
+                                                @Html.CustomTextBoxFor(x => x.LifepathRetirement, "Enter Value", @class: "number-only fund-stock-value")
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- cover box -->
+                                <div class="cover-box">
+                                    <a href="javascript:;" class="click-text">
+                                        Bonds
+                                        <span class="icons icon-row"></span>
+                                    </a>
+                                    <!-- click text -->
+                                    <ul class="list-text">
+                                        <li>
+                                            <span class="text">Ohio DC Intermediate Bond</span>
+                                            <div class="input-here">
+                                                @Html.CustomTextBoxFor(x => x.OhioDCIntermediateBond, "Enter Value", @class: "number-only fund-stock-value")
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span class="text">Vanguard Total Bond Market Index</span>
+                                            <div class="input-here">
+                                                @Html.CustomTextBoxFor(x => x.VanguardTotalBondMarketIndex, "Enter Value", @class: "number-only fund-stock-value")
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- cover box -->
+                                <div class="box-total">
+                                    <span class="text">total</span>
+                                    <span class="num total-allocation-amount">$0</span>
+                                </div>
+                            </div>
+                            <!-- detail content -->
+                        </div>
+                        <!-- second content -->
+                    </div>
+                    <!-- end /form-order01 -->
+                    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopInstructions, cssClass: "hidden-xs hidden-sm")); }
+                    <div class="clear"></div>
+                </div>
+                <!-- end /middle-form -->
+                <div class="cover-btn cen-z">
+                    <a href="javascript:;" class="pre-btn mix-xy">previous</a>
+                    <a href="javascript:;" class="next-btn mix-xy">next</a>
+                </div>
+                <!-- end /cover btn -->
+            </div>
+            <!-- end /step four content -->
+
+            <div class="step-content step-five-content hide">
+                <div class="cover-title mix-xy">
+                    <h2>Step 5 : SMarT Plan</h2>
+                </div>
+                <!-- cover title -->
+                <div class="middle-form">
+                    <div class="form-order05">
+                        <img src="~/Content/i/icon-smart.png" alt="image">
+                        <p class="text-smart">
+                            Ohio DC can help you save more! Choose to auto-increase your deferral amount each period with our
+                            <a href="javascript:;" class="click-text">SMarT Plan</a>
+                        </p>
+                        <div class="cover-box">
+                            <div class="box-radio">
+                                <input type="radio" id="rmart01" name="@nameof(EnrollmentModel.SmartPlanOption)" value="one" checked>
+                                <label for="rmart01" class="tick-radio">
+                                    <span>Increase per pay deferral amount each year by :</span>
+                                </label>
+                                <a href="javascript:;" class="click-me">
+                                    <span class="icons quest01"></span>
+                                    <div class="tooltip-question">
+                                        <p class="content-question">Lorem ipsum domet</p>
+                                    </div>
+                                    <div class="clear"></div>
+                                </a>
+                                <ul class="list-select">
+                                    <li>
+                                        <span class="title">Amount</span>
+                                        <div class="select-here ddown-here">
+                                            <select name="@nameof(EnrollmentModel.SmartPlanAmount)" class="ddown-select" title="save the file">
+                                                <option>Select</option>
+                                                <option selected="selected">$100</option>
+                                                <option>$200</option>
+                                                <option>$300</option>
+                                                <option>$400</option>
+                                            </select>
+                                            <span class="icons-ddown"></span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="title">Starting Month</span>
+                                        <div class="select-here ddown-here">
+                                            <select name="@nameof(EnrollmentModel.StartingMonth)" class="ddown-select" title="save the file">
+                                                <option>Select</option>
+                                                <option value="January" selected="selected">January</option>
+                                                <option value="February">February</option>
+                                                <option value="March">March</option>
+                                                <option value="April">April</option>
+                                                <option value="May">May</option>
+                                                <option value="June">June</option>
+                                                <option value="July">July</option>
+                                                <option value="August">August</option>
+                                                <option value="September">September</option>
+                                                <option value="October">October</option>
+                                                <option value="November">November</option>
+                                                <option value="December">December</option>
+                                            </select>
+                                            <span class="icons-ddown"></span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="title">Starting Year</span>
+                                        <div class="select-here ddown-here">
+                                            <select name="@nameof(EnrollmentModel.StartingYear)" class="ddown-select" title="save the file">
+                                                <option>Select</option>
+                                                <option value="2010">2010</option>
+                                                <option value="2011">2011</option>
+                                                <option value="2012">2012</option>
+                                                <option value="2013">2013</option>
+                                                <option value="2014">2014</option>
+                                                <option value="2015">2015</option>
+                                                <option value="2016">2016</option>
+                                                <option value="2017" selected="selected">2017</option>
+                                            </select>
+                                            <span class="icons-ddown"></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- box radio -->
+                            <div class="box-radio">
+                                <input type="radio" id="rmart02" name="@nameof(EnrollmentModel.SmartPlanOption)" value="two">
+                                <label for="rmart02" class="tick-radio">
+                                    <span>Increase deferral amount each year to reach IRS Regular Maximum:</span>
+                                </label>
+                                <a href="javascript:;" class="click-me">
+                                    <span class="icons quest01"></span>
+                                    <div class="tooltip-question">
+                                        <p class="content-question">Lorem ipsum domet</p>
+                                    </div>
+                                    <div class="clear"></div>
+                                </a>
+                            </div>
+                            <!-- box radio -->
+                            <div class="box-radio">
+                                <input type="radio" id="rmart03" name="@nameof(EnrollmentModel.SmartPlanOption)" value="three">
+                                <label for="rmart03" class="tick-radio">
+                                    <span>Increase deferral amount each year to reach IRS 50+ Maximum</span>
+                                </label>
+                                <a href="javascript:;" class="click-me">
+                                    <span class="icons quest01"></span>
+                                    <div class="tooltip-question">
+                                        <p class="content-question">Lorem ipsum domet</p>
+                                    </div>
+                                    <div class="clear"></div>
+                                </a>
+                            </div>
+                            <!-- box radio -->
+                            <div class="box-radio">
+                                <input type="radio" id="rmart04" name="@nameof(EnrollmentModel.SmartPlanOption)" value="four">
+                                <label for="rmart04" class="tick-radio">
+                                    <span>I do not want to enroll in SMarT Plan</span>
+                                </label>
+                                <a href="javascript:;" class="click-me">
+                                    <span class="icons quest01"></span>
+                                    <div class="tooltip-question">
+                                        <p class="content-question">Lorem ipsum domet</p>
+                                    </div>
+                                    <div class="clear"></div>
+                                </a>
+                            </div>
+                            <!-- box radio -->
+                        </div>
+                        <!-- cover box -->
+                    </div>
+                    <!-- end /form-order01 -->
+                    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopInstructions, cssClass: "hidden-xs hidden-sm")); }
+                    <div class="clear"></div>
+                </div>
+                <!-- end /middle-form -->
+                <div class="cover-btn cen-z">
+                    <a href="javascript:;" class="pre-btn mix-xy">previous</a>
+                    <a href="javascript:;" class="next-btn mix-xy">next</a>
+                </div>
+                <!-- end /cover btn -->
+            </div>
+            <!-- end /step five content -->
+
+            <div class="step-content step-six-content hide">
+                <div class="cover-title mix-xy">
+                    <h2>Step 6 : Beneficiaries</h2>
+                </div>
+                <!-- cover title -->
+                <div class="middle-form">
+                    <div class="form-order06">
+                        <p class="first-text">
+                            At least one primary beneficiary is required in order to complete the enrollment process. Please click on "Add a
+                            person" or "Add an organization" button to build your beneficiary list.
+                        </p>
+                        <div class="cover-box">
+                            <div class="box-add table-one">
+                                <div class="top-add">
+                                    <span class="text">Primary Beneficiary</span>
+                                    <a href="javascript:;" class="click-add">+ ADD NEW</a>
+                                </div>
+                                <!-- top add -->
+                                <div class="group-table">
+                                    <div class="list-table">
+                                        <div class="second-add">
+                                            <span class="text">Beneficiary 1</span>
+                                            <button class="icons click-remove"></button>
+                                        </div>
+                                        <!-- second add -->
+                                        <div class="add-select">
+                                            <ul class="list-add">
+                                                <li>
+                                                    <div class="first-select">
+                                                        <span class="text">Name</span>
+                                                        <div class="input-here">
+                                                            @Html.CustomTextBoxFor(x => x.PrimaryBeneficientName, "Enter Name")
+                                                        </div>
+                                                    </div>
+                                                    <!-- first select -->
+
+                                                </li>
+                                                <li>
+                                                    <div class="first-select">
+                                                        <span class="text">Relationship</span>
+                                                        <div class="input-here ddown-here big-text">
+                                                            <select name="PrimaryBeneficientRelation" class="ddown-select" title="save the file">
+                                                                <option selected="selected">Select</option>
+                                                                @foreach (string relation in ViewBag.RelationTypes)
+                                                                {
+                                                                    <option value="@relation">@relation</option>
+                                                                }
+                                                            </select>
+                                                            <span class="icons-ddown"></span>
+                                                        </div>
+                                                    </div>
+                                                    <!-- first select -->
+
+                                                </li>
+                                                <li>
+                                                    <div class="first-select">
+                                                        <span class="text">SSN</span>
+                                                        <div class="input-here">
+                                                            @Html.CustomTextBoxFor(x => x.PrimaryBeneficientSSN, "Enter SSN")
+                                                        </div>
+                                                    </div>
+                                                    <!-- first select -->
+                                                </li>
+                                                <li>
+                                                    <div class="first-select">
+                                                        <span class="text">Date of Birth</span>
+                                                        <div class="input-here date-birth">
+                                                            @Html.CustomTextBoxFor(x => x.PrimaryBeneficientDateOfBirth, "dd/mm/yy", @class: "datepicker-birth")
+                                                            <button class="icons select-calculator"></button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- first select -->
+                                                </li>
+                                            </ul>
+                                            <!-- left add -->
+                                            <div class="right-add">
+                                                <div class="second-select">
+                                                    <span class="text">Percentage (%)</span>
+                                                    <div class="input-here">
+                                                        @Html.CustomTextBoxFor(x => x.PrimaryBeneficientPercent, null)
+                                                    </div>
+                                                </div>
+                                                <p>
+                                                    <span>Note</span> : Total percentage mus be equal to 100%
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <!-- add select -->
+                                    </div>
+                                    <!-- list-table -->
+                                </div>
+                                <!-- group-table -->
+                            </div>
+                            <!-- box add -->
+                            <div class="box-add table-two">
+                                <div class="top-add">
+                                    <span class="text">Contingent Beneficiaries</span>
+                                    <a href="javascript:;" class="click-add">+ ADD NEW</a>
+                                </div>
+                                <!-- top add -->
+                                <div class="group-table">
+                                    <div class="list-table">
+                                        <div class="second-add">
+                                            <span class="text">Beneficiary 1</span>
+                                            <button class="icons click-remove"></button>
+                                        </div>
+                                        <!-- second add -->
+                                        <div class="add-select">
+                                            <ul class="list-add">
+                                                <li>
+                                                    <div class="first-select">
+                                                        <span class="text">Name</span>
+                                                        <div class="input-here">
+                                                            @Html.CustomTextBoxFor(x => x.ContingentBeneficientName, "Enter Name")
+                                                        </div>
+                                                    </div>
+                                                    <!-- first select -->
+                                                </li>
+                                                <li>
+                                                    <div class="first-select">
+                                                        <span class="text">Relationship</span>
+                                                        <div class="input-here ddown-here big-text">
+                                                            <select name="ContingentBeneficientRelation" class="ddown-select" title="save the file">
+                                                                <option selected="selected">Select</option>
+                                                                @foreach (string relation in ViewBag.RelationTypes)
+                                                                {
+                                                                    <option value="@relation">@relation</option>
+                                                                }
+                                                            </select>
+                                                            <span class="icons-ddown"></span>
+                                                        </div>
+                                                    </div>
+                                                    <!-- first select -->
+
+                                                </li>
+                                                <li>
+                                                    <div class="first-select">
+                                                        <span class="text">SSN</span>
+                                                        <div class="input-here">
+                                                            @Html.CustomTextBoxFor(x => x.ContingentBeneficientSSN, "Enter SSN")
+                                                        </div>
+                                                    </div>
+                                                    <!-- first select -->
+                                                </li>
+                                                <li>
+                                                    <div class="first-select">
+                                                        <span class="text">Date of Birth</span>
+                                                        <div class="input-here date-birth">
+                                                            @Html.CustomTextBoxFor(x => x.ContingentBeneficientDateOfBirth, "dd/mm/yy", @class: "datepicker-birth")
+                                                            <button class="icons select-calculator"></button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- first select -->
+                                                </li>
+                                            </ul>
+                                            <!-- left add -->
+                                            <div class="right-add">
+                                                <div class="second-select">
+                                                    <span class="text">Percentage (%)</span>
+                                                    <div class="input-here">
+                                                        @Html.CustomTextBoxFor(x => x.ContingentBeneficientPercent, null)
+                                                    </div>
+                                                </div>
+                                                <p>
+                                                    <span>Note</span> : Total percentage mus be equal to 100%
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <!-- add select -->
+                                    </div>
+                                    <!-- list-table -->
+                                </div>
+                                <!-- group-table -->
+                            </div>
+                            <!-- box add -->
+                        </div>
+                        <!-- cover box -->
+                    </div>
+                    <!-- end /form-order01 -->
+                    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopInstructions, cssClass: "hidden-xs hidden-sm")); }
+                    <div class="clear"></div>
+                </div>
+                <!-- end /middle-form -->
+                <div class="cover-btn cen-z">
+                    <a href="javascript:;" class="pre-btn mix-xy">previous</a>
+                    <a href="javascript:;" class="next-btn mix-xy">next</a>
+                </div>
+                <!-- end /cover btn -->
+            </div>
+            <!-- end /step six content -->
+
+            <div class="step-content step-seven-content hide">
+                <div class="cover-title mix-xy">
+                    <h2>Step 7 : Online Account</h2>
+                </div>
+                <!-- cover title -->
+                <div class="middle-form">
+                    <div class="form-order07">
+                        <ul>
+                            <li>
+                                <span class="name ver-y">Username</span>
+                                <div class="typing-here">
+                                    @Html.CustomTextBoxFor(x => x.Username, "Enter Username", @class: "iinput")
+                                    <div class="tiny-hint">
+                                        <a href="javascript:;" class="click-me">
+                                            <span class="icons"></span>
+                                            <div class="tooltip-question">
+                                                <p class="content-question">Lorem ipsum domet</p>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="name ver-y">Password</span>
+                                <div class="typing-here">
+                                    @Html.CustomPasswordFor(x => x.Password, "Enter Password", @class: "iinput")
+                                    <div class="tiny-hint">
+                                        <a href="javascript:;" class="click-me">
+                                            <span class="icons"></span>
+                                            <div class="tooltip-question">
+                                                <p class="content-question">Lorem ipsum domet</p>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="name ver-y">Confirm Password</span>
+                                <div class="typing-here">
+                                    @Html.CustomPasswordFor(x => x.Password, "Enter Confirm Password", @class: "iinput")
+                                    <div class="tiny-hint">
+                                        <a href="javascript:;" class="click-me">
+                                            <span class="icons"></span>
+                                            <div class="tooltip-question">
+                                                <p class="content-question">Lorem ipsum domet</p>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="name ver-y">Account Recovery Email ID</span>
+                                <span class="name-sub ver-y">steve25@gmail.com</span>
+                            </li>
+                            <li>
+                                <span class="name ver-y">Account Recovery Phone #</span>
+                                <span class="name-sub ver-y">120-358-85305</span>
+                            </li>
+                        </ul>
+                        <div class="cover-tick">
+                            <input type="checkbox" id="cxen01" name="AgreementAccepted">
+                            <label for="cxen01" class="tick-me">
+                                <span>I agree to the</span>
+                                <a href="javascript:;">terms &amp; conditions</a>
+                                <span>of this site</span>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- end /form-order01 -->
+                    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopInstructions, cssClass: "hidden-xs hidden-sm")); }
+                    <div class="clear"></div>
+                </div>
+                <!-- end /middle-form -->
+                <div class="cover-btn cen-z">
+                    <a href="javascript:;" class="pre-btn mix-xy">previous</a>
+                    <a href="javascript:;" class="next-btn mix-xy">next</a>
+                </div>
+                <!-- end /cover btn -->
+            </div>
+            <!-- end /step seven content -->
+
+            <div class="step-content step-eight-content hide">
+                <div class="cover-title mix-xy">
+                    <h2>Step 8 : Review</h2>
+                </div>
+                <!-- cover title -->
+                <div class="middle-form">
+                    <div class="form-order08">
+                        <ul class="list-view">
+                            <li>
+                                <span class="title">Name</span>
+                                <span class="name">Steve M Smith</span>
+                            </li>
+                            <li>
+                                <span class="title">Social Security Number</span>
+                                <span class="name">0256805</span>
+                            </li>
+                            <li>
+                                <span class="title">Employer</span>
+                                <span class="name">
+                                    State of Ohio, 30 E Broad St. 29th fl., Columbus, Ohio, 43215
+                                </span>
+                            </li>
+                            <li>
+                                <span class="title">Retirement Plan</span>
+                                <span class="name">
+                                    Public Employees Retirement System
+                                </span>
+                            </li>
+                            <li>
+                                <span class="title">Address</span>
+                                <span class="name">
+                                    30 E Broad St. 29th fl., Columbus, Ohio, 43215
+                                </span>
+                            </li>
+                            <li>
+                                <span class="title">Date of Birth</span>
+                                <span class="name">
+                                    01 Jan 1975
+                                </span>
+                            </li>
+                            <li>
+                                <span class="title">Gender</span>
+                                <span class="name">
+                                    Male
+                                </span>
+                            </li>
+                            <li>
+                                <span class="title">Home Phone</span>
+                                <span class="name">
+                                    102-658-025680
+                                </span>
+                            </li>
+                            <li>
+                                <span class="title">Work Phone</span>
+                                <span class="name">
+                                    102-658-025688
+                                </span>
+                            </li>
+                            <li>
+                                <span class="title">Email Address</span>
+                                <span class="name">
+                                    steve25@gmail.com
+                                </span>
+                            </li>
+                            <li>
+                                <span class="title">Deferral per pay period</span>
+                                <span class="name">
+                                    $50.00
+                                </span>
+                            </li>
+                            <li>
+                                <span class="title">Fund Allocation</span>
+                                <span class="name">
+                                    $50.00 - Ohio DC LifePath 2055
+                                </span>
+                            </li>
+                            <li>
+                                <span class="title">SMarT Plan</span>
+                                <span class="name">
+                                    Yes, Increase $10.00 starting January 2018
+                                </span>
+                            </li>
+                        </ul>
+                        <!-- list view -->
+                        <div class="box-fund">
+                            <h2>Fund Allocation</h2>
+                            <ul class="list-title">
+                                <li>
+                                    <span class="text">Fund Name</span>
+                                </li>
+                                <li>
+                                    <span class="text">Percentage</span>
+                                </li>
+                                <li>
+                                    <span class="text">Value</span>
+                                </li>
+                            </ul>
+                            <!-- list title -->
+                            <ul class="list-colum">
+                                <li>
+                                    <ul class="list-row">
+                                        <li>
+                                            <span class="text">International stocks</span>
+                                        </li>
+                                        <li>
+                                            <span class="per">10%</span>
+                                        </li>
+                                        <li>
+                                            <span class="num">$2,500.00</span>
+                                        </li>
+                                    </ul>
+                                    <!-- list row -->
+                                </li>
+                                <li>
+                                    <ul class="list-row">
+                                        <li>
+                                            <span class="text">Small-Cap Stocks</span>
+                                        </li>
+                                        <li>
+                                            <span class="per">15%</span>
+                                        </li>
+                                        <li>
+                                            <span class="num">$2,500.00</span>
+                                        </li>
+                                    </ul>
+                                    <!-- list row -->
+                                </li>
+                                <li>
+                                    <ul class="list-row">
+                                        <li>
+                                            <span class="text">Mid-Cap Stocks</span>
+                                        </li>
+                                        <li>
+                                            <span class="per">30%</span>
+                                        </li>
+                                        <li>
+                                            <span class="num">$2,500.00</span>
+                                        </li>
+                                    </ul>
+                                    <!-- list row -->
+                                </li>
+                                <li>
+                                    <ul class="list-row">
+                                        <li>
+                                            <span class="text">Large-Cap Stocks</span>
+                                        </li>
+                                        <li>
+                                            <span class="per">10%</span>
+                                        </li>
+                                        <li>
+                                            <span class="num">$2,500.00</span>
+                                        </li>
+                                    </ul>
+                                    <!-- list row -->
+                                </li>
+                                <li>
+                                    <ul class="list-row">
+                                        <li>
+                                            <span class="text">Asset allocation Funds</span>
+                                        </li>
+                                        <li>
+                                            <span class="per">10%</span>
+                                        </li>
+                                        <li>
+                                            <span class="num">$2,500.00</span>
+                                        </li>
+                                    </ul>
+                                    <!-- list row -->
+                                </li>
+                                <li>
+                                    <ul class="list-row">
+                                        <li>
+                                            <span class="text">Bonds</span>
+                                        </li>
+                                        <li>
+                                            <span class="per">10%</span>
+                                        </li>
+                                        <li>
+                                            <span class="num">$2,500.00</span>
+                                        </li>
+                                    </ul>
+                                    <!-- list row -->
+                                </li>
+                                <li>
+                                    <ul class="list-row">
+                                        <li>
+                                            <span class="text">FIxed account</span>
+                                        </li>
+                                        <li>
+                                            <span class="per">10%</span>
+                                        </li>
+                                        <li>
+                                            <span class="num">$2,500.00</span>
+                                        </li>
+                                    </ul>
+                                    <!-- list row -->
+                                </li>
+                            </ul>
+                            <!-- list colum -->
+                        </div>
+                        <!-- box fund -->
+                        <div class="box-benefica">
+                            <h2>Beneficiaries</h2>
+                            <ul class="list-title">
+                                <li>
+                                    <span class="title">Beneficiary Name</span>
+                                </li>
+                                <li>
+                                    <span class="title">Relationship</span>
+                                </li>
+                                <li>
+                                    <span class="title">Beneficiary Type</span>
+                                </li>
+                                <li>
+                                    <span class="title">Allocation</span>
+                                </li>
+                            </ul>
+                            <!-- list title -->
+                            <ul class="list-colum">
+                                <li>
+                                    <ul class="list-row">
+                                        <li>
+                                            <span class="text">Rachel Greene</span>
+                                        </li>
+                                        <li>
+                                            <span class="text">Spouse</span>
+                                        </li>
+                                        <li>
+                                            <span class="text">Primary</span>
+                                        </li>
+                                        <li>
+                                            <span class="per">100%</span>
+                                        </li>
+                                    </ul>
+                                    <!-- list row -->
+                                </li>
+                                <li>
+                                    <ul class="list-row">
+                                        <li>
+                                            <span class="text">Joey Tribbiani</span>
+                                        </li>
+                                        <li>
+                                            <span class="text">Child</span>
+                                        </li>
+                                        <li>
+                                            <span class="text">Contingent</span>
+                                        </li>
+                                        <li>
+                                            <span class="per">50%</span>
+                                        </li>
+                                    </ul>
+                                    <!-- list row -->
+                                </li>
+                            </ul>
+                            <!-- list colum -->
+                            <div class="mobi-benefica">
+                                <div class="box-detail">
+                                    <span class="name">Rachel Greene :</span>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Relationship</th>
+                                                <th>Beneficiary Type</th>
+                                                <th>Allocation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <span class="text">Child</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text">Contingent</span>
+                                                </td>
+                                                <td>
+                                                    <span class="num">50%</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- box detail -->
+                                <div class="box-detail">
+                                    <span class="name">Rachel Greene :</span>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Relationship</th>
+                                                <th>Beneficiary Type</th>
+                                                <th>Allocation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <span class="text">Child</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text">Contingent</span>
+                                                </td>
+                                                <td>
+                                                    <span class="num">50%</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- box detail -->
+                            </div>
+                            <!-- mobi bennefica -->
+                        </div>
+                        <!-- box benefica	 -->
+                    </div>
+                    <!-- end /form-order01 -->
+                    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.DesktopInstructions, cssClass: "hidden-xs hidden-sm")); }
+                    <div class="clear"></div>
+                </div>
+                <!-- end /middle-form -->
+                <div class="cover-btn cen-z">
+                    <a href="javascript:;" class="pre-btn mix-xy">previous</a>
+                    <a href="javascript:;" class="next-btn mix-xy submit-form">submit</a>
+                </div>
+                <!-- end /cover btn -->
+            </div>
+            <!-- end /step seven content -->
+        }
+    </div>
+    <!-- box step -->
+</div>
+
+@section boxInstructions {
+    @{ Html.RenderPartial("_BoxInstructions", new InstructionsBoxModel(ViewBag.MobileInstructions, showCloseButton: true)); }
+}

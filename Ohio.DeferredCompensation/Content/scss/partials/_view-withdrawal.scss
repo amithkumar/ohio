@@ -1,0 +1,486 @@
+.view-withdrawal {
+    padding-bottom: 27px;
+    background-color: #efefef;
+    height: auto;
+    .bold {
+        font-weight: 500;
+    }
+    .big-radio span,
+    .routing,
+    .backaccount,
+    .bankname {
+        font-weight: normal;
+        font-size: 14px;
+        span {
+            line-height: 43px;
+        }
+    }
+    .step-by-step {
+        width: calc(100% - 160px);
+        margin: 0 auto;
+        border-radius: 5px;
+        background-color: #fff;
+        position: relative;
+        z-index: 100;
+        .step-more-details {
+            width: 100%;
+            position: relative;
+            .step-one-content {
+                position: relative;
+                margin: 24px 0;
+                .top-title {
+                    border-bottom: 1px solid #cacaca;
+                    height: 88px;
+                    span {
+                        padding-left: 52px;
+                        font-weight: bold;
+                        float: left;
+                        width: 400px;
+                        font-size: 20px;
+                        line-height: 88px;
+                    }
+                    button {
+                        width: 217px;
+                        float: right;
+                        border: 1px solid red;
+                        border-radius: 3px;
+                        line-height: 30px;
+                        margin-top: 21px;
+                        margin-right: 10px;
+                        font-size: 13px;
+                        font-weight: 500;
+                        color: red;
+                        padding: 0 14px 0 40px;
+                        position: relative;
+                        span {
+                            padding-left: 0;
+                        }
+                        &.stop {
+                            height: 43px;
+                            .icons {
+                                width: 20px;
+                                height: 20px;
+                                position: absolute;
+                                left: 16px;
+                                top: 12px;
+                                background-position: -170px -101px;
+                            }
+                            &:hover,
+                            &:focus {
+                                background-color: #df3225;
+                                color: #fff;
+                                outline: none;
+                                .icons {
+                                    background-position: -212px -101px;
+                                }
+                                
+                            }
+                        }
+                        &.delete {
+                            color: #df3224;
+                            outline: none;
+                            height: 43px;
+                            .icons {
+                                width: 15px;
+                                height: 20px;
+                                position: absolute;
+                                left: 16px;
+                                top: 10px;
+                                background-position: -160px -37px;
+                            }
+                            &:hover {
+                                background-color: #df3224;
+                                color: #fff;
+                                .icons {
+                                    background-position: -131px -138px;
+                                 }
+                            }
+                        }
+                        &.edit {
+                            color: white;
+                            height: 43px;
+                            background-color: #df3225;
+                            position: relative;
+                            text-indent: 0;
+                            .icons {
+                                width: 25px;
+                                height: 25px;
+                                background-position: -35px -133px;
+                                position: absolute;
+                                left: 10px;
+                            }
+                            &:hover,
+                            &:focus {
+                                 background-color: #df3224;
+                                 opacity: 0.7;
+                                 outline: none;
+                            }
+                        }
+                    }
+                }
+                .middle-form {
+                    padding: 0 48px 0 52px;
+                    position: relative;
+                    .total-title {
+                        font-weight: 700;
+                        font-size: 15px;
+                        border-bottom: 1px solid #cacaca;
+                        color: #df3224;
+                        line-height: 60px;
+                        span {
+                            font-weight: 700;
+                            font-size: 15px;
+                            color: #df3224;
+                            margin-left: 10px;
+                        }
+                    }
+                    .form-order01 {
+                        width: 100%;
+                        float: left;
+                        padding: 20px 0;
+                        position: relative;
+                        .left,
+                        .right {
+                            float: left;
+                            width: 50%;
+                        }
+                        .left {
+                            border-right: 1px solid #cacaca;
+                        }
+                        .right {
+                            padding-left: 52px;
+                        }
+                        .row {
+                            font-size: 14px;
+                            height: auto;
+                            margin-top: 30px;
+                            min-height: 240px;
+                            h5 {
+                                font-weight: 500;
+                                line-height: 30px;
+                            }
+                            ul {
+                                li {
+                                    min-height: 30px;
+                                    position: relative;
+                                    margin-bottom: 15px;
+                                    display: table;
+                                    width: 100%;
+                                    padding: 10px 0;
+                                    .title {
+                                        font-weight: 500;
+                                        display: table-cell;
+                                        vertical-align: top;
+                                        position: relative;
+                                        line-height: 16px;
+                                        width: 45%;
+                                        padding-right: 10px;
+                                        &:after {
+                                            content: ":";
+                                            position: absolute;
+                                            right: 0;
+                                            top: 0;
+                                            font-weight: normal;
+                                        }
+                                    }
+                                    .descr {
+                                        display: table-cell;
+                                        vertical-align: top;
+                                        width: 55%;
+                                        line-height: 16px;
+                                        word-break: break-word;
+                                        padding-right: 10px;
+                                        padding-left: 10px;
+                                        em {
+                                            margin-left: 12px;
+                                        }
+                                    }
+                                }
+                                &.padding20 {
+                                    .title {
+                                        font-weight: normal;
+                                        padding-left: 20px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .bottom-button {
+                width: calc(100% - 70px);
+                height: 101px;
+                margin: 0 auto;
+                padding-top: 30px;
+                border-top: 1px solid #cacaca;
+                position: relative;
+                margin-left: 35px;
+                .btn-cancel {
+                    width: 145px;
+                    height: 41px;
+                    float: left;
+                    font-size: 14px;
+                    font-weight: normal;
+                    color: #df3225;
+                    text-transform: uppercase;
+                    background-color: white;
+                    border: 1px solid #df3225;
+                    border-radius: 3px;
+                    margin-left: 6px;
+                }
+                .btn-next {
+                    width: 145px;
+                    height: 41px;
+                    float: right;
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: #fff;
+                    text-transform: uppercase;
+                    background-color: #df3225;
+                    border-radius: 3px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen 
+and (min-width : 768px) 
+and (max-width : 1023px) {
+
+}
+
+@media only screen 
+and (min-width : 320px) 
+and (max-width : 1023px) {
+    .add-benificiary-page {
+        padding-bottom: 20px;
+    }
+    // BreadCrumb
+    .breadcrumb {
+        height: 50px;
+        margin: 0;
+        padding: 0;
+        a {
+            display: block;
+            margin-left: 22px;
+            padding-left: 20px;
+            position: relative;
+            &:before {
+                content: '';
+                display: block;
+                width: 9px;
+                height: 14px;
+                background-image: url(/Content/i/mobi/icons.png);
+                background-position: -87px -73px;
+                background-size: 400px 200px;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .back-arrow {
+                display: block;
+                width: 12px;
+                height: 20px;
+                background-position: -311px 0;
+                float: left;
+            }
+            .label {
+                padding: 0;
+                font-size: 16px;
+                font-weight: bold;
+                color: #282828;
+                letter-spacing: 1px;
+            }
+        }
+    }
+    .view-withdrawal {
+        padding-bottom: 0;
+        .step-by-step {
+            width: 100%;
+            .step-more-details {
+                .step-one-content {
+                    margin-top: 0;
+                    .top-title {
+                        height: auto;
+                        border-bottom: 0;
+                        span {
+                            padding-left: 0;
+                            font-weight: bold;
+                            float: none;
+                            width: auto;
+                            line-height: 0;
+                        }
+                        .title-span {
+                            background: #efefef;
+                            position: relative;
+                            &:before {
+                                content: '';
+                                display: block;
+                                width: 9px;
+                                height: 14px;
+                                background-image: url(/Content/i/mobi/icons.png);
+                                background-position: -87px -73px;
+                                background-size: 400px 200px;
+                                position: absolute;
+                                top: 3px;
+                                left: 0;
+                            }
+                        }
+                        button {
+                            float: none;
+                            padding: 0 20px 0 40px;
+                            width: auto;
+                            font-size: 10px;
+                            &.edit {
+                                height: 30px;
+                                .icons {
+                                    background-position: -63px -96px;
+                                    left: 12px;
+                                    top: 2px;
+                                    transform: scale(0.8);
+                                }
+                            }
+                            &.stop {
+                                float: left;
+                                height: 30px;
+                                text-indent: 0px;
+                                margin-left: 10px;
+                               background-color: #df3225;
+                               color: #fff;
+                                margin-right: 12px;
+                                .icons {
+                                    background-position: -4px -101px;
+                                    width: 14px;
+                                    height: 16px;
+                                    top: 7px;
+                                    left: 20px;
+                                } 
+                                &:hover {
+                                    .icons {
+                                        background-position: -32px -100px;
+                                    }
+                                }   
+                            }
+                            &.delete {
+                                float: left;
+                                height: 30px;
+                                margin-left: 10px;
+                                .hover {
+                                    .icons {
+                                        background-position: -378px -67px;
+                                    }
+                                }
+                                .icons {
+                                    width: 16px;
+                                    height: 22px;
+                                    background-position: -284px -66px;
+                                    left: 10px;
+                                    top: 3px;
+                                    transform: scale(0.8);
+                                }
+                            }
+                        }
+                    }
+                    .middle-form {
+                        padding: 0 12px;
+                        .form-order01 {
+                            padding-top: 10px;
+                            .left {
+                                border-right: 0;
+                            }
+                            .left, .right {
+                                width: 100%;
+                                float: none;
+                            }
+                            .right {
+                                padding-left: 0;
+                                .row {
+                                    &:last-child {
+                                        border-bottom: 0;
+                                    }
+                                }
+                            }
+                            .row {
+                                height: auto;
+                                padding-bottom: 20px;
+                                border-bottom: 1px solid #d6d6d6;
+                                h5 {
+                                    font-size: 13px;
+                                }
+                                ul {
+                                    li {
+                                        display: table;
+                                        width: 100%;
+                                        height: auto;
+                                        padding-bottom: 15px;
+                                        .title {
+                                            font-size: 13px;
+                                            text-indent: 0;
+                                            display: table-cell;
+                                            vertical-align: top;
+                                            line-height: 15px;
+                                        }
+                                        .descr {
+                                            width: auto;
+                                            font-size: 11px;
+                                            line-height: 15px;
+                                            display: table-cell;
+                                            vertical-align: top; 
+                                            float: none;
+                                            padding-right: 10px;
+                                        }
+                                    }
+                                    &.padding20 {
+                                        .title {
+                                            text-indent: 0;
+                                            padding-left: 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .bottom-button {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@media only screen 
+and (min-width : 320px) 
+and (max-width : 374px) {
+    .view-withdrawal {
+        .step-by-step {
+            .step-more-details {
+                .step-one-content {
+                    .top-title {
+                        span {
+                            font-size: 14px;
+                        }
+                        button {
+                            &.delete {
+                                float: none;
+                                min-width: 160px;
+                            }
+                            &.stop {
+                                float: none;
+                                min-width: 160px;
+                                .icons {
+                                    left: 11px;
+                                }
+                            }
+                            &.edit {
+                                margin-left: 12px;
+                                min-width: 160px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
